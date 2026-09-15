@@ -1,39 +1,58 @@
-<!-- PLAN template=T06 executor=pi pace=快过 layout_ref=L04
-     reveal=['我想得到什么', 'AI需要扮演什么角色', '我能提供什么上下文']
+<!-- PLAN template=T18 executor=pi pace=快过 layout_ref=L04
+     reveal=['① 要解决什么问题（目标设定）', '② 最终成功标准是什么（验收标准）', '③ 如何让AI理解以上两点（上下文构建）', '所以用到']
      embeds=[]
      anim=null
-     note=
+     note=快闪页：左栏《望庐山瀑布》AI生成试样首图占正文60%，右栏紧凑卡；三问逐问揭示，结论第4步。
      assets:
        IMG_V01_POV → assets/pov_01_wanglushan.png (img) 已在 assets/ -->
-<section class="slide" data-id="P045" data-title="没有合适视频，能否从教学意图出发做？" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T06" data-status="draft">
+<section class="slide" data-id="P045" data-title="没有合适视频，能否从教学意图出发做？" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T18" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
     <span class="pid">P045</span>
   </div>
-  <h2 class="title">没有合适视频，能否从教学意图出发做？</h2>
+  <h2 class="title sm">没有合适视频，能否从教学意图出发做？</h2>
   <p class="sub reveal-none">用三问说清：讨论什么、怎样生成、提供什么。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center;gap:32px">
-  <div class="grid-3">
-    <div class="card reveal">
-      <span class="num">01</span>
-      <div class="label">我想得到什么</div>
-      <p>让学生讨论诗句中的景象如何被画面再现，并区分文本依据与生成补充。</p>
-    </div>
-    <div class="card reveal">
-      <span class="num">02</span>
-      <div class="label">AI需要扮演什么角色</div>
-      <p>AI作为生成与落地的工具，根据分镜意图制作可供讨论的视频。</p>
-    </div>
-    <div class="card reveal">
-      <span class="num">03</span>
-      <div class="label">我能提供什么上下文</div>
-      <p>提供诗句原文、镜头意图、时长、画面风格和必须保留的意象。</p>
+  <div class="body">
+    <div class="flash">
+
+      <!-- 左 60%：AI 生成试样首图（仓库内已有），加角标 -->
+      <div class="flash-fig">
+        <div class="blueprint">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="assets/pov_01_wanglushan.png" alt="">
+          <span class="tag fill corner-tag">AI生成试样</span>
+        </div>
+      </div>
+
+      <!-- 右 40%：紧凑卡，三问逐问揭示，结论第 4 步 -->
+      <div class="flash-card">
+        <div class="row">
+          <div class="label">典型需求</div>
+          <p class="text">讲《望庐山瀑布》，找不到一段和四句诗一一对应的画面。</p>
+        </div>
+        <div class="row reveal" data-step="1">
+          <div class="label">① 要解决什么问题（目标设定）</div>
+          <p class="text">让学生讨论诗句中的景象如何被画面再现，并区分文本依据与生成补充。</p>
+        </div>
+        <div class="row reveal" data-step="2">
+          <div class="label">② 最终成功标准是什么（验收标准）</div>
+          <p class="text">15秒内四句诗各有一个镜头；学生能各指出一处有文本依据、一处是生成补充。</p>
+        </div>
+        <div class="row reveal" data-step="3">
+          <div class="label">③ 如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">提供诗句原文、镜头意图、时长、画面风格和必须保留的意象。</p>
+        </div>
+        <div class="row cap reveal" data-step="4">
+          <div class="label">所以用到</div>
+          <p class="text">内容生成：按四句诗的分镜意图生成15秒视频；角色扮演：扮演只读过诗、没看过片的同学提问。</p>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="slot" style="height:280px;width:498px;align-self:center;flex:0 0 auto"><img src="assets/pov_01_wanglushan.png" alt=""></div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
   <div class="foot">《望庐山瀑布》视频为AI生成的诗意再现。</div>
   <aside class="notes">【快过】讲述时依次说明：让学生讨论诗句中的景象如何被画面再现，并区分文本依据与生成补充。 AI作为生成与落地的工具，根据分镜意图制作可供讨论的视频。 提供诗句原文、镜头意图、时长、画面风格和必须保留的意象。
     作用：引入视频生成案例，把制作要求接到教学意图。
