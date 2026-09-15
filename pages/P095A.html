@@ -1,10 +1,10 @@
 <!-- PLAN template=T05 executor=cloud pace=停讲 layout_ref=L03
-     reveal=[]
+     reveal=['AI不在你的教室里', '第一推是老师的', '之后的每一张']
      embeds=[]
      anim=null
      note=一列多米诺，第一张由一只手推，后面各张标"三问 / 能力 / 环节 / 成果"；内联 SVG＋图标库手势图标。
  -->
-<section class="slide" data-id="P095A" data-title="技能在变，职责在变，教师的价值反而更高" data-module="11 收束：第一推" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+<section class="slide" data-id="P095A" data-title="技能在变，职责在变，教师的价值反而更高" data-module="11 收束：第一推" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>11</b><span class="on">收束：第一推</span></div>
     <span class="pid">P095A</span>
@@ -12,10 +12,90 @@
   <h2 class="title">技能在变，职责在变，教师的价值反而更高</h2>
   <p class="sub reveal-none">从现实课堂里感知问题、发现问题，AI做不到。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">AI不在你的教室里</div><p class="text">它看不见哪个孩子皱了眉，哪一步卡住了。</p></div>
-    <div class="reveal"><div class="label">第一推是老师的</div><p class="text">多米诺骨牌的第一张，永远是一个从现实里来的问题。</p></div>
-    <div class="reveal"><div class="label">之后的每一张</div><p class="text">三问、三类能力、四个环节，都从这一推开始。</p></div>
+  <style>
+    /* P095A 第一推：内联多米诺示意图 ＋ 三段说明 */
+    .slide[data-id="P095A"] .body { justify-content: space-between; }
+    .slide[data-id="P095A"] .p95a-fig { flex: 0 0 auto; }
+    .slide[data-id="P095A"] .p95a-fig svg { display: block; width: 100%; height: auto; }
+    .slide[data-id="P095A"] .tile { fill: none; stroke: var(--muted-2); stroke-width: 2; }
+    .slide[data-id="P095A"] .tile.first { fill: var(--accent); stroke: var(--accent); }
+    .slide[data-id="P095A"] .tile-t { font-family: var(--font-sans); font-size: 30px; font-weight: 500;
+      fill: var(--text); text-anchor: middle; }
+    .slide[data-id="P095A"] .tile-t.on-fill { fill: #fff; }
+    .slide[data-id="P095A"] .ground { stroke: var(--divider); stroke-width: 2; }
+    .slide[data-id="P095A"] .push { fill: none; stroke: var(--accent); stroke-width: 3; }
+    .slide[data-id="P095A"] .push-head { fill: var(--accent); }
+    .slide[data-id="P095A"] .push-t { font-family: var(--font-cond); font-size: 26px; letter-spacing: .1em;
+      fill: var(--accent); text-anchor: middle; }
+    .slide[data-id="P095A"] .arc { fill: none; stroke: var(--neutral-400); stroke-width: 2;
+      stroke-dasharray: 6 8; }
+    .slide[data-id="P095A"] .hand { filter: saturate(.75); }
+    .slide[data-id="P095A"] .p95a-rows { display: flex; gap: 56px; align-items: flex-start; }
+    .slide[data-id="P095A"] .p95a-rows > div { flex: 1 1 0; min-width: 0; }
+    .slide[data-id="P095A"] .p95a-rows .label { margin-bottom: 10px; }
+    .slide[data-id="P095A"] .p95a-rows .text { margin: 0; }
+  </style>
+  <div class="body stack">
+    <div class="p95a-fig">
+      <svg viewBox="0 40 1700 430" role="img" aria-label="多米诺骨牌示意：教师的手推倒第一张写着“真实问题”的牌，后面依次是三问、三类能力、四个环节">
+        <defs>
+          <marker id="p95aArrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path class="push-head" d="M0 0 L12 6 L0 12 z"/>
+          </marker>
+        </defs>
+
+        <!-- 地面 -->
+        <line class="ground" x1="40" y1="372" x2="1660" y2="372"/>
+
+        <!-- 教师的手：第一推 -->
+        <image class="hand" href="assets/img/icons/hand-push.png" x="10" y="130" width="180" height="180"
+               transform="rotate(90 100 220)"/>
+        <path class="push" d="M196 220 L286 220" marker-end="url(#p95aArrow)"/>
+        <text class="push-t" x="118" y="352">第一推</text>
+
+        <!-- ① 已被推倒的第一张：真实问题 -->
+        <g transform="rotate(30 425 372)">
+          <rect class="tile first" x="315" y="72" width="110" height="300"/>
+          <text class="tile-t on-fill" x="370" y="198">真实</text>
+          <text class="tile-t on-fill" x="370" y="250">问题</text>
+        </g>
+        <path class="arc" d="M370 58 A 175 175 0 0 1 520 128"/>
+
+        <!-- ② 正在倒下：三问 -->
+        <g transform="rotate(17 700 372)">
+          <rect class="tile" x="590" y="72" width="110" height="300"/>
+          <text class="tile-t" x="645" y="198">三</text>
+          <text class="tile-t" x="645" y="250">问</text>
+        </g>
+
+        <!-- ③ 三类能力 -->
+        <g transform="rotate(8 975 372)">
+          <rect class="tile" x="865" y="72" width="110" height="300"/>
+          <text class="tile-t" x="920" y="198">三类</text>
+          <text class="tile-t" x="920" y="250">能力</text>
+        </g>
+
+        <!-- ④ 四个环节 -->
+        <g transform="rotate(3 1250 372)">
+          <rect class="tile" x="1140" y="72" width="110" height="300"/>
+          <text class="tile-t" x="1195" y="198">四个</text>
+          <text class="tile-t" x="1195" y="250">环节</text>
+        </g>
+
+        <!-- ⑤ 还未倒下：学生的学习 -->
+        <rect class="tile" x="1415" y="72" width="110" height="300"/>
+        <text class="tile-t" x="1470" y="198">学生的</text>
+        <text class="tile-t" x="1470" y="250">学习</text>
+
+        <text class="tile-t" x="470" y="440" style="font-size:26px;fill:var(--muted-2)">从现实课堂里来</text>
+        <text class="tile-t" x="1195" y="440" style="font-size:26px;fill:var(--muted-2)">方法顺着这一推依次展开</text>
+      </svg>
+    </div>
+    <div class="p95a-rows">
+      <div class="reveal" data-step="1"><div class="label">AI不在你的教室里</div><p class="text">它看不见哪个孩子皱了眉，哪一步卡住了。</p></div>
+      <div class="reveal" data-step="2"><div class="label">第一推是老师的</div><p class="text">多米诺骨牌的第一张，永远是一个从现实里来的问题。</p></div>
+      <div class="reveal" data-step="3"><div class="label">之后的每一张</div><p class="text">三问、三类能力、四个环节，都从这一推开始。</p></div>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">让AI服务真实的学习。</div>

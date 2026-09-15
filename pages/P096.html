@@ -1,30 +1,64 @@
-<!-- PLAN template=T01 executor=pi pace=快过 layout_ref=L01
+<!-- PLAN template=T12 executor=pi pace=快过 layout_ref=L08
      reveal=[]
      embeds=[{"asset": "QR_RESOURCES", "mode": "config", "config": "resourceUrl"}]
      anim=null
-     note=沿用 P001 暗底封面模板作结束页。
+     note=大对话输入框占正文 60%（“发送”只是图形，不可点、不调用模型）＋资源入口二维码。
      assets:
        QR_RESOURCES → config.js resourceUrl (config) P096 资源入口二维码，运行时由 config.js 生成；地址为用户 TencentOS 部署地址，未填时显示占位 -->
-<section class="slide dark" data-id="P096" data-title="让AI服务真实的学习" data-module="11 收束：下周的一件小事" data-stage="" data-kind="主线" data-template="T01" data-status="draft">
+<section class="slide" data-id="P096" data-title="今天听完，还是不知道具体该怎么做？" data-module="11 收束：第一推" data-stage="" data-kind="主线" data-template="T12" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>11</b><span class="on">收束：下周的一件小事</span></div>
+    <div class="locator"><b>11</b><span class="on">收束：第一推</span></div>
     <span class="pid">P096</span>
   </div>
-  <h2 class="title">让AI服务真实的学习</h2>
-  <p class="sub reveal-none">保留学生亲自经历、判断和创造的空间。</p>
+  <h2 class="title">今天听完，还是不知道具体该怎么做？</h2>
+  <p class="sub reveal-none">没关系。这正是AI的意义：AI会告诉你怎么用AI。</p>
   <!-- BODY:START -->
-  <div class="body cols" style="align-items:center;justify-content:space-between;gap:80px">
-    <div class="stack" style="flex:1 1 0;justify-content:center;gap:40px">
-      <div style="width:260px;height:1px;background:var(--accent)"></div>
-      <div class="kicker" style="color:var(--light-blue)">4＋3＋3：四个环节 · 三种角色 · 三个问题</div>
-      <div class="small" style="color:var(--light-blue);font-size:26px">谢谢大家</div>
+  <style>
+    /* P096 收束：大对话输入框（纯图形，不可交互）＋ 资源入口二维码 */
+    .slide[data-id="P096"] .body { align-items: stretch; gap: 72px; }
+    .slide[data-id="P096"] .p96left { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+    .slide[data-id="P096"] .p96right { flex: 0 0 380px; display: flex; flex-direction: column;
+      justify-content: space-between; align-items: flex-start; }
+    .slide[data-id="P096"] .p96box { flex: 1 1 auto; display: flex; flex-direction: column;
+      justify-content: space-between; background: #fff; border: 2px solid var(--divider);
+      border-radius: 18px; padding: 40px 44px 26px; box-shadow: 0 2px 0 rgba(29,31,32,.04); }
+    .slide[data-id="P096"] .p96box .text { margin: 0; font-size: 36px; line-height: 1.78; }
+    .slide[data-id="P096"] .p96box .text::after { content: ""; display: inline-block; width: 3px; height: 34px;
+      background: var(--accent); margin-left: 8px; vertical-align: -6px; }
+    .slide[data-id="P096"] .p96bar { display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--divider); margin-top: 26px; padding-top: 20px; }
+    .slide[data-id="P096"] .p96hint { font-size: 24px; color: var(--muted-3); letter-spacing: .04em; }
+    .slide[data-id="P096"] .p96send { background: var(--accent); color: #fff; font-size: 28px;
+      padding: 12px 40px; border-radius: 10px; letter-spacing: .1em; }
+    .slide[data-id="P096"] .p96right .label { margin-bottom: 12px; }
+    .slide[data-id="P096"] .p96right .text { margin: 0; font-size: 30px; line-height: 1.55; }
+    .slide[data-id="P096"] .p96qr { display: flex; flex-direction: column; gap: 18px; }
+    .slide[data-id="P096"] .p96qr .small { font-size: 24px; color: var(--muted-2); letter-spacing: .06em; }
+  </style>
+  <div class="body cols">
+    <div class="p96left">
+      <div class="label">一段可以直接发出去的话</div>
+      <div class="p96box">
+        <p class="text">我是（年级）（学科）老师。我想解决的问题是：______。做到______才算成功。我的情况是：______。请告诉我，可以怎样用AI。</p>
+        <div class="p96bar">
+          <span class="p96hint">复制到任意一个AI对话框，把横线填成你的情况</span>
+          <span class="p96send" aria-hidden="true">发送</span>
+        </div>
+      </div>
     </div>
-    <div class="stack" style="flex:0 0 auto;align-items:center;gap:20px">
-      <div class="qr big" data-config="resourceUrl" data-placeholder="培训资源入口：现场填写 config.js 的 resourceUrl 后显示二维码"></div>
-      <div class="small" style="color:var(--light-blue);font-size:24px;letter-spacing:.08em">扫码浏览本次培训的全部产物与素材</div>
+    <div class="p96right">
+      <div>
+        <div class="label">现在就做</div>
+        <p class="text">把你今天最好奇的那个问题，发给任何一个AI。</p>
+      </div>
+      <div class="p96qr">
+        <div class="qr big" data-config="resourceUrl" data-placeholder="培训资源入口：现场填写 config.js 的 resourceUrl 后显示二维码"></div>
+        <div class="small">扫码浏览本次培训的全部产物与素材</div>
+      </div>
     </div>
   </div>
   <!-- BODY:END -->
+  <div class="foot">这段话本身就是三问；模板为示例，未调用任何模型。</div>
   <aside class="notes">【快过】最后回到这句话：让AI服务真实的学习。我们前面讲了设计、实施、评价和教师专业发展，也看了管道、工具和主体三种角色，还有每次使用前的三个问题。所有这些，最后都要回到学生身上。保留他们亲自经历、判断和创造的空间，AI才有意义。谢谢大家。
     作用：结束全场，回到学生真实学习。</aside>
 </section>
