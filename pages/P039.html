@@ -9,29 +9,57 @@
     <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
     <span class="pid">P039</span>
   </div>
-  <h2 class="title">四季探究：让学生用条件与现象说明理由</h2>
+  <h2 class="title sm">四季探究：让学生用条件与现象说明理由</h2>
   <p class="sub reveal-none">怎样把一幅季节示意图变成可以检验想法的任务？</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="grid-3 reveal-group" style="margin:auto 0;gap:32px">
-    <div class="card reveal" style="padding:36px">
-      <span class="num">01</span>
-      <div class="label">我想得到什么</div>
-      <p style="font-size:28px;line-height:1.6">学生能比较同一地点在不同倾角下的全年昼长变化，并说明比较依据。</p>
-    </div>
-    <div class="card reveal" style="padding:36px">
-      <span class="num">02</span>
-      <div class="label">AI需要扮演什么角色</div>
-      <p style="font-size:28px;line-height:1.6">AI作为生成与落地的工具，协助开发交互模拟；教师组织学生预测、操作和解释。</p>
-    </div>
-    <div class="card reveal" style="padding:36px">
-      <span class="num">03</span>
-      <div class="label">我能提供什么上下文</div>
-      <p style="font-size:28px;line-height:1.6">提供学段、教学难点、需要控制的变量、视角、设备条件和可用课时。</p>
+  <div class="body">
+    <div class="casecard">
+
+      <!-- 上栏：典型需求（整页的问题，不分步） -->
+      <div class="cc-need">
+        <div class="label">典型需求</div>
+        <p class="text">课本上只有一幅四季示意图，学生说不清昼长为什么会随季节变化。</p>
+      </div>
+
+      <!-- 中栏：三问逐问揭示（讲者先让老师说，再翻） -->
+      <div class="cc-qs">
+        <div class="cc-q reveal" data-step="1">
+          <div class="cc-num">①</div>
+          <div class="label">要解决什么问题（目标设定）</div>
+          <p class="text">学生能比较同一地点在不同倾角下的全年昼长变化，并说明比较依据。</p>
+        </div>
+        <div class="cc-q reveal" data-step="2">
+          <div class="cc-num">②</div>
+          <div class="label">最终成功标准是什么（验收标准）</div>
+          <p class="text">每个学生都能写出一句话：我改变了什么，观察到了什么，这支持怎样的解释。</p>
+        </div>
+        <div class="cc-q reveal" data-step="3">
+          <div class="cc-num">③</div>
+          <div class="label">如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">提供学段、教学难点、需要控制的变量、视角、设备条件和可用课时。</p>
+        </div>
+      </div>
+
+      <!-- 底栏：所以用到（第 4 步，三问说完再出结论；与三问不一一对应，不画连线） -->
+      <div class="cc-caps reveal" data-step="4">
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">内容生成</span></div>
+          <p class="text">用一句意图描述，生成可调日期、纬度、倾角的四季3D模型和昼长曲线。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">连通管道</span></div>
+          <p class="text">教学观察台把每个人的操作与解释记录下来，供课后回看。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">角色扮演</span></div>
+          <p class="text">教师现场追问“你改了什么、看到了什么”，也可以让AI扮演追问者。</p>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
+  <div class="foot">资源：四季循环v2、教学观察台。</div>
   <aside class="notes">【停讲】开发模型时AI承担生成工具角色；课堂中学生使用模型并不等于每次操作都调用大模型。教师把可调参数变为可以比较和解释的任务。
     作用：将系统展示转成一项具体的学习任务，完成三问。
     资源：<a href="../19_逐页内容脚本/资源预览/S01.html">S01 四季循环v2</a> <a href="assets/docs/S01/index.html">素材入口</a> <a href="assets/docs/S01/验证记录.md">开发与验证记录</a> <a href="../19_逐页内容脚本/资源预览/S02.html">S02 教学观察台：四季采集与回看</a> <a href="assets/docs/S02/README.md">素材入口</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动局域网演示.command" title="原路径，仅本机有效">启动局域网演示.command</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command" title="原路径，仅本机有效">启动本机演示.command</a></aside>

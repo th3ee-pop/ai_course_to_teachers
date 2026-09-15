@@ -4,7 +4,7 @@
      anim=null
      note=五张缩略大图横排占正文全高：siji_v2_xiazhi_dongzhi.png（现有）＋【待用户提供：掌中磁场1张、掌中实验室2张、生态岛1张（M4）】。
  -->
-<section class="slide" data-id="P037A" data-title="情景创设：让看不见的变得可操作" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T04" data-status="skeleton">
+<section class="slide" data-id="P037A" data-title="情景创设：让看不见的变得可操作" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T04" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
     <span class="pid">P037A</span>
@@ -12,14 +12,36 @@
   <h2 class="title">情景创设：让看不见的变得可操作</h2>
   <p class="sub reveal-none">抽象思维的可视化，与具身经验的结合。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">看不见的关系</div><p class="text">磁场方向、光路、截面、地轴倾角，抽象到难以落笔成图。</p></div>
-    <div class="reveal"><div class="label">受时空限制</div><p class="text">一年的昼长变化、一个生态系统的演变，课堂里等不到。</p></div>
-    <div class="reveal"><div class="label">用身体去操作</div><p class="text">手势、转动、切一刀，让抽象概念有了身体经验。</p></div>
-    <div class="reveal"><div class="label">五个案例</div><p class="text">地球3D探究四季、掌中磁场、掌中光路、掌中几何、生态岛。</p></div>
+  <div class="body stack" style="gap:34px">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;height:248px">
+      <div class="slot"><img src="assets/img/siji_v2_xiazhi_dongzhi.png" alt=""></div>
+      <div class="slot" data-kind="capture"><div class="placeholder">掌中磁场</div></div>
+      <div class="slot" data-kind="capture"><div class="placeholder">掌中光路</div></div>
+      <div class="slot" data-kind="capture"><div class="placeholder">掌中几何</div></div>
+      <div class="slot" data-kind="capture"><div class="placeholder">生态岛</div></div>
+    </div>
+    <div style="display:flex;gap:26px;align-items:baseline">
+      <div class="label" style="flex:0 0 auto">五个案例</div>
+      <p class="text" style="flex:1 1 0;min-width:0;font-size:28px">地球3D探究四季、掌中磁场、掌中光路、掌中几何、生态岛。</p>
+    </div>
+    <div class="cols" style="gap:44px">
+      <div class="reveal" data-step="1">
+        <div class="label">看不见的关系</div>
+        <p class="text" style="font-size:29px;line-height:1.6">磁场方向、光路、截面、地轴倾角，抽象到难以落笔成图。</p>
+      </div>
+      <div class="reveal" data-step="2">
+        <div class="label">受时空限制</div>
+        <p class="text" style="font-size:29px;line-height:1.6">一年的昼长变化、一个生态系统的演变，课堂里等不到。</p>
+      </div>
+      <div class="reveal" data-step="3">
+        <div class="label">用身体去操作</div>
+        <p class="text" style="font-size:29px;line-height:1.6">手势、转动、切一刀，让抽象概念有了身体经验。</p>
+      </div>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">五个案例均为可运行的交互页面或系统；截图为参与者界面。</div>
   <aside class="notes">【停讲】上一节我们讨论的是怎样让学生真正进入学习情境，这一节我们来看情景创设这一组的五个案例，它们面对的是同一类困难。画面上横排的五张图，分别是地球3D探究四季、掌中磁场、掌中光路、掌中几何和生态岛，都是可以在课堂里真实运行的交互页面或系统，截图来自学生操作的参与者界面。它们要解决的问题可以归为三类。第一类是看不见的关系，磁场方向、光路、截面、地轴倾角，这些东西抽象到老师自己都很难画清楚。第二类是时空限制，一年的昼长变化、一个生态系统的演变，一节课根本等不到。第三类解决方式是把抽象思维的可视化和具身经验结合起来，让学生用手势去转动、去切一刀，用身体动作获得经验。这三个问题对应的是课堂实施这个环节，背后仍然是三个问题的思路：先想清楚要解决什么，再定验收标准，再给AI足够的上下文。下面我们逐个看案例，先从四季探究开始，看学生怎样用条件与现象说明自己的理由。
-    作用：情景创设组五个案例的共同需求。</aside>
+    作用：情景创设组五个案例的共同需求。
+    演示前提：这五个案例都在授课电脑上本地运行，课前逐个双击各自目录里的启动.command 起本地服务并留着终端窗口，不要现场双击 dist 里的页面，也不要临时改端口。讲师电脑用近期版本的 Chrome 或 Edge，投影按 1920×1080；掌中磁场与掌中实验室要允许摄像头并保证光线充足、手掌完整入镜，生态岛需要 WebGL，四季循环 v2 用课件内本地页面即可。这些系统断网都能用，但掌中实验室只在 macOS 验证过。兜底：本页五张截图对应的录屏依次为 demo_siji.mp4、demo_cichang.mp4、demo_guanglu.mp4、demo_jihe.mp4、demo_shengtaidao.mp4。</aside>
 </section>
