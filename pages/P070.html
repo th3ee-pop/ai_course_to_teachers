@@ -1,41 +1,65 @@
-<!-- PLAN template=T06 executor=pi pace=停讲 layout_ref=L04
-     reveal=['我想得到什么', 'AI需要扮演什么角色', '我能提供什么上下文']
+<!-- PLAN template=T17 executor=opus pace=停讲 layout_ref=L04
+     reveal=['① 要解决什么问题（目标设定）', '② 最终成功标准是什么（验收标准）', '③ 如何让AI理解以上两点（上下文构建）']
      embeds=[{"asset": "DOC_D11", "mode": "link"}]
      anim=null
-     note=
+     note=T17 案例卡：上栏需求，中栏三问逐问揭示（data-step 1/2/3），底栏所以用到（data-step 4）。
      assets:
        DOC_D11 → links/D11/ (link)  -->
-<section class="slide" data-id="P070" data-title="沉与浮课例：这次先研究一个问题" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="主线" data-template="T06" data-status="draft">
+<section class="slide" data-id="P070" data-title="沉与浮课例：这次先研究一个问题" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="主线" data-template="T17" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>08</b><span class="on">教师专业发展：保留材料、判断与方法</span></div>
     <span class="pid">P070</span>
   </div>
-  <h2 class="title">沉与浮课例：这次先研究一个问题</h2>
+  <h2 class="title sm">沉与浮课例：这次先研究一个问题</h2>
   <p class="sub reveal-none">围绕一段实录，形成基于证据的改课建议。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center;gap:28px">
-  <div class="grid-3" style="margin:auto 0">
-    <div class="card reveal">
-      <span class="num">01</span>
-      <div class="label">我想得到什么</div>
-      <p>针对一段提问与回应，提出一项能够在下次课堂检验的改课建议。</p>
-    </div>
-    <div class="card reveal">
-      <span class="num">02</span>
-      <div class="label">AI需要扮演什么角色</div>
-      <p>先整理实录证据，再作为虚拟教研员提出不同解释，与教师协商改动。</p>
-    </div>
-    <div class="card reveal">
-      <span class="num">03</span>
-      <div class="label">我能提供什么上下文</div>
-      <p>提供模拟匿名实录、学习目标和教师的疑问；分析真实课堂时，还应补充相关方案与学生记录。</p>
+  <div class="body">
+    <div class="casecard">
+
+      <!-- 上栏：典型需求（整页的问题，不分步） -->
+      <div class="cc-need">
+        <div class="label">典型需求</div>
+        <p class="text">听了一节沉与浮的课，记了满满几页，教研时却说不出下次该改哪一步。</p>
+      </div>
+
+      <!-- 中栏：三问逐问揭示 -->
+      <div class="cc-qs">
+        <div class="cc-q reveal" data-step="1">
+          <div class="cc-num">①</div>
+          <div class="label">要解决什么问题（目标设定）</div>
+          <p class="text">针对一段提问与回应，提出一项能够在下次课堂检验的改课建议。</p>
+        </div>
+        <div class="cc-q reveal" data-step="2">
+          <div class="cc-num">②</div>
+          <div class="label">最终成功标准是什么（验收标准）</div>
+          <p class="text">建议具体到三句话：下次怎样问、学生要做什么、教师观察什么。</p>
+        </div>
+        <div class="cc-q reveal" data-step="3">
+          <div class="cc-num">③</div>
+          <div class="label">如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">提供模拟匿名实录、学习目标和教师的疑问；分析真实课堂时，还应补充相关方案与学生记录。</p>
+        </div>
+      </div>
+
+      <!-- 底栏：所以用到（第 4 步；与三问不一一对应，不画连线） -->
+      <div class="cc-caps reveal" data-step="4">
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">连通管道</span></div>
+          <p class="text">把40分钟实录、学习目标和教师疑问接在一起，定位到一段提问与回应。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">角色扮演</span></div>
+          <p class="text">虚拟教研员依据实录提出不同解释，与教师讨论可以改动的位置。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">内容生成</span></div>
+          <p class="text">形成一条下次课就能试的追问链与观察要点。</p>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="cols tight" style="justify-content:center">
-    <a class="file-card" href="assets/docs/D11/"><span class="ext">MD</span><span class="fname">沉与浮研讨课·模拟课堂实录</span></a>
-  </div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
   <div class="foot">课例实录为生成的教研训练材料，不是真实课堂记录。</div>
   <aside class="notes">【停讲】讲述时依次说明：针对一段提问与回应，提出一项能够在下次课堂检验的改课建议。 先整理实录证据，再作为虚拟教研员提出不同解释，与教师协商改动。 提供模拟匿名实录、学习目标和教师的疑问；分析真实课堂时，还应补充相关方案与学生记录。
     作用：把教师发展环节的第一个委托写成标准三问任务卡，明确目标、角色和要提供的背景。

@@ -1,11 +1,11 @@
-<!-- PLAN template=T16 executor=pi pace=快过 layout_ref=L02
-     reveal=['设计', '实施', '评价', '教师专业发展']
+<!-- PLAN template=T16 executor=opus pace=快过 layout_ref=L02
+     reveal=['设计：方案包', '实施：模拟器', '评价：量规', '教师专业发展：周报']
      embeds=[{"asset": "DOC_D05", "mode": "link"}, {"asset": "TOOL_S09", "mode": "link"}, {"asset": "DOC_D12", "mode": "link"}]
      anim=null
-     note=map433 四节点各挂一张材料卡片。
+     note=四环节底图（map334 的四环节部分，组件未加载时用页内静态 .flow 兜底），每个环节上挂一张材料缩略：方案包／模拟器／量规／周报。
      assets:
-       IMG_S09_SHOT → assets/img/guanglu_jinshi_vs_daijing.png (img) 现有截图
-       DOC_D05 → links/D05/ (link) 同上
+       IMG_S09_SHOT → assets/img/guanglu_jinshi_vs_daijing.png (img) 现有模拟器截图
+       DOC_D05 → links/D05/ (link)
        TOOL_S09 → assets/tools/yanqiu_guanglu.html (iframe) 单文件
        DOC_D12 → links/D12/ (link)  -->
 <section class="slide dark" data-id="P079" data-title="同一个项目，怎样经过四个环节？" data-module="09 回看组合：让框架在同一项目里连起来" data-stage="" data-kind="主线" data-template="T16" data-status="draft">
@@ -13,33 +13,74 @@
     <div class="locator"><b>09</b><span class="on">回看组合：让框架在同一项目里连起来</span></div>
     <span class="pid">P079</span>
   </div>
-  <h2 class="title">同一个项目，怎样经过四个环节？</h2>
-  <p class="sub reveal-none">以科学护眼项目为例，组织同一主题的任务与材料。</p>
+  <h2 class="title sm">同一个项目，怎样经过四个环节？</h2>
+  <p class="sub reveal-none">以科学护眼项目为例：四个环节，四件材料。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="gap:22px">
-    <div class="map433" data-stage="" data-roles="" data-show="stages" data-size="compact"></div>
-    <div class="cols" style="align-items:flex-start">
-      <div class="grid-2" style="flex:1 1 0;min-width:0;gap:14px 28px">
-        <div class="reveal">
-          <div class="label">设计</div>
-          <p class="text" style="font-size:26px;line-height:1.45;margin:0 0 8px">任务链、材料清单与量规先定下目标和交付物。</p>
-          <a class="file-card" href="assets/docs/D05/"><span class="ext">DOCX</span><span class="fname">《科学护眼》方案包五件套</span></a>
-        </div>
-        <div class="reveal">
-          <div class="label">实施</div>
-          <p class="text" style="font-size:26px;line-height:1.45;margin:0 0 8px">眼球成像光路模拟器支持比较光路，实物观察和小组讨论仍然进行。</p>
-          <a class="file-card" href="assets/tools/yanqiu_guanglu.html"><span class="ext">HTML</span><span class="fname">眼球成像光路模拟器</span></a>
-        </div>
-        <div class="reveal">
-          <div class="label">评价</div>
-          <p class="text" style="font-size:26px;line-height:1.45;margin:0 0 8px">作品量规与前后测方案衔接，判断学生是否达到目标。</p>
-          <a class="file-card" href="assets/docs/D12/"><span class="ext">MD</span><span class="fname">科学护眼·周报草稿（实测输出样例）</span></a>
-        </div>
-        <div class="reveal">
-          <div class="label">教师专业发展</div>
-          <p class="text" style="font-size:26px;line-height:1.45;margin:0 0 8px">项目指令与周报把持续背景和阶段进展留下来，供下一轮使用。</p>
-        </div>
+<style>
+.slide[data-id="P079"] .body { margin-top: 22px; }
+.slide[data-id="P079"] .map334 { flex: 0 0 auto; }
+.slide[data-id="P079"] .map334 .kicker { margin-bottom: 12px; color: var(--light-blue); }
+.slide[data-id="P079"] .map334 .node { padding: 16px 14px; text-align: center; }
+.slide[data-id="P079"] .map334 .node p { font-size: 32px; line-height: 1.3; font-weight: 500; }
+.slide[data-id="P079"] .mats { flex: 0 0 auto; align-items: stretch; }
+.slide[data-id="P079"] .mat { display: flex; flex-direction: column; min-width: 0; }
+.slide[data-id="P079"] .mat .pic {
+  flex: 0 0 auto; height: 268px; margin-bottom: 16px;
+  border: 1px solid var(--accent-dark); background: var(--dark-band);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.slide[data-id="P079"] .mat .pic img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.slide[data-id="P079"] .mat .label { font-size: 28px; letter-spacing: .04em; margin-bottom: 8px; }
+.slide[data-id="P079"] .mat .text { font-size: 25px; line-height: 1.5; margin-bottom: 12px; }
+.slide[data-id="P079"] .mat .file-card { margin-top: auto; padding: 12px 16px; font-size: 22px; gap: 12px; }
+.slide[data-id="P079"] .mat .file-card .ext { font-size: 17px; padding: 4px 8px; }
+</style>
+  <div class="body stack">
+
+    <!-- 四环节底图（本页四个环节都走到，不单独高亮） -->
+    <div class="map334" data-stage="" data-show="stages" data-size="compact">
+      <div class="kicker">4环节</div>
+      <div class="flow">
+        <div class="node"><p>教学设计</p></div>
+        <div class="arr">→</div>
+        <div class="node"><p>课堂实施</p></div>
+        <div class="arr">→</div>
+        <div class="node"><p>教学评价</p></div>
+        <div class="arr">→</div>
+        <div class="node"><p>教师专业发展</p></div>
       </div>
+    </div>
+
+    <div class="cols tight mats">
+
+      <div class="mat reveal">
+        <div class="pic"><div class="slot" data-kind="doc"><div class="placeholder"></div></div></div>
+        <div class="label">设计：方案包</div>
+        <p class="text">任务链、材料清单、量规、告知书和前后测方案成套交付，先定下目标和交付物。</p>
+        <a class="file-card" href="assets/docs/D05/"><span class="ext">DOCX</span><span class="fname">《科学护眼》方案包五件套</span></a>
+      </div>
+
+      <div class="mat reveal">
+        <div class="pic"><img src="assets/img/guanglu_jinshi_vs_daijing.png" alt="眼球成像光路模拟器：近视与近视戴镜矫正两种光路对照"></div>
+        <div class="label">实施：模拟器</div>
+        <p class="text">眼球成像光路模拟器用可控光路帮助比较成像条件；实物观察和小组讨论仍然进行。</p>
+        <a class="file-card" href="assets/tools/yanqiu_guanglu.html"><span class="ext">HTML</span><span class="fname">眼球成像光路模拟器</span></a>
+      </div>
+
+      <div class="mat reveal">
+        <div class="pic"><div class="slot" data-kind="doc"><div class="placeholder"></div></div></div>
+        <div class="label">评价：量规</div>
+        <p class="text">作品量规与前后测方案衔接，让作品与过程有共同的评价依据。</p>
+        <a class="file-card" href="assets/docs/D05/3.《科学护眼》评价量规（作品量规＋过程量规）.docx"><span class="ext">DOCX</span><span class="fname">《科学护眼》评价量规</span></a>
+      </div>
+
+      <div class="mat reveal">
+        <div class="pic"><div class="slot" data-kind="doc"><div class="placeholder"></div></div></div>
+        <div class="label">教师专业发展：周报</div>
+        <p class="text">项目指令与周报把持续背景和阶段进展留下来，供下一轮教学使用。</p>
+        <a class="file-card" href="assets/docs/D12/周报草稿_实测输出样例.md"><span class="ext">MD</span><span class="fname">科学护眼·周报草稿样例</span></a>
+      </div>
+
     </div>
   </div>
 <!-- BODY:END -->
