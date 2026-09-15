@@ -2,7 +2,7 @@
      reveal=['连通管道', '内容生成', '角色扮演']
      embeds=[]
      anim=null
-     note=map334 紧凑版高亮“教学评价”，三类能力标签；下方三栏说明这一环节里每类能力做什么。components/map334.js 未进 build/template_tail.html，页内按需加载。
+     note=map334 紧凑版高亮“教学评价”，三类能力标签；下方三栏说明这一环节里每类能力做什么。
  -->
 <section class="slide dark" data-id="P068" data-title="评价留下的证据，要改变下一轮教学" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="主线" data-template="T16" data-status="draft">
   <div class="hdr">
@@ -29,23 +29,6 @@
     </div>
   </div>
 </div>
-<script>
-/* P068：components/map334.js 尚未写进 build/template_tail.html，这里按需加载一次；已加载时只重绘本页。 */
-(function () {
-  'use strict';
-  function draw() { if (window.Map334) window.Map334.all(); }
-  if (window.Map334) { draw(); return; }
-  if (document.getElementById('map334-js')) {
-    document.getElementById('map334-js').addEventListener('load', draw);
-    return;
-  }
-  var s = document.createElement('script');
-  s.id = 'map334-js';
-  s.src = 'components/map334.js';
-  s.addEventListener('load', draw);
-  document.head.appendChild(s);
-})();
-</script>
 <!-- BODY:END -->
   <aside class="notes">【快过】讲述时依次说明：把得分、原题、过程记录和学生解释整理成可以对照的证据。 依据核实的问题，制作复习任务、变式题和记录工具。 让AI在适当的任务中追问理由，帮助学生继续表达；教师据此调整教学。
     作用：用地图页收束整个评价模块，回扣四环节与三类能力，并把话题引向教师经验的留存。</aside>
