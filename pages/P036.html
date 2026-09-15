@@ -4,30 +4,43 @@
      anim=null
      note=map433 高亮‘设计’。
  -->
-<section class="slide dark" data-id="P036" data-title="教师需要把设计依据、成套材料和师生分工一起想清楚。" data-module="05 教学设计：让方案适合本班" data-stage="教学设计" data-kind="主线" data-template="T16" data-status="draft">
+<section class="slide dark" data-id="P036" data-title="设计环节：保留学生的设计与实做" data-module="05 教学设计：让方案适合本班" data-stage="教学设计" data-kind="主线" data-template="T16" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>05</b><span class="on">教学设计：让方案适合本班</span></div>
     <span class="pid">P036</span>
   </div>
-  <h2 class="title">教师需要把设计依据、成套材料和师生分工一起想清楚。</h2>
+  <h2 class="title">设计环节：保留学生的设计与实做</h2>
+  <p class="sub reveal-none">材料齐全时，教师决定哪些交给AI，哪些留给学生。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center;align-items:stretch">
-  <div class="map433" data-stage="设计" data-roles="" data-show="stages,roles,questions" data-size="compact"></div>
+<div class="body" style="justify-content:center">
+  <div class="map334" data-stage="教学设计" data-caps="" data-show="caps,questions,stages" data-reveal="0" data-size="compact"></div>
   <div class="cols" style="margin-top:36px">
-    <div class="reveal">
+    <div class="reveal" data-step="1">
+      <div class="label">学生实做</div>
+      <p class="text" style="font-size:28px;line-height:1.6">观察、测量、记录与方案设计留给学生，整理与制作材料交给AI。</p>
+    </div>
+    <div class="reveal" data-step="2">
+      <div class="label">学情要具体</div>
+      <p class="text" style="font-size:28px;line-height:1.6">写出学生做过什么、没做过什么，方案才会真正不同。</p>
+    </div>
+    <div class="reveal" data-step="3">
       <div class="label">依据</div>
       <p class="text" style="font-size:28px;line-height:1.6">方案需要回应课程目标、学生表现和实际条件。</p>
     </div>
-    <div class="reveal">
-      <div class="label">材料</div>
-      <p class="text" style="font-size:28px;line-height:1.6">教案、任务单、记录表和评价要求需要相互对应。</p>
-    </div>
-    <div class="reveal">
-      <div class="label">分工</div>
-      <p class="text" style="font-size:28px;line-height:1.6">AI可以整理和制作，教师负责审议取舍，学生保留观察、设计与实做。</p>
-    </div>
   </div>
 </div>
+<script>
+(function () {
+  var SRC = 'components/map334.js';
+  function go() { if (window.Map334) window.Map334.all(); }
+  if (window.Map334) { go(); return; }
+  if (!document.querySelector('script[data-map334-loader]')) {
+    var s = document.createElement('script');
+    s.src = SRC; s.setAttribute('data-map334-loader', '1'); s.onload = go;
+    document.head.appendChild(s);
+  }
+})();
+</script>
 <!-- BODY:END -->
   <aside class="notes">【快过】讲述时依次说明：方案需要回应课程目标、学生表现和实际条件。 教案、任务单、记录表和评价要求需要相互对应。 AI可以整理和制作，教师负责审议取舍，学生保留观察、设计与实做。
     作用：收束设计环节，回扣四环节、三问和三角色。</aside>
