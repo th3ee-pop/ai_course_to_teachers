@@ -211,25 +211,24 @@
         "title": "人工智能赋能学科教学全流程变革的逻辑与实践",
         "subtitle": "中小学教师人工智能培训",
         "blocks": [],
-        "footnote": "【待用户提供：主办单位 · 日期 · 地点】"
+        "footnote": "2026年9月16日 · 广西柳州"
       },
       "production": {
         "purpose": "封面。",
         "presentation": "暗底封面；可用 assets/img/siji_v2_xiazhi_dongzhi.png 作 15% 透明度背景，或留白。",
         "previous": "开场。",
-        "next": "进入P000B「【待用户提供：姓名】」。",
+        "next": "进入P000B「陈思睿」。",
         "speaker_notes": "报题目，说明今天两个关键词：逻辑是3＋3＋4思维框架，实践是用AI做出来的成果。",
         "resources": [],
         "checks": [
           "上屏文字与脚本 audience 字段逐字一致；制作说明只保留在备注中。",
-          "示例、真实记录与生成内容的标识不混淆。",
-          "本页含【待用户提供/待核】占位，制作前需替换。"
+          "示例、真实记录与生成内容的标识不混淆。"
         ],
         "blueprint_function": "方法",
         "previous_page": {},
         "next_page": {
           "id": "P000B",
-          "title": "【待用户提供：姓名】"
+          "title": "陈思睿"
         },
         "sequence_note": "按主线顺序推进；演示时间包含在模块时间内。",
         "source_links": [],
@@ -284,35 +283,34 @@
     {
       "id": "P000B",
       "audience": {
-        "title": "【待用户提供：姓名】",
-        "subtitle": "【待用户提供：单位 · 职务】",
+        "title": "陈思睿",
+        "subtitle": "北京师范大学 · 教育技术学博士",
         "blocks": [
           {
-            "label": "简介一",
-            "text": "【待用户提供】"
+            "label": "经历",
+            "text": "曾是互联网公司程序员（网易前端开发）"
           },
           {
-            "label": "简介二",
-            "text": "【待用户提供】"
+            "label": "研究",
+            "text": "北师大教育技术学博士，研究AI教育应用"
           },
           {
-            "label": "简介三",
-            "text": "【待用户提供】"
+            "label": "感受",
+            "text": "从写代码到看AI写代码，震撼很真实"
           }
         ],
         "footnote": ""
       },
       "production": {
         "purpose": "讲者自我介绍。",
-        "presentation": "左照片【待用户提供】/ 右三行简介。",
+        "presentation": "左照片 assets/img/author.jpg / 右三行简介。",
         "previous": "承接P000A「人工智能赋能学科教学全流程变革的逻辑与实践」。",
         "next": "进入P001「为什么要学习AI？」。",
         "speaker_notes": "简短介绍自己与本次培训的关系。",
         "resources": [],
         "checks": [
           "上屏文字与脚本 audience 字段逐字一致；制作说明只保留在备注中。",
-          "示例、真实记录与生成内容的标识不混淆。",
-          "本页含【待用户提供/待核】占位，制作前需替换。"
+          "示例、真实记录与生成内容的标识不混淆。"
         ],
         "blueprint_function": "方法",
         "previous_page": {
@@ -332,15 +330,15 @@
           },
           {
             "step": 2,
-            "content": "简介一：【待用户提供】"
+            "content": "经历：曾是互联网公司程序员（网易前端开发）"
           },
           {
             "step": 3,
-            "content": "简介二：【待用户提供】"
+            "content": "研究：北师大教育技术学博士，研究AI教育应用"
           },
           {
             "step": 4,
-            "content": "简介三：【待用户提供】"
+            "content": "感受：从写代码到看AI写代码，震撼很真实"
           }
         ],
         "layout_constraints": "最终判断以投影可读、信息主次清楚、比较与因果关系准确、必要来源和示例标识完整为准。优先调整结构或拆页，不靠缩小字号容纳内容。",
@@ -349,11 +347,11 @@
           "stage": "引入、组合或收束"
         },
         "production_readiness": "文案与文本示例完整；截图选区、投屏字号和现场演示复演在PPT制作阶段按本页执行。",
-        "presentation_reference": "采用 T03；左照片【待用户提供】/ 右三行简介。",
+        "presentation_reference": "采用 T03；左照片 assets/img/author.jpg / 右三行简介。",
         "layout_reference": "每问1—2行具体答案，不整段粘贴提示词。",
         "layout_decision": {
           "status": "制作时根据实际内容决定",
-          "content_focus": "【待用户提供：姓名】",
+          "content_focus": "陈思睿",
           "reference_type": "L07 对照页",
           "preserve": [
             "本页核心作用与逻辑关系",
@@ -375,7 +373,7 @@
       "layout": "L07",
       "layout_name": "对照页",
       "pace": "快过",
-      "blueprint_title": "【待用户提供：姓名】",
+      "blueprint_title": "陈思睿",
       "asset_ids": [],
       "v03": {
         "mode": "新写",
@@ -396,7 +394,7 @@
       "production": {
         "purpose": "用一个问题开启全场，为政策回答与能力变化的转折留出空间。",
         "presentation": "页面撤下副行\"4＋3＋3：四个环节·三种角色·三个问题\"，标题不变。 围绕“为什么要学习AI？”确定这一页最需要被看见的信息，再判断内容之间是先后、对照、证据与解释，还是问题与回应。结合真实素材的尺寸、字数和信息密度决定布局。原构图仅供起步，可自由调整主次、位置、比例、分步呈现与分页。",
-        "previous": "承接P000B「【待用户提供：姓名】」。",
+        "previous": "承接P000B「陈思睿」。",
         "next": "进入P002「政策正在推动人工智能进入教育教学。」。",
         "speaker_notes": "请老师带着自己的一项日常任务来想：为什么现在值得学习AI？先停顿，接下一页的政策回答。",
         "resources": [],
@@ -407,7 +405,7 @@
         "blueprint_function": "引题",
         "previous_page": {
           "id": "P000B",
-          "title": "【待用户提供：姓名】"
+          "title": "陈思睿"
         },
         "next_page": {
           "id": "P002",
