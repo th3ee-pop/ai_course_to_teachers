@@ -1,43 +1,62 @@
-<!-- PLAN template=T06 executor=pi pace=按替换片段安排 layout_ref=L07
-     reveal=['我想得到什么', 'AI需要扮演什么角色', '我能提供什么上下文']
+<!-- PLAN template=T17 executor=pi pace=按替换片段安排 layout_ref=L07
+     reveal=['① 要解决什么问题（目标设定）', '② 最终成功标准是什么（验收标准）', '③ 如何让AI理解以上两点（上下文构建）', '所以用到']
      embeds=[{"asset": "DOC_D04", "mode": "link"}, {"asset": "DOC_D12", "mode": "link"}]
      anim=null
-     note=
+     note=T17 案例卡；脚本无“典型需求”块，省去 .cc-need；“所以用到”一句同时提到三类能力，合为一条 .cc-cap，并排三个 .tag.fill。
      assets:
        DOC_D04 → links/D04/ (link) 同上；封面页用 qlmanage 出缩略图
        DOC_D12 → links/D12/ (link)  -->
-<section class="slide" data-id="B20" data-title="资料整理、Word交付和周报，也可以用三问组织" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="备选" data-replaces="模块08 教师专业发展：保留材料、判断与方法" data-template="T06" data-status="draft">
+<section class="slide" data-id="B20" data-title="资料整理、Word交付和周报，也可以用三问组织" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="备选" data-replaces="模块08 教师专业发展：保留材料、判断与方法" data-template="T17" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>08</b><span class="on">教师专业发展：保留材料、判断与方法</span></div>
     <span class="pid">B20</span>
   </div>
-  <h2 class="title">资料整理、Word交付和周报，也可以用三问组织</h2>
+  <h2 class="title sm">资料整理、Word交付和周报，也可以用三问组织</h2>
   <p class="sub reveal-none">把教学中的方法迁移到教师日常办公。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="grid-3 reveal-group" style="gap:26px;margin-top:auto;margin-bottom:auto">
-    <div class="card reveal">
-      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">01</span>
-      <div class="label">我想得到什么</div>
-      <p>例如，一份可编辑的活动安排和一份配套记录表，或一份可以核查的周报。</p>
+  <style>
+    /* B20：T17 案例卡；本页脚本无“典型需求”块，底部保留两份成品资源入口 */
+    .slide[data-id="B20"] .cc-q { padding: 22px 24px 24px; }
+    .slide[data-id="B20"] .cc-num { font-size: 46px; }
+    .slide[data-id="B20"] .cc-q > .text { font-size: 28px; line-height: 1.55; }
+    .slide[data-id="B20"] .b20-files { display: flex; gap: 22px; margin-top: 24px; }
+    .slide[data-id="B20"] .b20-files .file-card { flex: 1 1 0; min-width: 0; }
+  </style>
+  <div class="body">
+    <div class="casecard">
+
+      <div class="cc-qs">
+        <div class="cc-q reveal" data-step="1">
+          <div class="cc-num">①</div>
+          <div class="label">要解决什么问题（目标设定）</div>
+          <p class="text">例如，一份可编辑的活动安排和一份配套记录表，或一份可以核查的周报。</p>
+        </div>
+        <div class="cc-q reveal" data-step="2">
+          <div class="cc-num">②</div>
+          <div class="label">最终成功标准是什么（验收标准）</div>
+          <p class="text">文件打开就能用：安排能排进课表，记录表能直接打印，周报里的每个数字都能回到来源。</p>
+        </div>
+        <div class="cc-q reveal" data-step="3">
+          <div class="cc-num">③</div>
+          <div class="label">如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">提供已有材料、读者、格式、期限、学校要求和应保留的来源。</p>
+        </div>
+      </div>
+
+      <div class="cc-caps reveal" data-step="4">
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">连通管道</span><span class="tag fill">内容生成</span><span class="tag fill">角色扮演</span></div>
+          <p class="text">连通管道：先整合资料与记录；内容生成：再生成文件；角色扮演：需要讨论取舍时参与协商。</p>
+        </div>
+      </div>
+
     </div>
-    <div class="card reveal">
-      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">02</span>
-      <div class="label">AI需要扮演什么角色</div>
-      <p>先整合资料与记录，再生成文件；需要讨论取舍时，再请它参与协商。</p>
-    </div>
-    <div class="card reveal">
-      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">03</span>
-      <div class="label">我能提供什么上下文</div>
-      <p>提供已有材料、读者、格式、期限、学校要求和应保留的来源。</p>
+    <div class="b20-files">
+      <a class="file-card" href="assets/docs/D04/"><span class="ext">DOCX</span><span class="fname">天气观测活动安排 ＋ 学生两周记录表</span></a>
+      <a class="file-card" href="assets/docs/D12/"><span class="ext">MD</span><span class="fname">科学护眼·周报草稿（实测输出样例）</span></a>
     </div>
   </div>
-  <div style="display:flex;gap:20px;justify-content:center;margin-top:36px">
-    <a class="file-card" href="assets/docs/D04/"><span class="ext">DOCX</span><span class="fname">天气观测活动安排 ＋ 学生两周记录表</span></a>
-    <a class="file-card" href="assets/docs/D12/"><span class="ext">MD</span><span class="fname">科学护眼·周报草稿（实测输出样例）</span></a>
-  </div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
   <div class="foot">资源示例：天气观测两份Word、项目指令与周报。</div>
   <aside class="notes">【按替换片段安排】讲述时依次说明：例如，一份可编辑的活动安排和一份配套记录表，或一份可以核查的周报。 先整合资料与记录，再生成文件；需要讨论取舍时，再请它参与协商。 提供已有材料、读者、格式、期限、学校要求和应保留的来源。
     作用：把教学中的角色用法迁移到办公事务，说明成套交付与教师判断的边界，作为模块八备选。
