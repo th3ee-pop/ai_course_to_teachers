@@ -28,7 +28,8 @@ let jobs = opt.jobs ? JSON.parse(fs.readFileSync(opt.jobs, 'utf8')) : [{ url: op
 
 const port = 9400 + Math.floor(Math.random() * 400);
 const udir = fs.mkdtempSync(path.join(os.tmpdir(), 'cdp-'));
-const chrome = spawn(CH, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run', '--use-mock-keychain',
+const gpuFlags = process.env.CDP_GPU ? ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] : ['--disable-gpu'];
+const chrome = spawn(CH, ['--headless=new', ...gpuFlags, '--hide-scrollbars', '--no-first-run', '--use-mock-keychain',
   `--remote-debugging-port=${port}`, `--window-size=${W},${H}`, `--user-data-dir=${udir}`, 'about:blank'], { stdio: 'ignore' });
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
