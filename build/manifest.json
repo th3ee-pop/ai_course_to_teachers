@@ -1,13 +1,13 @@
 [
  {
   "id": "P000A",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
  {
   "id": "P000B",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
@@ -31,25 +31,25 @@
  },
  {
   "id": "P003A",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
  {
   "id": "P003B",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
  {
   "id": "P003D",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
  {
   "id": "P003F",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
@@ -109,19 +109,19 @@
  },
  {
   "id": "P011A",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
  {
   "id": "P011B",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
  {
   "id": "P011C",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
@@ -139,13 +139,13 @@
  },
  {
   "id": "P014A",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },
  {
   "id": "P014B",
-  "status": "skeleton",
+  "status": "draft",
   "kind": "主线",
   "executor": "cloud"
  },

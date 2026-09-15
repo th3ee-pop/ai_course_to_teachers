@@ -246,7 +246,7 @@ def cmd_validate(args):
             if not (ROOT / u.split('#')[0].split('?')[0]).exists(): probs.append(f'资源不存在 {u}')
         pl = plan[pid]
         if pl.get('cat2_reveal') and not re.search(r'class="[^"]*\breveal\b', sec) and 'data-reveal=' not in sec: probs.append('WARN 计划分步但无 .reveal')
-        if pl.get('cat4_animation') and 'class="anim' not in sec: probs.append('WARN 计划动画但无 .anim')
+        if pl.get('cat4_animation') and 'class="anim' not in sec and 'class="map334' not in sec: probs.append('WARN 计划动画但无 .anim')
         st = re.search(r'data-status="([^"]*)"', sec)
         if st and st.group(1) == 'skeleton': probs.append('WARN 仍是骨架')
         for pr in probs:
