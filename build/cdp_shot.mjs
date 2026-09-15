@@ -6,7 +6,18 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-const CH = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// Chrome 路径：优先环境变量 CHROME，其次 macOS 默认安装，再依次尝试 Linux 常见命令名（云端环境）
+import { execSync } from 'node:child_process';
+function findChrome() {
+  if (process.env.CHROME && fs.existsSync(process.env.CHROME)) return process.env.CHROME;
+  const mac = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+  if (fs.existsSync(mac)) return mac;
+  for (const name of ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser', 'chrome']) {
+    try { const p = execSync(`command -v ${name}`, { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim(); if (p) return p; } catch {}
+  }
+  throw new Error('未找到 Chrome：请设置环境变量 CHROME 指向可执行文件（云端可 `npx @puppeteer/browsers install chrome@stable` 后指定）');
+}
+const CH = findChrome();
 const argv = process.argv.slice(2);
 const opt = {};
 for (let i = 0; i < argv.length; i++) {

@@ -1,3 +1,4 @@
 # QA screenshots and contact sheets (regenerable)
 build/qa/
 .DS_Store
+.claude/
