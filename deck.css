@@ -66,6 +66,7 @@ a:hover { color: var(--accent); }
   color: var(--accent); letter-spacing: .14em;
 }
 .locator .on { color: var(--dark); font-weight: 500; }
+.dark .locator .on { color: var(--light-blue); }
 .pid {
   font-family: var(--font-cond); font-weight: 500;
   font-size: 24px; letter-spacing: .14em; color: var(--muted-3);

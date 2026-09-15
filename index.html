@@ -197,12 +197,13 @@
 </section>
 
 <!-- ═══════════════ P004 教师想让学生通过一个情景理解一个概念 ═══════════════ -->
-<section class="slide" data-id="P004" data-title="一个教学想法，过去怎样落地？" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
+<section class="slide" data-id="P004" data-title="教师想让学生通过一个情景理解一个概念" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P004</span>
   </div>
-  <h2 class="title">一个教学想法，过去怎样落地？</h2>
+  <h2 class="title">教师想让学生通过一个情景理解一个概念</h2>
+  <p class="sub reveal-none">教学资源的准备，过去要这样走。</p>
   <!-- BODY:START -->
   <style>
     .slide[data-id="P004"] .body { justify-content: center; gap: 0; }
@@ -318,15 +319,15 @@
     <div class="cols soptxt">
       <div class="reveal" data-step="1">
         <div class="label">产生想法</div>
-        <p class="text">教师想让学生通过某个活动理解一个概念。</p>
+        <p class="text">老师脑子里先有一个画面：学生看到它，概念就通了。</p>
       </div>
       <div class="reveal" data-step="2">
         <div class="label">查找与求助</div>
-        <p class="text">先对照学习软件的菜单、公式和配置，或者请开发人员帮忙。</p>
+        <p class="text">找图、找工具、找人帮忙，费时费力，还不一定理想。</p>
       </div>
       <div class="reveal" data-step="3">
         <div class="label">制作</div>
-        <p class="text">按照软件的操作步骤完成制作，过程需要反复调试。</p>
+        <p class="text">多数时候要自己动手做，最典型的就是PPT课件。</p>
       </div>
       <div class="reveal" data-step="4">
         <div class="label">试用</div>
@@ -341,187 +342,261 @@
 </section>
 
 <!-- ═══════════════ P005 过去：先学会软件，再表达想法 ═══════════════ -->
-<section class="slide" data-id="P005" data-title="现在，可以先用自己的话提出想法" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
+<section class="slide" data-id="P005" data-title="过去：先学会软件，再表达想法" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T04" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P005</span>
   </div>
-  <h2 class="title" style="font-size:68px">现在，可以先用自己的话提出想法</h2>
+  <h2 class="title">过去：先学会软件，再表达想法</h2>
+  <p class="sub reveal-none">动画、图形、资源植入，都要自己一项一项考虑。</p>
   <!-- BODY:START -->
   <style>
-    .slide[data-id="P005"] .entry {
-      width: 100%; height: 100%; box-sizing: border-box;
-      padding: 14px 24px; display: flex; align-items: center; gap: 18px;
-    }
-    .slide[data-id="P005"] .entry .side { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .slide[data-id="P005"] .entry .side.old { flex: 0 0 388px; }
-    .slide[data-id="P005"] .entry .side.now { flex: 1 1 0; min-width: 0; }
-    .slide[data-id="P005"] .entry .top {
-      font-size: 24px; letter-spacing: .12em; line-height: 1; color: var(--muted);
-    }
-    .slide[data-id="P005"] .entry .side.now .top { color: var(--accent); }
-    .slide[data-id="P005"] .entry .cap { font-size: 24px; line-height: 1.2; color: var(--muted-2); text-align: center; }
-    .slide[data-id="P005"] .entry .side.now .cap { color: var(--accent-dark); }
+    .slide[data-id="P005"] .body { gap: 22px; }
 
-    /* 过去：抽象软件面板 */
-    .slide[data-id="P005"] .oldwin {
-      width: 100%; height: 236px; box-sizing: border-box;
-      border: 2px solid #5980a6; border-radius: 10px; overflow: hidden;
-      background: #ffffff; box-shadow: 0 5px 14px rgba(45,74,102,.16);
+    /* ── 上：PPT 界面模拟（占正文约 75%） ───────────────── */
+    .slide[data-id="P005"] .ppt {
+      position: relative;
+      flex: 1 1 auto; min-height: 0; width: 100%; box-sizing: border-box;
       display: flex; flex-direction: column;
+      background: #ffffff; border: 2px solid var(--accent);
+      box-shadow: 0 6px 18px rgba(45, 74, 102, .16); overflow: hidden;
     }
-    .slide[data-id="P005"] .oldwin .bar {
-      height: 34px; flex: 0 0 34px; background: linear-gradient(#cfdded, #b9d0e6);
-      display: flex; align-items: center; gap: 8px; padding: 0 12px; box-sizing: border-box;
-      border-bottom: 1px solid #5980a6;
+    /* 标题栏 */
+    .slide[data-id="P005"] .ppt .bar {
+      flex: 0 0 40px; display: flex; align-items: center; gap: 10px;
+      padding: 0 16px; box-sizing: border-box;
+      background: linear-gradient(#cfdded, #b9d0e6); border-bottom: 1px solid var(--accent);
     }
-    .slide[data-id="P005"] .oldwin .bar i { width: 11px; height: 11px; border-radius: 50%; background: #416180; display: block; }
-    .slide[data-id="P005"] .oldwin .bar u { flex: 1 1 auto; }
-    .slide[data-id="P005"] .oldwin .bar s { width: 16px; height: 3px; background: #416180; display: block; }
-    .slide[data-id="P005"] .oldwin .menu {
-      height: 30px; flex: 0 0 30px; background: #eef4fa; border-bottom: 1px solid #c3d8ea;
-      display: flex; align-items: center; gap: 18px; padding: 0 14px; box-sizing: border-box;
-    }
-    .slide[data-id="P005"] .oldwin .menu b { display: block; height: 8px; border-radius: 4px; background: #8fa9c1; }
-    .slide[data-id="P005"] .oldwin .tools {
-      height: 38px; flex: 0 0 38px; background: #f7fafd; border-bottom: 1px solid #c3d8ea;
-      display: flex; align-items: center; gap: 9px; padding: 0 14px; box-sizing: border-box;
-    }
-    .slide[data-id="P005"] .oldwin .tools b { width: 22px; height: 22px; border-radius: 5px; background: #c3d8ea; border: 1px solid #8fa9c1; display: block; }
-    .slide[data-id="P005"] .oldwin .tools b.on { background: #94bce3; }
-    .slide[data-id="P005"] .oldwin .tools i { width: 1px; height: 22px; background: #c3d8ea; display: block; margin: 0 3px; }
-    .slide[data-id="P005"] .oldwin .fx {
-      height: 32px; flex: 0 0 32px; background: #ffffff; border-bottom: 1px solid #c3d8ea;
-      display: flex; align-items: center; gap: 10px; padding: 0 14px; box-sizing: border-box;
-    }
-    .slide[data-id="P005"] .oldwin .fx b { width: 30px; height: 20px; border-radius: 4px; background: #416180; display: block; }
-    .slide[data-id="P005"] .oldwin .fx u { flex: 1 1 auto; height: 8px; border-radius: 4px; background: #dfe9f3; display: block; }
-    .slide[data-id="P005"] .oldwin .sheet { flex: 1 1 auto; position: relative; background: #ffffff; padding: 9px 12px; box-sizing: border-box; }
-    .slide[data-id="P005"] .oldwin .sheet .grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows: 20px; gap: 5px;
-    }
-    .slide[data-id="P005"] .oldwin .sheet .grid span { background: #eef4fa; border: 1px solid #dbe6f1; border-radius: 3px; }
-    .slide[data-id="P005"] .oldwin .sheet .grid span.f { background: #cfdded; }
-    .slide[data-id="P005"] .oldwin .dlg {
-      position: absolute; right: 12px; bottom: 8px; width: 186px;
-      background: #ffffff; border: 2px solid #416180; border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(45,74,102,.28); padding: 8px 10px; box-sizing: border-box;
-    }
-    .slide[data-id="P005"] .oldwin .dlg .row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-    .slide[data-id="P005"] .oldwin .dlg .row u { flex: 1 1 auto; height: 7px; border-radius: 4px; background: #dfe9f3; display: block; }
-    .slide[data-id="P005"] .oldwin .dlg .sw { width: 30px; height: 15px; border-radius: 8px; background: #94bce3; position: relative; flex: 0 0 auto; }
-    .slide[data-id="P005"] .oldwin .dlg .sw::after { content: ""; position: absolute; top: 2px; right: 2px; width: 11px; height: 11px; border-radius: 50%; background: #fff; }
-    .slide[data-id="P005"] .oldwin .dlg .sw.off { background: #cfd6dd; }
-    .slide[data-id="P005"] .oldwin .dlg .sw.off::after { right: auto; left: 2px; }
-    .slide[data-id="P005"] .oldwin .dlg .btns { display: flex; justify-content: flex-end; gap: 7px; }
-    .slide[data-id="P005"] .oldwin .dlg .btns b { width: 42px; height: 16px; border-radius: 4px; background: #dfe9f3; border: 1px solid #8fa9c1; display: block; }
-    .slide[data-id="P005"] .oldwin .dlg .btns b.p { background: #416180; border-color: #416180; }
+    .slide[data-id="P005"] .ppt .bar i { width: 13px; height: 13px; border-radius: 50%; background: var(--accent-dark); display: block; }
+    .slide[data-id="P005"] .ppt .bar u { flex: 1 1 auto; }
+    .slide[data-id="P005"] .ppt .bar s { width: 20px; height: 3px; background: var(--accent-dark); display: block; }
 
-    /* 中间：入口的变化 */
-    .slide[data-id="P005"] .entry .mid { flex: 0 0 236px; margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-    .slide[data-id="P005"] .entry .mid .midlab { font-size: 28px; font-weight: 500; color: var(--accent-dark); white-space: nowrap; }
-    .slide[data-id="P005"] .entry .mid svg { display: block; width: 216px; height: auto; }
+    /* 功能区：标签行 + 图标行 */
+    .slide[data-id="P005"] .ppt .ribbon {
+      flex: 0 0 auto; background: #eef4fa; border-bottom: 1px solid #c3d8ea;
+      transition: box-shadow .35s ease;
+    }
+    .slide[data-id="P005"] .ppt .tabs {
+      display: flex; align-items: flex-end; gap: 6px; height: 40px; padding: 0 14px;
+      box-sizing: border-box; border-bottom: 1px solid #c3d8ea; background: #e3ecf6;
+    }
+    .slide[data-id="P005"] .ppt .tabs span {
+      font-size: 24px; line-height: 1; color: var(--muted-2);
+      padding: 7px 14px 8px; border: 1px solid transparent; border-bottom: none; white-space: nowrap;
+    }
+    .slide[data-id="P005"] .ppt .tabs span.on {
+      background: #ffffff; color: var(--accent-dark); border-color: #c3d8ea;
+    }
+    .slide[data-id="P005"] .ppt .tools {
+      display: flex; align-items: center; gap: 10px; height: 58px; padding: 0 16px; box-sizing: border-box;
+      background: #f7fafd;
+    }
+    .slide[data-id="P005"] .ppt .tools b { width: 34px; height: 34px; border-radius: 5px; background: #d7e5f2; border: 1px solid #a9c3da; display: block; }
+    .slide[data-id="P005"] .ppt .tools b.on { background: var(--light-blue); border-color: var(--accent); }
+    .slide[data-id="P005"] .ppt .tools i { width: 1px; height: 30px; background: #c3d8ea; display: block; margin: 0 6px; }
+    .slide[data-id="P005"] .ppt .tools u { flex: 1 1 auto; }
 
-    /* 现在：对话输入框 */
-    .slide[data-id="P005"] .chatwrap { width: 100%; height: 236px; display: flex; align-items: center; }
-    .slide[data-id="P005"] .chatbox {
-      width: 100%; box-sizing: border-box; background: #ffffff;
-      border: 2px solid #5980a6; border-radius: 34px;
-      box-shadow: 0 6px 18px rgba(45,74,102,.16);
-      padding: 22px 22px 22px 30px; display: flex; align-items: center; gap: 18px;
+    /* 主区：左缩略图 / 中画布 / 右动画窗格 */
+    .slide[data-id="P005"] .ppt .main { flex: 1 1 auto; min-height: 0; display: flex; }
+
+    .slide[data-id="P005"] .ppt .thumbs {
+      flex: 0 0 168px; background: #eef2f6; border-right: 1px solid #c3d8ea;
+      padding: 12px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; overflow: hidden;
     }
-    .slide[data-id="P005"] .chatbox .caret { flex: 0 0 3px; height: 38px; background: #416180; border-radius: 2px; }
-    .slide[data-id="P005"] .chatbox .ph { flex: 1 1 auto; display: flex; flex-direction: column; gap: 12px; }
-    .slide[data-id="P005"] .chatbox .ph u { display: block; height: 13px; border-radius: 7px; background: #dfe9f3; }
-    .slide[data-id="P005"] .chatbox .ph u.s { width: 52%; }
-    .slide[data-id="P005"] .chatbox .send {
-      flex: 0 0 64px; height: 64px; border-radius: 50%; background: #416180;
-      display: flex; align-items: center; justify-content: center;
+    .slide[data-id="P005"] .ppt .thumbs .th {
+      flex: 0 0 74px; background: #ffffff; border: 1px solid #c3d8ea; position: relative;
     }
-    .slide[data-id="P005"] .chatbox .send svg { display: block; width: 32px; height: 32px; }
+    .slide[data-id="P005"] .ppt .thumbs .th.on { border: 2px solid var(--accent); }
+    .slide[data-id="P005"] .ppt .thumbs .th::before {
+      content: ""; position: absolute; left: 12px; top: 14px; right: 24px; height: 7px; border-radius: 4px; background: #cfdded;
+    }
+    .slide[data-id="P005"] .ppt .thumbs .th::after {
+      content: ""; position: absolute; left: 12px; top: 32px; right: 40px; height: 5px; border-radius: 3px; background: #e2e8ee;
+    }
+
+    .slide[data-id="P005"] .ppt .canvas {
+      flex: 1 1 auto; min-width: 0; background: #dfe3e8; display: flex; align-items: center; justify-content: center;
+      padding: 18px; box-sizing: border-box; position: relative;
+    }
+    .slide[data-id="P005"] .ppt .page {
+      width: 100%; height: 100%; background: #ffffff; border: 1px solid #b7bec6;
+      box-shadow: 0 3px 10px rgba(45, 74, 102, .14); position: relative; overflow: hidden;
+    }
+    .slide[data-id="P005"] .ppt .page .ttl { position: absolute; left: 36px; top: 30px; width: 52%; height: 20px; border-radius: 10px; background: #c3d8ea; }
+    .slide[data-id="P005"] .ppt .page .ln { position: absolute; left: 36px; height: 11px; border-radius: 6px; background: #e4e8ec; }
+    .slide[data-id="P005"] .ppt .page .ln.a { top: 74px; width: 38%; }
+    .slide[data-id="P005"] .ppt .page .ln.b { top: 98px; width: 30%; }
+    .slide[data-id="P005"] .ppt .page .img {
+      position: absolute; right: 34px; top: 62px; width: 216px; height: 136px;
+      background: #eef2f6; border: 2px dashed #a9c3da; display: flex; align-items: center; justify-content: center;
+    }
+    .slide[data-id="P005"] .ppt .page .img svg { width: 62px; height: 62px; display: block; }
+    /* 选中手柄：说明图形要一项一项摆 */
+    .slide[data-id="P005"] .ppt .page .hd { position: absolute; width: 11px; height: 11px; background: #ffffff; border: 2px solid var(--accent); }
+    .slide[data-id="P005"] .ppt .page .hd.h1 { right: 28px; top: 56px; }
+    .slide[data-id="P005"] .ppt .page .hd.h2 { right: 28px; top: 192px; }
+    .slide[data-id="P005"] .ppt .page .hd.h3 { right: 244px; top: 56px; }
+    .slide[data-id="P005"] .ppt .page .hd.h4 { right: 244px; top: 192px; }
+    /* 动画编号角标 */
+    .slide[data-id="P005"] .ppt .page .no {
+      position: absolute; width: 30px; height: 30px; background: var(--accent-dark); color: #fff;
+      font-family: var(--font-cond); font-size: 22px; line-height: 30px; text-align: center;
+    }
+    .slide[data-id="P005"] .ppt .page .no.n1 { left: 6px; top: 26px; }
+    .slide[data-id="P005"] .ppt .page .no.n2 { left: 6px; top: 70px; }
+    .slide[data-id="P005"] .ppt .page .no.n3 { right: 258px; top: 58px; }
+
+    /* 右：动画窗格 */
+    .slide[data-id="P005"] .ppt .pane {
+      flex: 0 0 300px; background: #f5f8fb; border-left: 1px solid #c3d8ea;
+      padding: 12px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px; overflow: hidden;
+      transition: box-shadow .35s ease;
+    }
+    .slide[data-id="P005"] .ppt .pane .ph { font-size: 22px; line-height: 1; color: var(--accent-dark); letter-spacing: .08em; }
+    .slide[data-id="P005"] .ppt .pane .row {
+      display: flex; align-items: center; gap: 9px; background: #ffffff; border: 1px solid #c3d8ea; padding: 8px 9px; box-sizing: border-box;
+    }
+    .slide[data-id="P005"] .ppt .pane .row .k { flex: 0 0 24px; height: 24px; background: var(--accent-dark); color: #fff; font-family: var(--font-cond); font-size: 18px; line-height: 24px; text-align: center; }
+    .slide[data-id="P005"] .ppt .pane .row .t { flex: 1 1 auto; display: flex; flex-direction: column; gap: 5px; }
+    .slide[data-id="P005"] .ppt .pane .row .t u { display: block; height: 7px; border-radius: 4px; background: #dfe9f3; }
+    .slide[data-id="P005"] .ppt .pane .row .t u.s { width: 58%; }
+    .slide[data-id="P005"] .ppt .pane .row .g { flex: 0 0 56px; height: 12px; background: var(--light-blue); border: 1px solid var(--accent); }
+    .slide[data-id="P005"] .ppt .pane .row .g.b { flex-basis: 34px; }
+    .slide[data-id="P005"] .ppt .pane .bars { display: flex; flex-direction: column; gap: 6px; margin-top: 2px; }
+    .slide[data-id="P005"] .ppt .pane .bars u { display: block; height: 10px; background: #d7e5f2; border: 1px solid #a9c3da; }
+    .slide[data-id="P005"] .ppt .pane .bars u.w1 { width: 86%; }
+    .slide[data-id="P005"] .ppt .pane .bars u.w2 { width: 60%; margin-left: 14%; }
+    .slide[data-id="P005"] .ppt .pane .bars u.w3 { width: 44%; margin-left: 30%; }
+
+    /* 格式对话框：压在画布右下，说明"逐条设置" */
+    .slide[data-id="P005"] .ppt .dlg {
+      position: absolute; right: 26px; bottom: 18px; width: 272px;
+      background: #ffffff; border: 2px solid var(--accent-dark);
+      box-shadow: 0 6px 16px rgba(45, 74, 102, .3); padding: 10px 12px 12px; box-sizing: border-box;
+      transition: box-shadow .35s ease;
+    }
+    .slide[data-id="P005"] .ppt .dlg .dh { font-size: 21px; line-height: 1; color: var(--accent-dark); letter-spacing: .08em; margin-bottom: 9px; }
+    .slide[data-id="P005"] .ppt .dlg .r { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+    .slide[data-id="P005"] .ppt .dlg .r u { flex: 1 1 auto; height: 8px; border-radius: 4px; background: #dfe9f3; display: block; }
+    .slide[data-id="P005"] .ppt .dlg .r .sel { flex: 0 0 96px; height: 22px; border: 1px solid #a9c3da; background: #f7fafd; }
+    .slide[data-id="P005"] .ppt .dlg .r .sw { flex: 0 0 38px; height: 19px; border-radius: 10px; background: var(--light-blue); position: relative; }
+    .slide[data-id="P005"] .ppt .dlg .r .sw::after { content: ""; position: absolute; top: 2px; right: 2px; width: 15px; height: 15px; border-radius: 50%; background: #fff; }
+    .slide[data-id="P005"] .ppt .dlg .r .sw.off { background: #cfd6dd; }
+    .slide[data-id="P005"] .ppt .dlg .r .sw.off::after { right: auto; left: 2px; }
+    .slide[data-id="P005"] .ppt .dlg .btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 2px; }
+    .slide[data-id="P005"] .ppt .dlg .btns b { width: 54px; height: 20px; background: #dfe9f3; border: 1px solid #a9c3da; display: block; }
+    .slide[data-id="P005"] .ppt .dlg .btns b.p { background: var(--accent-dark); border-color: var(--accent-dark); }
+
+    /* 分步高亮：被点名的那一块亮起来 */
+    .slide[data-id="P005"] .ppt .ribbon.lit { box-shadow: inset 0 0 0 3px var(--accent); }
+    .slide[data-id="P005"] .ppt .pane.lit { box-shadow: inset 0 0 0 3px var(--accent); }
+    .slide[data-id="P005"] .ppt .canvas .img.lit { border-color: var(--accent); border-style: solid; background: #e6f0f9; }
+
+    /* ── 下：四条说明 ─────────────────────────────────── */
+    .slide[data-id="P005"] .p5txt { flex: 0 0 auto; gap: 34px; align-items: flex-start; }
+    .slide[data-id="P005"] .p5txt .label { margin-bottom: 8px; }
+    .slide[data-id="P005"] .p5txt .text { font-size: 27px; line-height: 1.55; }
+    .slide[data-id="P005"] .p5txt .res .text { color: var(--accent-dark); font-weight: 500; }
+    .slide[data-id="P005"] .ppt > .corner-tag { right: 14px; top: auto; bottom: 14px; background: #fff; }
   </style>
   <div class="body">
-    <div class="cols" style="gap:64px;flex:0 0 auto;align-items:flex-start">
-      <div class="reveal" data-step="1" style="flex:0 0 560px">
-        <div class="kicker" style="color:var(--muted);margin-bottom:22px">过去</div>
-        <p style="font-size:40px;line-height:1.6;color:var(--muted)">教师先掌握菜单、公式和配置，再把想法翻译成软件操作。</p>
-      </div>
-      <div class="vline" style="align-self:stretch"></div>
-      <div class="reveal" data-step="2">
-        <div class="kicker" style="margin-bottom:22px">现在</div>
-        <p style="font-size:52px;line-height:1.5;font-weight:500">教师直接表达目标，由AI协助组织操作步骤和材料。</p>
-      </div>
-    </div>
-    <div class="cols" style="gap:56px;margin-top:26px;flex:1 1 auto;min-height:0;align-items:stretch">
-      <div class="fig schematic reveal" data-step="1" style="flex:1 1 0">
-        <span class="tag">示意图</span>
-        <div class="pic">
-          <div class="entry">
-            <div class="side old">
-              <div class="top">过去</div>
-              <div class="oldwin">
-                <div class="bar"><i></i><i></i><i></i><u></u><s></s><s></s></div>
-                <div class="menu"><b style="width:52px"></b><b style="width:40px"></b><b style="width:64px"></b><b style="width:46px"></b><b style="width:58px"></b></div>
-                <div class="tools"><b class="on"></b><b></b><b></b><i></i><b></b><b class="on"></b><b></b><i></i><b></b></div>
-                <div class="fx"><b></b><u></u></div>
-                <div class="sheet">
-                  <div class="grid">
-                    <span class="f"></span><span></span><span></span><span class="f"></span><span></span>
-                    <span></span><span class="f"></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span class="f"></span><span></span>
-                  </div>
-                  <div class="dlg">
-                    <div class="row"><u></u><div class="sw"></div></div>
-                    <div class="row"><u></u><div class="sw off"></div></div>
-                    <div class="btns"><b></b><b class="p"></b></div>
-                  </div>
-                </div>
-              </div>
-              <div class="cap">菜单、公式和配置</div>
-            </div>
-            <div class="mid">
-              <div class="midlab">入口的变化</div>
-              <svg viewBox="0 0 220 64" role="img" aria-label="从过去指向现在的箭头">
-                <defs>
-                  <linearGradient id="p5Arrow" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0" stop-color="#94bce3"/><stop offset="1" stop-color="#416180"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0 22 H146 V2 L220 32 L146 62 V42 H0 Z" fill="url(#p5Arrow)"/>
-              </svg>
-            </div>
-            <div class="side now">
-              <div class="top">现在</div>
-              <div class="chatwrap">
-                <div class="chatbox">
-                  <div class="caret"></div>
-                  <div class="ph"><u></u><u class="s"></u></div>
-                  <div class="send">
-                    <svg viewBox="0 0 32 32" role="img" aria-label="发送">
-                      <path d="M16 27 V7 M7 16 L16 6 L25 16" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="cap">用自己的话说清楚想做什么</div>
-            </div>
-          </div>
+    <div class="ppt">
+      <span class="tag corner-tag">界面示意</span>
+      <div class="bar"><i></i><i></i><i></i><u></u><s></s><s></s><s></s></div>
+      <div class="ribbon">
+        <div class="tabs">
+          <span>开始</span><span class="on">插入</span><span>设计</span><span>切换</span><span>动画</span><span>幻灯片放映</span><span>审阅</span><span>视图</span>
+        </div>
+        <div class="tools">
+          <b class="on"></b><b></b><b></b><i></i><b></b><b class="on"></b><b></b><b></b><i></i><b></b><b></b><i></i><b></b><b></b><b></b><u></u><b></b><b></b>
         </div>
       </div>
-      <div class="slot reveal" data-kind="product" data-step="2" style="flex:0 0 560px"><div class="placeholder">教师用一句话提出想法的对话界面</div></div>
+      <div class="main">
+        <div class="thumbs">
+          <div class="th on"></div><div class="th"></div><div class="th"></div>
+        </div>
+        <div class="canvas">
+          <div class="page">
+            <div class="ttl"></div>
+            <div class="ln a"></div>
+            <div class="ln b"></div>
+            <div class="no n1">1</div><div class="no n2">2</div><div class="no n3">3</div>
+            <div class="img">
+              <svg viewBox="0 0 64 64" role="img" aria-label="待植入的图片或视频">
+                <rect x="4" y="10" width="56" height="44" rx="5" fill="#ffffff" stroke="#5980a6" stroke-width="3"/>
+                <circle cx="20" cy="24" r="6" fill="#94bce3"/>
+                <path d="M9 48 L25 31 L36 42 L45 34 L55 48 Z" fill="#c3d8ea" stroke="#5980a6" stroke-width="2.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="hd h1"></div><div class="hd h2"></div><div class="hd h3"></div><div class="hd h4"></div>
+          </div>
+          <div class="dlg">
+            <div class="dh">设置形状格式</div>
+            <div class="r"><u></u><div class="sel"></div></div>
+            <div class="r"><u></u><div class="sw"></div></div>
+            <div class="r"><u></u><div class="sw off"></div></div>
+            <div class="btns"><b></b><b class="p"></b></div>
+          </div>
+        </div>
+        <div class="pane">
+          <div class="ph">动画窗格</div>
+          <div class="row"><span class="k">1</span><span class="t"><u></u><u class="s"></u></span><span class="g"></span></div>
+          <div class="row"><span class="k">2</span><span class="t"><u></u><u class="s"></u></span><span class="g b"></span></div>
+          <div class="row"><span class="k">3</span><span class="t"><u></u><u class="s"></u></span><span class="g"></span></div>
+          <div class="bars"><u class="w1"></u><u class="w2"></u><u class="w3"></u></div>
+        </div>
+      </div>
     </div>
-    <div class="takeaway reveal" data-step="3" style="margin-top:24px">
-      <div class="arrow-line" style="width:420px"></div>
-      <p style="font-size:30px;line-height:1.6"><span style="font-weight:500">变化的位置</span>｜变化发生在入口：从“先学工具”转向“先说清楚想做什么”。</p>
+    <div class="cols p5txt">
+      <div class="reveal" data-step="1">
+        <div class="label">功能区</div>
+        <p class="text">插入、动画、切换……每个菜单都要认得。</p>
+      </div>
+      <div class="reveal" data-step="2">
+        <div class="label">动画窗格</div>
+        <p class="text">出现顺序、持续时间、触发方式，要逐条设置。</p>
+      </div>
+      <div class="reveal" data-step="3">
+        <div class="label">资源植入</div>
+        <p class="text">图片要找、视频要转、格式要调。</p>
+      </div>
+      <div class="reveal res" data-step="4">
+        <div class="label">结果</div>
+        <p class="text">想法必须先翻译成软件操作，才能变成课件。</p>
+      </div>
     </div>
   </div>
+  <script>
+  (function () {
+    'use strict';
+    var sec = (document.currentScript && document.currentScript.closest('section.slide')) ||
+              document.querySelector('section.slide[data-id="P005"]');
+    if (!sec) return;
+    /* 分步时把被点名的界面区域点亮，不新增任何文字 */
+    var pairs = [
+      ['.ppt .ribbon', '1'],
+      ['.ppt .pane', '2'],
+      ['.ppt .canvas .img', '3']
+    ];
+    function sync() {
+      pairs.forEach(function (p) {
+        var el = sec.querySelector(p[0]);
+        var src = sec.querySelector('.p5txt .reveal[data-step="' + p[1] + '"]');
+        if (el) el.classList.toggle('lit', !!(src && src.classList.contains('last')));
+      });
+    }
+    new MutationObserver(sync).observe(sec, { attributes: true, attributeFilter: ['class', 'data-rv'], subtree: true });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync);
+    else sync();
+  })();
+  </script>
   <!-- BODY:END -->
-  <div class="foot">入口变化，不表示制作过程消失，也不保证一次成功。</div>
+  <div class="foot">界面为示意模拟，不是任何软件的真实截图。</div>
   <aside class="notes">让变化清晰可见：过去在左、现在在右，中间标出变化发生的位置。强调入口变化不等于制作过程消失。示意图为通用造型，不模仿具体产品界面；右侧产品界面位待放入真实截图。</aside>
 </section>
 
 <!-- ═══════════════ P005A 现在：说清楚要求，AI来实现 ═══════════════ -->
-<section class="slide" data-id="P005A" data-title="现在：说清楚要求，AI来实现" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T04" data-status="skeleton">
+<section class="slide" data-id="P005A" data-title="现在：说清楚要求，AI来实现" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T04" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P005A</span>
@@ -529,10 +604,85 @@
   <h2 class="title">现在：说清楚要求，AI来实现</h2>
   <p class="sub reveal-none">变化发生在入口：从“先学工具”转向“先说清楚想做什么”。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">一条要求（示例）</div><p class="text">做一页课件：地球绕太阳转，地轴倾斜，能切换冬夏两个位置。</p></div>
-    <div class="reveal"><div class="label">AI的回应</div><p class="text">生成页面结构、图形与动画，并给出可以继续修改的版本。</p></div>
-    <div class="reveal"><div class="label">教师接着做</div><p class="text">看效果，用自己的话提出修改要求。</p></div>
+  <style>
+    .slide[data-id="P005A"] .body { gap: 26px; }
+    .slide[data-id="P005A"] .p5a { flex: 1 1 auto; min-height: 0; display: flex; gap: 48px; align-items: stretch; }
+
+    /* 左 60%：大对话框 */
+    .slide[data-id="P005A"] .p5a .ask { flex: 6 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .slide[data-id="P005A"] .p5a .ask .label { margin-bottom: 0; }
+    .slide[data-id="P005A"] .chatbox {
+      flex: 1 1 auto; min-height: 0; box-sizing: border-box;
+      background: #ffffff; border: 2px solid var(--accent); border-radius: 40px;
+      box-shadow: 0 8px 22px rgba(45, 74, 102, .16);
+      padding: 34px 34px 24px 44px; display: flex; flex-direction: column; gap: 18px;
+    }
+    .slide[data-id="P005A"] .chatbox .say {
+      flex: 1 1 auto; display: flex; align-items: center; gap: 16px; min-height: 0;
+    }
+    .slide[data-id="P005A"] .chatbox .say .caret {
+      flex: 0 0 4px; align-self: stretch; margin: 6px 0; background: var(--accent-dark); border-radius: 2px;
+    }
+    .slide[data-id="P005A"] .chatbox .say p {
+      font-size: 40px; line-height: 1.6; color: var(--text); margin: 0;
+    }
+    .slide[data-id="P005A"] .chatbox .tray { flex: 0 0 auto; display: flex; align-items: center; gap: 14px; }
+    .slide[data-id="P005A"] .chatbox .tray u { flex: 1 1 auto; height: 1px; background: var(--divider); display: block; }
+    .slide[data-id="P005A"] .chatbox .tray b {
+      width: 42px; height: 42px; border-radius: 9px; background: #eef4fa; border: 1px solid #a9c3da; display: block;
+    }
+    .slide[data-id="P005A"] .chatbox .send {
+      flex: 0 0 72px; width: 72px; height: 72px; border-radius: 50%; background: var(--accent-dark);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide[data-id="P005A"] .chatbox .send svg { width: 36px; height: 36px; display: block; }
+
+    /* 右 40%：AI 的回应 + 产品截图位 */
+    .slide[data-id="P005A"] .p5a .out { flex: 4 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .slide[data-id="P005A"] .p5a .out .label { margin-bottom: 0; }
+    .slide[data-id="P005A"] .p5a .out .text { font-size: 28px; line-height: 1.55; }
+    .slide[data-id="P005A"] .p5a .out .blueprint { flex: 1 1 auto; min-height: 0; display: flex; }
+    .slide[data-id="P005A"] .p5a .out .slot { flex: 1 1 auto; min-height: 0; }
+
+    /* 底：教师接着做 */
+    .slide[data-id="P005A"] .p5a-next { flex: 0 0 auto; margin-top: 0; }
+    .slide[data-id="P005A"] .p5a-next .label { margin-bottom: 0; flex: 0 0 auto; }
+    .slide[data-id="P005A"] .p5a-next .text { font-size: 30px; line-height: 1.5; color: var(--accent-dark); }
+  </style>
+  <div class="body">
+    <div class="p5a">
+      <div class="ask reveal" data-step="1">
+        <div class="label">一条要求（示例）</div>
+        <div class="chatbox">
+          <div class="say">
+            <span class="caret"></span>
+            <p>做一页课件：地球绕太阳转，地轴倾斜，能切换冬夏两个位置。</p>
+          </div>
+          <div class="tray">
+            <b></b><b></b><u></u>
+            <div class="send">
+              <svg viewBox="0 0 36 36" role="img" aria-label="发送">
+                <path d="M18 30 V7 M8 17 L18 6 L28 17" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="out reveal" data-step="2">
+        <div class="label">AI的回应</div>
+        <p class="text">生成页面结构、图形与动画，并给出可以继续修改的版本。</p>
+        <div class="blueprint">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="slot" data-kind="product"><img src="assets/img/prod_kejian_1.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway p5a-next reveal" data-step="3">
+      <div class="arrow-line" style="width:260px"></div>
+      <div class="label">教师接着做</div>
+      <p class="text">看效果，用自己的话提出修改要求。</p>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">入口变化，不表示制作过程消失，也不保证一次成功；示例要求为教学示例。</div>
@@ -642,16 +792,43 @@
     <span class="pid">P009</span>
   </div>
   <h2 class="title">一个教学想法，需要经过制作、试用和修改。</h2>
+  <p class="sub reveal-none">AI是老师想法和经验的3D打印机与放大器。</p>
   <!-- BODY:START -->
   <style>
-    .slide[data-id="P009"] .pipetxt .text { font-size: 30px; line-height: 1.65; }
-    .slide[data-id="P009"] .pipetxt .label { margin-bottom: 10px; }
-    .slide[data-id="P009"] .pipefig { flex: 0 0 1080px; }
+    .slide[data-id="P009"] .body { gap: 22px; }
+    .slide[data-id="P009"] .p9top { display: flex; align-items: center; gap: 32px; flex: 0 0 auto; }
+    .slide[data-id="P009"] .pipetxt { flex: 1 1 auto; min-width: 680px; }
+    .slide[data-id="P009"] .pipetxt .text { font-size: 27px; line-height: 1.55; }
+    .slide[data-id="P009"] .pipetxt .label { margin-bottom: 6px; }
+    .slide[data-id="P009"] .pipefig { flex: 0 0 940px; }
     .slide[data-id="P009"] .pipefig svg { display: block; width: 100%; height: auto; }
     .slide[data-id="P009"] .pipefig svg text { font-family: var(--font-sans); }
+
+    .slide[data-id="P009"] .p9gain { display: flex; align-items: center; gap: 30px;
+      border-top: 2px solid var(--divider); padding-top: 18px; flex: 0 0 auto; }
+    .slide[data-id="P009"] .p9ico { display: flex; gap: 14px; flex: 0 0 auto; }
+    .slide[data-id="P009"] .p9ico figure { margin: 0; text-align: center; width: 104px; }
+    .slide[data-id="P009"] .p9ico img { width: 78px; height: 78px; object-fit: contain; display: block; margin: 0 auto 4px; }
+    .slide[data-id="P009"] .p9ico figcaption { font-size: 24px; color: var(--muted); font-family: var(--font-cond); }
+    .slide[data-id="P009"] .p9gtxt { flex: 1 1 auto; min-width: 0; }
+    .slide[data-id="P009"] .p9gtxt .text { font-size: 28px; line-height: 1.5; }
+    .slide[data-id="P009"] .p9bars { flex: 0 0 760px;
+      background: var(--surface); border-radius: 10px; padding: 12px 18px 14px;
+      display: flex; flex-direction: column; }
+    .slide[data-id="P009"] .p9bars .tag { align-self: flex-end; margin-bottom: 8px; }
+    .slide[data-id="P009"] .p9row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .slide[data-id="P009"] .p9row:last-child { margin-bottom: 0; }
+    .slide[data-id="P009"] .p9who { flex: 0 0 66px; font-size: 26px; font-family: var(--font-cond); color: var(--muted-2); }
+    .slide[data-id="P009"] .p9bar { flex: 1 1 auto; display: flex; height: 44px; border-radius: 6px; overflow: hidden; }
+    .slide[data-id="P009"] .p9seg { display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-family: var(--font-cond); white-space: nowrap; overflow: hidden; }
+    .slide[data-id="P009"] .p9seg.a { background: #c3d8ea; color: #2d4a66; }
+    .slide[data-id="P009"] .p9seg.b { background: var(--accent-dark); color: #fff; }
+    .slide[data-id="P009"] .p9seg.narrow { font-size: 0; }
   </style>
-  <div class="body cols" style="align-items:center">
-    <div class="stack pipetxt" style="gap:24px">
+  <div class="body stack">
+   <div class="p9top">
+    <div class="stack pipetxt" style="gap:18px">
       <div class="reveal" data-step="1">
         <div class="label">提出意图</div>
         <p class="text">教师说明希望学生观察什么、操作什么、解释什么。</p>
@@ -760,9 +937,37 @@
         </g>
       </svg>
     </div>
+   </div>
+   <div class="p9gain reveal" data-step="5">
+     <div class="p9ico">
+       <figure><img src="assets/img/icons/printer3d.png" alt=""><figcaption>3D打印机</figcaption></figure>
+       <figure><img src="assets/img/icons/magnifier.png" alt=""><figcaption>放大器</figcaption></figure>
+     </div>
+     <div class="p9gtxt">
+       <div class="label">提质增效</div>
+       <p class="text">学软件、动手操作的时间少了；腾出来的时间，留给想法与经验。</p>
+     </div>
+     <div class="p9bars">
+       <span class="tag">示意</span>
+       <div class="p9row">
+         <div class="p9who">过去</div>
+         <div class="p9bar">
+           <div class="p9seg a" style="flex:0 0 72%">学软件与动手操作</div>
+           <div class="p9seg b" style="flex:0 0 28%">想法与经验</div>
+         </div>
+       </div>
+       <div class="p9row">
+         <div class="p9who">现在</div>
+         <div class="p9bar">
+           <div class="p9seg a" style="flex:0 0 26%">操作</div>
+           <div class="p9seg b" style="flex:0 0 74%">想法与经验</div>
+         </div>
+       </div>
+     </div>
+   </div>
   </div>
   <!-- BODY:END -->
-  <div class="foot">依据《091_四季循环》开发规格与验证记录整理。</div>
+  <div class="foot">依据《091_四季循环》开发规格与验证记录整理；对照条为示意，不含计时数据。</div>
   <aside class="notes">【快过】讲述时依次说明：教师说明希望学生观察什么、操作什么、解释什么。 AI辅助形成交互原型，明确场景和控制方式。 开发过程将原型移植为可独立运行的版本，处理资源加载和交互适配。 根据实际运行结果核对功能与计算，修正发现的问题。
     作用：从制作事实过渡到模型为什么能接到行动，说明成品不是凭空出现。
     资源：<a href="../19_逐页内容脚本/资源预览/S01.html">S01 四季循环v2</a> <a href="assets/docs/S01/index.html">素材入口</a> <a href="assets/docs/S01/验证记录.md">开发与验证记录</a> <a href="../19_逐页内容脚本/资源预览/R05.html">R05 专著资源使用说明与实测台账</a> <a href="assets/docs/R05/00_使用说明.md">素材入口</a> <a href="assets/docs/R05/16_WorkBuddy能力实测与样章校订记录.md">实测校订记录</a></aside>
@@ -1478,55 +1683,88 @@
 </section>
 
 <!-- ═══════════════ P015 AI改变的，是教师的身份和思维 ═══════════════ -->
-<section class="slide" data-id="P015" data-title="能检查、能修改，任务才能继续" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
+<section class="slide" data-id="P015" data-title="AI改变的，是教师的身份和思维" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
     <span class="pid">P015</span>
   </div>
-  <h2 class="title">能检查、能修改，任务才能继续</h2>
+  <h2 class="title">AI改变的，是教师的身份和思维</h2>
+  <p class="sub reveal-none">从执行者到委托者与审核者，从“用什么”到“解决什么”。</p>
   <!-- BODY:START -->
   <style>
-  .slide[data-id="P015"] .body { gap: 44px; }
-  .slide[data-id="P015"] .anim { flex: 1 1 0; }
-  .slide[data-id="P015"] .a15 { position: absolute; inset: 0; padding: 14px 26px 78px; box-sizing: border-box; display: flex; gap: 22px; align-items: stretch; }
-  .slide[data-id="P015"] .a15 .ring { flex: 0 0 546px; display: flex; align-items: center; justify-content: center; }
-  .slide[data-id="P015"] .a15 .cycle { transform: none; }
-  .slide[data-id="P015"] .a15 .list { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 18px; border-left: 1px solid var(--divider); padding-left: 26px; }
-  .slide[data-id="P015"] .a15 .ck { display: flex; align-items: center; gap: 14px; font-size: 27px; line-height: 1.4; padding: 15px 16px; border: 1px solid var(--divider); background: var(--surface); cursor: pointer; opacity: .45; }
-  .slide[data-id="P015"] .a15 .list.live .ck { opacity: 1; cursor: pointer; }
-  .slide[data-id="P015"] .a15 .ck input { width: 26px; height: 26px; accent-color: var(--accent); flex: 0 0 auto; }
+  .slide[data-id="P015"] .body { gap: 22px; }
+  .slide[data-id="P015"] .p15top { display: flex; align-items: stretch; gap: 30px; flex: 1 1 auto; min-height: 0; }
+  .slide[data-id="P015"] .anim { flex: 1 1 0; min-width: 0; }
+  .slide[data-id="P015"] .a15 { position: absolute; inset: 0; padding: 14px 24px 66px; box-sizing: border-box; display: flex; gap: 22px; align-items: center; }
+  .slide[data-id="P015"] .a15 .ring { flex: 0 0 430px; display: flex; align-items: center; justify-content: center; }
+  .slide[data-id="P015"] .a15 .side { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 10px; border-left: 1px solid var(--divider); padding-left: 24px; }
+  .slide[data-id="P015"] .a15 .label { margin-bottom: 0; }
+  .slide[data-id="P015"] .a15 .res { font-size: 26px; line-height: 1.45; min-height: 82px; display: flex; align-items: center;
+     border: 1px solid var(--divider); background: var(--surface); padding: 10px 14px; color: var(--muted-2); }
+  .slide[data-id="P015"] .a15 .res.bad { color: #b2603f; border-color: #b2603f; background: #fbf3f0; }
+  .slide[data-id="P015"] .a15 .res.ok { color: var(--accent-dark); border-color: var(--accent); background: #f4f8fc; }
+  .slide[data-id="P015"] .a15 .cks { display: flex; gap: 10px; }
+  .slide[data-id="P015"] .a15 .ck { flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 8px;
+     font-size: 25px; line-height: 1.2; padding: 11px 6px; border: 1px solid var(--divider); background: #fff; opacity: .4; }
+  .slide[data-id="P015"] .a15 .cks.live .ck { opacity: 1; cursor: pointer; }
+  .slide[data-id="P015"] .a15 .ck input { width: 22px; height: 22px; accent-color: var(--accent); flex: 0 0 auto; }
   .slide[data-id="P015"] .a15 .ck.done { border-color: var(--accent); background: #f4f8fc; color: var(--accent-dark); }
-  .slide[data-id="P015"] .a15 .state { font-size: 25px; line-height: 1.45; color: var(--muted-2); min-height: 72px; display: flex; align-items: center; border: 1px solid var(--divider); padding: 10px 14px; }
-  .slide[data-id="P015"] .a15 .state.warn { color: #b2603f; border-color: #b2603f; }
-  .slide[data-id="P015"] .a15 .state.ok { color: var(--accent-dark); border-color: var(--accent); background: #f4f8fc; }
+  .slide[data-id="P015"] .a15 .gate { align-self: flex-start; font: inherit; font-size: 26px; padding: 10px 28px;
+     border: 1px solid var(--divider); background: #fff; color: var(--muted-3); }
+  .slide[data-id="P015"] .a15 .gate.on { border-color: var(--accent); background: var(--accent); color: #fff; }
+  .slide[data-id="P015"] .p15cards { flex: 0 0 620px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .slide[data-id="P015"] .p15cards .card { padding: 18px 26px; gap: 8px; }
+  .slide[data-id="P015"] .p15cards .card p { font-size: 28px; line-height: 1.5; }
+  .slide[data-id="P015"] .p15end { margin-top: 0; flex: 0 0 auto; gap: 22px; align-items: baseline; }
+  .slide[data-id="P015"] .p15end .arrow-line { width: 180px; align-self: center; }
+  .slide[data-id="P015"] .p15end .label { margin-right: 14px; }
+  .slide[data-id="P015"] .p15end .text { display: inline; font-size: 32px; line-height: 1.5; color: var(--accent-dark); }
   </style>
-  <div class="body cols" style="align-items:stretch">
+  <div class="body stack">
+   <div class="p15top">
     <div class="anim" tabindex="0" role="group" aria-label="执行、核对、修订的反馈环演示">
       <span class="tag corner-tag">示意图</span>
       <div class="a15">
         <div class="ring">
-          <div class="cycle" data-nodes="执行|核对|修订" data-on="" data-center="第 1 轮" data-size="540"></div>
+          <div class="cycle" data-nodes="执行|核对|修订" data-on="" data-center="第 1 轮" data-size="430"></div>
         </div>
-        <div class="list">
-          <div class="label" style="margin-bottom:2px">教师核对清单</div>
-          <label class="ck"><input type="checkbox" data-ck="0" disabled><span>内容是否准确</span></label>
-          <label class="ck"><input type="checkbox" data-ck="1" disabled><span>难度是否合适</span></label>
-          <label class="ck"><input type="checkbox" data-ck="2" disabled><span>学生能否理解</span></label>
-          <div class="state">按「下一个」开始一轮</div>
+        <div class="side">
+          <div class="label">运行结果</div>
+          <div class="res">按「下一步」开始第 1 轮</div>
+          <div class="label" style="margin-top:6px">教学适切性</div>
+          <div class="cks">
+            <label class="ck"><input type="checkbox" data-ck="0" disabled><span>内容准确</span></label>
+            <label class="ck"><input type="checkbox" data-ck="1" disabled><span>难度合适</span></label>
+            <label class="ck"><input type="checkbox" data-ck="2" disabled><span>学生能懂</span></label>
+          </div>
+          <button type="button" class="gate" disabled>进入课堂</button>
         </div>
       </div>
       <div class="controls">
-        <button type="button" class="primary" data-act="next">下一个</button>
+        <button type="button" class="primary" data-act="next">下一步</button>
         <button type="button" data-act="play">播放</button>
         <button type="button" data-act="reset">重置</button>
       </div>
     </div>
-    <div class="stack" style="flex:0 0 500px;justify-content:center;gap:26px">
-      <div class="reveal"><div class="label">执行</div><p class="text" style="font-size:28px">程序运行，得到结果或错误提示。</p></div>
-      <div class="reveal"><div class="label">核对</div><p class="text" style="font-size:28px">教师和制作者检查结果是否符合任务要求，是否适合课堂教学。</p></div>
-      <div class="reveal"><div class="label">修订</div><p class="text" style="font-size:28px">根据核对发现的问题，修改目标、代码或参数，再次运行。</p></div>
-      <div class="reveal"><div class="label">教学适切性</div><p class="text" style="font-size:28px">教师重点判断内容是否准确、难度是否合适、学生能否理解。</p></div>
+    <div class="p15cards">
+      <div class="card reveal" data-step="1">
+        <div class="label">提供想法</div>
+        <p class="text">说出想让学生经历什么；画面在老师的脑子里。</p>
+      </div>
+      <div class="card reveal" data-step="2">
+        <div class="label">下达任务</div>
+        <p class="text">把想法说成任务：目标、材料、成果形式。</p>
+      </div>
+      <div class="card reveal" data-step="3">
+        <div class="label">审核修订</div>
+        <p class="text">查看结果，用自己的专业判断决定改什么、留什么。</p>
+      </div>
     </div>
+   </div>
+   <div class="takeaway p15end reveal" data-step="4">
+     <span class="arrow-line"></span>
+     <div><span class="label">所以</span><span class="text">以后每次用AI，先问的不是“它能做什么”，而是“我要解决什么”。</span></div>
+   </div>
   </div>
   <script>
   (function () {
@@ -1535,78 +1773,63 @@
               document.querySelector('section.slide[data-id="P015"]');
     if (!sec) return;
     var cy = sec.querySelector('.cycle');
-    var list = sec.querySelector('.a15 .list');
-    var boxes = Array.prototype.slice.call(sec.querySelectorAll('.ck input'));
-    var state = sec.querySelector('.a15 .state');
+    var res = sec.querySelector('.a15 .res');
+    var cks = sec.querySelector('.a15 .cks');
+    var boxes = Array.prototype.slice.call(sec.querySelectorAll('.a15 .ck input'));
+    var gate = sec.querySelector('.a15 .gate');
     var btnNext = sec.querySelector('[data-act="next"]');
     var btnPlay = sec.querySelector('[data-act="play"]');
     var btnReset = sec.querySelector('[data-act="reset"]');
 
-    /* 固定脚本化的状态文字（功能性提示，不引入新的讲稿内容） */
-    var NODE = ['执行', '核对', '修订'];
-    var node = -1, round = 1, playing = false, timer = null;
+    /* 分镜：node = 环上节点下标；round = 中心计数；功能性提示文字，不引入新的讲稿内容 */
+    var STEPS = [
+      { node: -1, round: 1, res: '按「下一步」开始第 1 轮', cls: '',    live: false },
+      { node: 0,  round: 1, res: '生成结果：昼长曲线不随日期变化', cls: '', live: false },
+      { node: 1,  round: 1, res: '核对不通过：昼长曲线不随日期变化', cls: 'bad', live: false },
+      { node: 2,  round: 1, res: '修订：改回日期参数，重新执行', cls: '', live: false },
+      { node: 0,  round: 2, res: '生成结果：昼长随日期变化，冬夏差异正确', cls: '', live: false },
+      { node: 1,  round: 2, res: '核对通过：交给教师判断教学适切性', cls: 'ok', live: true }
+    ];
+    var i = 0, playing = false, timer = null;
 
-    function drawRing() {
-      if (!window.Cycle || !cy) return;
-      cy.setAttribute('data-center', '第 ' + round + ' 轮');
-      window.Cycle.render(cy);
-      window.Cycle.setActive(cy, node);
+    function draw() {
+      var s = STEPS[i];
+      if (window.Cycle && cy) {
+        cy.setAttribute('data-center', '第 ' + s.round + ' 轮');
+        window.Cycle.render(cy);
+        window.Cycle.setActive(cy, s.node);
+      }
+      res.className = 'res' + (s.cls ? ' ' + s.cls : '');
+      res.textContent = s.res;
+      cks.classList.toggle('live', !!s.live);
+      boxes.forEach(function (b) { b.disabled = !s.live; });
+      if (!s.live) {
+        boxes.forEach(function (b) { b.checked = false; });
+      }
+      refresh();
     }
-    function setState(txt, cls) {
-      state.className = 'state' + (cls ? ' ' + cls : '');
-      state.textContent = txt;
-    }
-    function refreshChecks() {
+    function refresh() {
       boxes.forEach(function (b) { b.parentNode.classList.toggle('done', b.checked); });
-    }
-    function allChecked() { return boxes.every(function (b) { return b.checked; }); }
-    function enableChecks(on) {
-      list.classList.toggle('live', !!on);
-      boxes.forEach(function (b) { b.disabled = !on; });
+      var all = boxes.every(function (b) { return b.checked; });
+      gate.classList.toggle('on', all);
+      gate.disabled = !all;
     }
     function stopTimer() { if (timer) { clearTimeout(timer); timer = null; } playing = false; if (btnPlay) btnPlay.textContent = '播放'; }
-
-    function reset() {
-      stopTimer();
-      node = -1; round = 1;
-      boxes.forEach(function (b) { b.checked = false; });
-      refreshChecks();
-      enableChecks(false);
-      setState('按「下一个」开始一轮');
-      drawRing();
-    }
-
-    function goto(i) {
-      node = i;
-      if (i === 0) {
-        enableChecks(false);
-        boxes.forEach(function (b) { b.checked = false; });
-        refreshChecks();
-        setState('第 ' + round + ' 轮 · 执行');
-      } else if (i === 1) {
-        enableChecks(true);
-        setState('第 ' + round + ' 轮 · 核对：勾完三项进入修订');
-      } else {
-        enableChecks(false);
-        setState('第 ' + round + ' 轮 · 修订');
-      }
-      drawRing();
-    }
-
-    function next() {
-      if (node === 2) { round += 1; goto(0); return; }
-      goto(node < 0 ? 0 : node + 1);
-    }
-
+    function reset() { stopTimer(); i = 0; boxes.forEach(function (b) { b.checked = false; }); draw(); }
+    function next() { if (i < STEPS.length - 1) { i += 1; draw(); } }
     function play() {
       if (playing) { stopTimer(); return; }
       playing = true;
       if (btnPlay) btnPlay.textContent = '暂停';
       (function tick() {
         if (!playing) return;
-        if (node === 1) { boxes.forEach(function (b) { b.checked = true; }); refreshChecks(); }
+        if (i >= STEPS.length - 1) {
+          boxes.forEach(function (b) { b.checked = true; });
+          refresh();
+          stopTimer();
+          return;
+        }
         next();
-        if (round > 3) { stopTimer(); return; }
         timer = setTimeout(tick, 1500);
       })();
     }
@@ -1614,15 +1837,7 @@
     if (btnNext) btnNext.addEventListener('click', function () { stopTimer(); next(); });
     if (btnPlay) btnPlay.addEventListener('click', play);
     if (btnReset) btnReset.addEventListener('click', reset);
-    boxes.forEach(function (b) {
-      b.addEventListener('change', function () {
-        refreshChecks();
-        if (node === 1 && allChecked()) {
-          setState('三项已核对 · 进入修订', 'ok');
-          timer = setTimeout(function () { goto(2); }, 700);
-        }
-      });
-    });
+    boxes.forEach(function (b) { b.addEventListener('change', refresh); });
 
     new MutationObserver(function () {
       if (!sec.classList.contains('active')) reset();
@@ -1643,52 +1858,113 @@
 </section>
 
 <!-- ═══════════════ P017 AI可以承担的三类能力 ═══════════════ -->
-<section class="slide dark" data-id="P017" data-title="从教师熟悉的四个环节出发" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T16" data-status="draft">
+<section class="slide" data-id="P017" data-title="AI可以承担的三类能力" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T15" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P017</span>
   </div>
-  <h2 class="title">从教师熟悉的四个环节出发</h2>
+  <h2 class="title">AI可以承担的三类能力</h2>
+  <p class="sub reveal-none">内容生成 · 连通管道 · 角色扮演</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center;align-items:stretch">
-  <div class="map433" data-stage="" data-roles="" data-show="stages" data-size="compact"></div>
-  <div class="cols tight" style="margin-top:36px">
-    <div class="reveal">
-      <div class="label">设计</div>
-      <p class="text" style="font-size:28px;line-height:1.6">确定目标、活动、材料和评价方式。</p>
+  <div class="body cols p17">
+    <div class="stack reveal" data-step="1">
+      <div class="fig p17fig">
+        <div class="pic"><img src="assets/img/cap_siji_curve_23.png" alt="四季循环交互页面截图"></div>
+      </div>
+      <div>
+        <div class="label">内容生成</div>
+        <p class="text">把一句意图展开成文档、视频、交互页等可以直接使用的成果。</p>
+      </div>
     </div>
-    <div class="reveal">
-      <div class="label">实施</div>
-      <p class="text" style="font-size:28px;line-height:1.6">在课堂上组织学生活动，观察学生反应。</p>
+    <div class="stack reveal" data-step="2">
+      <div class="fig p17fig">
+        <div class="pic p17code"><pre>&lt;w:p&gt;
+  &lt;w:pPr&gt;
+    &lt;w:pStyle w:val="Heading1"/&gt;
+  &lt;/w:pPr&gt;
+  &lt;w:r&gt;
+    &lt;w:t&gt;「小小天气观察员」
+      两周天气观测活动安排
+      （三年级）&lt;/w:t&gt;
+  &lt;/w:r&gt;
+&lt;/w:p&gt;</pre></div>
+      </div>
+      <div>
+        <div class="label">连通管道</div>
+        <p class="text">把分散在各处的材料和数据接在一起，整理成任务需要的依据，并保留来源与分歧。</p>
+      </div>
     </div>
-    <div class="reveal">
-      <div class="label">评价</div>
-      <p class="text" style="font-size:28px;line-height:1.6">收集学习证据，判断学生学到了什么。</p>
-    </div>
-    <div class="reveal">
-      <div class="label">发展</div>
-      <p class="text" style="font-size:28px;line-height:1.6">整理经验，进入下一轮教学改进。</p>
+    <div class="stack reveal" data-step="3">
+      <div class="fig p17fig">
+        <span class="tag corner-tag">示意图</span>
+        <div class="pic">
+          <svg viewBox="0 0 520 384" width="100%" height="100%" role="img" aria-label="一问一答的对话框示意">
+            <defs>
+              <marker id="p17arr" markerWidth="10" markerHeight="10" refX="8.4" refY="4.6" orient="auto">
+                <path d="M0.4,0.6 L9.2,4.6 L0.4,8.6 Z" fill="#5980a6"></path>
+              </marker>
+            </defs>
+            <g>
+              <rect x="146" y="6" width="368" height="98" rx="12" fill="#ffffff" stroke="#c9cacb" stroke-width="1.5"></rect>
+              <text x="170" y="42" font-family="'Noto Sans SC',sans-serif" font-size="25" fill="#5980a6">教师</text>
+              <rect x="170" y="58" width="318" height="10" rx="5" fill="#c9cacb"></rect>
+              <rect x="170" y="78" width="228" height="10" rx="5" fill="#c9cacb"></rect>
+            </g>
+            <path d="M300,110 C270,122 250,124 232,134" fill="none" stroke="#5980a6" stroke-width="2.4" marker-end="url(#p17arr)"></path>
+            <g>
+              <rect x="6" y="140" width="392" height="118" rx="12" fill="#5980a6"></rect>
+              <text x="30" y="176" font-family="'Noto Sans SC',sans-serif" font-size="25" fill="#ffffff" opacity="0.85">AI</text>
+              <rect x="30" y="192" width="344" height="10" rx="5" fill="#ffffff" opacity="0.72"></rect>
+              <rect x="30" y="212" width="344" height="10" rx="5" fill="#ffffff" opacity="0.72"></rect>
+              <rect x="30" y="232" width="206" height="10" rx="5" fill="#ffffff" opacity="0.72"></rect>
+            </g>
+            <path d="M232,264 C262,276 282,278 300,288" fill="none" stroke="#5980a6" stroke-width="2.4" marker-end="url(#p17arr)"></path>
+            <g>
+              <rect x="146" y="294" width="368" height="84" rx="12" fill="#ffffff" stroke="#c9cacb" stroke-width="1.5"></rect>
+              <text x="170" y="330" font-family="'Noto Sans SC',sans-serif" font-size="25" fill="#5980a6">教师</text>
+              <rect x="170" y="346" width="270" height="10" rx="5" fill="#c9cacb"></rect>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="label">角色扮演</div>
+        <p class="text">以备课助手、虚拟教研员、虚拟学伴等身份进入任务，追问与回应。</p>
+      </div>
     </div>
   </div>
-</div>
-<!-- BODY:END -->
-  <aside class="notes">【快过】讲述时依次说明：确定目标、活动、材料和评价方式。 在课堂上组织学生活动，观察学生反应。 收集学习证据，判断学生学到了什么。 整理经验，进入下一轮教学改进。
-    作用：用教师熟悉的四个环节定位本场框架，说明后面的角色和用法发生在哪里。</aside>
+  <style>
+    .slide[data-id="P017"] .body.cols { align-items: flex-start; gap: 52px; }
+    .slide[data-id="P017"] .body.cols > .stack { gap: 22px; justify-content: flex-start; }
+    .slide[data-id="P017"] .p17fig { flex: 0 0 auto; width: 100%; height: 384px; }
+    .slide[data-id="P017"] .p17fig .pic { height: 100%; }
+    .slide[data-id="P017"] .p17code { align-items: flex-start; justify-content: flex-start; padding: 22px 24px; box-sizing: border-box; }
+    .slide[data-id="P017"] .p17code pre {
+      margin: 0; font-family: 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 24px; line-height: 1.5; color: var(--muted-2); white-space: pre;
+    }
+    .slide[data-id="P017"] .p17fig .corner-tag { right: auto; top: auto; left: 16px; bottom: 14px; background: rgba(242,242,243,.92); }
+    .slide[data-id="P017"] .text { font-size: 30px; }
+  </style>
+  <!-- BODY:END -->
+  <div class="foot">三栏配图分别为四季循环页面、docx解压后的XML片段与示例对话。</div>
+  <aside class="notes">【停讲】身份和思维的变化讲完之后，我们把前面的原理收个口：AI 可以承担三类能力。三栏配的都是前面见过的实例，带大家快速对一遍。内容生成，把一句意图展开成文档、视频、交互页等可以直接使用的成果，那份四季循环页面就是这样来的；连通管道，把分散在各处的材料和数据接在一起，整理成任务需要的依据，并保留来源与分歧，还记得 docx 解压后的 XML 片段吗，模型正是通过读写这样的内容连通文件的；角色扮演，以备课助手、虚拟教研员、虚拟学伴等身份进入任务，追问与回应。要说明一点：三类能力不分高下，也不与某个具体问题一一对应，实际使用中是组合在一起的。接下来我们先深入其中最微妙的一类——角色扮演。
+    作用：三类能力总览，是前面科普段的总结。</aside>
 </section>
 
 <!-- ═══════════════ P020 角色扮演：AI进入任务，参与回应与协商 ═══════════════ -->
-<section class="slide" data-id="P020" data-title="AI可以作为参与任务与协商的教育实践主体" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T15" data-status="draft">
+<section class="slide" data-id="P020" data-title="角色扮演：AI进入任务，参与回应与协商" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T15" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P020</span>
   </div>
-  <h2 class="title">AI可以作为参与任务与协商的教育实践主体</h2>
-  <p class="sub reveal-none">这里的主体指任务中的参与角色，不表示AI承担人的教育责任。</p>
+  <h2 class="title">角色扮演：AI进入任务，参与回应与协商</h2>
+  <p class="sub reveal-none">这里的角色指任务中的参与身份，不表示AI承担人的教育责任。</p>
   <!-- BODY:START -->
 <style>
 .slide[data-id="P020"] .p20body { justify-content: center; gap: 18px; }
 .slide[data-id="P020"] .p20cards { display: flex; gap: 24px; align-items: stretch; position: relative; }
-.slide[data-id="P020"] .p20tag { position: absolute; right: 16px; bottom: 12px; background: #fff; }
+.slide[data-id="P020"] .p20tag { position: absolute; right: 2px; top: -40px; background: transparent; }
 .slide[data-id="P020"] .p20card {
   flex: 1 1 0; background: #fff; border: 1px solid var(--divider); border-radius: 14px;
   padding: 18px 26px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px;
@@ -1720,7 +1996,7 @@
 }
 .slide[data-id="P020"] .p20shot { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .slide[data-id="P020"] .p20shot img {
-  display: block; max-height: 230px; max-width: 100%; border: 1px solid var(--divider); border-radius: 6px;
+  display: block; max-height: 244px; max-width: 100%; border: 1px solid var(--divider); border-radius: 6px;
 }
 </style>
 <div class="body p20body">
@@ -1792,145 +2068,248 @@
     <span class="tag warn">角色模拟，非历史人物真实发言</span>
   </div>
 </div>
-<!-- BODY:END -->
-  <aside class="notes">【停讲】主体在这里指它能进入任务、回应与协商。不同对象需要不同角色约定；教育决定及其责任仍由教师与相关人员承担。
-    作用：定义第三种角色：主体，能够进入任务、回应与协商。
+  <!-- BODY:END -->
+  <aside class="notes">【停讲】三类能力总览之后，我们先细看角色扮演，因为它是课堂上最容易用好、也最容易用偏的一类。画面上的三张卡是三种常见身份：备课助手，追问目标、学生基础与材料条件，帮助教师把需求说清楚；虚拟教研员，依据课堂材料提出不同解释，与教师讨论改动；虚拟学伴，回应学生的表达、追问理由，支持学生继续思考和修订。不同的任务对象，需要不同的角色约定，这一点大家可以在自己的学科里慢慢试。但请一定记住页面上那句话：角色指的是任务中的参与身份，不表示 AI 承担人的教育责任，判断与决定始终在教师这边。身份定了，还要会问。下一页给大家三个问题，每次用 AI 之前都值得问自己一遍。
+    作用：说明角色扮演的三种常见身份及其边界。
     资源：<a href="../19_逐页内容脚本/资源预览/S03.html">S03 教学观察台：语言文化交流</a> <a href="assets/docs/S03/README.md">素材入口</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动局域网演示.command" title="原路径，仅本机有效">启动局域网演示.command</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command" title="原路径，仅本机有效">启动本机演示.command</a> <a href="../19_逐页内容脚本/资源预览/D13.html">D13 采访达尔文：角色卡与实拍对话</a> <a href="assets/docs/D13/4.4_02_提示词框1_角色卡模板代入——“采访达尔文”_示例.md">素材入口</a> <a href="assets/docs/D13/4.4素材_达尔文试对话_两屏并列.png">对话截图</a></aside>
 </section>
 
 <!-- ═══════════════ P022 每次用AI前，问自己三个问题 ═══════════════ -->
-<section class="slide" data-id="P022" data-title="每次用AI前，问自己三个问题" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T06" data-status="draft">
+<section class="slide" data-id="P022" data-title="每次用AI前，问自己三个问题" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T06" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P022</span>
   </div>
-  <h2 class="title" style="font-size:60px">每次用AI前，问自己三个问题</h2>
+  <h2 class="title">每次用AI前，问自己三个问题</h2>
+  <!-- BODY:START -->
+  <div class="body p22body">
+    <div class="p22row">
+      <div class="p22card reveal" data-step="1">
+        <div class="p22num">①</div>
+        <div class="p22lab">要解决什么问题（目标设定）</div>
+        <div class="p22rule"></div>
+        <p class="text">先说清这次要解决的教学问题，以及希望拿到什么结果。</p>
+      </div>
+      <div class="p22card reveal" data-step="2">
+        <div class="p22num">②</div>
+        <div class="p22lab">最终成功标准是什么（验收标准）</div>
+        <div class="p22rule"></div>
+        <p class="text">说清结果做到什么程度才算成功：谁来用、用多久、能看到什么。</p>
+      </div>
+      <div class="p22card reveal" data-step="3">
+        <div class="p22num">③</div>
+        <div class="p22lab">如何让AI理解以上两点（上下文构建）</div>
+        <div class="p22rule"></div>
+        <p class="text">把年级、课时、器材、学生已有经验和已经安排好的部分说清楚。</p>
+      </div>
+    </div>
+  </div>
+  <style>
+    .slide[data-id="P022"] .p22body { justify-content: center; }
+    .slide[data-id="P022"] .p22row { display: flex; gap: 48px; align-items: stretch; }
+    .slide[data-id="P022"] .p22card {
+      flex: 1 1 0; min-width: 0; background: #fff; border: 1px solid var(--divider);
+      border-top: 5px solid var(--accent); padding: 40px 44px 46px; min-height: 540px; box-sizing: border-box;
+      display: flex; flex-direction: column;
+    }
+    .slide[data-id="P022"] .p22num {
+      font-size: 100px; line-height: 1.05; color: var(--light-blue-2); margin-bottom: 14px;
+    }
+    .slide[data-id="P022"] .p22lab {
+      font-size: 33px; line-height: 1.42; color: var(--accent-dark); font-weight: 500; min-height: 96px;
+    }
+    .slide[data-id="P022"] .p22rule { height: 1px; background: var(--divider); margin: 18px 0 22px; }
+    .slide[data-id="P022"] .p22card .text { font-size: 32px; line-height: 1.7; }
+    .slide[data-id="P022"] .foot {
+      border-top: 1px solid var(--divider); margin-top: 40px; padding-top: 26px;
+      font-size: 27px; line-height: 1.5; color: var(--muted-2);
+    }
+    .slide[data-id="P022"] .p22key {
+      color: var(--accent-dark); font-weight: 500; background: #e6eff8;
+      border-left: 5px solid var(--accent); padding: 5px 14px; margin-left: 4px;
+      display: inline-block;
+    }
+  </style>
+  <!-- BODY:END -->
+  <div class="foot">三问是行动入口，用哪类能力由任务决定；<span class="p22key">第一问只能教师提出，因为问题来自你的教室。</span></div>
+  <aside class="notes">【停讲】上一页看到角色扮演让AI进入任务、参与回应与协商。知道了AI能做什么，还需要一个每次动手前都能用的入口。这一页给大家三个问题，建议每次用AI之前都在心里过一遍。第一问，要解决什么问题，先把教学问题和想要的结果说清楚；第二问，最终成功标准是什么，谁来用、用多久、做到什么程度才算成功；第三问，如何让AI理解以上两点，把年级、课时、器材、学生已有经验和已经安排好的部分交代清楚。请大家注意，三问和三类能力不是一一对应，用哪类能力由任务决定；而且第一问只能由教师提出，因为问题来自你的教室，AI不在场。下一页我们就用这三个问题，完整走一次天气观测活动的委托。
+    作用：给出三问，作为后面所有案例的行动入口；脚注埋下第6拍伏笔。</aside>
+</section>
+
+<!-- ═══════════════ P023 怎样委托AI准备两周的天气观测活动？ ═══════════════ -->
+<section class="slide" data-id="P023" data-title="怎样委托AI准备两周的天气观测活动？" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="教学设计" data-kind="主线" data-template="T17" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
+    <span class="pid">P023</span>
+  </div>
+  <h2 class="title sm">怎样委托AI准备两周的天气观测活动？</h2>
   <!-- BODY:START -->
   <div class="body">
-    <div class="stack" style="gap:40px;flex:0 0 auto">
-      <div class="cols reveal" data-step="1" style="align-items:baseline;gap:36px;padding-bottom:36px;border-bottom:1px solid var(--divider)">
-        <span class="cond" style="flex:0 0 90px;font-size:64px;color:var(--light-blue);line-height:1">01</span>
-        <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">想得到什么？</h3>
-        <p style="font-size:36px;line-height:1.65">先想清楚这次要解决的教学问题，以及希望拿到什么结果。</p>
+    <div class="casecard">
+      <div class="cc-need">
+        <div class="label">典型需求</div>
+        <p class="text">三年级要开展两周的天气观测，需要一份活动安排和一张学生能自己填的记录表。</p>
       </div>
-      <div class="cols reveal" data-step="2" style="align-items:baseline;gap:36px;padding-bottom:36px;border-bottom:1px solid var(--divider)">
-        <span class="cond" style="flex:0 0 90px;font-size:64px;color:var(--light-blue);line-height:1">02</span>
-        <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">AI扮演什么角色？</h3>
-        <p style="font-size:36px;line-height:1.65">是整理材料的管道、展开产物的工具，还是进入任务回应协商的主体。</p>
+      <div class="cc-qs">
+        <div class="cc-q reveal" data-step="1">
+          <div class="cc-num">①</div>
+          <div class="label">要解决什么问题（目标设定）</div>
+          <p class="text">我需要一份活动安排和一张可打印的学生记录表。</p>
+        </div>
+        <div class="cc-q reveal" data-step="2">
+          <div class="cc-num">②</div>
+          <div class="label">最终成功标准是什么（验收标准）</div>
+          <p class="text">记录表能让三年级学生独立填两周、每天不超过3分钟；活动安排能直接排进课表。</p>
+        </div>
+        <div class="cc-q reveal" data-step="3">
+          <div class="cc-num">③</div>
+          <div class="label">如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">我会提供学生年级、课时安排、可用器材、观察地点和已有教学进度。</p>
+        </div>
       </div>
-      <div class="cols reveal" data-step="3" style="align-items:baseline;gap:36px">
-        <span class="cond" style="flex:0 0 90px;font-size:64px;color:var(--light-blue);line-height:1">03</span>
-        <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">能提供什么背景？</h3>
-        <p style="font-size:36px;line-height:1.65">把年级、课时、器材、学生已有经验和教师已经安排好的部分说清楚。</p>
+      <div class="cc-caps reveal" data-step="4">
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">内容生成</span></div>
+          <p class="text">生成活动安排与记录表两份可编辑的Word文件。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">角色扮演</span></div>
+          <p class="text">作为备课助手，缺少条件时先向我确认，再动手制作。</p>
+        </div>
       </div>
     </div>
   </div>
   <!-- BODY:END -->
-  <div class="foot">三问是行动入口，不等同于三种角色的一一对应。</div>
-  <aside class="notes">三问是行动入口。连续读下来，不要当成三个并列的分类框。</aside>
-</section>
-
-<!-- ═══════════════ P023 怎样委托AI准备两周的天气观测活动？ ═══════════════ -->
-<section class="slide" data-id="P023" data-title="怎样委托AI准备两周的天气观测活动？" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T06" data-status="draft">
-  <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
-    <span class="pid">P023</span>
-  </div>
-  <h2 class="title">怎样委托AI准备两周的天气观测活动？</h2>
-  <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="grid-3 reveal-group" style="margin:auto 0;gap:32px">
-    <div class="card reveal" style="padding:36px">
-      <span class="num">01</span>
-      <div class="label">我想得到什么？</div>
-      <p style="font-size:28px;line-height:1.6">我需要一份活动安排和一张可打印的学生记录表。</p>
-    </div>
-    <div class="card reveal" style="padding:36px">
-      <span class="num">02</span>
-      <div class="label">AI需要扮演什么角色？</div>
-      <p style="font-size:28px;line-height:1.6">AI先整理活动要求，再制作配套文件；缺少条件时先向我确认。</p>
-    </div>
-    <div class="card reveal" style="padding:36px">
-      <span class="num">03</span>
-      <div class="label">我能提供什么背景？</div>
-      <p style="font-size:28px;line-height:1.6">我会提供学生年级、课时安排、可用器材、观察地点和已有教学进度。</p>
-    </div>
-  </div>
-  <div style="margin-top:28px">
-    <a class="file-card" href="assets/docs/D04/"><span class="ext">DOCX</span><span class="fname">天气观测活动安排 ＋ 学生两周记录表</span></a>
-  </div>
-</div>
-<!-- BODY:END -->
   <div class="foot">委托表达为教学示例；现有成品包括活动安排与学生记录表。</div>
-  <aside class="notes">【停讲】讲述时依次说明：我需要一份活动安排和一张可打印的学生记录表。 AI先整理活动要求，再制作配套文件；缺少条件时先向我确认。 我会提供学生年级、课时安排、可用器材、观察地点和已有教学进度。
-    作用：用天气观测活动示范三问怎样变成一次具体委托。
+  <aside class="notes">【停讲】刚才的三个问题，这一页完整走一遍。需求很典型：三年级要开展两周的天气观测，需要一份活动安排和一张学生能自己填的记录表。先看第一问，目标是拿到一份活动安排和一张可打印的记录表；第二问把标准说具体：三年级学生能独立填两周、每天不超过3分钟，活动安排能直接排进课表；第三问交代上下文：年级、课时、器材、观察地点和教学进度。右边是这次委托实际得到的两份Word成品，大家可以对照标准看一看。由任务决定，这里用到内容生成来产出两份可编辑文件，也用到角色扮演，让AI作为备课助手，缺少条件时先向我确认，再动手制作。同样的方法放到工作的哪些地方用？下一页看四个环节。
+    作用：全场第一次完整推导：需求→三问→能力。
     资源：<a href="../19_逐页内容脚本/资源预览/D04.html">D04 天气观测派活：两份Word</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/2.3_天气观测派活" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D04/天气观测活动安排（三年级）.docx">天气观测活动安排（三年级）.docx</a> <a href="assets/docs/D04/学生两周天气记录表.docx">学生两周天气记录表.docx</a> <a href="../19_逐页内容脚本/资源预览/R01.html">R01 提示词库：46条模板与实例</a> <a href="assets/docs/R01/00_总目录.md">素材入口</a></aside>
 </section>
 
 <!-- ═══════════════ P021 四个环节：结合你的工作场景来想 ═══════════════ -->
-<section class="slide dark" data-id="P021" data-title="同一项任务可以组合使用三种角色。" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T16" data-status="draft">
+<section class="slide" data-id="P021" data-title="四个环节：结合你的工作场景来想" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T15" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P021</span>
   </div>
-  <h2 class="title">同一项任务可以组合使用三种角色。</h2>
+  <h2 class="title">四个环节：结合你的工作场景来想</h2>
+  <p class="sub reveal-none">四个环节是思考的起点，问题从这里找。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center;align-items:stretch">
-  <div class="map433" data-stage="设计" data-roles="" data-show="stages,roles,questions" data-size="compact"></div>
-  <div class="cols" style="margin-top:36px">
-    <div class="reveal">
-      <div class="label">备课时</div>
-      <p class="text" style="font-size:28px;line-height:1.6">AI可以先追问教学目标，再整理教材和学情，随后生成配套材料。</p>
+  <div class="body p21body">
+    <div class="p21row">
+      <div class="p21card reveal" data-step="1">
+        <div class="p21ic"><img src="assets/img/icons/stage_design.png" alt=""></div>
+        <div class="label">教学设计</div>
+        <p class="text">确定目标、活动、材料和评价方式。</p>
+        <div class="p21case">案例：植物单元</div>
+      </div>
+      <div class="p21arr reveal" data-step="2">
+        <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true">
+          <path d="M2,13 H32" stroke="#94bce3" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M30,4 L44,13 L30,22 Z" fill="#94bce3"></path>
+        </svg>
+      </div>
+      <div class="p21card reveal" data-step="2">
+        <div class="p21ic"><img src="assets/img/icons/stage_classroom.png" alt=""></div>
+        <div class="label">课堂实施</div>
+        <p class="text">在课堂上组织学生活动，观察学生反应。</p>
+        <div class="p21case">案例：情景创设</div>
+      </div>
+      <div class="p21arr reveal" data-step="3">
+        <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true">
+          <path d="M2,13 H32" stroke="#94bce3" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M30,4 L44,13 L30,22 Z" fill="#94bce3"></path>
+        </svg>
+      </div>
+      <div class="p21card reveal" data-step="3">
+        <div class="p21ic"><img src="assets/img/icons/stage_evaluation.png" alt=""></div>
+        <div class="label">教学评价</div>
+        <p class="text">收集学习证据，判断学生学到了什么。</p>
+        <div class="p21case">案例：喀什备考</div>
+      </div>
+      <div class="p21arr reveal" data-step="4">
+        <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true">
+          <path d="M2,13 H32" stroke="#94bce3" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M30,4 L44,13 L30,22 Z" fill="#94bce3"></path>
+        </svg>
+      </div>
+      <div class="p21card reveal" data-step="4">
+        <div class="p21ic"><img src="assets/img/icons/stage_growth.png" alt=""></div>
+        <div class="label">教师专业发展</div>
+        <p class="text">整理经验，进入下一轮教学改进。</p>
+        <div class="p21case">案例：沉与浮课例</div>
+      </div>
     </div>
-    <div class="reveal">
-      <div class="label">审议时</div>
-      <p class="text" style="font-size:28px;line-height:1.6">教师可以继续与AI比较方案、提出修改要求，并检查成果。</p>
-    </div>
-    <div class="reveal">
-      <div class="label">角色随任务变化</div>
-      <p class="text" style="font-size:28px;line-height:1.6">管道、工具和主体可以重叠、往返，具体组合由任务需要决定。</p>
+    <div class="p21loop reveal" data-step="4">
+      <svg viewBox="0 0 1700 74" width="100%" height="74" aria-hidden="true">
+        <defs>
+          <marker id="p21arr" markerWidth="11" markerHeight="11" refX="9.2" refY="5.2" orient="auto">
+            <path d="M0.5,0.8 L10.2,5.2 L0.5,9.6 Z" fill="#94bce3"></path>
+          </marker>
+        </defs>
+        <path d="M1507,2 V40 Q1507,58 1489,58 H211 Q193,58 193,40 V16"
+              fill="none" stroke="#94bce3" stroke-width="3" stroke-linecap="round"
+              marker-end="url(#p21arr)"></path>
+      </svg>
     </div>
   </div>
-</div>
-<!-- BODY:END -->
-  <aside class="notes">【停讲】讲述时依次说明：AI可以先追问教学目标，再整理教材和学情，随后生成配套材料。 教师可以继续与AI比较方案、提出修改要求，并检查成果。 管道、工具和主体可以重叠、往返，具体组合由任务需要决定。
-    作用：说明三种角色可以组合与切换，不是固定三步。</aside>
+  <style>
+    .slide[data-id="P021"] .p21body { justify-content: center; gap: 4px; }
+    .slide[data-id="P021"] .p21row { display: flex; align-items: stretch; gap: 0; }
+    .slide[data-id="P021"] .p21arr { flex: 0 0 56px; display: flex; align-items: center; justify-content: center; }
+    .slide[data-id="P021"] .p21card {
+      flex: 1 1 0; min-width: 0; background: #fff; border: 1px solid var(--divider); border-radius: 14px;
+      padding: 36px 30px 30px; display: flex; flex-direction: column; align-items: center; gap: 18px;
+    }
+    .slide[data-id="P021"] .p21ic {
+      width: 152px; height: 152px; border-radius: 26px; background: #eef4fa; border: 1px solid #cfe0f0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide[data-id="P021"] .p21ic img { width: 108px; height: 108px; object-fit: contain; }
+    .slide[data-id="P021"] .p21card .label { margin-bottom: 0; font-size: 30px; letter-spacing: .06em; color: var(--accent-dark); }
+    .slide[data-id="P021"] .p21card .text { font-size: 30px; line-height: 1.6; text-align: center; }
+    .slide[data-id="P021"] .p21case {
+      margin-top: auto; font-size: 24px; line-height: 1.2; color: #416180;
+      background: #eef4fa; border: 1px solid #cfe0f0; border-radius: 18px; padding: 7px 18px;
+    }
+    .slide[data-id="P021"] .p21loop { padding: 0 0 0 0; }
+  </style>
+  <!-- BODY:END -->
+  <aside class="notes">【停讲】身份和思维的变化讲完之后，我们把前面的原理收个口：AI 可以承担三类能力。三栏配的都是前面见过的实例，带大家快速对一遍。内容生成，把一句意图展开成文档、视频、交互页等可以直接使用的成果，那份四季循环页面就是这样来的；连通管道，把分散在各处的材料和数据接在一起，整理成任务需要的依据，并保留来源与分歧，还记得 docx 解压后的 XML 片段吗，模型正是通过读写这样的内容连通文件的；角色扮演，以备课助手、虚拟教研员、虚拟学伴等身份进入任务，追问与回应。要说明一点：三类能力不分高下，也不与某个具体问题一一对应，实际使用中是组合在一起的。接下来我们先深入其中最微妙的一类——角色扮演。
+    作用：四个环节是老师找问题的起点。</aside>
 </section>
 
 <!-- ═══════════════ P024 3＋3＋4：从教学问题到可检验的行动 ═══════════════ -->
-<section class="slide" data-id="P024" data-title="一次AI委托，需要从教学问题走向可检验的行动。" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
+<section class="slide dark" data-id="P024" data-title="3＋3＋4：从教学问题到可检验的行动" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T16" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P024</span>
   </div>
-  <h2 class="title">一次AI委托，需要从教学问题走向可检验的行动。</h2>
+  <h2 class="title">3＋3＋4：从教学问题到可检验的行动</h2>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="flow" style="align-items:stretch;gap:18px">
-    <div class="node reveal">
-      <div class="label">先明确任务</div>
-      <p>教师说清问题、预期结果和使用情境。</p>
+  <div class="body cols p24body">
+    <div class="p24map">
+      <div class="anim-map334 map334" data-show="caps,questions,stages" data-size="full"></div>
     </div>
-    <div class="arr">→</div>
-    <div class="node reveal">
-      <div class="label">再安排协作</div>
-      <p>教师通过三问安排AI的参与方式，并提供必要材料。</p>
-    </div>
-    <div class="arr">→</div>
-    <div class="node reveal">
-      <div class="label">形成成果并使用</div>
-      <p>师生按任务使用文档、视频、交互工具或对话支持。</p>
-    </div>
-    <div class="arr">→</div>
-    <div class="node reveal">
-      <div class="label">检查并改进</div>
-      <p>教师结合学生表现判断结果，决定下一步怎样调整。</p>
+    <div class="stack p24side">
+      <div class="reveal" data-step="1"><div class="label">三类能力</div><p class="text">内容生成、连通管道、角色扮演：AI能做什么。</p></div>
+      <div class="reveal" data-step="2"><div class="label">三个问题</div><p class="text">目标设定、验收标准、上下文构建：怎样把任务说清楚。</p></div>
+      <div class="reveal" data-step="3"><div class="label">四个环节</div><p class="text">设计、实施、评价、教师专业发展：从哪里想起。</p></div>
+      <div class="reveal p24use" data-step="4"><div class="label">老师这样用</div><p class="text">先看自己处在哪个环节、有什么需求，再用三问把任务说清楚，最后由任务决定用到哪类能力。</p></div>
     </div>
   </div>
-</div>
-<!-- BODY:END -->
-  <aside class="notes">【快过】讲述时依次说明：教师说清问题、预期结果和使用情境。 教师通过三问安排AI的参与方式，并提供必要材料。 师生按任务使用文档、视频、交互工具或对话支持。 教师结合学生表现判断结果，决定下一步怎样调整。
-    作用：给出全场案例的共同观察结构，作为进入设计环节的导航。</aside>
+  <style>
+    .slide[data-id="P024"] .p24body { align-items: stretch; gap: 60px; }
+    .slide[data-id="P024"] .p24map { flex: 1.62 1 0; min-width: 0; display: flex; }
+    .slide[data-id="P024"] .p24map .map334 { flex: 1 1 auto; }
+    .slide[data-id="P024"] .p24side { flex: 1 1 0; min-width: 0; justify-content: space-between; gap: 26px; padding: 30px 0 34px; }
+    .slide[data-id="P024"] .p24side .label { margin-bottom: 10px; color: var(--light-blue); }
+    .slide[data-id="P024"] .p24side .text { font-size: 28px; line-height: 1.62; }
+    .slide[data-id="P024"] .p24use { border-left: 4px solid var(--light-blue-2); padding-left: 24px; margin-left: -28px; }
+  </style>
+  <!-- BODY:END -->
+  <aside class="notes">【快过】从四个环节出发，我们把整幅地图收拢成3＋3＋4。三类能力回答AI能做什么：内容生成、连通管道、角色扮演；三个问题回答怎样把任务说清楚：目标设定、验收标准、上下文构建；四个环节回答从哪里想起：设计、实施、评价、教师专业发展。要提醒大家的是，图的顺序和老师们实际使用的顺序正好相反：真正动手时，先看自己处在哪个环节、有什么需求，再用三问把任务说清楚，最后由任务决定调用哪类能力。这个框架不是给大家多加一套流程，而是帮我们把模糊的愿望变成可检验的行动。可是，如果AI给出的东西看起来很完整，为什么到了课堂上还是用不上？下一页从一个常见的落差说起。
+    作用：收束3＋3＋4，并点明老师使用时的相反顺序。</aside>
 </section>
 
 <!-- ═══════════════ P025 教案很完整，为什么还是用不上？ ═══════════════ -->
@@ -2165,18 +2544,6 @@
     </div>
   </div>
 </div>
-<script>
-(function () {
-  var SRC = 'components/map334.js';
-  function go() { if (window.Map334) window.Map334.all(); }
-  if (window.Map334) { go(); return; }
-  if (!document.querySelector('script[data-map334-loader]')) {
-    var s = document.createElement('script');
-    s.src = SRC; s.setAttribute('data-map334-loader', '1'); s.onload = go;
-    document.head.appendChild(s);
-  }
-})();
-</script>
 <!-- BODY:END -->
   <aside class="notes">【快过】讲述时依次说明：方案需要回应课程目标、学生表现和实际条件。 教案、任务单、记录表和评价要求需要相互对应。 AI可以整理和制作，教师负责审议取舍，学生保留观察、设计与实做。
     作用：收束设计环节，回扣四环节、三问和三角色。</aside>
@@ -3494,37 +3861,61 @@
 </section>
 
 <!-- ═══════════════ P070 沉与浮课例：这次先研究一个问题 ═══════════════ -->
-<section class="slide" data-id="P070" data-title="沉与浮课例：这次先研究一个问题" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="主线" data-template="T06" data-status="draft">
+<section class="slide" data-id="P070" data-title="沉与浮课例：这次先研究一个问题" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="主线" data-template="T17" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>08</b><span class="on">教师专业发展：保留材料、判断与方法</span></div>
     <span class="pid">P070</span>
   </div>
-  <h2 class="title">沉与浮课例：这次先研究一个问题</h2>
+  <h2 class="title sm">沉与浮课例：这次先研究一个问题</h2>
   <p class="sub reveal-none">围绕一段实录，形成基于证据的改课建议。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center;gap:28px">
-  <div class="grid-3" style="margin:auto 0">
-    <div class="card reveal">
-      <span class="num">01</span>
-      <div class="label">我想得到什么</div>
-      <p>针对一段提问与回应，提出一项能够在下次课堂检验的改课建议。</p>
-    </div>
-    <div class="card reveal">
-      <span class="num">02</span>
-      <div class="label">AI需要扮演什么角色</div>
-      <p>先整理实录证据，再作为虚拟教研员提出不同解释，与教师协商改动。</p>
-    </div>
-    <div class="card reveal">
-      <span class="num">03</span>
-      <div class="label">我能提供什么上下文</div>
-      <p>提供模拟匿名实录、学习目标和教师的疑问；分析真实课堂时，还应补充相关方案与学生记录。</p>
+  <div class="body">
+    <div class="casecard">
+
+      <!-- 上栏：典型需求（整页的问题，不分步） -->
+      <div class="cc-need">
+        <div class="label">典型需求</div>
+        <p class="text">听了一节沉与浮的课，记了满满几页，教研时却说不出下次该改哪一步。</p>
+      </div>
+
+      <!-- 中栏：三问逐问揭示 -->
+      <div class="cc-qs">
+        <div class="cc-q reveal" data-step="1">
+          <div class="cc-num">①</div>
+          <div class="label">要解决什么问题（目标设定）</div>
+          <p class="text">针对一段提问与回应，提出一项能够在下次课堂检验的改课建议。</p>
+        </div>
+        <div class="cc-q reveal" data-step="2">
+          <div class="cc-num">②</div>
+          <div class="label">最终成功标准是什么（验收标准）</div>
+          <p class="text">建议具体到三句话：下次怎样问、学生要做什么、教师观察什么。</p>
+        </div>
+        <div class="cc-q reveal" data-step="3">
+          <div class="cc-num">③</div>
+          <div class="label">如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">提供模拟匿名实录、学习目标和教师的疑问；分析真实课堂时，还应补充相关方案与学生记录。</p>
+        </div>
+      </div>
+
+      <!-- 底栏：所以用到（第 4 步；与三问不一一对应，不画连线） -->
+      <div class="cc-caps reveal" data-step="4">
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">连通管道</span></div>
+          <p class="text">把40分钟实录、学习目标和教师疑问接在一起，定位到一段提问与回应。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">角色扮演</span></div>
+          <p class="text">虚拟教研员依据实录提出不同解释，与教师讨论可以改动的位置。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">内容生成</span></div>
+          <p class="text">形成一条下次课就能试的追问链与观察要点。</p>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="cols tight" style="justify-content:center">
-    <a class="file-card" href="assets/docs/D11/"><span class="ext">MD</span><span class="fname">沉与浮研讨课·模拟课堂实录</span></a>
-  </div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
   <div class="foot">课例实录为生成的教研训练材料，不是真实课堂记录。</div>
   <aside class="notes">【停讲】讲述时依次说明：针对一段提问与回应，提出一项能够在下次课堂检验的改课建议。 先整理实录证据，再作为虚拟教研员提出不同解释，与教师协商改动。 提供模拟匿名实录、学习目标和教师的疑问；分析真实课堂时，还应补充相关方案与学生记录。
     作用：把教师发展环节的第一个委托写成标准三问任务卡，明确目标、角色和要提供的背景。
@@ -3602,35 +3993,54 @@
     <div class="locator"><b>08</b><span class="on">教师专业发展：保留材料、判断与方法</span></div>
     <span class="pid">P076</span>
   </div>
-  <h2 class="title">资料、判断、方法，分别怎样保存？</h2>
+  <h2 class="title sm">资料、判断、方法，分别怎样保存？</h2>
   <p class="sub reveal-none">三类内容分开存，以后才找得到、用得上。</p>
   <!-- BODY:START -->
 <style>
-.slide[data-id="P076"] .body { margin-top: 30px; }
+.slide[data-id="P076"] .body { margin-top: 22px; gap: 26px; }
 .slide[data-id="P076"] .keep {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px;
   flex: 1 1 auto; min-height: 0;
 }
 .slide[data-id="P076"] .keep > .card {
   border: 1px solid var(--divider); background: #fff;
-  padding: 26px 34px 30px; gap: 0; min-height: 0;
+  padding: 22px 30px 26px; gap: 0; min-height: 0;
   box-shadow: 0 2px 0 rgba(65,97,128,.05);
 }
 .slide[data-id="P076"] .keep .ico {
-  flex: 1 1 auto; min-height: 210px; display: flex;
+  flex: 1 1 auto; min-height: 140px; overflow: hidden; display: flex;
   align-items: center; justify-content: center;
   background: linear-gradient(180deg, #f7fafd 0%, #e4edf6 100%);
-  border: 1px solid #d9e3ec; border-radius: 16px; margin-bottom: 26px;
+  border: 1px solid #d9e3ec; border-radius: 16px; margin-bottom: 20px;
 }
 .slide[data-id="P076"] .keep .ico svg {
-  width: 66%; max-width: 268px; height: auto;
+  width: 62%; max-width: 190px; max-height: 130px; height: auto;
   filter: drop-shadow(0 10px 16px rgba(65,97,128,.22));
 }
 .slide[data-id="P076"] .keep .label {
-  font-size: 33px; letter-spacing: .04em; color: var(--accent-dark);
-  margin: 0 0 14px; font-weight: 500;
+  font-size: 32px; letter-spacing: .04em; color: var(--accent-dark);
+  margin: 0 0 12px; font-weight: 500;
 }
-.slide[data-id="P076"] .keep .text { font-size: 30px; line-height: 1.6; }
+.slide[data-id="P076"] .keep .text { font-size: 28px; line-height: 1.55; }
+
+/* 底部一条：临时的知识补给（左文右图，图为作者 AIGC，加角标） */
+.slide[data-id="P076"] .supply {
+  flex: 0 0 auto; display: flex; align-items: center; gap: 36px;
+  padding: 18px 30px; background: var(--surface);
+  border-left: 6px solid var(--accent);
+}
+.slide[data-id="P076"] .supply .txt { flex: 1 1 auto; min-width: 0; }
+.slide[data-id="P076"] .supply .label {
+  font-size: 30px; letter-spacing: .04em; color: var(--accent-dark);
+  margin: 0 0 8px; font-weight: 500;
+}
+.slide[data-id="P076"] .supply .text { font-size: 28px; line-height: 1.55; }
+.slide[data-id="P076"] .supply .shot {
+  position: relative; flex: 0 0 auto; height: 216px;
+  border: 1px solid var(--divider); background: #fff; display: flex;
+}
+.slide[data-id="P076"] .supply .shot img { height: 100%; width: auto; display: block; }
+.slide[data-id="P076"] .supply .corner-tag { right: 10px; top: 10px; }
 </style>
 <div class="body">
   <svg width="0" height="0" aria-hidden="true" style="position:absolute" focusable="false">
@@ -3713,9 +4123,20 @@
     </div>
 
   </div>
+
+  <div class="supply reveal">
+    <div class="txt">
+      <div class="label">临时的知识补给</div>
+      <p class="text">学生问“白天为什么也看得到月亮”，这类临时需要的知识补给，同样可以用三问委托AI准备。</p>
+    </div>
+    <div class="shot">
+      <img src="assets/img/baitian_yueliang_ai_shiyitu.png" alt="月亮与太阳位置关系示意图">
+      <span class="tag fill corner-tag">生成示意图</span>
+    </div>
+  </div>
 </div>
 <!-- BODY:END -->
-  <div class="foot">可复用的步骤仍需说明适用条件和检查标准。</div>
+  <div class="foot">可复用的步骤仍需说明适用条件和检查标准。白天看月亮示意图为生成图，方位与比例需核对。</div>
   <aside class="notes">【停讲】讲述时依次说明：课堂实录、学生作品、观测记录等原始材料按课例归档，保留来源和时间。 写下当时的判断和理由，例如“这次追问给早了，学生还没预测”。判断要能对应到具体材料。 把反复要用的步骤固化成模板，例如提问链模板、课例分析模板；使用时仍需按课调整。
     作用：把教师专业积累分成资料、判断、方法三类，各配一个可识别的例子。
     资源：<a href="../19_逐页内容脚本/资源预览/D12.html">D12 科学护眼：项目指令与周报实测样例</a> <a href="assets/docs/D12/项目指令_实测原文.md">素材入口</a> <a href="assets/docs/D12/周报草稿_实测输出样例.md">周报</a> <a href="../19_逐页内容脚本/资源预览/R01.html">R01 提示词库：46条模板与实例</a> <a href="assets/docs/R01/00_总目录.md">素材入口</a> <a href="../19_逐页内容脚本/资源预览/V06.html">V06 26组POV提示词与首图、制作记录</a> <a href="assets/docs/V06/index.html">素材入口</a> <a href="assets/docs/V06/完整视频生成工作流与产物留存说明.md">工作流</a> <a href="assets/docs/V06/02d_视频生成×课标选题库.md">选题库</a></aside>
@@ -3727,29 +4148,67 @@
     <div class="locator"><b>08</b><span class="on">教师专业发展：保留材料、判断与方法</span></div>
     <span class="pid">P078</span>
   </div>
-  <h2 class="title">专业积累，要能进入下一轮教学</h2>
+  <h2 class="title sm">专业积累，要能进入下一轮教学</h2>
   <p class="sub reveal-none">发展环节的产出，要回到下一轮设计。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="gap:26px">
-    <div class="map433" data-stage="教师专业发展" data-roles="管道,工具,主体" data-show="stages" data-size="compact"></div>
-    <div class="cols">
+<style>
+.slide[data-id="P078"] .body { margin-top: 26px; }
+.slide[data-id="P078"] .map334 { flex: 0 0 auto; }
+.slide[data-id="P078"] .map334 .kicker { margin-bottom: 14px; color: var(--light-blue); }
+.slide[data-id="P078"] .map334 .node { padding: 22px 16px; text-align: center; }
+.slide[data-id="P078"] .map334 .node p { font-size: 34px; line-height: 1.3; font-weight: 500; }
+.slide[data-id="P078"] .map334 .node.off { opacity: .5; }
+.slide[data-id="P078"] .m-loop { position: relative; height: 48px; margin-top: 2px; }
+.slide[data-id="P078"] .m-loop::before {
+  content: ""; position: absolute; left: 34px; right: 34px; top: 0; height: 26px;
+  border: 1px solid var(--light-blue-2); border-top: 0;
+}
+.slide[data-id="P078"] .m-loop span {
+  position: absolute; left: 50%; top: 26px; transform: translate(-50%, -50%);
+  padding: 0 20px; background: var(--dark);
+  font-size: 24px; letter-spacing: .08em; color: var(--light-blue);
+}
+.slide[data-id="P078"] .body.stack { gap: 46px; justify-content: center; }
+.slide[data-id="P078"] .caps { flex: 0 0 auto; align-items: stretch; }
+.slide[data-id="P078"] .caps .card { justify-content: flex-start; padding: 28px 32px; }
+.slide[data-id="P078"] .caps .text { font-size: 29px; line-height: 1.6; }
+</style>
+  <div class="body stack">
+
+    <!-- 四环节底图：高亮教师专业发展（map334 组件若加载则自动接管） -->
+    <div class="map334" data-stage="教师专业发展" data-show="stages" data-size="compact">
+      <div class="kicker">4环节</div>
+      <div class="flow">
+        <div class="node off"><p>教学设计</p></div>
+        <div class="arr">→</div>
+        <div class="node off"><p>课堂实施</p></div>
+        <div class="arr">→</div>
+        <div class="node off"><p>教学评价</p></div>
+        <div class="arr">→</div>
+        <div class="node on"><p>教师专业发展</p></div>
+      </div>
+      <div class="m-loop"><span>进入下一轮</span></div>
+    </div>
+
+    <div class="cols caps">
       <div class="card reveal">
-        <div class="label">管道</div>
-        <p class="text" style="font-size:28px;line-height:1.5">把实录、作品、记录整理成可用依据，让下一轮讨论从具体材料开始。</p>
+        <div class="label">连通管道</div>
+        <p class="text">把实录、作品、记录整理成可用依据，让下一轮讨论从具体材料开始。</p>
       </div>
       <div class="card reveal">
-        <div class="label">工具</div>
-        <p class="text" style="font-size:28px;line-height:1.5">把一次任务里的步骤和格式留下来，下次只需替换内容，减少重复交代。</p>
+        <div class="label">内容生成</div>
+        <p class="text">把一次任务里的步骤和格式留下来，下次只需替换内容，减少重复交代。</p>
       </div>
       <div class="card reveal">
-        <div class="label">主体</div>
-        <p class="text" style="font-size:28px;line-height:1.5">让AI在追问和协商中参与教研；采信什么、改动什么，仍然由教师决定。</p>
+        <div class="label">角色扮演</div>
+        <p class="text">让AI在追问和协商中参与教研；采信什么、改动什么，仍然由教师决定。</p>
       </div>
       <div class="card reveal">
         <div class="label">三个问题</div>
-        <p class="text" style="font-size:28px;line-height:1.5">每次使用前先问：我想得到什么，AI需要扮演什么角色，我能提供什么上下文。</p>
+        <p class="text">每次使用前先问：要解决什么问题，最终成功标准是什么，如何让AI理解以上两点。</p>
       </div>
     </div>
+
   </div>
 <!-- BODY:END -->
   <aside class="notes">【快过】把教师发展放回整张图上看：管道负责把材料变成依据，工具负责把步骤固定下来，主体在追问和协商中参与教研，但采信什么、改动什么仍然由教师决定。三个问题每次都用——我想得到什么，AI需要扮演什么角色，我能提供什么上下文。积累的目的不是存文件，而是让下一轮设计有起点。下一部分，我们用同一个项目，把设计、实施、评价和今天的专业发展连起来。
@@ -3762,33 +4221,74 @@
     <div class="locator"><b>09</b><span class="on">回看组合：让框架在同一项目里连起来</span></div>
     <span class="pid">P079</span>
   </div>
-  <h2 class="title">同一个项目，怎样经过四个环节？</h2>
-  <p class="sub reveal-none">以科学护眼项目为例，组织同一主题的任务与材料。</p>
+  <h2 class="title sm">同一个项目，怎样经过四个环节？</h2>
+  <p class="sub reveal-none">以科学护眼项目为例：四个环节，四件材料。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="gap:22px">
-    <div class="map433" data-stage="" data-roles="" data-show="stages" data-size="compact"></div>
-    <div class="cols" style="align-items:flex-start">
-      <div class="grid-2" style="flex:1 1 0;min-width:0;gap:14px 28px">
-        <div class="reveal">
-          <div class="label">设计</div>
-          <p class="text" style="font-size:26px;line-height:1.45;margin:0 0 8px">任务链、材料清单与量规先定下目标和交付物。</p>
-          <a class="file-card" href="assets/docs/D05/"><span class="ext">DOCX</span><span class="fname">《科学护眼》方案包五件套</span></a>
-        </div>
-        <div class="reveal">
-          <div class="label">实施</div>
-          <p class="text" style="font-size:26px;line-height:1.45;margin:0 0 8px">眼球成像光路模拟器支持比较光路，实物观察和小组讨论仍然进行。</p>
-          <a class="file-card" href="assets/tools/yanqiu_guanglu.html"><span class="ext">HTML</span><span class="fname">眼球成像光路模拟器</span></a>
-        </div>
-        <div class="reveal">
-          <div class="label">评价</div>
-          <p class="text" style="font-size:26px;line-height:1.45;margin:0 0 8px">作品量规与前后测方案衔接，判断学生是否达到目标。</p>
-          <a class="file-card" href="assets/docs/D12/"><span class="ext">MD</span><span class="fname">科学护眼·周报草稿（实测输出样例）</span></a>
-        </div>
-        <div class="reveal">
-          <div class="label">教师专业发展</div>
-          <p class="text" style="font-size:26px;line-height:1.45;margin:0 0 8px">项目指令与周报把持续背景和阶段进展留下来，供下一轮使用。</p>
-        </div>
+<style>
+.slide[data-id="P079"] .body { margin-top: 22px; }
+.slide[data-id="P079"] .map334 { flex: 0 0 auto; }
+.slide[data-id="P079"] .map334 .kicker { margin-bottom: 12px; color: var(--light-blue); }
+.slide[data-id="P079"] .map334 .node { padding: 16px 14px; text-align: center; }
+.slide[data-id="P079"] .map334 .node p { font-size: 32px; line-height: 1.3; font-weight: 500; }
+.slide[data-id="P079"] .mats { flex: 0 0 auto; align-items: stretch; }
+.slide[data-id="P079"] .mat { display: flex; flex-direction: column; min-width: 0; }
+.slide[data-id="P079"] .mat .pic {
+  flex: 0 0 auto; height: 268px; margin-bottom: 16px;
+  border: 1px solid var(--accent-dark); background: var(--dark-band);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.slide[data-id="P079"] .mat .pic img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.slide[data-id="P079"] .mat .label { font-size: 28px; letter-spacing: .04em; margin-bottom: 8px; }
+.slide[data-id="P079"] .mat .text { font-size: 25px; line-height: 1.5; margin-bottom: 12px; }
+.slide[data-id="P079"] .mat .file-card { margin-top: auto; padding: 12px 16px; font-size: 22px; gap: 12px; }
+.slide[data-id="P079"] .mat .file-card .ext { font-size: 17px; padding: 4px 8px; }
+</style>
+  <div class="body stack">
+
+    <!-- 四环节底图（本页四个环节都走到，不单独高亮） -->
+    <div class="map334" data-stage="" data-show="stages" data-size="compact">
+      <div class="kicker">4环节</div>
+      <div class="flow">
+        <div class="node"><p>教学设计</p></div>
+        <div class="arr">→</div>
+        <div class="node"><p>课堂实施</p></div>
+        <div class="arr">→</div>
+        <div class="node"><p>教学评价</p></div>
+        <div class="arr">→</div>
+        <div class="node"><p>教师专业发展</p></div>
       </div>
+    </div>
+
+    <div class="cols tight mats">
+
+      <div class="mat reveal">
+        <div class="pic"><div class="slot" data-kind="doc"><div class="placeholder"></div></div></div>
+        <div class="label">设计：方案包</div>
+        <p class="text">任务链、材料清单、量规、告知书和前后测方案成套交付，先定下目标和交付物。</p>
+        <a class="file-card" href="assets/docs/D05/"><span class="ext">DOCX</span><span class="fname">《科学护眼》方案包五件套</span></a>
+      </div>
+
+      <div class="mat reveal">
+        <div class="pic"><img src="assets/img/guanglu_jinshi_vs_daijing.png" alt="眼球成像光路模拟器：近视与近视戴镜矫正两种光路对照"></div>
+        <div class="label">实施：模拟器</div>
+        <p class="text">眼球成像光路模拟器用可控光路帮助比较成像条件；实物观察和小组讨论仍然进行。</p>
+        <a class="file-card" href="assets/tools/yanqiu_guanglu.html"><span class="ext">HTML</span><span class="fname">眼球成像光路模拟器</span></a>
+      </div>
+
+      <div class="mat reveal">
+        <div class="pic"><div class="slot" data-kind="doc"><div class="placeholder"></div></div></div>
+        <div class="label">评价：量规</div>
+        <p class="text">作品量规与前后测方案衔接，让作品与过程有共同的评价依据。</p>
+        <a class="file-card" href="assets/docs/D05/3.《科学护眼》评价量规（作品量规＋过程量规）.docx"><span class="ext">DOCX</span><span class="fname">《科学护眼》评价量规</span></a>
+      </div>
+
+      <div class="mat reveal">
+        <div class="pic"><div class="slot" data-kind="doc"><div class="placeholder"></div></div></div>
+        <div class="label">教师专业发展：周报</div>
+        <p class="text">项目指令与周报把持续背景和阶段进展留下来，供下一轮教学使用。</p>
+        <a class="file-card" href="assets/docs/D12/周报草稿_实测输出样例.md"><span class="ext">MD</span><span class="fname">科学护眼·周报草稿样例</span></a>
+      </div>
+
     </div>
   </div>
 <!-- BODY:END -->
@@ -4100,74 +4600,119 @@
   <div class="foot">设备按任务选择，可以使用现有设备与共用终端。</div>
   <aside class="notes">【停讲】讲述时依次说明：学生操作、观察并留下纸质记录，形成可讨论的原始材料。 把需要整理的记录数字化，保留原图与采集条件。 核对、汇总数字材料，让全班能够共同读取和讨论。 依据讨论结果修改装置、补充观察或完成下一次任务。
     作用：说明实物、采集、整理与投屏之间的连接路径。
-    资源：<a href="../19_逐页内容脚本/资源预览/S12.html">S12 错题扫描仪</a> <a href="assets/docs/S12/03_错题扫描仪.html">素材入口</a> <a href="../19_逐页内容脚本/资源预览/D04.html">D04 天气观测派活：两份Word</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/2.3_天气观测派活" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D04/天气观测活动安排（三年级）.docx">天气观测活动安排（三年级）.docx</a> <a href="assets/docs/D04/学生两周天气记录表.docx">学生两周天气记录表.docx</a></aside>
+    资源：<a href="../19_逐页内容脚本/资源预览/S12.html">S12 错题扫描仪</a> <a href="assets/docs/S12/03_错题扫描仪.html">素材入口</a> <a href="../19_逐页内容脚本/资源预览/D04.html">D04 天气观测派活：两份Word</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/2.3_天气观测派活" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D04/天气观测活动安排（三年级）.docx">天气观测活动安排（三年级）.docx</a> <a href="assets/docs/D04/学生两周天气记录表.docx">学生两周天气记录表.docx</a>
+    演示前提：这一环的采集要用错题扫描仪，它是单文件 assets/tools/cuoti_saomiao.html，浏览器直接打开。它的 OCR 依赖首次联网下载模型，会场网络不确定，务必在前一晚先打开一次让浏览器缓存模型。它只提取文字，不诊断错因、不生成变式题，讲这一页时不要越界。现场要准备一张真实的纸质记录照片放在本机上，不靠手机临时传图。万一识别跑不起来，就播放 demo_cuoti.mp4，或直接用 P087 页面上的识别文本示例把这一环说完。</aside>
 </section>
 
 <!-- ═══════════════ P087 一张纸质实验记录，怎样进入AI流程？ ═══════════════ -->
-<section class="slide" data-id="P087" data-title="一张纸质实验记录，怎样进入AI流程？" data-module="10 回到真实学习：实物、终端与伦理" data-stage="" data-kind="主线" data-template="T06" data-status="draft">
+<section class="slide" data-id="P087" data-title="一张纸质实验记录，怎样进入AI流程？" data-module="10 回到真实学习：实物、终端与伦理" data-stage="" data-kind="主线" data-template="T18" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>10</b><span class="on">回到真实学习：实物、终端与伦理</span></div>
     <span class="pid">P087</span>
   </div>
-  <h2 class="title">一张纸质实验记录，怎样进入AI流程？</h2>
-  <p class="sub reveal-none">先把三问说具体</p>
+  <h2 class="title sm">一张纸质实验记录，怎样进入AI流程？</h2>
+  <p class="sub reveal-none">保留原图，再核对小数点、单位和空白格。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="grid-2" style="gap:28px">
-    <div class="card reveal">
-      <div class="label"><span class="num">01</span>教师问题</div>
-      <p style="font-size:30px;line-height:1.6">怎样把一张写满数据的纸质实验记录，变成可核对、可反馈的数字记录？</p>
-    </div>
-    <div class="card reveal">
-      <div class="label"><span class="num">02</span>我想得到什么</div>
-      <p style="font-size:30px;line-height:1.6">发现记录中的缺项、单位和可疑数据，不直接诊断错因。</p>
-    </div>
-    <div class="card reveal">
-      <div class="label"><span class="num">03</span>AI需要扮演什么角色</div>
-      <p style="font-size:30px;line-height:1.6">先做文字提取和整理，再按教师要求提示需要核对的位置。</p>
-    </div>
-    <div class="card reveal">
-      <div class="label"><span class="num">04</span>能提供什么上下文</div>
-      <p style="font-size:30px;line-height:1.6">纸表原图、题目要求、实验条件、单位和已核对范围。</p>
+  <div class="body">
+    <div class="flash">
+
+      <!-- 左 60%：三行对照表（原记录 → 识别文本 → 核对后）＋ 判断 -->
+      <div class="stack">
+        <div class="card">
+          <div class="label">原记录</div>
+          <p class="text">第1次：<span class="fix">12.8秒</span>；第2次：空白。旁注：计时按晚了。</p>
+        </div>
+        <div class="card">
+          <div class="label">识别文本示例</div>
+          <p class="text">第1次：<span class="diff">128</span>；第2次：空白。旁注未被识别。</p>
+        </div>
+        <div class="card">
+          <div class="label">核对后的记录</div>
+          <p class="text">第1次：<span class="fix">12.8秒</span>；第2次：保留空白。补回旁注，并链接原图。</p>
+        </div>
+        <div class="takeaway"><span class="tag">判断</span><span>不能自动把缺测补成平均值，也不能丢掉会影响解释的旁注。</span></div>
+      </div>
+
+      <!-- 右 40%：紧凑卡，五块竖排，整页一次出（不分步） -->
+      <div class="flash-card">
+        <div class="row">
+          <div class="label">典型需求</div>
+          <p class="text">怎样把一张写满数据的纸质实验记录，变成可核对、可反馈的数字记录？</p>
+        </div>
+        <div class="row">
+          <div class="label">① 要解决什么问题（目标设定）</div>
+          <p class="text">发现记录中的缺项、单位和可疑数据，不直接诊断错因。</p>
+        </div>
+        <div class="row">
+          <div class="label">② 最终成功标准是什么（验收标准）</div>
+          <p class="text">每条疑点都能回到原图位置；学生能对照原图确认或更正自己的记录。</p>
+        </div>
+        <div class="row">
+          <div class="label">③ 如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">纸表原图、题目要求、实验条件、单位和已核对范围。</p>
+        </div>
+        <div class="row cap">
+          <div class="label">所以用到</div>
+          <p class="text">连通管道：先做文字提取和整理，再按教师要求提示需要核对的位置。</p>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
+  <div class="foot">新编模拟填写与识别误差，不是真实学生记录或OCR实测输出。</div>
   <aside class="notes">【停讲】讲述时依次说明：怎样把一张写满数据的纸质实验记录，变成可核对、可反馈的数字记录？ 发现记录中的缺项、单位和可疑数据，不直接诊断错因。 先做文字提取和整理，再按教师要求提示需要核对的位置。 纸表原图、题目要求、实验条件、单位和已核对范围。
     作用：用三问任务卡说明纸表数字化怎样委托。
-    资源：<a href="../19_逐页内容脚本/资源预览/D02.html">D02 摆的秘密：实验全案三件</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.2_摆的秘密实验全案" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D02/摆的秘密-分组实验记录表.docx">摆的秘密-分组实验记录表.docx</a> <a href="assets/docs/D02/摆的秘密-教师完整方案.docx">摆的秘密-教师完整方案.docx</a> <a href="assets/docs/D02/摆的秘密-评析活动材料（含教师对照清单）.docx">摆的秘密-评析活动材料（含教师对照清单）.docx</a> <a href="../19_逐页内容脚本/资源预览/S12.html">S12 错题扫描仪</a> <a href="assets/docs/S12/03_错题扫描仪.html">素材入口</a></aside>
+    资源：<a href="../19_逐页内容脚本/资源预览/D02.html">D02 摆的秘密：实验全案三件</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.2_摆的秘密实验全案" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D02/摆的秘密-分组实验记录表.docx">摆的秘密-分组实验记录表.docx</a> <a href="assets/docs/D02/摆的秘密-教师完整方案.docx">摆的秘密-教师完整方案.docx</a> <a href="assets/docs/D02/摆的秘密-评析活动材料（含教师对照清单）.docx">摆的秘密-评析活动材料（含教师对照清单）.docx</a> <a href="../19_逐页内容脚本/资源预览/S12.html">S12 错题扫描仪</a> <a href="assets/docs/S12/03_错题扫描仪.html">素材入口</a>
+    演示前提：错题扫描仪是单文件 assets/tools/cuoti_saomiao.html，直接用浏览器打开即可。它的 OCR 依赖首次联网下载模型，会场网络不确定，务必在前一晚先打开一次，让浏览器把模型缓存下来。它只提取文字，不诊断错因、不生成变式题，讲解时不要越界。现场要准备一张真实的纸质记录照片放在本机上，不靠手机临时传图。万一识别跑不起来，就播放 demo_cuoti.mp4，或直接用本页的识别文本示例把话讲完。</aside>
 </section>
 
 <!-- ═══════════════ P089 哪些必须亲历，哪些值得数字化？ ═══════════════ -->
-<section class="slide" data-id="P089" data-title="哪些必须亲历，哪些值得数字化？" data-module="10 回到真实学习：实物、终端与伦理" data-stage="" data-kind="主线" data-template="T06" data-status="draft">
+<section class="slide" data-id="P089" data-title="哪些必须亲历，哪些值得数字化？" data-module="10 回到真实学习：实物、终端与伦理" data-stage="" data-kind="主线" data-template="T17" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>10</b><span class="on">回到真实学习：实物、终端与伦理</span></div>
     <span class="pid">P089</span>
   </div>
-  <h2 class="title">哪些必须亲历，哪些值得数字化？</h2>
-  <p class="sub reveal-none">回到三问做取舍</p>
+  <h2 class="title sm">哪些必须亲历，哪些值得数字化？</h2>
+  <p class="sub reveal-none">回到三问做取舍。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="grid-2" style="gap:28px">
-    <div class="card reveal">
-      <div class="label"><span class="num">01</span>我想得到什么</div>
-      <p style="font-size:30px;line-height:1.6">让学生用自己的操作与记录说明判断，而不只是获得一份整齐的答案。</p>
-    </div>
-    <div class="card reveal">
-      <div class="label"><span class="num">02</span>AI需要扮演什么角色</div>
-      <p style="font-size:30px;line-height:1.6">协助整理证据、生成初稿或追问理由；教师与学生保留选择和解释。</p>
-    </div>
-    <div class="card reveal">
-      <div class="label"><span class="num">03</span>我能提供什么上下文</div>
-      <p style="font-size:30px;line-height:1.6">提供必要的原图、任务要求、测量条件和核对范围。</p>
-    </div>
-    <div class="card reveal">
-      <div class="label"><span class="num">04</span>怎样取舍</div>
-      <p style="font-size:30px;line-height:1.6">由教师根据学习目标选择采集范围，学生参与确认自己的记录。</p>
+  <div class="body">
+    <div class="casecard">
+
+      <!-- 中栏：三问逐问揭示 -->
+      <div class="cc-qs">
+        <div class="cc-q reveal" data-step="1">
+          <div class="cc-num">①</div>
+          <div class="label">要解决什么问题（目标设定）</div>
+          <p class="text">让学生用自己的操作与记录说明判断，而不只是获得一份整齐的答案。</p>
+        </div>
+        <div class="cc-q reveal" data-step="2">
+          <div class="cc-num">②</div>
+          <div class="label">最终成功标准是什么（验收标准）</div>
+          <p class="text">数字化后的记录仍然能回到原图；学生说明判断时，引用的是自己的记录。</p>
+        </div>
+        <div class="cc-q reveal" data-step="3">
+          <div class="cc-num">③</div>
+          <div class="label">如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">提供必要的原图、任务要求、测量条件和核对范围。</p>
+        </div>
+      </div>
+
+      <!-- 底栏两行：所以用到 ＋ 怎样取舍（三问说完再出结论） -->
+      <div class="cc-caps reveal" data-step="4">
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到</span></div>
+          <p class="text">连通管道：整理证据；内容生成：形成初稿；角色扮演：追问理由。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">怎样取舍</span></div>
+          <p class="text">由教师根据学习目标选择采集范围，学生参与确认自己的记录。</p>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
   <aside class="notes">【停讲】讲述时依次说明：让学生用自己的操作与记录说明判断，而不只是获得一份整齐的答案。 协助整理证据、生成初稿或追问理由；教师与学生保留选择和解释。 提供必要的原图、任务要求、测量条件和核对范围。 由教师根据学习目标选择采集范围，学生参与确认自己的记录。
     作用：用三问回扣亲历与数字化的取舍。</aside>
 </section>
@@ -4185,8 +4730,8 @@
   <div class="cols" style="align-items:center">
     <div style="flex:0 0 32%;min-width:0">
       <div class="fig" style="max-height:460px">
-        <div class="pic"><div class="placeholder"></div></div>
-        <figcaption class="caption">示意图</figcaption>
+        <div class="pic"><img src="assets/img/cap_guanchatai_optin.png" alt=""></div>
+        <figcaption class="caption">参与者进入时的选择界面（演示环境）</figcaption>
       </div>
     </div>
     <div style="flex:1 1 0;min-width:0">
@@ -5635,6 +6180,7 @@
 <script src="config.js"></script>
 <script src="components/qrcode.min.js"></script>
 <script src="components/map433.js"></script>
+<script src="components/map334.js"></script>
 <script src="components/cycle.js"></script>
 <script src="deck.js"></script>
 </body>
