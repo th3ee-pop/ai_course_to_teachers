@@ -4,7 +4,7 @@
      anim=null
      note=三个生活场景（图标库 01_AI与科技、06_生活方式）→ 漏斗 → 一个标签，内联 SVG，分步出现。
  -->
-<section class="slide" data-id="P003A" data-title="以前的AI：从丰富到具体" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+<section class="slide" data-id="P003A" data-title="以前的AI：从丰富到具体" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P003A</span>
@@ -12,11 +12,85 @@
   <h2 class="title">以前的AI：从丰富到具体</h2>
   <p class="sub reveal-none">人脸识别、视频推送、天气预测，做的都是同一件事：判断。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">人脸识别</div><p class="text">输入一张脸上的无数细节，输出一个答案：这是谁。</p></div>
-    <div class="reveal"><div class="label">视频推送</div><p class="text">输入你的观看记录，输出一个判断：下一条推什么。</p></div>
-    <div class="reveal"><div class="label">天气预测</div><p class="text">输入海量观测数据，输出一个结论：明天下不下雨。</p></div>
-    <div class="reveal"><div class="label">共同点</div><p class="text">它们都是判别式AI，用途单一：把多种输入收束成一个判断。</p></div>
+  <style>
+  .slide[data-id="P003A"] > .title { margin-top:24px; }
+  .slide[data-id="P003A"] > .body { margin-top:26px; }
+  .slide[data-id="P003A"] .p3a { display:flex; gap:56px; align-items:stretch; flex:1 1 auto; min-height:0; }
+  .slide[data-id="P003A"] .p3a-fig { flex:1 1 62%; min-width:0; position:relative; display:flex; }
+  .slide[data-id="P003A"] .p3a-fig svg { width:100%; height:100%; }
+  .slide[data-id="P003A"] .p3a-txt { flex:0 0 620px; display:flex; flex-direction:column; justify-content:center; gap:30px; }
+  .slide[data-id="P003A"] .p3a-txt .label { margin-bottom:8px; }
+  .slide[data-id="P003A"] .p3a-txt .text { font-size:28px; line-height:1.66; }
+  .slide[data-id="P003A"] .p3a-txt .p3a-sum { padding-top:26px; border-top:2px solid var(--accent); }
+  .slide[data-id="P003A"] svg .reveal { transform:none; }
+  .slide[data-id="P003A"] .sv-card { fill:#ffffff; stroke:var(--divider); stroke-width:1.5; }
+  .slide[data-id="P003A"] .sv-lab { font-family:var(--font-sans); font-size:32px; fill:var(--text); }
+  .slide[data-id="P003A"] .sv-ico { fill:var(--accent-dark); }
+  .slide[data-id="P003A"] .sv-ico-l { fill:none; stroke:var(--accent-dark); stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+  .slide[data-id="P003A"] .sv-out { font-family:var(--font-serif); font-weight:700; }
+  .slide[data-id="P003A"] .sv-arr { stroke:var(--accent); stroke-width:4; fill:none; }
+  </style>
+  <div class="body">
+    <div class="p3a">
+      <div class="p3a-fig">
+        <svg viewBox="0 0 1020 650" preserveAspectRatio="xMidYMid meet" role="img" aria-label="三个生活场景经过漏斗收束为一个判断">
+          <defs>
+            <marker id="p3a-ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L12 6 L0 12 Z" fill="#5980a6"></path>
+            </marker>
+            <marker id="p3a-ah2" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L12 6 L0 12 Z" fill="#416180"></path>
+            </marker>
+          </defs>
+
+          <g class="reveal" data-step="1">
+            <rect class="sv-card" x="6" y="44" width="310" height="132" rx="2"></rect>
+            <g transform="translate(36,78)">
+              <path class="sv-ico-l" d="M2 22 L2 6 L18 6 M62 6 L78 6 L78 22 M78 44 L78 60 L62 60 M18 60 L2 60 L2 44"></path>
+              <circle class="sv-ico-l" cx="40" cy="30" r="17"></circle>
+              <circle class="sv-ico" cx="34" cy="26" r="3.2"></circle>
+              <circle class="sv-ico" cx="46" cy="26" r="3.2"></circle>
+              <path class="sv-ico-l" d="M33 37 Q40 42 47 37"></path>
+            </g>
+            <text class="sv-lab" x="146" y="122">人脸识别</text>
+            <path class="sv-arr" marker-end="url(#p3a-ah)" d="M324 110 L424 144"></path>
+          </g>
+
+          <g class="reveal" data-step="2">
+            <rect class="sv-card" x="6" y="259" width="310" height="132" rx="2"></rect>
+            <g transform="translate(46,291)">
+              <rect class="sv-ico-l" x="2" y="2" width="58" height="64" rx="7"></rect>
+              <path class="sv-ico" d="M24 20 L46 34 L24 48 Z"></path>
+            </g>
+            <text class="sv-lab" x="146" y="337">视频推送</text>
+            <path class="sv-arr" marker-end="url(#p3a-ah)" d="M324 325 L424 325"></path>
+          </g>
+
+          <g class="reveal" data-step="3">
+            <rect class="sv-card" x="6" y="474" width="310" height="132" rx="2"></rect>
+            <g transform="translate(34,500)">
+              <path class="sv-ico" d="M26 14 a22 22 0 0 1 42 6 a16 16 0 0 1 -3 32 L26 52 a19 19 0 0 1 0 -38 Z"></path>
+              <path class="sv-ico-l" d="M30 66 L24 80 M50 66 L44 80 M70 66 L64 80"></path>
+            </g>
+            <text class="sv-lab" x="146" y="552">天气预测</text>
+            <path class="sv-arr" marker-end="url(#p3a-ah)" d="M324 540 L424 506"></path>
+          </g>
+
+          <g class="reveal" data-step="4">
+            <path d="M432 58 L702 268 L776 268 L776 382 L702 382 L432 592 Z" fill="#dfe9f3" stroke="#5980a6" stroke-width="2.5" stroke-linejoin="round"></path>
+            <path class="sv-arr" stroke="#416180" marker-end="url(#p3a-ah2)" d="M784 325 L856 325"></path>
+            <rect x="862" y="262" width="152" height="126" fill="#416180"></rect>
+            <text x="938" y="343" text-anchor="middle"class="sv-out" font-size="46" fill="#ffffff">判断</text>
+          </g>
+        </svg>
+      </div>
+      <div class="p3a-txt">
+        <div class="reveal" data-step="1"><div class="label">人脸识别</div><p class="text">输入一张脸上的无数细节，输出一个答案：这是谁。</p></div>
+        <div class="reveal" data-step="2"><div class="label">视频推送</div><p class="text">输入你的观看记录，输出一个判断：下一条推什么。</p></div>
+        <div class="reveal" data-step="3"><div class="label">天气预测</div><p class="text">输入海量观测数据，输出一个结论：明天下不下雨。</p></div>
+        <div class="reveal p3a-sum" data-step="4"><div class="label">共同点</div><p class="text">它们都是判别式AI，用途单一：把多种输入收束成一个判断。</p></div>
+      </div>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">示意图；三个例子为生活中常见的判别式AI。</div>

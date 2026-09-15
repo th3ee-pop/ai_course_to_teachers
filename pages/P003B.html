@@ -4,7 +4,7 @@
      anim=null
      note=一个输入扇形展开成多种产物（内联 SVG）；分步显示，最后一步画面只剩"LLM"大字。
  -->
-<section class="slide" data-id="P003B" data-title="生成式AI：从具体到丰富" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+<section class="slide" data-id="P003B" data-title="生成式AI：从具体到丰富" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P003B</span>
@@ -12,12 +12,79 @@
   <h2 class="title">生成式AI：从具体到丰富</h2>
   <p class="sub reveal-none">反过来：一句话进去，文章、图片、代码、视频出来。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">一句话输入</div><p class="text">“做一个能改变地轴倾角的四季模型。”</p></div>
-    <div class="reveal"><div class="label">展开成</div><p class="text">文档、图片、代码、视频、交互页……形式由需求决定。</p></div>
-    <div class="reveal"><div class="label">逻辑反转</div><p class="text">判别式AI把丰富的输入收成一个判断；生成式AI把一个要求展开成丰富的产物。</p></div>
-    <div class="reveal"><div class="label">由此出现的可能</div><p class="text">凡是能用语言说清楚的东西，都可以试着让它生成。</p></div>
-    <div class="reveal"><div class="label">背后的基础</div><p class="text">生成式AI的背后，是大语言模型（LLM）。</p></div>
+  <style>
+  .slide[data-id="P003B"] > .title { margin-top:24px; }
+  .slide[data-id="P003B"] > .body { margin-top:26px; }
+  .slide[data-id="P003B"] .p3b { display:flex; gap:52px; align-items:stretch; flex:1 1 auto; min-height:0; }
+  .slide[data-id="P003B"] .p3b-fig { flex:1 1 auto; min-width:0; position:relative; display:flex; align-items:stretch; gap:0; }
+  .slide[data-id="P003B"] .p3b-txt { flex:0 0 556px; display:flex; flex-direction:column; justify-content:center; gap:22px; }
+  .slide[data-id="P003B"] .p3b-txt .label { margin-bottom:6px; }
+  .slide[data-id="P003B"] .p3b-txt .text { font-size:26px; line-height:1.68; }
+  .slide[data-id="P003B"] .p3b-in { flex:0 0 300px; align-self:center; border:2px solid var(--accent); background:#fff; padding:28px 30px; box-sizing:border-box; }
+  .slide[data-id="P003B"] .p3b-in p { font-family:var(--font-serif); font-weight:700; font-size:30px; line-height:1.55; color:var(--accent-dark); }
+  .slide[data-id="P003B"] .p3b-mid { flex:0 0 190px; align-self:stretch; }
+  .slide[data-id="P003B"] .p3b-mid svg { width:100%; height:100%; display:block; }
+  .slide[data-id="P003B"] .p3b-out { flex:1 1 auto; display:flex; flex-direction:column; gap:0; min-width:0; }
+  .slide[data-id="P003B"] .p3b-card { flex:1 1 0; min-height:0; margin:11px 0; display:flex; align-items:center; gap:24px; padding:0 26px; border:1px solid var(--divider); background:#fff; }
+  .slide[data-id="P003B"] .p3b-card svg { flex:0 0 46px; width:46px; height:46px; }
+  .slide[data-id="P003B"] .p3b-card span { font-size:30px; color:var(--text); }
+  .slide[data-id="P003B"] .p3b-llm { position:absolute; inset:0; z-index:3; background:var(--bg); display:flex; align-items:center; justify-content:center; }
+  .slide[data-id="P003B"] .p3b-llm .big { font-size:230px; color:var(--accent-dark); }
+  .slide[data-id="P003B"] .ic { fill:none; stroke:var(--accent-dark); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+  .slide[data-id="P003B"] .icf { fill:var(--accent-dark); }
+  </style>
+  <div class="body">
+    <div class="p3b">
+      <div class="p3b-fig">
+        <div class="p3b-in reveal" data-step="1"><p>“做一个能改变地轴倾角的四季模型。”</p></div>
+        <div class="p3b-mid reveal" data-step="2">
+          <svg viewBox="0 0 190 620" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <marker id="p3b-ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0 0 L12 6 L0 12 Z" fill="#5980a6"></path>
+              </marker>
+            </defs>
+            <g fill="none" stroke="#5980a6" stroke-width="3" marker-end="url(#p3b-ah)">
+              <path d="M4 310 C 90 310, 90 62, 176 62"></path>
+              <path d="M4 310 C 90 310, 90 186, 176 186"></path>
+              <path d="M4 310 L176 310"></path>
+              <path d="M4 310 C 90 310, 90 434, 176 434"></path>
+              <path d="M4 310 C 90 310, 90 558, 176 558"></path>
+            </g>
+          </svg>
+        </div>
+        <div class="p3b-out reveal" data-step="2">
+          <div class="p3b-card">
+            <svg viewBox="0 0 48 48"><path class="ic" d="M12 4 h18 l8 8 v32 H12 Z"></path><path class="ic" d="M30 4 v8 h8"></path><path class="ic" d="M18 22 h14 M18 30 h14 M18 38 h9"></path></svg>
+            <span>文档</span>
+          </div>
+          <div class="p3b-card">
+            <svg viewBox="0 0 48 48"><rect class="ic" x="6" y="10" width="36" height="28"></rect><circle class="icf" cx="16" cy="20" r="3.5"></circle><path class="icf" d="M10 38 L21 25 L28 33 L33 28 L40 38 Z"></path></svg>
+            <span>图片</span>
+          </div>
+          <div class="p3b-card">
+            <svg viewBox="0 0 48 48"><path class="ic" d="M17 14 L6 24 L17 34"></path><path class="ic" d="M31 14 L42 24 L31 34"></path><path class="ic" d="M27 10 L21 38"></path></svg>
+            <span>代码</span>
+          </div>
+          <div class="p3b-card">
+            <svg viewBox="0 0 48 48"><rect class="ic" x="5" y="11" width="28" height="26" rx="3"></rect><path class="icf" d="M43 14 L34 20 L34 28 L43 34 Z"></path><path class="icf" d="M16 17 L26 24 L16 31 Z"></path></svg>
+            <span>视频</span>
+          </div>
+          <div class="p3b-card">
+            <svg viewBox="0 0 48 48"><rect class="ic" x="5" y="8" width="38" height="32" rx="2"></rect><path class="icf" d="M5 8 h38 v8 H5 Z"></path><path class="ic" d="M12 24 h12 M12 32 h8"></path><rect class="ic" x="29" y="23" width="11" height="10"></rect></svg>
+            <span>交互页</span>
+          </div>
+        </div>
+        <div class="p3b-llm reveal fade" data-step="5"><span class="big cond">LLM</span></div>
+      </div>
+      <div class="p3b-txt">
+        <div class="reveal" data-step="1"><div class="label">一句话输入</div><p class="text">“做一个能改变地轴倾角的四季模型。”</p></div>
+        <div class="reveal" data-step="2"><div class="label">展开成</div><p class="text">文档、图片、代码、视频、交互页……形式由需求决定。</p></div>
+        <div class="reveal" data-step="3"><div class="label">逻辑反转</div><p class="text">判别式AI把丰富的输入收成一个判断；生成式AI把一个要求展开成丰富的产物。</p></div>
+        <div class="reveal" data-step="4"><div class="label">由此出现的可能</div><p class="text">凡是能用语言说清楚的东西，都可以试着让它生成。</p></div>
+        <div class="reveal" data-step="5" style="padding-top:22px;border-top:2px solid var(--accent)"><div class="label">背后的基础</div><p class="text">生成式AI的背后，是大语言模型（LLM）。</p></div>
+      </div>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">示意图；示例输入为教学示例。</div>
