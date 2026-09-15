@@ -4,7 +4,7 @@
      anim=null
      note=assets/pov_01_wanglushan.png 首图＋其分镜文字一段，"文字 → 图"并排。
  -->
-<section class="slide" data-id="P011C" data-title="图片和视频，也能由文字驱动" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="skeleton">
+<section class="slide" data-id="P011C" data-title="图片和视频，也能由文字驱动" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
     <span class="pid">P011C</span>
@@ -12,12 +12,95 @@
   <h2 class="title">图片和视频，也能由文字驱动</h2>
   <p class="sub reveal-none">一段谨慎的原理说明。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">文字与图像对齐</div><p class="text">模型在大量“图—文”配对中学习，把文字和画面放进同一个表示空间。</p></div>
-    <div class="reveal"><div class="label">从噪声到图像</div><p class="text">生成模型按文字条件，把一片噪声逐步还原成一幅图。</p></div>
-    <div class="reveal"><div class="label">视频</div><p class="text">按同样的条件连续生成多帧画面，再拼成视频片段。</p></div>
-    <div class="reveal"><div class="label">与LLM的关系</div><p class="text">由语言模型理解需求、组织描述，再驱动图像与视频模型输出。</p></div>
-    <div class="reveal"><div class="label">这意味着</div><p class="text">一段分镜文字，就能变成课堂上可供讨论的画面。</p></div>
+  <style>
+  .slide[data-id="P011C"] .body { gap: 48px; align-items: stretch; }
+  .slide[data-id="P011C"] .colL { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 22px; justify-content: center; }
+  .slide[data-id="P011C"] .schem { flex: 0 0 auto; }
+  .slide[data-id="P011C"] .schem svg { display: block; width: 100%; height: auto; }
+  .slide[data-id="P011C"] .pair { flex: 0 0 auto; display: flex; align-items: stretch; gap: 24px; height: 318px; }
+  .slide[data-id="P011C"] .pair .note { flex: 0 0 330px; border: 1px dashed var(--muted-3); background: var(--surface); display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 22px 26px; box-sizing: border-box; }
+  .slide[data-id="P011C"] .pair .note .label { margin-bottom: 0; }
+  .slide[data-id="P011C"] .pair .note .ph { font-size: 26px; line-height: 1.6; color: var(--muted); }
+  .slide[data-id="P011C"] .pair .shot { flex: 1 1 0; min-width: 0; position: relative; border: 1px solid var(--divider); background: var(--surface); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .slide[data-id="P011C"] .pair .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slide[data-id="P011C"] .pair .corner-tag { right: 12px; top: 10px; }
+  .slide[data-id="P011C"] .pair .tag { background: rgba(29,45,61,.72); border-color: rgba(255,255,255,.55); color: #fff; }
+  .slide[data-id="P011C"] .colR { flex: 0 0 640px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+  .slide[data-id="P011C"] .colR .label { margin-bottom: 6px; }
+  .slide[data-id="P011C"] .colR .text { font-size: 28px; line-height: 1.55; }
+  </style>
+
+  <div class="body cols">
+    <div class="colL">
+      <div class="schem reveal" data-step="2"><svg viewBox="0 0 952 250" role="img" aria-label="从文字到图像与视频的示意">
+  <defs>
+    <marker id="p11c-ar" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#5980a6"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#c9cfd6">
+    <rect x="0.5" y="8.5" width="189" height="117" fill="#f7f9fb"/>
+    <rect x="254.5" y="8.5" width="189" height="117" fill="#f7f9fb"/>
+    <rect x="508.5" y="8.5" width="189" height="117" fill="#f7f9fb"/>
+    <rect x="762.5" y="8.5" width="189" height="117" fill="#f7f9fb"/>
+  </g>
+  <g font-family="Noto Sans SC, sans-serif" font-size="26" fill="#416180">
+    <text x="16" y="40">文字</text>
+    <text x="270" y="40">表示空间</text>
+    <text x="524" y="40">逐步还原</text>
+    <text x="778" y="40">图像</text>
+  </g>
+  <g stroke="#5980a6" stroke-width="2.4" marker-end="url(#p11c-ar)">
+    <line x1="196" y1="70" x2="246" y2="70"/>
+    <line x1="450" y1="70" x2="500" y2="70"/>
+    <line x1="704" y1="70" x2="754" y2="70"/>
+    <line x1="857" y1="128" x2="857" y2="156"/>
+  </g>
+  <g fill="#c3ccd4">
+    <rect x="18" y="58" width="154" height="10" rx="5"/>
+    <rect x="18" y="78" width="126" height="10" rx="5"/>
+    <rect x="18" y="98" width="148" height="10" rx="5"/>
+  </g>
+  <g>
+    <circle cx="292" cy="72" r="8" fill="#5980a6"/><rect x="306" y="64" width="16" height="16" fill="#c08a63"/>
+    <circle cx="348" cy="98" r="8" fill="#5980a6"/><rect x="362" y="90" width="16" height="16" fill="#c08a63"/>
+    <circle cx="384" cy="62" r="8" fill="#5980a6"/><rect x="398" y="54" width="16" height="16" fill="#c08a63"/>
+    <g stroke="#98989b" stroke-width="1.4" stroke-dasharray="4 4" fill="none">
+      <line x1="300" y1="72" x2="306" y2="72"/><line x1="356" y1="98" x2="362" y2="98"/><line x1="392" y1="62" x2="398" y2="62"/>
+    </g>
+  </g>
+  <g>
+    <rect x="522" y="56" width="44" height="44" fill="#eef1f4"/><circle cx="537.3" cy="64.7" r="1.9" fill="#8d97a1"/><circle cx="549.7" cy="61.8" r="1.9" fill="#8d97a1"/><circle cx="545.4" cy="72.9" r="1.9" fill="#8d97a1"/><circle cx="527.2" cy="78.3" r="1.9" fill="#8d97a1"/><circle cx="526.4" cy="75.5" r="1.9" fill="#8d97a1"/><circle cx="527.7" cy="62.4" r="1.9" fill="#8d97a1"/><circle cx="541.1" cy="90.4" r="1.9" fill="#8d97a1"/><circle cx="529.7" cy="67.5" r="1.9" fill="#8d97a1"/><circle cx="548.8" cy="95.0" r="1.9" fill="#8d97a1"/><circle cx="546.9" cy="74.1" r="1.9" fill="#8d97a1"/><circle cx="562.1" cy="60.8" r="1.9" fill="#8d97a1"/><circle cx="557.6" cy="70.0" r="1.9" fill="#8d97a1"/><circle cx="530.5" cy="63.5" r="1.9" fill="#8d97a1"/><circle cx="536.7" cy="90.0" r="1.9" fill="#8d97a1"/><circle cx="531.9" cy="81.1" r="1.9" fill="#8d97a1"/><circle cx="549.3" cy="73.2" r="1.9" fill="#8d97a1"/><circle cx="545.8" cy="61.4" r="1.9" fill="#8d97a1"/><circle cx="527.3" cy="66.8" r="1.9" fill="#8d97a1"/><circle cx="550.9" cy="75.2" r="1.9" fill="#8d97a1"/><circle cx="536.9" cy="81.3" r="1.9" fill="#8d97a1"/><circle cx="542.2" cy="70.4" r="1.9" fill="#8d97a1"/><circle cx="555.2" cy="85.6" r="1.9" fill="#8d97a1"/><circle cx="534.3" cy="80.8" r="1.9" fill="#8d97a1"/><circle cx="545.0" cy="92.3" r="1.9" fill="#8d97a1"/><circle cx="552.7" cy="69.9" r="1.9" fill="#8d97a1"/><circle cx="562.2" cy="63.5" r="1.9" fill="#8d97a1"/><circle cx="540.9" cy="87.8" r="1.9" fill="#8d97a1"/><circle cx="530.8" cy="77.6" r="1.9" fill="#8d97a1"/><circle cx="526.5" cy="84.4" r="1.9" fill="#8d97a1"/><circle cx="554.1" cy="80.8" r="1.9" fill="#8d97a1"/><circle cx="558.3" cy="70.9" r="1.9" fill="#8d97a1"/><circle cx="551.4" cy="81.6" r="1.9" fill="#8d97a1"/><circle cx="547.0" cy="76.3" r="1.9" fill="#8d97a1"/><circle cx="556.9" cy="94.9" r="1.9" fill="#8d97a1"/><circle cx="543.0" cy="84.2" r="1.9" fill="#8d97a1"/><circle cx="527.3" cy="85.7" r="1.9" fill="#8d97a1"/><circle cx="549.6" cy="96.7" r="1.9" fill="#8d97a1"/><circle cx="556.2" cy="69.8" r="1.9" fill="#8d97a1"/><circle cx="539.7" cy="84.4" r="1.9" fill="#8d97a1"/><circle cx="525.9" cy="76.5" r="1.9" fill="#8d97a1"/><circle cx="531.4" cy="63.4" r="1.9" fill="#8d97a1"/><circle cx="527.2" cy="88.2" r="1.9" fill="#8d97a1"/><circle cx="529.9" cy="68.4" r="1.9" fill="#8d97a1"/><circle cx="539.9" cy="92.1" r="1.9" fill="#8d97a1"/><circle cx="528.1" cy="76.1" r="1.9" fill="#8d97a1"/><circle cx="545.9" cy="92.6" r="1.9" fill="#8d97a1"/><circle cx="556.1" cy="91.8" r="1.9" fill="#8d97a1"/><circle cx="535.6" cy="74.8" r="1.9" fill="#8d97a1"/><circle cx="538.6" cy="92.6" r="1.9" fill="#8d97a1"/><circle cx="561.4" cy="64.7" r="1.9" fill="#8d97a1"/><circle cx="531.7" cy="67.8" r="1.9" fill="#8d97a1"/><circle cx="533.9" cy="77.4" r="1.9" fill="#8d97a1"/>
+    <rect x="581" y="56" width="44" height="44" fill="#eef1f4"/><circle cx="606.4" cy="69.0" r="1.9" fill="#8d97a1"/><circle cx="584.2" cy="74.9" r="1.9" fill="#8d97a1"/><circle cx="598.0" cy="80.5" r="1.9" fill="#8d97a1"/><circle cx="620.2" cy="85.2" r="1.9" fill="#8d97a1"/><circle cx="603.6" cy="82.5" r="1.9" fill="#8d97a1"/><circle cx="609.7" cy="61.1" r="1.9" fill="#8d97a1"/><circle cx="618.2" cy="88.6" r="1.9" fill="#8d97a1"/><circle cx="617.2" cy="89.3" r="1.9" fill="#8d97a1"/><circle cx="598.9" cy="74.2" r="1.9" fill="#8d97a1"/><circle cx="587.9" cy="83.1" r="1.9" fill="#8d97a1"/><circle cx="586.4" cy="61.6" r="1.9" fill="#8d97a1"/><circle cx="591.9" cy="65.2" r="1.9" fill="#8d97a1"/><circle cx="596.9" cy="61.0" r="1.9" fill="#8d97a1"/><circle cx="584.0" cy="64.7" r="1.9" fill="#8d97a1"/><circle cx="587.9" cy="72.8" r="1.9" fill="#8d97a1"/><circle cx="585.0" cy="92.2" r="1.9" fill="#8d97a1"/>
+    <g opacity="0.45"><rect x="581" y="56" width="44" height="44" fill="#e9eef3"/><circle cx="614" cy="67" r="5" fill="#c9a14a"/><path d="M584 97 L596 74 L605 88 L612 78 L622 97 Z" fill="#7d94a8"/></g>
+    <g opacity="1"><rect x="640" y="56" width="44" height="44" fill="#e9eef3"/><circle cx="673" cy="67" r="5" fill="#c9a14a"/><path d="M643 97 L655 74 L664 88 L671 78 L681 97 Z" fill="#7d94a8"/></g>
+  </g>
+  <g opacity="1"><rect x="838" y="52" width="52" height="52" fill="#e9eef3"/><circle cx="879" cy="63" r="5" fill="#c9a14a"/><path d="M841 101 L853 70 L862 92 L869 74 L887 101 Z" fill="#7d94a8"/></g>
+  <g fill="none" stroke="#c9cfd6"><rect x="610.5" y="160.5" width="341" height="80" fill="#f7f9fb"/></g>
+  <text x="628" y="208" font-family="Noto Sans SC, sans-serif" font-size="26" fill="#416180">视频</text>
+  <g>
+    <g opacity="1"><rect x="706" y="174" width="52" height="52" fill="#e9eef3"/><circle cx="747" cy="185" r="5" fill="#c9a14a"/><path d="M709 223 L721 192 L730 214 L737 196 L755 223 Z" fill="#7d94a8"/></g><g opacity="1"><rect x="764" y="174" width="52" height="52" fill="#e9eef3"/><circle cx="805" cy="185" r="5" fill="#c9a14a"/><path d="M767 223 L779 192 L788 214 L795 196 L813 223 Z" fill="#7d94a8"/></g><g opacity="1"><rect x="822" y="174" width="52" height="52" fill="#e9eef3"/><circle cx="863" cy="185" r="5" fill="#c9a14a"/><path d="M825 223 L837 192 L846 214 L853 196 L871 223 Z" fill="#7d94a8"/></g><g opacity="1"><rect x="880" y="174" width="52" height="52" fill="#e9eef3"/><circle cx="921" cy="185" r="5" fill="#c9a14a"/><path d="M883 223 L895 192 L904 214 L911 196 L929 223 Z" fill="#7d94a8"/></g>
+  </g>
+</svg></div>
+      <div class="pair reveal" data-step="5">
+        <div class="note">
+          <div class="label">分镜文字</div>
+          <div class="ph">【待用户提供：望庐山分镜文字】</div>
+        </div>
+        <div class="shot">
+          <img src="assets/pov_01_wanglushan.png" alt="望庐山画面">
+          <div class="corner-tag"><span class="tag">AI生成试样</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="colR">
+      <div class="reveal" data-step="1"><div class="label">文字与图像对齐</div><p class="text">模型在大量“图—文”配对中学习，把文字和画面放进同一个表示空间。</p></div>
+      <div class="reveal" data-step="2"><div class="label">从噪声到图像</div><p class="text">生成模型按文字条件，把一片噪声逐步还原成一幅图。</p></div>
+      <div class="reveal" data-step="3"><div class="label">视频</div><p class="text">按同样的条件连续生成多帧画面，再拼成视频片段。</p></div>
+      <div class="reveal" data-step="4"><div class="label">与LLM的关系</div><p class="text">由语言模型理解需求、组织描述，再驱动图像与视频模型输出。</p></div>
+      <div class="reveal" data-step="5"><div class="label">这意味着</div><p class="text">一段分镜文字，就能变成课堂上可供讨论的画面。</p></div>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">简化说明，具体实现因模型而异。【待用户把关】</div>

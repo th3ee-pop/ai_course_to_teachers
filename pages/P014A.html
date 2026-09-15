@@ -4,7 +4,7 @@
      anim=null
      note=LLM 大脑＋工具（手）＋执行环境（脚），内联 SVG。
  -->
-<section class="slide" data-id="P014A" data-title="Agent：从“说话者”到“实干家”" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+<section class="slide" data-id="P014A" data-title="Agent：从“说话者”到“实干家”" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
     <span class="pid">P014A</span>
@@ -12,11 +12,51 @@
   <h2 class="title">Agent：从“说话者”到“实干家”</h2>
   <p class="sub reveal-none">Agent是LLM的一种增强，让它有手有脚。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">大脑</div><p class="text">LLM负责理解任务、拆分步骤、写出代码与指令。</p></div>
-    <div class="reveal"><div class="label">手</div><p class="text">工具负责执行：读写文件、运行程序、生成文档与页面。</p></div>
-    <div class="reveal"><div class="label">脚</div><p class="text">执行环境让它走到结果：运行、报错、再试。</p></div>
-    <div class="reveal"><div class="label">这意味着</div><p class="text">纯粹的说话者变成了能交付成果的实干家：读你的文件、连你的数据、交出可用的成果。</p></div>
+  <style>
+  .slide[data-id="P014A"] .body { gap: 52px; align-items: center; }
+  .slide[data-id="P014A"] .colL { flex: 1 1 0; min-width: 0; }
+  .slide[data-id="P014A"] .colL svg { display: block; width: 100%; height: auto; }
+  .slide[data-id="P014A"] .colR { flex: 0 0 640px; display: flex; flex-direction: column; gap: 26px; justify-content: center; }
+  .slide[data-id="P014A"] .colR .label { margin-bottom: 10px; }
+  .slide[data-id="P014A"] .colR .text { font-size: 30px; line-height: 1.6; }
+  </style>
+
+  <div class="body cols">
+    <div class="colL reveal" data-step="1"><svg viewBox="0 0 1000 624" role="img" aria-label="大脑、手、脚三部分构成的示意图">
+  <defs>
+    <marker id="p14a-ar" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="6.2" markerHeight="6.2" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#5980a6"/>
+    </marker>
+  </defs>
+  <g stroke="#c9cfd6" fill="#f7f9fb">
+    <rect x="300.5" y="10.5" width="399" height="219" rx="10"/>
+    <rect x="40.5" y="300.5" width="399" height="219" rx="10"/>
+    <rect x="560.5" y="300.5" width="399" height="219" rx="10"/>
+  </g>
+  <g>
+    <image href="assets/img/icons/brain.png" x="340" y="45" width="140" height="140"/>
+    <image href="assets/img/icons/hand.png" x="80" y="335" width="140" height="140"/>
+    <image href="assets/img/icons/runtime.png" x="600" y="335" width="140" height="140"/>
+  </g>
+  <g font-family="Noto Serif SC, serif" font-weight="700" font-size="46" fill="#1d2d3d">
+    <text x="512" y="135">大脑</text>
+    <text x="252" y="425">手</text>
+    <text x="772" y="425">脚</text>
+  </g>
+  <text x="760" y="614" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-size="28" fill="#5d5d60">运行、报错、再试</text>
+  <g stroke="#5980a6" stroke-width="2.6" fill="none" marker-end="url(#p14a-ar)">
+    <path d="M400 232 L240 296"/>
+    <path d="M600 232 L760 296"/>
+    <path d="M445 410 L554 410"/>
+    <path d="M900 524 C 900 578 620 578 620 528"/>
+  </g>
+</svg></div>
+    <div class="colR">
+      <div class="reveal" data-step="1"><div class="label">大脑</div><p class="text">LLM负责理解任务、拆分步骤、写出代码与指令。</p></div>
+      <div class="reveal" data-step="2"><div class="label">手</div><p class="text">工具负责执行：读写文件、运行程序、生成文档与页面。</p></div>
+      <div class="reveal" data-step="3"><div class="label">脚</div><p class="text">执行环境让它走到结果：运行、报错、再试。</p></div>
+      <div class="reveal" data-step="4"><div class="label">这意味着</div><p class="text">纯粹的说话者变成了能交付成果的实干家：读你的文件、连你的数据、交出可用的成果。</p></div>
+    </div>
   </div>
   <!-- BODY:END -->
   <aside class="notes">【停讲】刚才我们看到模型提出操作、由外部程序实际执行，这一页把整个过程收束成一个概念：Agent。可以把Agent理解为给语言模型装上大脑、手和脚：大脑就是LLM，负责理解任务、拆分步骤、写出代码与指令；手是各类外部工具，负责读写文件、运行程序、生成文档与页面；脚是执行环境，让它真的跑起来，报错了再调整重试。这样一来，AI就从纯粹的说话者变成了能交付成果的实干家，能读你的文件、连你的数据、交出可用的成果。这正是三类能力中的连通管道：语言模型通过它接入外部世界。要强调的是，它交付的成果仍需教师验收，不能默认正确。有了手和脚之后还有最后一类能力：给它一个身份，它就按身份回应，下一页我们来看角色扮演。
