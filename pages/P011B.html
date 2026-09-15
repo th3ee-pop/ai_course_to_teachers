@@ -4,7 +4,7 @@
      anim=null
      note=左 docx 解压后的目录树；右 assets/docs/D04/天气观测活动安排（三年级）.docx 解压出的 word/document.xml 真实片段【做页时实际解压截取】。
  -->
-<section class="slide" data-id="P011B" data-title="Word、PPT、Excel，本质也是代码" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="skeleton">
+<section class="slide" data-id="P011B" data-title="Word、PPT、Excel，本质也是代码" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
     <span class="pid">P011B</span>
@@ -12,10 +12,64 @@
   <h2 class="title">Word、PPT、Excel，本质也是代码</h2>
   <p class="sub reveal-none">把一份docx当作压缩包打开，里面是一组XML文件。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">docx里有什么</div><p class="text">解压之后是一组XML文件，其中word/document.xml保存正文。</p></div>
-    <div class="reveal"><div class="label">pptx与xlsx</div><p class="text">同样是XML：幻灯片、单元格、格式，都是一行行标记。</p></div>
-    <div class="reveal"><div class="label">这意味着</div><p class="text">既然能生成代码，就能生成这些文件：教案、记录表、课件都可以由AI直接产出。</p></div>
+  <style>
+  .slide[data-id="P011B"] .body { gap: 40px; align-items: stretch; }
+  .slide[data-id="P011B"] .colL { flex: 0 0 500px; display: flex; flex-direction: column; gap: 26px; justify-content: center; }
+  .slide[data-id="P011B"] .colL .text { font-size: 28px; line-height: 1.6; }
+  .slide[data-id="P011B"] .colL .label { margin-bottom: 10px; }
+  .slide[data-id="P011B"] .icons { display: flex; align-items: center; gap: 26px; margin-top: 16px; }
+  .slide[data-id="P011B"] .icons img { width: 56px; height: 56px; object-fit: contain; display: block; filter: saturate(.78); }
+  .slide[data-id="P011B"] .colM { flex: 0 0 380px; display: flex; flex-direction: column; }
+  .slide[data-id="P011B"] .colR { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; }
+  .slide[data-id="P011B"] .pane { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; border: 1px solid #cdd5dd; border-radius: 8px; overflow: hidden; background: #fbfcfd; }
+  .slide[data-id="P011B"] .pane > .ttl { flex: 0 0 auto; display: flex; align-items: baseline; gap: 14px; padding: 9px 18px; background: #eef2f6; border-bottom: 1px solid #dee4ea; }
+  .slide[data-id="P011B"] .pane > .ttl .label { margin: 0; flex: 0 0 auto; font-size: 25px; }
+  .slide[data-id="P011B"] .pane > .ttl .fname { margin-left: auto; font-family: var(--font-cond); font-size: 23px; letter-spacing: .06em; color: var(--muted-3); }
+  .slide[data-id="P011B"] .mono { flex: 1 1 auto; min-height: 0; margin: 0; overflow: hidden; }
+  .slide[data-id="P011B"] .tree { padding: 10px 16px 14px; }
+  .slide[data-id="P011B"] .tree .l { display: block; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 24px; line-height: 31px; color: #3c4a57; white-space: pre; }
+  .slide[data-id="P011B"] .tree .l.root { color: var(--dark); font-weight: 600; margin-bottom: 4px; font-size: 19px; }
+  .slide[data-id="P011B"] .tree .l.dir { color: var(--accent-dark); }
+  .slide[data-id="P011B"] .tree .l.hit { color: #b2603f; font-weight: 600; }
+  .slide[data-id="P011B"] .colR .pane { position: relative; }
+  .slide[data-id="P011B"] .colR .pane::after { content: ""; position: absolute; left: 1px; right: 1px; bottom: 1px; height: 64px; background: linear-gradient(rgba(251,252,253,0), #fbfcfd 78%); pointer-events: none; }
+  .slide[data-id="P011B"] .xmlbox { padding: 12px 16px; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 21px; line-height: 29px; color: #26333f; white-space: pre-wrap; word-break: break-all; }
+  </style>
+
+  <div class="body cols">
+    <div class="colL">
+      <div class="reveal" data-step="1">
+        <div class="label">docx里有什么</div>
+        <p class="text">解压之后是一组XML文件，其中word/document.xml保存正文。</p>
+      </div>
+      <div class="reveal" data-step="4">
+        <div class="label">pptx与xlsx</div>
+        <p class="text">同样是XML：幻灯片、单元格、格式，都是一行行标记。</p>
+        <div class="icons">
+          <img src="assets/img/icons/document.png" alt="">
+          <img src="assets/img/icons/slides.png" alt="">
+          <img src="assets/img/icons/spreadsheet.png" alt="">
+        </div>
+      </div>
+      <div class="reveal" data-step="5">
+        <div class="label">这意味着</div>
+        <p class="text">既然能生成代码，就能生成这些文件：教案、记录表、课件都可以由AI直接产出。</p>
+      </div>
+    </div>
+
+    <div class="colM reveal" data-step="2">
+      <div class="pane">
+        <div class="ttl"><div class="label">解压目录</div><div class="fname">18 项 · 节选</div></div>
+        <div class="mono tree"><span class="l root">天气观测活动安排（三年级）.docx</span><span class="l ">├─ [Content_Types].xml</span><span class="l ">├─ _rels/.rels</span><span class="l dir">├─ docProps/</span><span class="l ">│  ├─ core.xml</span><span class="l ">│  ├─ app.xml</span><span class="l ">│  └─ thumbnail.jpeg</span><span class="l dir">├─ word/</span><span class="l hit">│  ├─ document.xml</span><span class="l ">│  ├─ styles.xml</span><span class="l ">│  ├─ settings.xml</span><span class="l ">│  ├─ numbering.xml</span><span class="l ">│  ├─ fontTable.xml</span><span class="l ">│  ├─ footer1.xml</span><span class="l ">│  └─ theme/theme1.xml</span><span class="l dir">└─ customXml/</span><span class="l ">   ├─ item1.xml</span><span class="l ">   └─ itemProps1.xml</span></div>
+      </div>
+    </div>
+
+    <div class="colR reveal" data-step="3">
+      <div class="pane">
+        <div class="ttl"><div class="label">正文</div><div class="fname">word/document.xml</div></div>
+        <div class="mono xmlbox">&lt;w:body&gt;&lt;w:p&gt;&lt;w:pPr&gt;&lt;w:pStyle w:val=&quot;Heading1&quot;/&gt;&lt;/w:pPr&gt;&lt;w:r&gt;&lt;w:rPr&gt;&lt;w:rFonts w:ascii=&quot;微软雅黑&quot; w:eastAsia=&quot;微软雅黑&quot; w:hAnsi=&quot;微软雅黑&quot; w:cs=&quot;微软雅黑&quot; w:hint=&quot;eastAsia&quot;/&gt;&lt;w:lang w:eastAsia=&quot;zh-CN&quot;/&gt;&lt;/w:rPr&gt;&lt;w:t&gt;「小小天气观察员」两周天气观测活动安排（三年级）&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;&lt;w:p&gt;&lt;w:pPr&gt;&lt;w:spacing w:after=&quot;120&quot;/&gt;&lt;/w:pPr&gt;&lt;w:r&gt;&lt;w:rPr&gt;&lt;w:rFonts w:ascii=&quot;微软雅黑&quot; w:hAnsi=&quot;微软雅黑&quot; w:eastAsia=&quot;微软雅黑&quot; w:cs=&quot;微软雅黑&quot; w:hint=&quot;eastAsia&quot;/&gt;&lt;w:b w:val=&quot;0&quot;/&gt;&lt;w:lang w:eastAsia=&quot;zh-CN&quot;/&gt;&lt;/w:rPr&gt;&lt;w:t&gt;目录&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;&lt;w:p&gt;&lt;w:pPr&gt;&lt;w:pStyle w:val=&quot;ListNumber&quot;/&gt;&lt;w:numPr&gt;&lt;w:ilvl w:val=&quot;0&quot;/&gt;&lt;w:numId w:val=&quot;10&quot;/&gt;&lt;/w:numPr&gt;&lt;w:spacing w:after=&quot;96&quot;/&gt;&lt;w:jc w:val=&quot;both&quot;/&gt;&lt;/w:pPr&gt;&lt;w:hyperlink w:anchor=&quot;section-1&quot;&gt;&lt;w:r&gt;&lt;w:rPr&gt;&lt;w:color w:val=&quot;0000EE&quot;/&gt;&lt;w:u w:val=&quot;single&quot;/&gt;&lt;/w:rPr&gt;&lt;w:t&gt;一、活动概览&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:hyperlink&gt;&lt;/w:p&gt;&lt;w:p&gt;&lt;w:pPr&gt;&lt;w:pStyle w:val=&quot;ListNumber&quot;/&gt;&lt;w:numPr&gt;&lt;w:ilvl w:val=&quot;0&quot;/&gt;&lt;w:numId w:val=&quot;10&quot;/&gt;&lt;/w:numPr&gt;&lt;w:spacing w:after=&quot;96&quot;/&gt;&lt;w:jc w:val=&quot;both&quot;/&gt;&lt;/w:pPr&gt;&lt;w:hyperlink w:anchor=&quot;section-2&quot;&gt;&lt;w:r&gt;&lt;w:rPr&gt;&lt;w:color w:val=&quot;0000EE&quot;/&gt;&lt;w:u w:val=&quot;single&quot;/&gt;&lt;/w:rPr&gt;&lt;w:t&gt;二、活动目标（对应课标要求）&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:hyperlink&gt;&lt;/w:p&gt;</div>
+      </div>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">片段取自“天气观测活动安排（三年级）.docx”，未作改动。</div>

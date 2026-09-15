@@ -4,7 +4,7 @@
      anim=null
      note=左一个问题气泡，右两个身份各一段回复，内联 HTML 对话框；分步显示。
  -->
-<section class="slide" data-id="P014B" data-title="给它一个身份，它就按身份回应" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T12" data-status="skeleton">
+<section class="slide" data-id="P014B" data-title="给它一个身份，它就按身份回应" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T12" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
     <span class="pid">P014B</span>
@@ -12,11 +12,45 @@
   <h2 class="title">给它一个身份，它就按身份回应</h2>
   <p class="sub reveal-none">角色设定也是上下文的一部分。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">同一个问题</div><p class="text">这节课的活动安排合适吗？</p></div>
-    <div class="reveal"><div class="label">设为备课助手</div><p class="text">它会先追问：学生之前做过什么、这个单元有几节课，然后再给建议。</p></div>
-    <div class="reveal"><div class="label">设为虚拟学伴</div><p class="text">它会用学生的口吻说：第二步我没听懂，为什么要先量一次？</p></div>
-    <div class="reveal"><div class="label">这意味着</div><p class="text">备课助手、虚拟教研员、虚拟学伴，都是这样设定出来的；身份不同，回应就不同。</p></div>
+  <style>
+  .slide[data-id="P014B"] .body { gap: 42px; justify-content: center; }
+  .slide[data-id="P014B"] .qrow { display: flex; align-items: center; gap: 28px; }
+  .slide[data-id="P014B"] .qrow .label { flex: 0 0 auto; margin: 0; }
+  .slide[data-id="P014B"] .qbub { flex: 0 1 auto; background: var(--surface); padding: 22px 40px; }
+  .slide[data-id="P014B"] .qbub .text { margin: 0; font-size: 40px; line-height: 1.5; }
+  .slide[data-id="P014B"] .qrow .tag { margin-left: auto; }
+  .slide[data-id="P014B"] .pair { display: flex; gap: 40px; align-items: stretch; }
+  .slide[data-id="P014B"] .rp { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 24px; border: 1px solid var(--divider); background: #fbfcfd; padding: 34px 36px 40px; }
+  .slide[data-id="P014B"] .phead { display: flex; align-items: center; gap: 16px; }
+  .slide[data-id="P014B"] .phead img { width: 62px; height: 62px; object-fit: contain; filter: saturate(.8); }
+  .slide[data-id="P014B"] .phead .label { margin: 0; }
+  .slide[data-id="P014B"] .rp .bub { background: #dfe9f3; padding: 26px 32px; }
+  .slide[data-id="P014B"] .rp .bub .text { margin: 0; font-size: 35px; line-height: 1.6; }
+  .slide[data-id="P014B"] .means { display: flex; align-items: baseline; gap: 28px; }
+  .slide[data-id="P014B"] .means .label { flex: 0 0 auto; margin: 0; }
+  .slide[data-id="P014B"] .means .text { margin: 0; font-size: 33px; line-height: 1.55; }
+  </style>
+
+  <div class="body stack">
+    <div class="qrow reveal" data-step="1">
+      <div class="label">同一个问题</div>
+      <div class="qbub"><p class="text">这节课的活动安排合适吗？</p></div>
+      <span class="tag">示例对话</span>
+    </div>
+    <div class="pair">
+      <div class="rp reveal" data-step="2">
+        <div class="phead"><img src="assets/img/icons/assistant.png" alt=""><div class="label">设为备课助手</div></div>
+        <div class="bub"><p class="text">它会先追问：学生之前做过什么、这个单元有几节课，然后再给建议。</p></div>
+      </div>
+      <div class="rp reveal" data-step="3">
+        <div class="phead"><img src="assets/img/icons/p020_student.png" alt=""><div class="label">设为虚拟学伴</div></div>
+        <div class="bub"><p class="text">它会用学生的口吻说：第二步我没听懂，为什么要先量一次？</p></div>
+      </div>
+    </div>
+    <div class="means reveal" data-step="4">
+      <div class="label">这意味着</div>
+      <p class="text">备课助手、虚拟教研员、虚拟学伴，都是这样设定出来的；身份不同，回应就不同。</p>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">示例对话，不是真实模型运行记录。</div>

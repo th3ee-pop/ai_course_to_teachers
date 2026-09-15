@@ -4,7 +4,7 @@
      anim=null
      note=左 assets/img/siji_v2_xiazhi_dongzhi.png；右 assets/tools/siji_v2/（如 seasons-stage.js）真实片段20–25行，等宽字体，不伪造。
  -->
-<section class="slide" data-id="P011A" data-title="代码也是符号，而且最规整" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="skeleton">
+<section class="slide" data-id="P011A" data-title="代码也是符号，而且最规整" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
     <span class="pid">P011A</span>
@@ -12,11 +12,54 @@
   <h2 class="title">代码也是符号，而且最规整</h2>
   <p class="sub reveal-none">那个四季页面的背后，是这样的前端代码。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">为什么擅长</div><p class="text">程序代码是符号的一种，规则确定、数量巨大，生成代码是AI目前最擅长的事情之一。</p></div>
-    <div class="reveal"><div class="label">左边</div><p class="text">四季循环v2页面的实际效果，学生可以直接操作。</p></div>
-    <div class="reveal"><div class="label">右边</div><p class="text">支撑这个页面运行的真实代码片段。</p></div>
-    <div class="reveal"><div class="label">这意味着</div><p class="text">老师说清楚想要的交互效果，AI就可以把它写成能运行的页面。</p></div>
+  <style>
+  .slide[data-id="P011A"] .body { gap: 44px; align-items: stretch; }
+  .slide[data-id="P011A"] .colL { flex: 0 0 546px; display: flex; flex-direction: column; gap: 26px; justify-content: center; }
+  .slide[data-id="P011A"] .colL .text { font-size: 28px; line-height: 1.6; }
+  .slide[data-id="P011A"] .colL .label { margin-bottom: 10px; }
+  .slide[data-id="P011A"] .shot { display: flex; flex-direction: column; }
+  .slide[data-id="P011A"] .shot .pic { position: relative; border: 1px solid var(--divider); background: var(--dark); padding: 0; overflow: hidden; }
+  .slide[data-id="P011A"] .shot .pic img { display: block; width: 100%; height: auto; }
+  .slide[data-id="P011A"] .shot .corner-tag { right: 12px; top: 10px; }
+  .slide[data-id="P011A"] .shot .tag { background: rgba(29,45,61,.72); border-color: rgba(255,255,255,.55); color: #fff; }
+
+  .slide[data-id="P011A"] .colR { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; }
+  .slide[data-id="P011A"] .pane { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; border: 1px solid #cdd5dd; border-radius: 8px; overflow: hidden; background: #fbfcfd; }
+  .slide[data-id="P011A"] .pane > .ttl { flex: 0 0 auto; display: flex; align-items: baseline; gap: 18px; padding: 9px 20px; background: #eef2f6; border-bottom: 1px solid #dee4ea; }
+  .slide[data-id="P011A"] .pane > .ttl .fname { margin-left: auto; flex: 0 0 auto; font-family: var(--font-cond); font-size: 24px; letter-spacing: .06em; color: var(--muted-3); }
+  .slide[data-id="P011A"] .pane > .ttl .label { margin: 0; flex: 0 0 auto; }
+  .slide[data-id="P011A"] .pane > .ttl .text { font-size: 26px; line-height: 1.3; color: var(--muted-2); }
+  .slide[data-id="P011A"] .code { flex: 1 1 auto; min-height: 0; margin: 0; padding: 11px 18px 11px 0; counter-reset: cl 376; overflow: hidden; }
+  .slide[data-id="P011A"] .code .l { display: block; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 22px; line-height: 28px; color: #26333f; white-space: pre; padding-left: 74px; position: relative; }
+  .slide[data-id="P011A"] .code .l::before { counter-increment: cl; content: counter(cl); position: absolute; left: 0; width: 56px; text-align: right; color: #a8b2bc; font-family: var(--font-cond); letter-spacing: .04em; }
+  </style>
+
+  <div class="body cols">
+    <div class="colL">
+      <div class="reveal" data-step="1">
+        <div class="label">为什么擅长</div>
+        <p class="text">程序代码是符号的一种，规则确定、数量巨大，生成代码是AI目前最擅长的事情之一。</p>
+      </div>
+      <div class="reveal shot" data-step="2">
+        <div class="label">左边</div>
+        <p class="text" style="margin-bottom:14px">四季循环v2页面的实际效果，学生可以直接操作。</p>
+        <div class="pic">
+          <img src="assets/img/siji_v2_xiazhi_dongzhi.png" alt="四季循环v2 夏至与冬至两种状态">
+          <div class="corner-tag"><span class="tag">AI生成试样</span></div>
+        </div>
+      </div>
+      <div class="reveal" data-step="4">
+        <div class="label">这意味着</div>
+        <p class="text">老师说清楚想要的交互效果，AI就可以把它写成能运行的页面。</p>
+      </div>
+    </div>
+
+    <div class="colR reveal" data-step="3">
+      <div class="pane">
+        <div class="ttl"><div class="label">右边</div><div class="text">支撑这个页面运行的真实代码片段。</div><div class="fname">seasons-stage.js</div></div>
+        <pre class="code"><span class="l">  resize() {</span><span class="l">    const w = this.clientWidth, h = this.clientHeight;</span><span class="l">    if (!w || !h) return;</span><span class="l">    this.renderer.setSize(w, h);</span><span class="l">    this.camS.aspect = this.camG.aspect = w / h;</span><span class="l">    this.camS.updateProjectionMatrix(); this.camG.updateProjectionMatrix();</span><span class="l">  }</span><span class="l">&nbsp;</span><span class="l">  geom() {</span><span class="l">    const p = this.p, eps = p.tilt * D2R;</span><span class="l">    const lam = (p.day - 80) / 365.2422 * Math.PI * 2;</span><span class="l">    const dec = Math.asin(Math.sin(eps) * Math.sin(lam));</span><span class="l">    const th = lam + Math.PI / 2;</span><span class="l">    return { eps, lam, dec, th };</span><span class="l">  }</span><span class="l">&nbsp;</span><span class="l">  loop = () =&gt; {</span><span class="l">    if (this._stop) return;</span><span class="l">    requestAnimationFrame(this.loop);</span><span class="l">    const THREE = this.THREE, p = this.p, g = this.geom();</span></pre>
+      </div>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">代码片段摘自四季循环v2源文件，未作改动。</div>
