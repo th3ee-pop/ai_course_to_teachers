@@ -1,0 +1,26 @@
+<!-- PLAN template=T05 executor=cloud pace=停讲 layout_ref=L03
+     reveal=['上下文提供依据', '训练与概率生成', '生成结果仍需检验']
+     embeds=[]
+     anim={"id": "ANIM_A_逐符号生成", "spec": "左侧‘上下文’框（任务要求／材料／前面的对话 三层可勾选），右侧逐符号生成条：点击‘下一个’出现 3–4 个候选符号及其概率条，高亮被选中者并追加到输出；勾掉一层上下文后重生成，候选与概率发生变化；底部常驻一句：‘流畅≠正确，输出仍需检验’。纯前端、无模型调用、内容固定脚本化（示例句用课件自身语境，如‘请给五年级设计一个植物观察记录表’）。"}
+     note=沿用原 P012 页已做好的逐符号生成交互（按钮"下一个／重置"）作主体，占正文60%。
+ -->
+<section class="slide" data-id="P003D" data-title="LLM：根据前面的内容，推测下一个" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
+    <span class="pid">P003D</span>
+  </div>
+  <h2 class="title">LLM：根据前面的内容，推测下一个</h2>
+  <p class="sub reveal-none">一个词一个词地生成，直到把话说完。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">上下文提供依据</div><p class="text">任务要求、提供的材料和前面的对话共同影响后续生成。</p></div>
+    <div class="reveal"><div class="label">训练与概率生成</div><p class="text">模型从大量材料中学习规律，根据上下文估计后续符号出现的可能性，并逐步生成内容。</p></div>
+    <div class="reveal"><div class="label">它从哪里来</div><p class="text">它的规律来自整个互联网规模的语料与其中的知识。</p></div>
+    <div class="reveal"><div class="label">生成结果仍需检验</div><p class="text">输出是否正确、是否符合任务要求，不能只凭语言流畅来判断。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">这是对生成机制的简化说明。</div>
+  <aside class="notes">【停讲】知道生成式AI背后有大语言模型之后，最需要破除的误解是：它并不是先想好整段话再一次性说出来。画面中的交互演示把过程放慢了，请大家关注“下一个”按钮：模型每生成一个符号，都要依据任务要求、提供的材料以及前面的对话，估计接下来更可能出现什么，然后再继续推测下一个。它之所以表现出丰富的知识和语言能力，是因为训练时接触了互联网规模的大量语料，并从中学习统计规律。这个演示只是对机制的简化说明，不代表真实模型内部可以被这样直接看见。还要特别强调，语言流畅只是生成顺畅，不能保证内容正确，是否符合学科事实和任务要求，必须由教师检验。明白这种逐符号生成的特点，就能理解为什么“问一下豆包”会改变知识获取方式。
+    作用：用交互演示说明大语言模型逐符号生成的机制。
+    资源：<a href="../19_逐页内容脚本/资源预览/R03.html">R03 Agent原理与术语材料</a> <a href="assets/docs/R03/04_Agent原理讲法.md">素材入口</a></aside>
+</section>

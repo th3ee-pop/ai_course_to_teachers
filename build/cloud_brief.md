@@ -43,3 +43,11 @@ node build/cdp_shot.mjs --url "file://$PWD/index.html?all#P013" --out build/qa/P
 - 每个制作批次一个分支（如 `pages-w2`、`pages-w4`），只提交 `pages/*.html`、`assets/img/icons/*`、必要时 `content/逐页内容脚本.json` 与 `plan/pages_plan.json`；不改 `deck.css`、`deck.js`、`components/`（需要改时先在报告里提出）。
 - 提交信息末尾加 `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`。
 - 合并回 `main` 由作者本机审看后进行。
+
+## 五、批次 V3 补充（2026-09-15，JSON v0.3 之后）
+
+- 上屏文字唯一依据是 `content/逐页内容脚本.json`（v0.3，83 主线＋20 备选）；`plan/脚本文字速览.txt` 是它的可读版。`build/opus_brief.md` 里提到的 `审校后页面中间稿.json` 与 "4＋3＋3" locator 已过时，以 v0.3 与现有页面（如 `pages/P013.html`）的写法为准：locator 是 `<b>模块号</b><span class="on">模块标题</span>`。
+- 方法论已改为 **3＋3＋4**：三类能力 内容生成／连通管道／角色扮演；三问 ① 要解决什么问题（目标设定）② 最终成功标准是什么（验收标准）③ 如何让AI理解以上两点（上下文构建）；四环节 教学设计／课堂实施／教学评价／教师专业发展。旧称（管道、工具、主体、4＋3＋3）不得出现在页面上。三问与三类能力不一一对应，不画连线。
+- 新模板：T17 案例卡（上栏"典型需求"→中栏三问逐问揭示 `.reveal[data-step=1/2/3]`→底栏"所以用到"，只列真正用到的能力）、T18 快闪（左 60% 大图/占位＋右栏紧凑卡）。新组件 `components/map334.js`（`<div class="map334" data-stage="…" data-caps="内容生成,角色扮演" data-show="caps,questions,stages" data-reveal="1" data-size="full|compact">`），旧 map433 仍被未改页引用，不要删。
+- 分派表与四条原则见 `plan/v3_cloud_dispatch.md`；每批一个分支 `pages-v3-<a..h>`，从 `origin/round1-copy-draft` 切出，完成后推送分支，不合并。
+- 新 ID 的骨架页已生成（`data-status="skeleton"`，上屏文字与讲者备注已就位），只需替换 BODY 并把 data-status 改为 draft。

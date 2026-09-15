@@ -1,0 +1,24 @@
+<!-- PLAN template=T03 executor=cloud pace=停讲 layout_ref=L07
+     reveal=[]
+     embeds=[]
+     anim=null
+     note=左 docx 解压后的目录树；右 assets/docs/D04/天气观测活动安排（三年级）.docx 解压出的 word/document.xml 真实片段【做页时实际解压截取】。
+ -->
+<section class="slide" data-id="P011B" data-title="Word、PPT、Excel，本质也是代码" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
+    <span class="pid">P011B</span>
+  </div>
+  <h2 class="title">Word、PPT、Excel，本质也是代码</h2>
+  <p class="sub reveal-none">把一份docx当作压缩包打开，里面是一组XML文件。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">docx里有什么</div><p class="text">解压之后是一组XML文件，其中word/document.xml保存正文。</p></div>
+    <div class="reveal"><div class="label">pptx与xlsx</div><p class="text">同样是XML：幻灯片、单元格、格式，都是一行行标记。</p></div>
+    <div class="reveal"><div class="label">这意味着</div><p class="text">既然能生成代码，就能生成这些文件：教案、记录表、课件都可以由AI直接产出。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">片段取自“天气观测活动安排（三年级）.docx”，未作改动。</div>
+  <aside class="notes">【停讲】刚才看到网页背后是代码，现在再进一步：老师们每天使用的Word、PPT、Excel，本质也是代码。请大家看画面，左边是把一份docx当作压缩包解压后的目录树，里面是一组XML文件，其中word/document.xml保存全部正文；右边就是从《天气观测活动安排（三年级）》这份真实文档里解压出的片段，未作改动。PPT和Excel也一样，每一页幻灯片、每一个单元格、每一种格式，都是一行行标记。想通这一点，内容生成的边界就打开了：既然AI能生成代码，就能直接生成这些文件，教案、观察记录表、课堂课件都可以由它产出初稿。但要提醒，生成的是草稿，对不对、合不合适，判断责任始终在教师。文字能驱动代码和文档，那图片和视频呢？下一页给出一段谨慎的原理说明。
+    作用：说明办公文档本质也是代码，落点：内容生成。</aside>
+</section>
