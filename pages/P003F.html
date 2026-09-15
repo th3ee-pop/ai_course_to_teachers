@@ -4,7 +4,7 @@
      anim=null
      note=第一步：左右两条流程图（内联 SVG，真箭头），角标"流畅≠正确"；第二步："但是"一句以大字引文出现。
  -->
-<section class="slide" data-id="P003F" data-title="从“上网查一下”到“问一下豆包”" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T03" data-status="skeleton">
+<section class="slide" data-id="P003F" data-title="从“上网查一下”到“问一下豆包”" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P003F</span>
@@ -12,11 +12,86 @@
   <h2 class="title">从“上网查一下”到“问一下豆包”</h2>
   <p class="sub reveal-none">知识获取变得极其容易。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">搜索引擎</div><p class="text">输入关键词，得到一列网页，然后自己读、自己拼出答案。</p></div>
-    <div class="reveal"><div class="label">大语言模型</div><p class="text">直接提出问题，它把答案组织成一段完整的话。</p></div>
-    <div class="reveal"><div class="label">差别</div><p class="text">搜索给你材料，模型给你答案；但答案流畅，不等于答案正确。</p></div>
-    <div class="reveal"><div class="label">但是</div><p class="text">影响的仅仅是知识获取吗？如果只是这样，对学科教学不会有那么大的影响。</p></div>
+  <style>
+  .slide[data-id="P003F"] > .title { margin-top:20px; }
+  .slide[data-id="P003F"] > .body { margin-top:24px; }
+  .slide[data-id="P003F"] .p3f { display:flex; gap:56px; align-items:stretch; flex:1 1 auto; min-height:0; }
+  .slide[data-id="P003F"] .p3f-fig { flex:1 1 62%; min-width:0; position:relative; display:flex; }
+  .slide[data-id="P003F"] .p3f-fig > svg { width:100%; height:100%; }
+  .slide[data-id="P003F"] .p3f-txt { flex:0 0 580px; display:flex; flex-direction:column; justify-content:center; gap:34px; }
+  .slide[data-id="P003F"] .p3f-txt .text { font-size:28px; line-height:1.66; }
+  .slide[data-id="P003F"] .p3f-but { position:absolute; inset:0; z-index:3; background:var(--bg); display:flex; flex-direction:column; justify-content:center; gap:26px; padding-right:40px; box-sizing:border-box; }
+  .slide[data-id="P003F"] .p3f-but .quote-block { margin:0; }
+  .slide[data-id="P003F"] svg .reveal { transform:none; }
+  .slide[data-id="P003F"] .sv-box { fill:#ffffff; stroke:var(--accent); stroke-width:2.5; }
+  .slide[data-id="P003F"] .sv-lab { font-family:var(--font-sans); font-size:32px; fill:var(--text); }
+  .slide[data-id="P003F"] .sv-lane { font-family:var(--font-sans); font-size:28px; fill:var(--accent-dark); }
+  .slide[data-id="P003F"] .sv-arr { fill:none; stroke:var(--accent); stroke-width:3.5; }
+  </style>
+  <div class="body">
+    <div class="p3f">
+      <div class="p3f-fig">
+        <svg viewBox="0 0 1060 640" aria-hidden="true">
+          <defs>
+            <marker id="p3f-ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L12 6 L0 12 Z" fill="#5980a6"></path>
+            </marker>
+          </defs>
+          <g class="reveal" data-step="1">
+            <text x="0" y="26" class="sv-lane">搜索引擎</text>
+            <rect class="sv-box" x="2" y="112" width="190" height="104"></rect>
+            <text x="97" y="176" text-anchor="middle" class="sv-lab">关键词</text>
+            <path class="sv-arr" marker-end="url(#p3f-ah)" d="M196 164 L252 164"></path>
+            <rect class="sv-box" x="262" y="62" width="300" height="204"></rect>
+            <g fill="#749dc4">
+              <rect x="288" y="88" width="170" height="11"></rect>
+              <rect x="288" y="154" width="150" height="11"></rect>
+              <rect x="288" y="220" width="182" height="11"></rect>
+            </g>
+            <g fill="#c9cacb">
+              <rect x="288" y="110" width="248" height="8"></rect>
+              <rect x="288" y="124" width="196" height="8"></rect>
+              <rect x="288" y="176" width="248" height="8"></rect>
+              <rect x="288" y="190" width="214" height="8"></rect>
+              <rect x="288" y="242" width="230" height="8"></rect>
+            </g>
+            <text x="262" y="44" class="sv-lane" fill="#7a7a7d">网页</text>
+            <path class="sv-arr" marker-end="url(#p3f-ah)" d="M566 96 C 700 96, 720 150, 838 160"></path>
+            <path class="sv-arr" marker-end="url(#p3f-ah)" d="M566 164 L838 164"></path>
+            <path class="sv-arr" marker-end="url(#p3f-ah)" d="M566 232 C 700 232, 720 178, 838 168"></path>
+            <rect class="sv-box" x="850" y="112" width="190" height="104" stroke-dasharray="10 8"></rect>
+            <text x="945" y="176" text-anchor="middle" class="sv-lab">答案</text>
+          </g>
+          <path d="M0 320 H1060" stroke="#c9cacb" stroke-width="1.5"></path>
+          <g class="reveal" data-step="2">
+            <text x="0" y="386" class="sv-lane">大语言模型</text>
+            <rect class="sv-box" x="2" y="472" width="190" height="104"></rect>
+            <text x="97" y="536" text-anchor="middle" class="sv-lab">问题</text>
+            <path class="sv-arr" marker-end="url(#p3f-ah)" d="M196 524 L252 524"></path>
+            <rect x="262" y="452" width="300" height="144" fill="#1d2d3d"></rect>
+            <text x="412" y="538" text-anchor="middle" class="sv-lab" style="fill:#ffffff" font-size="38">模型</text>
+            <path class="sv-arr" marker-end="url(#p3f-ah)" d="M566 524 L838 524"></path>
+            <rect class="sv-box" x="850" y="452" width="190" height="144"></rect>
+            <g fill="#c9cacb">
+              <rect x="872" y="474" width="146" height="9"></rect>
+              <rect x="872" y="494" width="146" height="9"></rect>
+              <rect x="872" y="514" width="146" height="9"></rect>
+              <rect x="872" y="534" width="110" height="9"></rect>
+            </g>
+            <text x="945" y="580" text-anchor="middle" class="sv-lab" font-size="28">答案</text>
+          </g>
+        </svg>
+        <div class="p3f-but reveal fade" data-step="4">
+          <div class="label">但是</div>
+          <p class="quote-block serif">影响的仅仅是知识获取吗？如果只是这样，对学科教学不会有那么大的影响。</p>
+        </div>
+      </div>
+      <div class="p3f-txt">
+        <div class="reveal" data-step="1"><div class="label">搜索引擎</div><p class="text">输入关键词，得到一列网页，然后自己读、自己拼出答案。</p></div>
+        <div class="reveal" data-step="2"><div class="label">大语言模型</div><p class="text">直接提出问题，它把答案组织成一段完整的话。</p></div>
+        <div class="reveal" data-step="3" style="padding-top:26px;border-top:2px solid var(--accent)"><div class="label">差别</div><p class="text">搜索给你材料，模型给你答案；但答案流畅，不等于答案正确。</p></div>
+      </div>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">豆包为常见免费对话工具的例子。</div>

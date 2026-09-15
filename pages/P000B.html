@@ -4,7 +4,7 @@
      anim=null
      note=左照片【待用户提供】/ 右三行简介。
  -->
-<section class="slide" data-id="P000B" data-title="【待用户提供：姓名】" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T03" data-status="skeleton">
+<section class="slide" data-id="P000B" data-title="【待用户提供：姓名】" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P000B</span>
@@ -12,10 +12,28 @@
   <h2 class="title">【待用户提供：姓名】</h2>
   <p class="sub reveal-none">【待用户提供：单位 · 职务】</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">简介一</div><p class="text">【待用户提供】</p></div>
-    <div class="reveal"><div class="label">简介二</div><p class="text">【待用户提供】</p></div>
-    <div class="reveal"><div class="label">简介三</div><p class="text">【待用户提供】</p></div>
+  <style>
+  .slide[data-id="P000B"] > .title { margin-top:30px; }
+  .slide[data-id="P000B"] .p0b { display:flex; gap:80px; align-items:stretch; flex:1 1 auto; min-height:0; }
+  .slide[data-id="P000B"] .p0b-photo { flex:0 0 560px; position:relative; }
+  .slide[data-id="P000B"] .p0b-list { flex:1 1 0; display:flex; flex-direction:column; gap:0; }
+  .slide[data-id="P000B"] .p0b-row { flex:1 1 0; display:flex; gap:44px; align-items:center; padding:0 0 0 8px; border-top:1px solid var(--divider); }
+  .slide[data-id="P000B"] .p0b-row:last-child { border-bottom:1px solid var(--divider); }
+  .slide[data-id="P000B"] .p0b-row .label { flex:0 0 200px; margin-bottom:0; }
+  .slide[data-id="P000B"] .p0b-row .text { flex:1 1 0; color:var(--muted-2); }
+  </style>
+  <div class="body">
+    <div class="p0b">
+      <div class="p0b-photo blueprint">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <div class="slot" data-kind="capture"><div class="placeholder">【待用户提供：讲者照片】</div></div>
+      </div>
+      <div class="p0b-list">
+        <div class="p0b-row reveal" data-step="1"><div class="label">简介一</div><p class="text">【待用户提供】</p></div>
+        <div class="p0b-row reveal" data-step="2"><div class="label">简介二</div><p class="text">【待用户提供】</p></div>
+        <div class="p0b-row reveal" data-step="3"><div class="label">简介三</div><p class="text">【待用户提供】</p></div>
+      </div>
+    </div>
   </div>
   <!-- BODY:END -->
   <aside class="notes">【快过】简短介绍自己与本次培训的关系。

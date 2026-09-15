@@ -4,7 +4,7 @@
      anim={"id": "ANIM_A_逐符号生成", "spec": "左侧‘上下文’框（任务要求／材料／前面的对话 三层可勾选），右侧逐符号生成条：点击‘下一个’出现 3–4 个候选符号及其概率条，高亮被选中者并追加到输出；勾掉一层上下文后重生成，候选与概率发生变化；底部常驻一句：‘流畅≠正确，输出仍需检验’。纯前端、无模型调用、内容固定脚本化（示例句用课件自身语境，如‘请给五年级设计一个植物观察记录表’）。"}
      note=沿用原 P012 页已做好的逐符号生成交互（按钮"下一个／重置"）作主体，占正文60%。
  -->
-<section class="slide" data-id="P003D" data-title="LLM：根据前面的内容，推测下一个" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+<section class="slide" data-id="P003D" data-title="LLM：根据前面的内容，推测下一个" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P003D</span>
@@ -12,12 +12,225 @@
   <h2 class="title">LLM：根据前面的内容，推测下一个</h2>
   <p class="sub reveal-none">一个词一个词地生成，直到把话说完。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">上下文提供依据</div><p class="text">任务要求、提供的材料和前面的对话共同影响后续生成。</p></div>
-    <div class="reveal"><div class="label">训练与概率生成</div><p class="text">模型从大量材料中学习规律，根据上下文估计后续符号出现的可能性，并逐步生成内容。</p></div>
-    <div class="reveal"><div class="label">它从哪里来</div><p class="text">它的规律来自整个互联网规模的语料与其中的知识。</p></div>
-    <div class="reveal"><div class="label">生成结果仍需检验</div><p class="text">输出是否正确、是否符合任务要求，不能只凭语言流畅来判断。</p></div>
+  <style>
+  .slide[data-id="P003D"] .body { gap: 40px; margin-top: 28px; }
+  .slide[data-id="P003D"] > .title { margin-top: 20px; }
+  .slide[data-id="P003D"] .anim { flex: 1 1 0; }
+  .slide[data-id="P003D"] .corner-tag { top: auto; bottom: 20px; right: 20px; }
+  .slide[data-id="P003D"] .a12 { position: absolute; inset: 0; padding: 16px 20px 78px; box-sizing: border-box; display: flex; gap: 20px; align-items: stretch; }
+  .slide[data-id="P003D"] .pane { display: flex; flex-direction: column; min-width: 0; background: #fff; border: 1px solid #d5dae0; border-radius: 10px; box-shadow: 0 1px 2px rgba(29,45,61,.06), 0 8px 20px rgba(29,45,61,.05); overflow: hidden; }
+  .slide[data-id="P003D"] .ttl { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; padding: 9px 14px; background: #f1f4f7; border-bottom: 1px solid #e1e6eb; }
+  .slide[data-id="P003D"] .ttl .label { margin: 0; font-size: 25px; letter-spacing: .02em; color: var(--muted-2); }
+  .slide[data-id="P003D"] .dots { display: flex; gap: 7px; flex: 0 0 auto; }
+  .slide[data-id="P003D"] .dots i { width: 11px; height: 11px; border-radius: 50%; background: #d9dee4; }
+  .slide[data-id="P003D"] .dots i:nth-child(1) { background: #e0b3a1; }
+  .slide[data-id="P003D"] .dots i:nth-child(2) { background: #dcd0a8; }
+  .slide[data-id="P003D"] .dots i:nth-child(3) { background: #bacfc0; }
+
+  /* ── 左：上下文／附件面板 ───────────────── */
+  .slide[data-id="P003D"] .a12-ctx { flex: 0 0 372px; }
+  .slide[data-id="P003D"] .ctxbody { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 16px; padding: 16px 14px; background: #f8fafc; }
+  .slide[data-id="P003D"] .chips { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .slide[data-id="P003D"] .a12-chk { display: flex; align-items: center; gap: 14px; font-size: 27px; line-height: 1.35; color: var(--text); cursor: pointer; padding: 17px 14px; border: 1px solid #dfe4e9; border-radius: 10px; background: #fff; box-shadow: 0 1px 2px rgba(29,45,61,.05); transition: opacity .25s ease, border-color .25s ease, background .25s ease; }
+  .slide[data-id="P003D"] .a12-chk .ico { flex: 0 0 38px; height: 38px; color: var(--accent); }
+  .slide[data-id="P003D"] .a12-chk .ico svg { display: block; width: 38px; height: 38px; }
+  .slide[data-id="P003D"] .a12-chk .nm { flex: 1 1 auto; min-width: 0; }
+  .slide[data-id="P003D"] .a12-chk input { width: 26px; height: 26px; accent-color: var(--accent); flex: 0 0 auto; cursor: pointer; margin: 0; }
+  .slide[data-id="P003D"] .a12-chk.off { opacity: .48; background: #f2f4f6; border-style: dashed; box-shadow: none; }
+  .slide[data-id="P003D"] .a12-chk.off .ico { color: var(--muted-3); }
+  .slide[data-id="P003D"] .a12-note { margin-top: auto; display: flex; align-items: center; gap: 12px; font-size: 24px; line-height: 1.4; color: #b2603f; border: 1px solid #b2603f; border-radius: 10px; background: #faf2ee; padding: 12px 14px; visibility: hidden; }
+  .slide[data-id="P003D"] .a12-note .ico { flex: 0 0 28px; height: 28px; }
+  .slide[data-id="P003D"] .a12-note .ico svg { display: block; width: 28px; height: 28px; }
+  .slide[data-id="P003D"] .a12-note.show { visibility: visible; }
+
+  /* ── 右：生成面板 ───────────────────────── */
+  .slide[data-id="P003D"] .a12-gen { flex: 1 1 0; }
+  .slide[data-id="P003D"] .genbody { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 14px; padding: 16px 18px; }
+  .slide[data-id="P003D"] .a12-task { align-self: flex-start; max-width: 100%; display: flex; align-items: center; gap: 10px; font-size: 25px; line-height: 1.4; color: var(--muted-2); background: #f4f6f9; border: 1px solid #e1e6eb; border-radius: 8px; padding: 8px 14px; transition: opacity .25s ease; }
+  .slide[data-id="P003D"] .a12-task .ico { flex: 0 0 24px; height: 24px; color: var(--muted-3); }
+  .slide[data-id="P003D"] .a12-task .ico svg { display: block; width: 24px; height: 24px; }
+  .slide[data-id="P003D"] .a12-task.off { opacity: .4; text-decoration: line-through; }
+  .slide[data-id="P003D"] .chat { flex: 1 1 auto; min-height: 0; display: flex; align-items: stretch; gap: 12px; }
+  .slide[data-id="P003D"] .chat .ava { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%; background: #eef2f6; border: 1px solid #e1e6eb; object-fit: contain; padding: 4px; box-sizing: border-box; filter: saturate(.85); }
+  .slide[data-id="P003D"] .a12-out { flex: 1 1 auto; min-width: 0; min-height: 104px; border: 1px solid #cfe0f0; border-radius: 4px 14px 14px 14px; background: #f4f8fc; padding: 14px 20px; box-sizing: border-box; font-size: 38px; line-height: 1.5; color: var(--accent-dark); display: flex; flex-wrap: wrap; align-items: center; align-content: center; }
+  .slide[data-id="P003D"] .a12-out .tk { display: inline-block; animation: p3dpop .32s ease; }
+  .slide[data-id="P003D"] .a12-out::after { content: ''; display: inline-block; width: 10px; height: 36px; background: var(--accent); vertical-align: -6px; margin-left: 4px; animation: p3dblink .9s step-end infinite; }
+  @keyframes p3dpop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  @keyframes p3dblink { 50% { opacity: 0; } }
+  .slide[data-id="P003D"] .a12-hint { display: flex; align-items: center; gap: 12px; font-size: 24px; letter-spacing: .04em; color: var(--muted-3); }
+  .slide[data-id="P003D"] .a12-hint::after { content: ''; flex: 1 1 auto; height: 1px; background: var(--divider); }
+  .slide[data-id="P003D"] .a12-cands { flex: 0 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .slide[data-id="P003D"] .a12-row { display: flex; align-items: center; gap: 16px; }
+  .slide[data-id="P003D"] .a12-row .sym { flex: 0 0 168px; font-size: 28px; line-height: 1.3; padding: 7px 12px; border: 1px solid #dfe4e9; border-radius: 8px; text-align: center; box-sizing: border-box; background: #fff; color: var(--text); transition: background .3s ease, color .3s ease, border-color .3s ease; }
+  .slide[data-id="P003D"] .a12-row .track { flex: 1 1 0; height: 22px; border-radius: 11px; background: #eceff3; position: relative; overflow: hidden; }
+  .slide[data-id="P003D"] .a12-row .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 11px; background: linear-gradient(90deg, #cfe3f8, #94bce3); transition: width .45s ease; }
+  .slide[data-id="P003D"] .a12-row .pct { flex: 0 0 88px; font-family: var(--font-cond); font-size: 26px; letter-spacing: .06em; color: var(--muted-2); text-align: right; }
+  .slide[data-id="P003D"] .a12-row.pick .sym { border-color: var(--accent); background: var(--accent); color: #fff; box-shadow: 0 2px 6px rgba(89,128,166,.28); }
+  .slide[data-id="P003D"] .a12-row.pick .bar { background: linear-gradient(90deg, #7fa6cb, var(--accent-dark)); }
+  .slide[data-id="P003D"] .a12-row.pick .pct { color: var(--accent-dark); }
+  </style>
+  <div class="body cols" style="align-items:stretch">
+    <div class="anim" tabindex="0" role="group" aria-label="逐符号生成演示">
+      <span class="tag corner-tag">示意图</span>
+      <div class="a12">
+        <div class="pane a12-ctx">
+          <div class="ttl"><span class="dots"><i></i><i></i><i></i></span><span class="label">上下文</span></div>
+          <div class="ctxbody">
+            <div class="chips">
+            <label class="a12-chk">
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3H9z"/><path d="M15 4.5h3v16H6v-16h3"/><path d="M9 11h6M9 15h4"/></svg></span>
+              <span class="nm">任务要求</span>
+              <input type="checkbox" data-ctx="0" checked>
+            </label>
+            <label class="a12-chk">
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h6l2 2.5h10v11H3z"/><path d="M8 15l3-3 3 3 2-2 3 3"/></svg></span>
+              <span class="nm">提供的材料</span>
+              <input type="checkbox" data-ctx="1" checked>
+            </label>
+            <label class="a12-chk">
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12.5h5"/></svg></span>
+              <span class="nm">前面的对话</span>
+              <input type="checkbox" data-ctx="2" checked>
+            </label>
+            </div>
+            <div class="a12-note"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 16H3z"/><path d="M12 10v5M12 17.4v.2"/></svg></span><span>依据变了，候选也变了</span></div>
+          </div>
+        </div>
+        <div class="pane a12-gen">
+          <div class="ttl"><span class="dots"><i></i><i></i><i></i></span><span class="label">逐个符号生成</span></div>
+          <div class="genbody">
+            <div class="a12-task"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7v18h11V7z"/><path d="M14 3v4h4"/></svg></span><span>任务：给五年级设计一个植物观察记录表</span></div>
+            <div class="chat">
+              <img class="ava" src="assets/img/icons/assistant.png" alt="">
+              <div class="a12-out"></div>
+            </div>
+            <div class="a12-hint">候选与概率</div>
+            <div class="a12-cands"></div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button type="button" class="primary" data-act="next">下一个</button>
+        <button type="button" data-act="play">播放</button>
+        <button type="button" data-act="reset">重置</button>
+      </div>
+    </div>
+    <div class="stack" style="flex:0 0 500px;justify-content:center;gap:26px">
+      <div class="reveal"><div class="label">上下文提供依据</div><p class="text" style="font-size:27px">任务要求、提供的材料和前面的对话共同影响后续生成。</p></div>
+      <div class="reveal"><div class="label">训练与概率生成</div><p class="text" style="font-size:27px">模型从大量材料中学习规律，根据上下文估计后续符号出现的可能性，并逐步生成内容。</p></div>
+      <div class="reveal"><div class="label">它从哪里来</div><p class="text" style="font-size:27px">它的规律来自整个互联网规模的语料与其中的知识。</p></div>
+      <div class="reveal"><div class="label">生成结果仍需检验</div><p class="text" style="font-size:27px">输出是否正确、是否符合任务要求，不能只凭语言流畅来判断。</p></div>
+    </div>
   </div>
+  <script>
+  (function () {
+    'use strict';
+    var sec = (document.currentScript && document.currentScript.closest('section.slide')) ||
+              document.querySelector('section.slide[data-id="P003D"]');
+    if (!sec) return;
+    var box = sec.querySelector('.anim');
+    var outEl = sec.querySelector('.a12-out');
+    var candEl = sec.querySelector('.a12-cands');
+    var noteEl = sec.querySelector('.a12-note');
+    var taskEl = sec.querySelector('.a12-task');
+    var boxes = Array.prototype.slice.call(sec.querySelectorAll('.a12-chk input'));
+    var btnNext = sec.querySelector('[data-act="next"]');
+    var btnPlay = sec.querySelector('[data-act="play"]');
+    var btnReset = sec.querySelector('[data-act="reset"]');
+
+    /* 固定脚本化的候选与概率：不调用任何模型，两组预设写死在页面里 */
+    var SCRIPTS = {
+      full: [
+        { c: [['每周', 42], ['每天', 27], ['每月', 18], ['每节课', 13]], p: 0 },
+        { c: [['记录', 51], ['测量', 24], ['观察', 16], ['填写', 9]], p: 0 },
+        { c: [['株高', 38], ['叶片数', 29], ['天气', 20], ['颜色', 13]], p: 0 },
+        { c: [['与', 46], ['、', 31], ['和', 15], ['及', 8]], p: 0 },
+        { c: [['叶片数', 55], ['温度', 22], ['花期', 14], ['心情', 9]], p: 0 }
+      ],
+      part: [
+        { c: [['每天', 31], ['每周', 29], ['每月', 22], ['随时', 18]], p: 0 },
+        { c: [['写下', 34], ['记录', 28], ['画出', 22], ['描述', 16]], p: 0 },
+        { c: [['看到', 36], ['植物', 27], ['今天', 22], ['一些', 15]], p: 0 },
+        { c: [['的', 44], ['了', 24], ['过', 19], ['到', 13]], p: 0 },
+        { c: [['变化', 41], ['样子', 27], ['东西', 19], ['感受', 13]], p: 0 }
+      ]
+    };
+
+    var step = 0, timers = [], playing = false;
+    function clearTimers() { timers.forEach(clearTimeout); timers = []; if (playTimer) { clearInterval(playTimer); playTimer = null; } playing = false; if (btnPlay) btnPlay.textContent = '播放'; }
+    var playTimer = null;
+    function key() { return boxes.every(function (b) { return b.checked; }) ? 'full' : 'part'; }
+    function seq() { return SCRIPTS[key()]; }
+
+    function paint() {
+      boxes.forEach(function (b) { b.parentNode.classList.toggle('off', !b.checked); });
+      if (taskEl) taskEl.classList.toggle('off', !boxes[0].checked);
+      if (noteEl) noteEl.classList.toggle('show', key() === 'part');
+    }
+
+    function reset() {
+      clearTimers();
+      step = 0;
+      outEl.innerHTML = '';
+      candEl.innerHTML = '';
+      if (btnNext) btnNext.disabled = false;
+      paint();
+    }
+
+    function render(item, picked) {
+      candEl.innerHTML = '';
+      item.c.forEach(function (pair, i) {
+        var row = document.createElement('div');
+        row.className = 'a12-row' + (picked && i === item.p ? ' pick' : '');
+        row.innerHTML = '<div class="sym"></div><div class="track"><div class="bar"></div></div>' +
+                        '<div class="pct">' + pair[1] + '%</div>';
+        row.querySelector('.sym').textContent = pair[0];
+        candEl.appendChild(row);
+        timers.push(setTimeout(function () { row.querySelector('.bar').style.width = pair[1] + '%'; }, 20));
+      });
+    }
+
+    function next() {
+      var s = seq();
+      if (step >= s.length) { return false; }
+      var item = s[step];
+      render(item, false);
+      timers.push(setTimeout(function () {
+        var rows = candEl.querySelectorAll('.a12-row');
+        if (rows[item.p]) rows[item.p].classList.add('pick');
+        var span = document.createElement('span');
+        span.className = 'tk';
+        span.textContent = item.c[item.p][0];
+        outEl.appendChild(span);
+      }, 620));
+      step++;
+      if (step >= s.length && btnNext) btnNext.disabled = true;
+      return true;
+    }
+
+    function play() {
+      if (playing) { clearTimers(); return; }
+      if (step >= seq().length) reset();
+      playing = true;
+      if (btnPlay) btnPlay.textContent = '暂停';
+      next();
+      playTimer = setInterval(function () { if (!next()) { clearTimers(); } }, 1500);
+    }
+
+    if (btnNext) btnNext.addEventListener('click', function () { clearTimers(); next(); });
+    if (btnPlay) btnPlay.addEventListener('click', play);
+    if (btnReset) btnReset.addEventListener('click', reset);
+    boxes.forEach(function (b) { b.addEventListener('change', reset); });
+
+    /* 离开本页停止定时器并复位 */
+    new MutationObserver(function () {
+      if (!sec.classList.contains('active')) reset();
+    }).observe(sec, { attributes: true, attributeFilter: ['class'] });
+
+    paint();
+    window.__anim_P003D = { next: next, reset: reset, play: play };
+  })();
+  </script>
   <!-- BODY:END -->
   <div class="foot">这是对生成机制的简化说明。</div>
   <aside class="notes">【停讲】知道生成式AI背后有大语言模型之后，最需要破除的误解是：它并不是先想好整段话再一次性说出来。画面中的交互演示把过程放慢了，请大家关注“下一个”按钮：模型每生成一个符号，都要依据任务要求、提供的材料以及前面的对话，估计接下来更可能出现什么，然后再继续推测下一个。它之所以表现出丰富的知识和语言能力，是因为训练时接触了互联网规模的大量语料，并从中学习统计规律。这个演示只是对机制的简化说明，不代表真实模型内部可以被这样直接看见。还要特别强调，语言流畅只是生成顺畅，不能保证内容正确，是否符合学科事实和任务要求，必须由教师检验。明白这种逐符号生成的特点，就能理解为什么“问一下豆包”会改变知识获取方式。
