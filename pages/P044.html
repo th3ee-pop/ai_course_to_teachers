@@ -1,5 +1,5 @@
 <!-- PLAN template=T03 executor=pi pace=快过 layout_ref=L07
-     reveal=['模拟可以做的', '真实观察要做的', '保留现实实践']
+     reveal=['模拟可以做的', '真实观察要做的', '保留现实实践', '三条边界']
      embeds=[]
      anim=null
      note=右栏无实拍时用示意图并标‘示意图’，或留‘待放入实拍照片’。
@@ -16,14 +16,16 @@
   <!-- BODY:START -->
   <style>
   .slide[data-id="P044"] .body { gap: 30px; }
-  .slide[data-id="P044"] .cols { gap: 46px; align-items: stretch; }
+  .slide[data-id="P044"] .cols { gap: 46px; align-items: stretch; flex: 1 1 auto; min-height: 0; }
   .slide[data-id="P044"] .c-sim { flex: 0 0 600px; display: flex; flex-direction: column; justify-content: flex-start; }
   .slide[data-id="P044"] .c-real { flex: 1 1 0; display: flex; flex-direction: column; justify-content: flex-start; min-width: 0; }
   .slide[data-id="P044"] .c-sim .slot { flex: 1 1 auto; height: auto; min-height: 188px; margin-top: 16px; background: #fff; border: 1px solid var(--divider); }
-  .slide[data-id="P044"] .fig { flex: 0 0 auto; margin-top: 16px; }
+  .slide[data-id="P044"] .fig { flex: 1 1 auto; min-height: 0; margin-top: 16px; }
   .slide[data-id="P044"] .fig .pic { background: #fff; padding: 0; }
-  .slide[data-id="P044"] .fig .pic .p44svg { display: block; width: 100%; height: auto; }
+  .slide[data-id="P044"] .fig .pic .p44svg { display: block; width: 100%; height: 100%; max-height: 100%; }
   .slide[data-id="P044"] .takeaway { margin-top: 0; }
+  .slide[data-id="P044"] .takeaway.bound { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--divider); color: var(--muted-2); }
+  .slide[data-id="P044"] .takeaway.bound .label { color: var(--accent); }
   .slide[data-id="P044"] .p44svg text { font-family: var(--font-sans); fill: #1d1f20; }
   .slide[data-id="P044"] .p44svg .lb { font-size: 32px; font-weight: 500; paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
   .slide[data-id="P044"] .p44svg .ttl { font-size: 34px; font-weight: 600; }
@@ -149,6 +151,10 @@
     <div class="takeaway reveal" style="display:flex;align-items:baseline;gap:24px">
       <span class="label" style="white-space:nowrap;margin-bottom:0">保留现实实践</span>
       <span class="text" style="font-size:30px">模拟用来提出解释，真实记录用来核对解释是否站得住。</span>
+    </div>
+    <div class="takeaway reveal bound" style="display:flex;align-items:baseline;gap:24px">
+      <span class="label" style="white-space:nowrap;margin-bottom:0">三条边界</span>
+      <span class="text" style="font-size:30px">方向线不表示强弱；手势只是输入方式；模型结果要结合模型的假设来理解。</span>
     </div>
   </div>
   <!-- BODY:END -->

@@ -1,37 +1,71 @@
-<!-- PLAN template=T06 executor=pi pace=停讲 layout_ref=L04
-     reveal=['我想得到什么', 'AI需要扮演什么角色', '我能提供什么上下文']
+<!-- PLAN template=T18 executor=pi pace=停讲 layout_ref=L04
+     reveal=['① 要解决什么问题（目标设定）', '② 最终成功标准是什么（验收标准）', '③ 如何让AI理解以上两点（上下文构建）', '所以用到：连通管道']
      embeds=[]
      anim=null
-     note=
- -->
-<section class="slide" data-id="P058" data-title="喀什备考案例：成绩表之外，还要给AI什么？" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="主线" data-template="T06" data-status="draft">
+     note=带图案例页：上半左图（D08 分析报告截图）＋右紧凑卡（需求与三问，逐问揭示），下方整幅结论带三条能力（第4步）。
+     assets:
+       CAP_D08 → assets/img/cap_D08_report.png (capture) 已在 assets/img/ -->
+<section class="slide" data-id="P058" data-title="喀什备考案例：成绩表之外，还要给AI什么？" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="主线" data-template="T18" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>07</b><span class="on">教学评价：让证据开启后续教学</span></div>
     <span class="pid">P058</span>
   </div>
-  <h2 class="title">喀什备考案例：成绩表之外，还要给AI什么？</h2>
+  <h2 class="title sm">喀什备考案例：成绩表之外，还要给AI什么？</h2>
   <p class="sub reveal-none">以决定下一轮复习重点为目标。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="grid-3" style="margin:auto 0">
-    <div class="card reveal">
-      <span class="num">01</span>
-      <div class="label">我想得到什么</div>
-      <p>得到可以支持复习决策的题目分析、候选问题和后续核查清单。</p>
+  <div class="body">
+    <div class="flash">
+
+      <!-- 左 60%：D08 分析报告截图（仓库内已有） -->
+      <div class="flash-fig">
+        <div class="blueprint">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="slot"><img src="assets/img/cap_D08_report.png" alt=""></div>
+          <span class="tag fill corner-tag">报告截图</span>
+        </div>
+      </div>
+
+      <!-- 右 40%：紧凑卡，需求一句＋三问逐问揭示 -->
+      <div class="flash-card">
+        <div class="row">
+          <div class="label">典型需求</div>
+          <p class="text">模拟考结束，手里有一万多条成绩记录，却不知道下一轮复习该讲哪道题。</p>
+        </div>
+        <div class="row reveal" data-step="1">
+          <div class="label">① 要解决什么问题（目标设定）</div>
+          <p class="text">决定下一轮复习重点：哪道题、哪个知识关系值得花课时。</p>
+        </div>
+        <div class="row reveal" data-step="2">
+          <div class="label">② 最终成功标准是什么（验收标准）</div>
+          <p class="text">得到一份能指出具体题号与原因的分析，和一组能直接用于复习课的变式题。</p>
+        </div>
+        <div class="row reveal" data-step="3">
+          <div class="label">③ 如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">提供脱敏作答记录、原题、参考答案、字段说明、评分规则，以及复习课时和已知学情。</p>
+        </div>
+      </div>
+
     </div>
-    <div class="card reveal">
-      <span class="num">02</span>
-      <div class="label">AI需要扮演什么角色</div>
-      <p>先整合作答、得分与试卷文本，再用程序计算，最后协助形成复习材料。</p>
-    </div>
-    <div class="card reveal">
-      <span class="num">03</span>
-      <div class="label">我能提供什么上下文</div>
-      <p>提供脱敏作答记录、原题、参考答案、字段说明、评分规则，以及复习课时和已知学情。</p>
+
+    <!-- 底栏：所以用到（三条能力，第 4 步整条出） -->
+    <div class="cc-caps reveal" data-step="4">
+      <div class="cc-cap">
+        <div class="label"><span class="pre">所以用到：</span><span class="tag fill">连通管道</span></div>
+        <p class="text">把16,434条作答记录、原题文本、参考答案和评分规则接在一起。</p>
+      </div>
+      <div class="cc-cap">
+        <div class="label"><span class="pre">所以用到：</span><span class="tag fill">内容生成</span></div>
+        <p class="text">编写程序完成计算与图表；依据核实的问题生成变式题与复习材料。</p>
+      </div>
+      <div class="cc-cap">
+        <div class="label"><span class="pre">所以用到：</span><span class="tag fill">角色扮演</span></div>
+        <p class="text">扮演追问者，请学生说明为什么选time，并收集解题理由。</p>
+      </div>
     </div>
   </div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
+  <div class="foot">数据为脱敏聚合结果；资源：喀什初三／高三分析报告。</div>
   <aside class="notes">【停讲】讲述时依次说明：得到可以支持复习决策的题目分析、候选问题和后续核查清单。 先整合作答、得分与试卷文本，再用程序计算，最后协助形成复习材料。 提供脱敏作答记录、原题、参考答案、字段说明、评分规则，以及复习课时和已知学情。
     作用：把三问从通用框架落到评价这一具体任务，明确目标、角色分工与必须提供的上下文。
     资源：<a href="../19_逐页内容脚本/资源预览/D08.html">D08 喀什：初三／高三分析报告</a> <a href="assets/docs/D08/初三英语模拟考数据分析报告.html">素材入口</a> <a href="assets/docs/D08/高三英语模拟考数据分析报告.html">高三报告</a> <a href="assets/docs/D08/试卷题目与数据列映射关系表.md">原题映射</a> <a href="assets/docs/D08/初三第24题复算.json">第24题聚合复算记录</a> <a href="assets/docs/D08/英语试卷.md">原试卷文本</a></aside>
