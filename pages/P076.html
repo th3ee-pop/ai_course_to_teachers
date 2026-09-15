@@ -1,44 +1,64 @@
 <!-- PLAN template=T15 executor=pi pace=停讲 layout_ref=L02
-     reveal=['资料库：留材料', '笔记：留判断', '模板或Skill：留方法']
+     reveal=['资料库：留材料', '笔记：留判断', '模板或Skill：留方法', '临时的知识补给']
      embeds=[]
      anim=null
      note=
      assets:
-       SVG_CODEX_P076_ICONS → 已改为页内内联 SVG，原 assets/svg/p076_icons.svg 已删除  -->
+       SVG_CODEX_P076_ICONS → 已改为页内内联 SVG，原 assets/svg/p076_icons.svg 已删除
+       IMG_BAITIAN_YUELIANG → assets/img/baitian_yueliang_ai_shiyitu.png（作者 AIGC，角标“生成示意图”）  -->
 <section class="slide" data-id="P076" data-title="资料、判断、方法，分别怎样保存？" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="主线" data-template="T15" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>08</b><span class="on">教师专业发展：保留材料、判断与方法</span></div>
     <span class="pid">P076</span>
   </div>
-  <h2 class="title">资料、判断、方法，分别怎样保存？</h2>
+  <h2 class="title sm">资料、判断、方法，分别怎样保存？</h2>
   <p class="sub reveal-none">三类内容分开存，以后才找得到、用得上。</p>
   <!-- BODY:START -->
 <style>
-.slide[data-id="P076"] .body { margin-top: 30px; }
+.slide[data-id="P076"] .body { margin-top: 22px; gap: 26px; }
 .slide[data-id="P076"] .keep {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px;
   flex: 1 1 auto; min-height: 0;
 }
 .slide[data-id="P076"] .keep > .card {
   border: 1px solid var(--divider); background: #fff;
-  padding: 26px 34px 30px; gap: 0; min-height: 0;
+  padding: 22px 30px 26px; gap: 0; min-height: 0;
   box-shadow: 0 2px 0 rgba(65,97,128,.05);
 }
 .slide[data-id="P076"] .keep .ico {
-  flex: 1 1 auto; min-height: 210px; display: flex;
+  flex: 1 1 auto; min-height: 140px; overflow: hidden; display: flex;
   align-items: center; justify-content: center;
   background: linear-gradient(180deg, #f7fafd 0%, #e4edf6 100%);
-  border: 1px solid #d9e3ec; border-radius: 16px; margin-bottom: 26px;
+  border: 1px solid #d9e3ec; border-radius: 16px; margin-bottom: 20px;
 }
 .slide[data-id="P076"] .keep .ico svg {
-  width: 66%; max-width: 268px; height: auto;
+  width: 62%; max-width: 190px; max-height: 130px; height: auto;
   filter: drop-shadow(0 10px 16px rgba(65,97,128,.22));
 }
 .slide[data-id="P076"] .keep .label {
-  font-size: 33px; letter-spacing: .04em; color: var(--accent-dark);
-  margin: 0 0 14px; font-weight: 500;
+  font-size: 32px; letter-spacing: .04em; color: var(--accent-dark);
+  margin: 0 0 12px; font-weight: 500;
 }
-.slide[data-id="P076"] .keep .text { font-size: 30px; line-height: 1.6; }
+.slide[data-id="P076"] .keep .text { font-size: 28px; line-height: 1.55; }
+
+/* 底部一条：临时的知识补给（左文右图，图为作者 AIGC，加角标） */
+.slide[data-id="P076"] .supply {
+  flex: 0 0 auto; display: flex; align-items: center; gap: 36px;
+  padding: 18px 30px; background: var(--surface);
+  border-left: 6px solid var(--accent);
+}
+.slide[data-id="P076"] .supply .txt { flex: 1 1 auto; min-width: 0; }
+.slide[data-id="P076"] .supply .label {
+  font-size: 30px; letter-spacing: .04em; color: var(--accent-dark);
+  margin: 0 0 8px; font-weight: 500;
+}
+.slide[data-id="P076"] .supply .text { font-size: 28px; line-height: 1.55; }
+.slide[data-id="P076"] .supply .shot {
+  position: relative; flex: 0 0 auto; height: 216px;
+  border: 1px solid var(--divider); background: #fff; display: flex;
+}
+.slide[data-id="P076"] .supply .shot img { height: 100%; width: auto; display: block; }
+.slide[data-id="P076"] .supply .corner-tag { right: 10px; top: 10px; }
 </style>
 <div class="body">
   <svg width="0" height="0" aria-hidden="true" style="position:absolute" focusable="false">
@@ -121,9 +141,20 @@
     </div>
 
   </div>
+
+  <div class="supply reveal">
+    <div class="txt">
+      <div class="label">临时的知识补给</div>
+      <p class="text">学生问“白天为什么也看得到月亮”，这类临时需要的知识补给，同样可以用三问委托AI准备。</p>
+    </div>
+    <div class="shot">
+      <img src="assets/img/baitian_yueliang_ai_shiyitu.png" alt="月亮与太阳位置关系示意图">
+      <span class="tag fill corner-tag">生成示意图</span>
+    </div>
+  </div>
 </div>
 <!-- BODY:END -->
-  <div class="foot">可复用的步骤仍需说明适用条件和检查标准。</div>
+  <div class="foot">可复用的步骤仍需说明适用条件和检查标准。白天看月亮示意图为生成图，方位与比例需核对。</div>
   <aside class="notes">【停讲】讲述时依次说明：课堂实录、学生作品、观测记录等原始材料按课例归档，保留来源和时间。 写下当时的判断和理由，例如“这次追问给早了，学生还没预测”。判断要能对应到具体材料。 把反复要用的步骤固化成模板，例如提问链模板、课例分析模板；使用时仍需按课调整。
     作用：把教师专业积累分成资料、判断、方法三类，各配一个可识别的例子。
     资源：<a href="../19_逐页内容脚本/资源预览/D12.html">D12 科学护眼：项目指令与周报实测样例</a> <a href="assets/docs/D12/项目指令_实测原文.md">素材入口</a> <a href="assets/docs/D12/周报草稿_实测输出样例.md">周报</a> <a href="../19_逐页内容脚本/资源预览/R01.html">R01 提示词库：46条模板与实例</a> <a href="assets/docs/R01/00_总目录.md">素材入口</a> <a href="../19_逐页内容脚本/资源预览/V06.html">V06 26组POV提示词与首图、制作记录</a> <a href="assets/docs/V06/index.html">素材入口</a> <a href="assets/docs/V06/完整视频生成工作流与产物留存说明.md">工作流</a> <a href="assets/docs/V06/02d_视频生成×课标选题库.md">选题库</a></aside>
