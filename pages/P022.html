@@ -1,30 +1,66 @@
-<section class="slide" data-id="P022" data-title="每次用AI前，问自己三个问题" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T06" data-status="draft">
+<!-- PLAN template=T06 executor=cloud pace=停讲 layout_ref=L04
+     reveal=['① 要解决什么问题（目标设定）', '② 最终成功标准是什么（验收标准）', '③ 如何让AI理解以上两点（上下文构建）']
+     embeds=[]
+     anim=null
+     note=三张竖卡，逐问揭示。
+ -->
+<section class="slide" data-id="P022" data-title="每次用AI前，问自己三个问题" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T06" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P022</span>
   </div>
-  <h2 class="title" style="font-size:60px">每次用AI前，问自己三个问题</h2>
+  <h2 class="title">每次用AI前，问自己三个问题</h2>
   <!-- BODY:START -->
-  <div class="body">
-    <div class="stack" style="gap:40px;flex:0 0 auto">
-      <div class="cols reveal" data-step="1" style="align-items:baseline;gap:36px;padding-bottom:36px;border-bottom:1px solid var(--divider)">
-        <span class="cond" style="flex:0 0 90px;font-size:64px;color:var(--light-blue);line-height:1">01</span>
-        <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">想得到什么？</h3>
-        <p style="font-size:36px;line-height:1.65">先想清楚这次要解决的教学问题，以及希望拿到什么结果。</p>
+  <div class="body p22body">
+    <div class="p22row">
+      <div class="p22card reveal" data-step="1">
+        <div class="p22num">①</div>
+        <div class="p22lab">要解决什么问题（目标设定）</div>
+        <div class="p22rule"></div>
+        <p class="text">先说清这次要解决的教学问题，以及希望拿到什么结果。</p>
       </div>
-      <div class="cols reveal" data-step="2" style="align-items:baseline;gap:36px;padding-bottom:36px;border-bottom:1px solid var(--divider)">
-        <span class="cond" style="flex:0 0 90px;font-size:64px;color:var(--light-blue);line-height:1">02</span>
-        <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">AI扮演什么角色？</h3>
-        <p style="font-size:36px;line-height:1.65">是整理材料的管道、展开产物的工具，还是进入任务回应协商的主体。</p>
+      <div class="p22card reveal" data-step="2">
+        <div class="p22num">②</div>
+        <div class="p22lab">最终成功标准是什么（验收标准）</div>
+        <div class="p22rule"></div>
+        <p class="text">说清结果做到什么程度才算成功：谁来用、用多久、能看到什么。</p>
       </div>
-      <div class="cols reveal" data-step="3" style="align-items:baseline;gap:36px">
-        <span class="cond" style="flex:0 0 90px;font-size:64px;color:var(--light-blue);line-height:1">03</span>
-        <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">能提供什么背景？</h3>
-        <p style="font-size:36px;line-height:1.65">把年级、课时、器材、学生已有经验和教师已经安排好的部分说清楚。</p>
+      <div class="p22card reveal" data-step="3">
+        <div class="p22num">③</div>
+        <div class="p22lab">如何让AI理解以上两点（上下文构建）</div>
+        <div class="p22rule"></div>
+        <p class="text">把年级、课时、器材、学生已有经验和已经安排好的部分说清楚。</p>
       </div>
     </div>
   </div>
+  <style>
+    .slide[data-id="P022"] .p22body { justify-content: center; }
+    .slide[data-id="P022"] .p22row { display: flex; gap: 48px; align-items: stretch; }
+    .slide[data-id="P022"] .p22card {
+      flex: 1 1 0; min-width: 0; background: #fff; border: 1px solid var(--divider);
+      border-top: 5px solid var(--accent); padding: 40px 44px 46px; min-height: 540px; box-sizing: border-box;
+      display: flex; flex-direction: column;
+    }
+    .slide[data-id="P022"] .p22num {
+      font-size: 100px; line-height: 1.05; color: var(--light-blue-2); margin-bottom: 14px;
+    }
+    .slide[data-id="P022"] .p22lab {
+      font-size: 33px; line-height: 1.42; color: var(--accent-dark); font-weight: 500; min-height: 96px;
+    }
+    .slide[data-id="P022"] .p22rule { height: 1px; background: var(--divider); margin: 18px 0 22px; }
+    .slide[data-id="P022"] .p22card .text { font-size: 32px; line-height: 1.7; }
+    .slide[data-id="P022"] .foot {
+      border-top: 1px solid var(--divider); margin-top: 40px; padding-top: 26px;
+      font-size: 27px; line-height: 1.5; color: var(--muted-2);
+    }
+    .slide[data-id="P022"] .p22key {
+      color: var(--accent-dark); font-weight: 500; background: #e6eff8;
+      border-left: 5px solid var(--accent); padding: 5px 14px; margin-left: 4px;
+      display: inline-block;
+    }
+  </style>
   <!-- BODY:END -->
-  <div class="foot">三问是行动入口，不等同于三种角色的一一对应。</div>
-  <aside class="notes">三问是行动入口。连续读下来，不要当成三个并列的分类框。</aside>
+  <div class="foot">三问是行动入口，用哪类能力由任务决定；<span class="p22key">第一问只能教师提出，因为问题来自你的教室。</span></div>
+  <aside class="notes">【停讲】上一页看到角色扮演让AI进入任务、参与回应与协商。知道了AI能做什么，还需要一个每次动手前都能用的入口。这一页给大家三个问题，建议每次用AI之前都在心里过一遍。第一问，要解决什么问题，先把教学问题和想要的结果说清楚；第二问，最终成功标准是什么，谁来用、用多久、做到什么程度才算成功；第三问，如何让AI理解以上两点，把年级、课时、器材、学生已有经验和已经安排好的部分交代清楚。请大家注意，三问和三类能力不是一一对应，用哪类能力由任务决定；而且第一问只能由教师提出，因为问题来自你的教室，AI不在场。下一页我们就用这三个问题，完整走一次天气观测活动的委托。
+    作用：给出三问，作为后面所有案例的行动入口；脚注埋下第6拍伏笔。</aside>
 </section>
