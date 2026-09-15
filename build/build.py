@@ -14,6 +14,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = ROOT.parent / '19_逐页内容脚本' / '逐页内容脚本.json'
+if not SCRIPT.exists():  # 云端/克隆环境：使用仓库内副本
+    SCRIPT = ROOT / 'content' / '逐页内容脚本.json'
 PLAN = ROOT / 'plan' / 'pages_plan.json'
 PAGES = ROOT / 'pages'
 STAGES = ['教学设计', '课堂实施', '教学评价', '教师专业发展']
