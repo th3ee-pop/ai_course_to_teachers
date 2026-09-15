@@ -1,0 +1,92 @@
+=== P023 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-3 reveal-group" style="margin:auto 0;gap:32px">
+    <div class="card reveal" style="padding:36px">
+      <span class="num">01</span>
+      <div class="label">我想得到什么？</div>
+      <p style="font-size:28px;line-height:1.6">我需要一份活动安排和一张可打印的学生记录表。</p>
+    </div>
+    <div class="card reveal" style="padding:36px">
+      <span class="num">02</span>
+      <div class="label">AI需要扮演什么角色？</div>
+      <p style="font-size:28px;line-height:1.6">AI先整理活动要求，再制作配套文件；缺少条件时先向我确认。</p>
+    </div>
+    <div class="card reveal" style="padding:36px">
+      <span class="num">03</span>
+      <div class="label">我能提供什么背景？</div>
+      <p style="font-size:28px;line-height:1.6">我会提供学生年级、课时安排、可用器材、观察地点和已有教学进度。</p>
+    </div>
+  </div>
+  <div style="margin-top:28px">
+    <a class="file-card" href="links/D04/">D04</a>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P026 ===
+<!-- BODY:START -->
+<div class="body stack" style="justify-content:center;gap:26px">
+  <div class="reveal" style="display:flex;gap:32px;align-items:baseline">
+    <div class="label" style="flex:0 0 320px">教师提出的任务</div>
+    <p class="text" style="flex:1 1 0;min-width:0;font-size:30px;line-height:1.6">请围绕‘植物的一生’设计一个单元，学生先作预测，再通过观察和测量记录生长变化。</p>
+  </div>
+  <div class="reveal" style="display:flex;gap:32px;align-items:baseline">
+    <div class="label" style="flex:0 0 320px">我想得到什么</div>
+    <p class="text" style="flex:1 1 0;min-width:0;font-size:30px;line-height:1.6">得到一套可直接使用的单元方案：单元表、前测、详细教案、第一课时教案和观察记录册。</p>
+  </div>
+  <div class="reveal" style="display:flex;gap:32px;align-items:baseline">
+    <div class="label" style="flex:0 0 320px">AI需要扮演什么角色</div>
+    <p class="text" style="flex:1 1 0;min-width:0;font-size:30px;line-height:1.6">先整理教材与课标依据，再生成所需材料；遇到学生经验、课时或器材不清时，先追问再动手。</p>
+  </div>
+  <div class="reveal" style="display:flex;gap:32px;align-items:baseline">
+    <div class="label" style="flex:0 0 320px">能提供什么上下文</div>
+    <p class="text" style="flex:1 1 0;min-width:0;font-size:30px;line-height:1.6">说明教材版本与单元位置、每周课时、可用的尺子和放大镜等器材、学生已有观察经验、评价要求。</p>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P032 ===
+<!-- BODY:START -->
+<div class="body stack" style="justify-content:center;gap:26px">
+  <div class="reveal" style="display:flex;gap:32px;align-items:baseline">
+    <div class="label" style="flex:0 0 320px">教师提出的任务</div>
+    <p class="text" style="flex:1 1 0;min-width:0;font-size:30px;line-height:1.6">我有一批政策、课标和案例链接，想整理成一份便于查阅的Word，按主题分节。</p>
+  </div>
+  <div class="reveal" style="display:flex;gap:32px;align-items:baseline">
+    <div class="label" style="flex:0 0 320px">我想得到什么</div>
+    <p class="text" style="flex:1 1 0;min-width:0;font-size:30px;line-height:1.6">得到一份有目录、有来源、能回到原文位置的资料整理稿，而不是一堆链接的堆叠。</p>
+  </div>
+  <div class="reveal" style="display:flex;gap:32px;align-items:baseline">
+    <div class="label" style="flex:0 0 320px">AI需要扮演什么角色</div>
+    <p class="text" style="flex:1 1 0;min-width:0;font-size:30px;line-height:1.6">AI负责去重、归类和写成可读段落；引用来源和具体条款仍要由教师核对。</p>
+  </div>
+  <div class="reveal" style="display:flex;gap:32px;align-items:baseline">
+    <div class="label" style="flex:0 0 320px">能提供什么上下文</div>
+    <p class="text" style="flex:1 1 0;min-width:0;font-size:30px;line-height:1.6">说清资料包的来源范围、这份Word的用途、希望的编辑形式，例如按‘设计、实施、评价、教师发展’分节。</p>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P039 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-3 reveal-group" style="margin:auto 0;gap:32px">
+    <div class="card reveal" style="padding:36px">
+      <span class="num">01</span>
+      <div class="label">我想得到什么</div>
+      <p style="font-size:28px;line-height:1.6">学生能比较同一地点在不同倾角下的全年昼长变化，并说明比较依据。</p>
+    </div>
+    <div class="card reveal" style="padding:36px">
+      <span class="num">02</span>
+      <div class="label">AI需要扮演什么角色</div>
+      <p style="font-size:28px;line-height:1.6">AI作为生成与落地的工具，协助开发交互模拟；教师组织学生预测、操作和解释。</p>
+    </div>
+    <div class="card reveal" style="padding:36px">
+      <span class="num">03</span>
+      <div class="label">我能提供什么上下文</div>
+      <p style="font-size:28px;line-height:1.6">提供学段、教学难点、需要控制的变量、视角、设备条件和可用课时。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

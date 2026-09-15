@@ -1,0 +1,193 @@
+你是课件页面排版助手。输入是若干页“骨架 HTML”（1920×1080 投影课件的一页），你只需要重写每页 <!-- BODY:START --> 与 <!-- BODY:END --> 之间的正文区，让它按模板要求排版并有分步出现。
+
+硬性规则（违反会被校验脚本退回）：
+1. 只输出正文区。不要输出 <section>、.hdr、h2.title、.sub、.foot、<aside class="notes">，也不要改它们。
+2. 文字零改写：骨架正文里每个 .label 与 .text 的文字必须逐字保留（不增删字、不改标点、不合并、不翻译）。可以增加的只有很短的视觉标签：“示意图”“示例对话”“AI生成试样”“待放入实拍照片”“角色模拟，非历史人物真实发言”。不得加入骨架里没有的事实、数字、引语、英文。
+3. 只用给定的 CSS 类与少量内联样式（flex/grid/gap/margin/max-width/font-size/color 用变量）。不写 <style>、<script>、不引外部图片或外部链接。
+4. 图片只用 PLAN 注释 assets 里给出的相对路径；`(capture)` `(codex-svg)` `(img)` 类的路径可以直接 <img src>。路径含 * 的（如 cap_D04_word_*.png）按 _1、_2 展开。`(placeholder)` 类或文件标注“待…”的不放 img，用 <div class="slot"><div class="placeholder">待放入产品截图</div></div>。`(external)` `(link)` 类不是图片：`(link)` 用 <a class="file-card" href="路径">文件名</a>；`(external)` 用 <a class="link-card unset" data-config="observatoryUrl|magnetUrl|labUrl|ecoUrl"><b>系统名</b><span>现场启动后填入地址</span></a>（观察台→observatoryUrl，掌中磁场→magnetUrl，掌中实验室→labUrl，生态岛→ecoUrl）。
+5. 分步：PLAN 注释 reveal=[...] 列出的条目按顺序各自加 class="reveal"（同一条目的标签与正文放在同一个 .reveal 容器内）；reveal 为空的页不加 .reveal。不要自创其它动效类。骨架里已有的 .reveal 划分要保留。
+6. 结构：正文区最外层固定是 <div class="body">…</div>（可加 style），.cols / .grid-3 / .stack / .dialog 等都作为 .body 的子元素，不要把这些类直接加在 .body 上。图片写法固定为 <div class="fig" style="max-height:…px"><div class="pic"><img src="…" alt=""></div><figcaption class="caption">…</figcaption></div>（figcaption 可省），或 <div class="slot" style="height:…px"><img src="…" alt=""></div>。
+7. 尺寸：正文字号 28–40px，行高 1.6 左右；一页正文最多 4 个块；图片用 .slot 或 .fig 包裹并设 max-height，保证在 1080 高度内不溢出（标题区约占 220px，页脚约 80px，正文可用高约 700px）。
+8. 输出格式：每页依次
+=== P004 ===
+<!-- BODY:START -->
+...
+<!-- BODY:END -->
+不要 Markdown 代码围栏，不要任何解释。
+
+可用 CSS 类（deck.css）：
+- 布局：.body（正文容器，flex 列）.stack（竖排 gap 28）.cols（横排等分，子元素 flex:1；可放 <div class="vline"></div> 分隔线）.cols.tight .grid-2 .grid-3 .grid-4
+- 文本：.label（小标题，26px 强调色）.text（32px）.lead（36px）.small（26px 灰）.muted .hl（强调色加粗）.num（等宽序号，配合 .label 使用：<span class="num">01</span>）.kicker（24px 字距大）.serif .cond .big（196px 大数字）.rule（分隔线）.takeaway（结论行）.quote-block（大引文）
+- 卡片：.card（边框卡；内含 .label 与 <p>）.card.fill（灰底）.card.accent（强调边）.card.role-pipe/.card.role-tool/.card.role-subject（角色配色）
+- 流程：.flow > .node（每步一格，含 .label 与 <p>）与 .arr（<div class="arr">→</div>）；.flow.vertical 竖排；.steps > li（带 01 02 序号的列表，<b> 为要点）
+- 对话：.dialog > .turn（.who + .say）；AI 一方加 .turn.ai；.transcript > .line（.who + 文本，.mark 高亮）
+- 对照：.before-after（两栏网格，每栏 <div>，内用 .label + p；.diff 标记差异，.fix 标记修正）
+- 图片：.slot（居中容器，img 自适应；内可放 <div class="placeholder">待放入…</div>）.fig（图＋<figcaption class="caption">）.blueprint（蓝图边框）.kf（关键帧格）
+- 标签：.tag（小标签）.tag.fill .tag.warn；.corner-tag（角标）
+- 入口：.file-card（文件卡片链接）.link-card（外链卡片，配 data-config）.embed（内嵌 iframe 容器：<div class="embed" data-src="路径"><div class="hint">点击加载</div></div>）
+- 组件：<div class="map433" data-stage="设计|实施|评价|教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-reveal="1" data-size="full|compact"></div>（4＋3＋3 总图，自动渲染）；<div class="cycle" data-nodes="A|B|C|D" data-center="中心字" data-size="480"></div>（环形循环图）
+颜色变量：var(--accent) #5980a6、var(--accent-dark) #416180、var(--light-blue) #94bce3、var(--muted) 灰、var(--surface) 浅灰底、var(--divider) 分隔线。
+
+模板要求：
+模板 T15「责任/决定多栏」：按 reveal 条目数用 .cols（3 栏）或 .grid-4（4 栏）；每栏一个 .reveal 容器，含 .label 与 p.text；栏间用 <div class="vline"></div>。有图片时做成上图下文或左图右文，图用 .fig 并标注 .tag。
+
+已实现的同模板样页（只看排版气质与密度，不要照抄其文字；样页用了内联样式，你优先用上面的类）：
+
+--- 样页 T15 ---
+<section class="slide" data-id="P092" data-title="学生完成学习，教师对教学判断负责" data-module="10 回到真实学习：实物、终端与伦理" data-stage="教师专业发展">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span class="on">教师专业发展</span></div>
+    <span class="pid">P092</span>
+  </div>
+  <div style="display:flex;align-items:baseline;gap:40px;margin-top:32px">
+    <h2 style="font-size:54px;line-height:1.3;white-space:nowrap">学生完成学习，教师对教学判断负责</h2>
+    <p class="sub" style="white-space:nowrap">来源性质与使用权限，需要分别核对。</p>
+  </div>
+  <div style="display:flex;gap:72px;margin-top:auto;margin-bottom:auto;padding:40px 0">
+    <div style="flex:0 0 46%;min-width:0">
+      <div class="kicker" style="margin-bottom:20px">学生的学习</div>
+      <p style="font-size:38px;line-height:1.65">学生亲自思考、交流、操作和创作，并说明自己怎样使用了AI。</p>
+    </div>
+    <div style="flex:0 0 1px;background:#c9cacb"></div>
+    <div style="flex:1 1 0;min-width:0">
+      <div class="kicker" style="margin-bottom:20px">教师的判断</div>
+      <p style="font-size:38px;line-height:1.65">教师审核资源和评价，结合证据决定是否采信AI的建议。</p>
+    </div>
+  </div>
+  <div style="margin-top:auto;padding-top:40px;border-top:2px solid #5980a6;display:flex;gap:72px">
+    <div style="flex:1 1 0;min-width:0">
+      <div class="kicker" style="margin-bottom:16px;color:#7a7a7d">材料的性质</div>
+      <p style="font-size:30px;line-height:1.65">区分真实记录、模拟材料与生成内容；角色模拟不等于历史人物真实发言。</p>
+    </div>
+    <div style="flex:1 1 0;min-width:0">
+      <div class="kicker" style="margin-bottom:16px;color:#7a7a7d">材料的权限</div>
+      <p style="font-size:30px;line-height:1.65">再核对来源、引用方式和使用许可；可访问的资源不等于可以任意发布。</p>
+    </div>
+  </div>
+  
+</section>
+
+
+请为以下 4 页重写正文区，按输出格式逐页给出。
+
+
+##### 页 B02（模板 T15）
+<!-- PLAN template=T15 executor=pi pace=按替换片段安排 layout_ref=L06
+     reveal=['教师方案', '学生记录表', '教师评析材料']
+     embeds=[{"asset": "DOC_D02", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       DOC_D02 → links/D02/ (link) 同上 -->
+<section class="slide" data-id="B02" data-title="摆的秘密：两份材料给两种人" data-module="05 教学设计：让方案适合本班" data-stage="教学设计" data-kind="备选" data-replaces="模块05 教学设计：让方案适合本班" data-template="T15" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span class="on">教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B02</span>
+  </div>
+  <h2 class="title">摆的秘密：两份材料给两种人</h2>
+  <p class="sub reveal-none">教师备课与学生探究需要不同的信息。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">教师方案</div><p class="text">写清实验目的、控制变量、组织方式与核对要点。</p></div>
+    <div class="reveal"><div class="label">学生记录表</div><p class="text">留下变量、测量次数、数据与解释位置，支持学生自己记录和判断。</p></div>
+    <div class="reveal"><div class="label">教师评析材料</div><p class="text">分析可能的错误及其依据，帮助教师追问，不预先替学生填写结果。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">依据《摆的秘密》实验全案三件整理。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：写清实验目的、控制变量、组织方式与核对要点。 留下变量、测量次数、数据与解释位置，支持学生自己记录和判断。 分析可能的错误及其依据，帮助教师追问，不预先替学生填写结果。
+    作用：让学生材料与教师材料的受众差别可见，避免把教师用的答案投给学生。</aside>
+</section>
+
+
+##### 页 B17（模板 T15）
+<!-- PLAN template=T15 executor=pi pace=按替换片段安排 layout_ref=L07
+     reveal=['测评卷', '登记表', '作品量规']
+     embeds=[{"asset": "DOC_D06", "mode": "link"}, {"asset": "DOC_D05", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       DOC_D06 → links/D06/ (link) 同上
+       DOC_D05 → links/D05/ (link) 同上 -->
+<section class="slide" data-id="B17" data-title="测评卷、登记表与量规，分别留下什么证据？" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="备选" data-replaces="模块07 教学评价：让证据开启后续教学" data-template="T15" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span class="on">教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B17</span>
+  </div>
+  <h2 class="title">测评卷、登记表与量规，分别留下什么证据？</h2>
+  <p class="sub reveal-none">先看学习目标，再决定采用哪种材料。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">测评卷</div><p class="text">通过具体问题观察学生是否理解概念、会解释现象。</p></div>
+    <div class="reveal"><div class="label">登记表</div><p class="text">保存题号、得分与必要备注，支持比较前后表现。</p></div>
+    <div class="reveal"><div class="label">作品量规</div><p class="text">依据作品与过程判断学生是否说明证据、改进方案并完成合作任务。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">已有《物体的运动》测评材料与科学护眼量规。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：通过具体问题观察学生是否理解概念、会解释现象。 保存题号、得分与必要备注，支持比较前后表现。 依据作品与过程判断学生是否说明证据、改进方案并完成合作任务。
+    作用：说明纸笔测验与项目评价各自需要什么材料，并给出按校情替换评价片段的做法。</aside>
+</section>
+
+
+##### 页 B22（模板 T15）
+<!-- PLAN template=T15 executor=pi pace=按替换片段安排 layout_ref=L10
+     reveal=['依据', '校内核对', '一个真实决定']
+     embeds=[]
+     anim=null
+     note=UNESCO 只中文概括，不加引号。
+     assets:
+       WEB_R02_UNESCO → assets/img/cap_unesco_guidance.png (external) 官方页截图 -->
+<section class="slide" data-id="B22" data-title="处理学生材料前，先核对哪些要求？" data-module="10 回到真实学习：实物、终端与伦理" data-stage="" data-kind="备选" data-replaces="模块10 回到真实学习：实物、终端与伦理" data-template="T15" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B22</span>
+  </div>
+  <h2 class="title">处理学生材料前，先核对哪些要求？</h2>
+  <p class="sub reveal-none">先看依据，再落到校内的具体规则</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">依据</div><p class="text">UNESCO 2023年生成式AI教育指南强调人本、隐私保护、适龄和公平使用。这是国际指南的概括，不是本地法律。</p></div>
+    <div class="reveal"><div class="label">校内核对</div><p class="text">处理学生材料前，先确认学校关于数据、账号和发布的规定；谁批准采集、谁负责保存，都要写清楚。</p></div>
+    <div class="reveal"><div class="label">一个真实决定</div><p class="text">如果要把课堂数据用于教研，先定采集范围和保存期限，再决定哪些环节可以用AI，哪些环节必须人工完成。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">UNESCO《生成式人工智能教育与研究指南》（2023）官方介绍的中文概括；校内安排以适用规则为准。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：UNESCO 2023年生成式AI教育指南强调人本、隐私保护、适龄和公平使用。这是国际指南的概括，不是本地法律。 处理学生材料前，先确认学校关于数据、账号和发布的规定；谁批准采集、谁负责保存，都要写清楚。 如果要把课堂数据用于教研，先定采集范围和保存期限，再决定哪些环节可以用AI，哪些环节必须人工完成。
+    作用：把伦理依据与校内实际规则分开处理，避免把国际指南当作本地法律，作为模块十选择与核对页。</aside>
+</section>
+
+
+##### 页 B23（模板 T15）
+<!-- PLAN template=T15 executor=pi pace=按替换片段安排 layout_ref=L02
+     reveal=['需要学生观察与操作', '需要成套教学材料', '需要情境与交流', '需要调整自己的委托']
+     embeds=[{"asset": "TOOL_S01", "mode": "link"}, {"asset": "TOOL_S08", "mode": "link"}, {"asset": "TOOL_S07", "mode": "link"}, {"asset": "SYS_S05", "mode": "link"}, {"asset": "DOC_D01", "mode": "link"}, {"asset": "DOC_D02", "mode": "link"}, {"asset": "DOC_D05", "mode": "link"}, {"asset": "VID_V01", "mode": "link"}, {"asset": "SYS_S03", "mode": "link"}, {"asset": "DOC_D13", "mode": "link"}]
+     anim=null
+     note=资源入口页：四行各配链接卡片。
+     assets:
+       TOOL_S01 → assets/tools/siji_v2/index.html (iframe) 整目录复制（4.1MB，含 libs/ assets/ seasons-stage.js），本地可离线运行
+       TOOL_S08 → assets/tools/yuexiang.html (iframe) 单文件
+       TOOL_S07 → assets/tools/qianshuiqi.html (iframe) 单文件，无外部依赖
+       SYS_S05 → （本机启动 dist） (external) 同上
+       DOC_D01 → links/D01/ (link) 文档链接，进讲者备注与页脚
+       DOC_D02 → links/D02/ (link) 同上
+       DOC_D05 → links/D05/ (link) 同上
+       VID_V01 → assets/wanglushan_15s.mp4 (video) 已在 assets/
+       SYS_S03 → （同上，语言文化交流入口） (external) 同 S02
+       DOC_D13 → links/D13/ (link)  -->
+<section class="slide" data-id="B23" data-title="按你的教学任务寻找资源" data-module="11 收束：下周的一件小事" data-stage="" data-kind="备选" data-replaces="模块11 收束：下周的一件小事" data-template="T15" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B23</span>
+  </div>
+  <h2 class="title">按你的教学任务寻找资源</h2>
+  <p class="sub reveal-none">系统、文档、视频和提示词都可以从具体需求出发选择。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">需要学生观察与操作</div><p class="text">查看四季循环、月相、潜水器与掌中实验室。</p></div>
+    <div class="reveal"><div class="label">需要成套教学材料</div><p class="text">查看单元全案、实验记录表、项目方案包和评价材料。</p></div>
+    <div class="reveal"><div class="label">需要情境与交流</div><p class="text">查看《望庐山瀑布》视频、共读角交流与达尔文角色卡。</p></div>
+    <div class="reveal"><div class="label">需要调整自己的委托</div><p class="text">查看提示词库，并补充本班目标、角色要求和背景。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <aside class="notes">【按替换片段安排】请先从自己的问题找资源。文档、系统和视频的使用条件不同，资源预览会给出本机入口与说明。复制到别的设备时，需要同时带上资源并检查链接。
+    作用：提供可按教学任务检索的资源入口。</aside>
+</section>

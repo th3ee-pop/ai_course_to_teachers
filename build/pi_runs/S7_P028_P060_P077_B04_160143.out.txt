@@ -1,0 +1,99 @@
+=== P028 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="flow" style="gap:28px">
+    <div class="node reveal">
+      <div class="label">学习目标</div>
+      <p class="text" style="font-size:30px">学生能够持续观察植物生长，并用图画和数据记录变化。</p>
+    </div>
+    <div class="arr">→</div>
+    <div class="node reveal">
+      <div class="label">课堂与课间活动</div>
+      <p class="text" style="font-size:30px">学生随植物生长进行多次观察，比较株高、叶片和生长阶段的变化。</p>
+    </div>
+    <div class="arr">→</div>
+    <div class="node reveal">
+      <div class="label">学习证据</div>
+      <p class="text" style="font-size:30px">记录册保留日期、测量数据、观察图画和学生的解释。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P060 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center;gap:36px">
+  <div class="reveal card">
+    <div class="label">数据字段</div>
+    <p class="text">DA24保存作答选项，KGF24保存该题得分。</p>
+  </div>
+  <div class="cols" style="gap:56px;align-items:stretch">
+    <div class="reveal">
+      <div class="label">原题节选</div>
+      <p class="cond" style="font-size:36px;line-height:1.6">But the 24 of helping her is more than money.
+24. A. price  B. time  C. joy</p>
+    </div>
+    <div class="reveal card fill">
+      <div class="label">核对之后再解释</div>
+      <p class="text">这是一道完形填空题。判断学生的困难，需要结合上下文，不能只根据字段名猜测题型。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P077 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center;gap:32px">
+  <div class="cols" style="gap:48px;align-items:stretch">
+    <div class="stack" style="gap:28px;flex:1 1 0">
+      <div class="reveal card">
+        <div class="label">项目指令原文节选</div>
+        <p class="text" style="font-size:30px">本项目是小学五年级“科学护眼”项目式学习的备课与评价空间。</p>
+      </div>
+      <div class="reveal card fill">
+        <div class="label">持续约定</div>
+        <p class="text" style="font-size:30px">材料使用匿名编号，面向教师与五年级学生；输出范围与用词要求随项目保留。</p>
+      </div>
+    </div>
+    <div class="stack" style="gap:28px;flex:1 1 0">
+      <div class="reveal card accent">
+        <div class="label">周报中的具体发现</div>
+        <p class="text" style="font-size:30px">第4周G6整组无记录，G3只提交3份、应交6份。本周汇总的样本与上周不同。</p>
+      </div>
+      <div class="reveal card accent">
+        <div class="label">教师需要作出的判断</div>
+        <p class="text" style="font-size:30px">先核查并补齐缺漏，再比较变化；不能把缺少部分记录后的均值变化直接解释为全班改善。</p>
+      </div>
+    </div>
+  </div>
+  <a class="file-card" href="links/D12/">D12</a>
+</div>
+<!-- BODY:END -->
+
+=== B04 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center;gap:28px">
+  <div class="cols" style="gap:56px;align-items:stretch">
+    <div class="reveal" style="flex:1 1 0">
+      <div class="label">来源原文</div>
+      <p class="text" style="font-size:34px">“将人工智能技术融入教育教学全要素全过程”</p>
+    </div>
+    <div class="stack" style="gap:28px;flex:1 1 0">
+      <div class="reveal card">
+        <div class="label">文档中的概括</div>
+        <p class="text" style="font-size:30px">《关于加快推进教育数字化的意见》提出，应推动人工智能在教育教学各环节中的应用。</p>
+      </div>
+      <div class="reveal card fill">
+        <div class="label">文档中的教学建议</div>
+        <p class="text" style="font-size:30px">教师可以从备课、课堂活动和评价中的具体需求出发，选择适当的AI辅助方式，并核查输出。</p>
+      </div>
+    </div>
+  </div>
+  <div class="cols" style="gap:40px;align-items:center">
+    <div class="slot" style="height:230px;flex:1 1 0">
+      <img src="assets/img/B04_zhengce_word_preview.png" alt="">
+    </div>
+    <a class="file-card" href="links/D15/" style="flex:0 0 auto">D15</a>
+  </div>
+</div>
+<!-- BODY:END -->

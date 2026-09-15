@@ -1,0 +1,47 @@
+=== B16 ===
+<!-- BODY:START -->
+<div class="body stack" style="justify-content:center;gap:24px">
+  <div class="reveal" style="display:flex;align-items:baseline;gap:32px;padding:26px 0;border-top:1px solid var(--divider)">
+    <div class="label" style="flex:0 0 240px;margin:0">资料中出现的情况</div>
+    <p class="text" style="flex:1 1 0;font-size:38px;line-height:1.6;margin:0">示例材料标出S17没有观测记录，需要进一步确认。</p>
+  </div>
+  <div class="reveal" style="display:flex;align-items:baseline;gap:32px;padding:26px 0;border-top:1px solid var(--divider)">
+    <div class="label" style="flex:0 0 240px;margin:0">可以确认的范围</div>
+    <p class="text" style="flex:1 1 0;font-size:38px;line-height:1.6;margin:0"><span class="fix">只能说明当前材料未找到相关记录</span>，<span class="diff">不能据此判断参与态度或观察能力</span>。</p>
+  </div>
+  <div class="reveal" style="padding-top:8px">
+    <div class="card fill" style="background:var(--accent-dark);color:#f2f2f3;padding:30px 40px">
+      <div class="label" style="color:var(--light-blue)">给学生的反馈示例</div>
+      <p style="font-size:36px;line-height:1.6;margin:0">我在现有记录中还没有找到你的观测结果。请和我一起确认：是否轮到你记录，是否记在其他表中，或是否需要补做一次观察？</p>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:flex-end;margin-top:4px">
+    <a class="file-card" href="assets/tools/tianqi_kanban_D07.html">tianqi_kanban_D07.html</a>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B21 ===
+<!-- BODY:START -->
+<div class="body stack" style="justify-content:center;gap:0">
+  <div class="reveal" style="display:flex;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid var(--divider)">
+    <div class="label" style="flex:0 0 200px;margin:0">保留原件</div>
+    <p class="text" style="flex:1 1 0;font-size:36px;line-height:1.6;margin:0">拍照或扫描，保留题目、单位、表格结构和旁注。</p>
+  </div>
+  <div class="reveal" style="display:flex;align-items:flex-start;gap:32px;padding:24px 0;border-top:1px solid var(--divider)">
+    <div class="label" style="flex:0 0 200px;margin:0">提取信息</div>
+    <div style="flex:1 1 0;display:flex;flex-direction:column;gap:14px">
+      <p class="text" style="font-size:36px;line-height:1.6;margin:0">可以由多模态模型直接读取，也可以先用OCR提取文字；两条路径都需要核对。</p>
+      <a class="file-card" href="assets/tools/cuoti_saomiao.html" style="align-self:flex-start">cuoti_saomiao.html</a>
+    </div>
+  </div>
+  <div class="reveal" style="display:flex;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid var(--divider)">
+    <div class="label" style="flex:0 0 200px;margin:0">模拟误差</div>
+    <p class="text" style="flex:1 1 0;font-size:36px;line-height:1.6;margin:0">原记录为<span class="diff">12.8秒</span>，识别文本为<span class="diff">128</span>；核对时<span class="fix">恢复小数点和单位</span>，并保留原图。</p>
+  </div>
+  <div class="reveal" style="display:flex;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid var(--divider);border-bottom:2px solid var(--accent)">
+    <div class="label" style="flex:0 0 200px;margin:0">再作分析</div>
+    <p class="text" style="flex:1 1 0;font-size:36px;line-height:1.6;margin:0">先更正识别误差，再分析记录；缺测和旁注不能被自动补造或删除。</p>
+  </div>
+</div>
+<!-- BODY:END -->

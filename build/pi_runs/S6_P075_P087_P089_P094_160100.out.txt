@@ -1,0 +1,94 @@
+=== P075 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="grid-3" style="margin:auto 0;gap:36px">
+    <div class="card reveal">
+      <div class="label"><span class="num">01</span>目标</div>
+      <p style="font-size:30px;line-height:1.6">把这一次的准备和判断保存下来，让下一个同类任务不必从头说明背景。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">02</span>AI的角色</div>
+      <p style="font-size:30px;line-height:1.6">整合旧委托与审核点；把能固定的部分做成模板或指令；对适用条件提出协商。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">03</span>要提供的背景</div>
+      <p style="font-size:30px;line-height:1.6">上一次的委托原文、自己划出的审核点、改动的理由，以及这次任务与上次不同的地方。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P087 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-2" style="gap:28px">
+    <div class="card reveal">
+      <div class="label"><span class="num">01</span>教师问题</div>
+      <p style="font-size:30px;line-height:1.6">怎样把一张写满数据的纸质实验记录，变成可核对、可反馈的数字记录？</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">02</span>我想得到什么</div>
+      <p style="font-size:30px;line-height:1.6">发现记录中的缺项、单位和可疑数据，不直接诊断错因。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">03</span>AI需要扮演什么角色</div>
+      <p style="font-size:30px;line-height:1.6">先做文字提取和整理，再按教师要求提示需要核对的位置。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">04</span>能提供什么上下文</div>
+      <p style="font-size:30px;line-height:1.6">纸表原图、题目要求、实验条件、单位和已核对范围。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P089 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-2" style="gap:28px">
+    <div class="card reveal">
+      <div class="label"><span class="num">01</span>我想得到什么</div>
+      <p style="font-size:30px;line-height:1.6">让学生用自己的操作与记录说明判断，而不只是获得一份整齐的答案。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">02</span>AI需要扮演什么角色</div>
+      <p style="font-size:30px;line-height:1.6">协助整理证据、生成初稿或追问理由；教师与学生保留选择和解释。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">03</span>我能提供什么上下文</div>
+      <p style="font-size:30px;line-height:1.6">提供必要的原图、任务要求、测量条件和核对范围。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">04</span>怎样取舍</div>
+      <p style="font-size:30px;line-height:1.6">由教师根据学习目标选择采集范围，学生参与确认自己的记录。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P094 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-2" style="gap:24px">
+    <div class="card reveal">
+      <div class="label"><span class="num">01</span>我想得到什么</div>
+      <p style="font-size:30px;line-height:1.6">核对一组已经填写的天气记录，列出缺项与需要向学生确认的问题。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">02</span>AI需要扮演什么角色</div>
+      <p style="font-size:30px;line-height:1.6">作为信息加工与整合的管道，提取记录、标明疑点；再形成反馈初稿。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">03</span>我能提供什么上下文</div>
+      <p style="font-size:30px;line-height:1.6">提供记录照片、空表格式、观测安排、单位和已核对的信息。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label"><span class="num">04</span>怎样确认完成</div>
+      <p style="font-size:30px;line-height:1.6">逐项对照原图，向学生确认疑点，再决定是否扩大到全班记录。</p>
+    </div>
+  </div>
+  <div class="reveal" style="margin-top:24px">
+    <a class="file-card" href="links/D04/">D04</a>
+  </div>
+</div>
+<!-- BODY:END -->

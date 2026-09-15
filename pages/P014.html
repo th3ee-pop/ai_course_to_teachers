@@ -1,0 +1,196 @@
+<!-- PLAN template=T03 executor=opus pace=停讲 layout_ref=L07
+     reveal=['模型一侧', '工具一侧', '相同条件', '判断依据']
+     embeds=[]
+     anim={"id": "ANIM_C_模型提出_工具执行", "spec": "左右两栏同一任务：左‘模型一侧’输出一条操作建议（如‘读取记录表.csv 并计算平均株高’），点击‘执行’后右‘工具一侧’真实执行一段内置 JS（读取内置小表、算均值），返回结果或人为设置的错误（文件名不对→报错），左侧再据错误改建议。两栏顶部标签：提出 vs 执行。"}
+     note=
+ -->
+<section class="slide" data-id="P014" data-title="模型提出操作，工具实际执行" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
+    <span class="pid">P014</span>
+  </div>
+  <h2 class="title">模型提出操作，工具实际执行</h2>
+  <!-- BODY:START -->
+  <style>
+  .slide[data-id="P014"] .body { gap: 40px; }
+  .slide[data-id="P014"] .anim { flex: 1 1 0; }
+  .slide[data-id="P014"] .corner-tag { top: auto; bottom: 20px; right: 20px; }
+  .slide[data-id="P014"] .a14 { position: absolute; inset: 0; padding: 20px 22px 84px; box-sizing: border-box; display: flex; gap: 16px; align-items: stretch; }
+  .slide[data-id="P014"] .pane { display: flex; flex-direction: column; min-width: 0; background: #fff; border: 1px solid #d5dae0; border-radius: 10px; box-shadow: 0 1px 2px rgba(29,45,61,.06), 0 8px 20px rgba(29,45,61,.05); overflow: hidden; }
+  .slide[data-id="P014"] .ttl { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; padding: 9px 14px; background: #f1f4f7; border-bottom: 1px solid #e1e6eb; }
+  .slide[data-id="P014"] .ttl .label { margin: 0; font-size: 25px; letter-spacing: .02em; }
+  .slide[data-id="P014"] .ttl .who { font-size: 26px; color: var(--muted-2); }
+  .slide[data-id="P014"] .dots { display: flex; gap: 7px; flex: 0 0 auto; }
+  .slide[data-id="P014"] .dots i { width: 11px; height: 11px; border-radius: 50%; background: #d9dee4; }
+  .slide[data-id="P014"] .dots i:nth-child(1) { background: #e0b3a1; }
+  .slide[data-id="P014"] .dots i:nth-child(2) { background: #dcd0a8; }
+  .slide[data-id="P014"] .dots i:nth-child(3) { background: #bacfc0; }
+
+  /* ── 左：模型提出 ───────────────────────── */
+  .slide[data-id="P014"] .s-model { flex: 0 0 404px; }
+  .slide[data-id="P014"] .pbody { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 16px; padding: 16px 14px; background: #f8fafc; }
+  .slide[data-id="P014"] .slot2 { border: 1px solid #dfe4e9; border-radius: 10px; background: #fff; padding: 14px 16px; box-sizing: border-box; min-height: 108px; font-size: 26px; line-height: 1.5; color: var(--muted-3); display: flex; flex-direction: column; justify-content: center; gap: 8px; box-shadow: 0 1px 2px rgba(29,45,61,.05); transition: border-color .3s ease, background .3s ease; }
+  .slide[data-id="P014"] .slot2.on { color: var(--text); border-color: #cfe0f0; background: #f4f8fc; }
+  .slide[data-id="P014"] .slot2.bad { border-color: #b2603f; background: #faf2ee; color: #8d4a30; }
+  .slide[data-id="P014"] .slot2 .rn { align-self: flex-start; font-family: var(--font-cond); font-weight: 500; font-size: 24px; letter-spacing: .1em; color: var(--accent); border: 1px solid #cfe0f0; border-radius: 5px; background: #fff; padding: 1px 10px; }
+  .slide[data-id="P014"] .slot2.bad .rn { color: #b2603f; border-color: #e0bdae; background: #fff; }
+  .slide[data-id="P014"] .cmd { font-family: Menlo, Consolas, 'Noto Sans SC', monospace; font-size: 26px; letter-spacing: .01em; color: var(--accent-dark); word-break: break-all; }
+  .slide[data-id="P014"] .cmd .wrong { color: #b2603f; border-bottom: 2px solid #b2603f; }
+
+  /* ── 中：同一任务 ───────────────────────── */
+  .slide[data-id="P014"] .s-mid { flex: 0 0 104px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .slide[data-id="P014"] .arrowbig { color: #c2c9d1; transition: color .3s ease; }
+  .slide[data-id="P014"] .arrowbig svg { display: block; width: 72px; height: 40px; }
+  .slide[data-id="P014"] .arrowbig.live { color: var(--accent); }
+  .slide[data-id="P014"] .midlab { font-size: 24px; color: var(--muted-2); text-align: center; }
+
+  /* ── 右：工具执行 ───────────────────────── */
+  .slide[data-id="P014"] .s-tool { flex: 1 1 0; }
+  .slide[data-id="P014"] .tbody { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 13px; padding: 16px 18px; }
+  .slide[data-id="P014"] .tbl-lab { display: flex; align-items: center; gap: 10px; font-size: 24px; color: var(--muted-2); }
+  .slide[data-id="P014"] .tbl-lab .ico { flex: 0 0 24px; height: 24px; color: var(--muted-3); }
+  .slide[data-id="P014"] .tbl-lab .ico svg { display: block; width: 24px; height: 24px; }
+  .slide[data-id="P014"] .tblwrap { flex: 0 0 auto; border: 1px solid #dfe4e9; border-radius: 10px; overflow: hidden; }
+  .slide[data-id="P014"] .a14 table { border-collapse: collapse; font-size: 25px; width: 100%; }
+  .slide[data-id="P014"] .a14 th, .slide[data-id="P014"] .a14 td { border: 1px solid #e4e8ec; padding: 7px 10px; text-align: center; }
+  .slide[data-id="P014"] .a14 tr:first-child th { border-top: 0; }
+  .slide[data-id="P014"] .a14 th:first-child { border-left: 0; }
+  .slide[data-id="P014"] .a14 tr:last-child td:last-child, .slide[data-id="P014"] .a14 th:last-child { border-right: 0; }
+  .slide[data-id="P014"] .a14 tr:last-child th, .slide[data-id="P014"] .a14 tr:last-child td { border-bottom: 0; }
+  .slide[data-id="P014"] .a14 th { background: #eef2f6; font-weight: 500; color: var(--accent-dark); font-size: 24px; }
+  .slide[data-id="P014"] .a14 td { background: #fff; font-family: var(--font-cond); font-size: 27px; letter-spacing: .04em; color: var(--text); }
+  .slide[data-id="P014"] .s-tool .slot2 { min-height: 92px; }
+  .slide[data-id="P014"] .askhuman { display: flex; align-items: center; gap: 12px; margin-top: auto; font-size: 25px; line-height: 1.4; color: #b2603f; border: 1px solid #b2603f; border-radius: 10px; background: #faf2ee; padding: 11px 14px; visibility: hidden; }
+  .slide[data-id="P014"] .askhuman .ico { flex: 0 0 26px; height: 26px; }
+  .slide[data-id="P014"] .askhuman .ico svg { display: block; width: 26px; height: 26px; }
+  .slide[data-id="P014"] .askhuman.show { visibility: visible; }
+  </style>
+  <div class="body cols" style="align-items:stretch">
+    <div class="anim" tabindex="0" role="group" aria-label="模型提出与工具执行演示">
+      <span class="tag corner-tag">示意图</span>
+      <div class="a14">
+        <div class="pane s-model">
+          <div class="ttl"><span class="dots"><i></i><i></i><i></i></span><span class="label">提出</span><span class="who">模型</span></div>
+          <div class="pbody">
+            <div class="slot2" data-p="0">等待提出</div>
+            <div class="slot2" data-p="1">等待提出</div>
+          </div>
+        </div>
+        <div class="s-mid">
+          <div class="arrowbig" aria-hidden="true"><svg viewBox="0 0 72 40"><defs><marker id="p14ah" markerWidth="8" markerHeight="8" refX="6.4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor"/></marker></defs><line x1="4" y1="20" x2="58" y2="20" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" marker-end="url(#p14ah)"/></svg></div>
+          <div class="midlab">同一任务</div>
+        </div>
+        <div class="pane s-tool">
+          <div class="ttl"><span class="dots"><i></i><i></i><i></i></span><span class="label">执行</span><span class="who">工具</span></div>
+          <div class="tbody">
+            <div class="tbl-lab"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5h17v14h-17z"/><path d="M3.5 9.5h17M9 9.5V19"/></svg></span><span>内置记录表（页面自带，不联网）</span></div>
+            <div class="tblwrap">
+              <table>
+                <tr><th>编号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+                <tr><th>高度（厘米）</th><td>12.4</td><td>15.1</td><td>13.8</td><td>16.2</td><td>14.0</td></tr>
+              </table>
+            </div>
+            <div class="slot2" data-r="0">等待执行</div>
+            <div class="slot2" data-r="1">等待执行</div>
+            <div class="askhuman"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 16H3z"/><path d="M12 10v5M12 17.4v.2"/></svg></span><span>需要人来核对</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button type="button" class="primary" data-act="next">下一个</button>
+        <button type="button" data-act="reset">重置</button>
+      </div>
+    </div>
+    <div class="stack" style="flex:0 0 520px;justify-content:center;gap:26px">
+      <div class="reveal"><div class="label">模型一侧</div><p class="text" style="font-size:28px">模型可以生成计划、代码和调用参数，提出下一步要做什么。</p></div>
+      <div class="reveal"><div class="label">工具一侧</div><p class="text" style="font-size:28px">程序实际运行，读取或写入文件，返回运行结果或错误信息。</p></div>
+      <div class="reveal"><div class="label">相同条件</div><p class="text" style="font-size:28px">两侧处理的是同一个任务，但承担的工作不同。</p></div>
+      <div class="reveal"><div class="label">判断依据</div><p class="text" style="font-size:28px">看到结果之后，仍需要核对是否符合原来的教学目标。</p></div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    'use strict';
+    var sec = (document.currentScript && document.currentScript.closest('section.slide')) ||
+              document.querySelector('section.slide[data-id="P014"]');
+    if (!sec) return;
+    var props = Array.prototype.slice.call(sec.querySelectorAll('.slot2[data-p]'));
+    var res = Array.prototype.slice.call(sec.querySelectorAll('.slot2[data-r]'));
+    var arrow = sec.querySelector('.arrowbig');
+    var ask = sec.querySelector('.askhuman');
+    var btnNext = sec.querySelector('[data-act="next"]');
+    var btnReset = sec.querySelector('[data-act="reset"]');
+
+    /* 工具一侧：页面内置的小表与真实执行的 JS（不联网、不调用任何接口） */
+    var TABLE = { '编号': [1, 2, 3, 4, 5], '高度': [12.4, 15.1, 13.8, 16.2, 14.0] };
+    function 平均值(t, col) {
+      var v = t[col];
+      if (!v) throw new Error('未找到列「' + col + '」');
+      var s = 0;
+      for (var i = 0; i < v.length; i++) s += v[i];
+      return s / v.length;
+    }
+    /* 模型一侧：固定脚本化的两条提议，第二条带错误参数 */
+    var PROPS = [
+      { html: '<span class="rn">第 1 次</span><span class="cmd">平均值（记录表，「高度」）</span>', col: '高度' },
+      { html: '<span class="rn">第 2 次</span><span class="cmd">平均值（记录表，<span class="wrong">「株高」</span>）</span>', col: '株高' }
+    ];
+
+    var stage = 0, timers = [];
+    function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+    function reset() {
+      clearTimers();
+      stage = 0;
+      props.forEach(function (el) { el.className = 'slot2'; el.textContent = '等待提出'; });
+      res.forEach(function (el) { el.className = 'slot2'; el.textContent = '等待执行'; });
+      arrow.classList.remove('live');
+      ask.classList.remove('show');
+      if (btnNext) btnNext.disabled = false;
+    }
+    function runOne(i) {
+      var el = res[i];
+      arrow.classList.add('live');
+      el.className = 'slot2';
+      el.textContent = '运行中…';
+      timers.push(setTimeout(function () {
+        arrow.classList.remove('live');
+        var out;
+        try {
+          out = 平均值(TABLE, PROPS[i].col);
+          el.className = 'slot2 on';
+          el.innerHTML = '<span class="rn">运行结果</span>平均高度 ' + out.toFixed(1) + ' 厘米';
+        } catch (err) {
+          el.className = 'slot2 bad';
+          el.innerHTML = '<span class="rn">运行错误</span>' + err.message;
+          ask.classList.add('show');
+        }
+      }, 650));
+    }
+    /* 4 个状态：提议① → 执行① → 提议②（参数有错） → 执行②（报错，交人核对） */
+    function next() {
+      if (stage > 3) return false;
+      clearTimers();
+      if (stage === 0) { props[0].className = 'slot2 on'; props[0].innerHTML = PROPS[0].html; }
+      else if (stage === 1) { runOne(0); }
+      else if (stage === 2) { props[1].className = 'slot2 on'; props[1].innerHTML = PROPS[1].html; }
+      else if (stage === 3) { runOne(1); }
+      stage++;
+      if (stage > 3 && btnNext) btnNext.disabled = true;
+      return true;
+    }
+    if (btnNext) btnNext.addEventListener('click', function () { next(); });
+    if (btnReset) btnReset.addEventListener('click', reset);
+
+    new MutationObserver(function () {
+      if (!sec.classList.contains('active')) reset();
+    }).observe(sec, { attributes: true, attributeFilter: ['class'] });
+
+    window.__anim_P014 = { next: next, reset: reset };
+  })();
+  </script>
+  <!-- BODY:END -->
+  <div class="foot">依据原理材料整理的简化区分。</div>
+  <aside class="notes">【停讲】这一页把两件事分开。模型提出操作：它可以生成计划、代码和调用参数，告诉你下一步可以做什么。工具实际执行：程序运行，读取或写入文件，返回结果或者错误信息。两侧处理的是同一个任务，但承担的工作不同。看到结果之后，仍需要核对是否符合原来的教学目标。很多时候，程序能运行，不代表做出来的东西就是教师想要的。
+    作用：清楚区分模型生成与工具执行，为后续反馈环做铺垫。
+    资源：<a href="../19_逐页内容脚本/资源预览/R03.html">R03 Agent原理与术语材料</a> <a href="assets/docs/R03/04_Agent原理讲法.md">素材入口</a></aside>
+</section>

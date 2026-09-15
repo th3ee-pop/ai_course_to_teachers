@@ -1,0 +1,211 @@
+你是课件页面排版助手。输入是若干页“骨架 HTML”（1920×1080 投影课件的一页），你只需要重写每页 <!-- BODY:START --> 与 <!-- BODY:END --> 之间的正文区，让它按模板要求排版并有分步出现。
+
+硬性规则（违反会被校验脚本退回）：
+1. 只输出正文区。不要输出 <section>、.hdr、h2.title、.sub、.foot、<aside class="notes">，也不要改它们。
+2. 文字零改写：骨架正文里每个 .label 与 .text 的文字必须逐字保留（不增删字、不改标点、不合并、不翻译）。可以增加的只有很短的视觉标签：“示意图”“示例对话”“AI生成试样”“待放入实拍照片”“角色模拟，非历史人物真实发言”。不得加入骨架里没有的事实、数字、引语、英文。
+3. 只用给定的 CSS 类与少量内联样式（flex/grid/gap/margin/max-width/font-size/color 用变量）。不写 <style>、<script>、不引外部图片或外部链接。
+4. 图片只用 PLAN 注释 assets 里给出的相对路径；`(capture)` `(codex-svg)` `(img)` 类的路径可以直接 <img src>。路径含 * 的（如 cap_D04_word_*.png）按 _1、_2 展开。`(placeholder)` 类或文件标注“待…”的不放 img，用 <div class="slot"><div class="placeholder">待放入产品截图</div></div>。`(external)` `(link)` 类不是图片：`(link)` 用 <a class="file-card" href="路径">文件名</a>；`(external)` 用 <a class="link-card unset" data-config="observatoryUrl|magnetUrl|labUrl|ecoUrl"><b>系统名</b><span>现场启动后填入地址</span></a>（观察台→observatoryUrl，掌中磁场→magnetUrl，掌中实验室→labUrl，生态岛→ecoUrl）。
+5. 分步：PLAN 注释 reveal=[...] 列出的条目按顺序各自加 class="reveal"（同一条目的标签与正文放在同一个 .reveal 容器内）；reveal 为空的页不加 .reveal。不要自创其它动效类。骨架里已有的 .reveal 划分要保留。
+6. 结构：正文区最外层固定是 <div class="body">…</div>（可加 style），.cols / .grid-3 / .stack / .dialog 等都作为 .body 的子元素，不要把这些类直接加在 .body 上。图片写法固定为 <div class="fig" style="max-height:…px"><div class="pic"><img src="…" alt=""></div><figcaption class="caption">…</figcaption></div>（figcaption 可省），或 <div class="slot" style="height:…px"><img src="…" alt=""></div>。
+7. 尺寸：正文字号 28–40px，行高 1.6 左右；一页正文最多 4 个块；图片用 .slot 或 .fig 包裹并设 max-height，保证在 1080 高度内不溢出（标题区约占 220px，页脚约 80px，正文可用高约 700px）。
+8. 输出格式：每页依次
+=== P004 ===
+<!-- BODY:START -->
+...
+<!-- BODY:END -->
+不要 Markdown 代码围栏，不要任何解释。
+
+可用 CSS 类（deck.css）：
+- 布局：.body（正文容器，flex 列）.stack（竖排 gap 28）.cols（横排等分，子元素 flex:1；可放 <div class="vline"></div> 分隔线）.cols.tight .grid-2 .grid-3 .grid-4
+- 文本：.label（小标题，26px 强调色）.text（32px）.lead（36px）.small（26px 灰）.muted .hl（强调色加粗）.num（等宽序号，配合 .label 使用：<span class="num">01</span>）.kicker（24px 字距大）.serif .cond .big（196px 大数字）.rule（分隔线）.takeaway（结论行）.quote-block（大引文）
+- 卡片：.card（边框卡；内含 .label 与 <p>）.card.fill（灰底）.card.accent（强调边）.card.role-pipe/.card.role-tool/.card.role-subject（角色配色）
+- 流程：.flow > .node（每步一格，含 .label 与 <p>）与 .arr（<div class="arr">→</div>）；.flow.vertical 竖排；.steps > li（带 01 02 序号的列表，<b> 为要点）
+- 对话：.dialog > .turn（.who + .say）；AI 一方加 .turn.ai；.transcript > .line（.who + 文本，.mark 高亮）
+- 对照：.before-after（两栏网格，每栏 <div>，内用 .label + p；.diff 标记差异，.fix 标记修正）
+- 图片：.slot（居中容器，img 自适应；内可放 <div class="placeholder">待放入…</div>）.fig（图＋<figcaption class="caption">）.blueprint（蓝图边框）.kf（关键帧格）
+- 标签：.tag（小标签）.tag.fill .tag.warn；.corner-tag（角标）
+- 入口：.file-card（文件卡片链接）.link-card（外链卡片，配 data-config）.embed（内嵌 iframe 容器：<div class="embed" data-src="路径"><div class="hint">点击加载</div></div>）
+- 组件：<div class="map433" data-stage="设计|实施|评价|教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-reveal="1" data-size="full|compact"></div>（4＋3＋3 总图，自动渲染）；<div class="cycle" data-nodes="A|B|C|D" data-center="中心字" data-size="480"></div>（环形循环图）
+颜色变量：var(--accent) #5980a6、var(--accent-dark) #416180、var(--light-blue) #94bce3、var(--muted) 灰、var(--surface) 浅灰底、var(--divider) 分隔线。
+
+模板要求：
+模板 T06「三问任务卡」：三张 .card.reveal 横排（.grid-3），每张含 <span class="num">01</span> 序号、.label 与 <p>；卡片垂直居中（margin:auto 0）。若 assets 里有 (link) 文件，在卡片下方加一行 .file-card；有 (capture) 缩略图可放在卡片右侧或下方（max-height 260px）。
+模板 T12「对话页」：.dialog 容器；每一轮对话是 .turn.reveal（.who 写角色名，.say 写内容）；AI/教研员/学伴一方加 .turn.ai。角色名与内容必须来自骨架的 .label / .text。常显 <span class="tag">示例对话</span> 放在对话上方。(placeholder) 产品截图放右侧 .slot .placeholder（宽 560px），写“待放入产品截图”。
+
+已实现的同模板样页（只看排版气质与密度，不要照抄其文字；样页用了内联样式，你优先用上面的类）：
+
+--- 样页 T06 ---
+<section class="slide" data-id="P022" data-title="每次用AI前，问自己三个问题" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P022</span>
+  </div>
+  <h2 style="margin-top:36px;font-size:60px;line-height:1.3">每次用AI前，问自己三个问题</h2>
+  <div style="margin-top:56px;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;align-items:baseline;gap:36px;padding-bottom:36px;border-bottom:1px solid #c9cacb">
+      <span class="cond" style="flex:0 0 90px;font-size:64px;color:#94bce3;line-height:1">01</span>
+      <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">想得到什么？</h3>
+      <p style="flex:1 1 0;min-width:0;font-size:36px;line-height:1.65">先想清楚这次要解决的教学问题，以及希望拿到什么结果。</p>
+    </div>
+    <div style="display:flex;align-items:baseline;gap:36px;padding-bottom:36px;border-bottom:1px solid #c9cacb">
+      <span class="cond" style="flex:0 0 90px;font-size:64px;color:#94bce3;line-height:1">02</span>
+      <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">AI扮演什么角色？</h3>
+      <p style="flex:1 1 0;min-width:0;font-size:36px;line-height:1.65">是整理材料的管道、展开产物的工具，还是进入任务回应协商的主体。</p>
+    </div>
+    <div style="display:flex;align-items:baseline;gap:36px">
+      <span class="cond" style="flex:0 0 90px;font-size:64px;color:#94bce3;line-height:1">03</span>
+      <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">能提供什么背景？</h3>
+      <p style="flex:1 1 0;min-width:0;font-size:36px;line-height:1.65">把年级、课时、器材、学生已有经验和教师已经安排好的部分说清楚。</p>
+    </div>
+  </div>
+  <div class="foot">三问是行动入口，不等同于三种角色的一一对应。</div>
+  
+</section>
+
+--- 样页 T12 ---
+<section class="slide" data-id="P072" data-title="虚拟教研员可以帮助教师比较追问的方向" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span class="on">教师专业发展</span></div>
+    <span class="pid">P072</span>
+  </div>
+  <div style="display:flex;align-items:baseline;gap:40px;margin-top:32px">
+    <h2 style="font-size:54px;line-height:1.3;white-space:nowrap">虚拟教研员可以帮助教师比较追问的方向</h2>
+    <p class="sub" style="white-space:nowrap">基于刚才的实录，讨论一个可改动的位置。</p>
+  </div>
+  <div style="display:flex;gap:64px;margin-top:44px;align-items:flex-start">
+    <div style="flex:0 0 460px;padding-top:20px;border-top:1px solid #1d1f20">
+      <div class="kicker" style="margin-bottom:16px">教师</div>
+      <p style="font-size:32px;line-height:1.7;color:#5d5d60">学生说橡皮泥捏成小碗后浮了，我想让他解释原因，可以怎样接着问？</p>
+    </div>
+    <div style="flex:1 1 0;min-width:0;padding-top:20px;border-top:2px solid #5980a6">
+      <div class="kicker" style="margin-bottom:16px">虚拟教研员</div>
+      <p style="font-size:46px;line-height:1.55;font-weight:500">可以先问：同一块橡皮泥变形后，轻重有没有改变？你准备用什么证据说明？这样可以检查学生是否把浮起来理解为变轻了。</p>
+    </div>
+  </div>
+  <div style="margin-top:auto;padding-top:36px;border-top:1px solid #c9cacb">
+    <div class="kicker" style="margin-bottom:22px;color:#7a7a7d">教师与教研员继续协商</div>
+    <div style="display:flex;flex-direction:column;gap:16px;font-size:30px;line-height:1.6">
+      <p style="display:flex;gap:24px"><span class="cond" style="flex:0 0 110px;color:#5980a6">教师</span><span>我已有称量环节，还需要补什么？</span></p>
+      <p style="display:flex;gap:24px"><span class="cond" style="flex:0 0 110px;color:#5980a6">教研员</span><span>让学生把称量结果、形状变化和水中的表现连起来说明，并区分观察事实与自己的解释。</span></p>
+    </div>
+  </div>
+  <div class="foot">新编示例对话，不是真实模型调用记录。</div>
+  
+</section>
+
+
+请为以下 4 页重写正文区，按输出格式逐页给出。
+
+
+##### 页 P030（模板 T12）
+<!-- PLAN template=T12 executor=pi pace=停讲 layout_ref=L08
+     reveal=['教师', 'AI', '教师', 'AI']
+     embeds=[]
+     anim=null
+     note=逐轮出现；‘示例对话’角标常显。
+     assets:
+       PROD_UI_CHAT → assets/img/prod_ui_chat.png (placeholder) 用户后续提供真实产品对话界面截图；未到位时显示“待放入产品截图” -->
+<section class="slide" data-id="P030" data-title="备课助手可以通过追问帮助教师明确任务。" data-module="05 教学设计：让方案适合本班" data-stage="教学设计" data-kind="主线" data-template="T12" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span class="on">教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P030</span>
+  </div>
+  <h2 class="title">备课助手可以通过追问帮助教师明确任务。</h2>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">教师</div><p class="text">我想设计一个植物观察单元，让学生记录生长变化。</p></div>
+    <div class="reveal"><div class="label">AI</div><p class="text">学生已有怎样的观察经验？可以使用哪些器材？你希望他们留下什么证据？</p></div>
+    <div class="reveal"><div class="label">教师</div><p class="text">学生见过种子发芽，但没有连续测量的经历。我们有直尺和放大镜，希望他们保存数周的观察记录。</p></div>
+    <div class="reveal"><div class="label">AI</div><p class="text">可以先安排种子观察与播种，再随生长阶段组织测量和交流。记录表保留日期、株高、叶片变化和观察图画。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">示例对话，不是真实模型运行记录。</div>
+  <aside class="notes">【停讲】讲述时依次说明：我想设计一个植物观察单元，让学生记录生长变化。 学生已有怎样的观察经验？可以使用哪些器材？你希望他们留下什么证据？ 学生见过种子发芽，但没有连续测量的经历。我们有直尺和放大镜，希望他们保存数周的观察记录。 可以先安排种子观察与播种，再随生长阶段组织测量和交流。记录表保留日期、株高、叶片变化和观察图画。
+    作用：让主体角色的追问与协商过程可见，说明提问不是一次完成。</aside>
+</section>
+
+
+##### 页 P043（模板 T12）
+<!-- PLAN template=T12 executor=pi pace=停讲 layout_ref=L08
+     reveal=['教师问', '学生答（示例）', '教师追问', '教师收束']
+     embeds=[]
+     anim=null
+     note=
+ -->
+<section class="slide" data-id="P043" data-title="做了操作，还需要表达依据" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T12" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P043</span>
+  </div>
+  <h2 class="title">做了操作，还需要表达依据</h2>
+  <p class="sub reveal-none">教师追问的三句话。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">教师问</div><p class="text">你改动了哪个条件？</p></div>
+    <div class="reveal"><div class="label">学生答（示例）</div><p class="text">我把地轴倾角改成了0°。</p></div>
+    <div class="reveal"><div class="label">教师追问</div><p class="text">哪些条件保持不变？你凭什么这样解释？</p></div>
+    <div class="reveal"><div class="label">教师收束</div><p class="text">请把现象、条件和解释连成一句话。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">示例对话，不是真实课堂记录。</div>
+  <aside class="notes">【停讲】讲述时依次说明：你改动了哪个条件？ 我把地轴倾角改成了0°。 哪些条件保持不变？你凭什么这样解释？ 请把现象、条件和解释连成一句话。
+    作用：把操作经验转为可表达的解释，明确教师话语的支架作用。</aside>
+</section>
+
+
+##### 页 B10（模板 T06）
+<!-- PLAN template=T06 executor=pi pace=按替换片段安排 layout_ref=L09
+     reveal=['我想得到什么', 'AI扮演什么角色', '需要什么上下文', '示例对话（虚构）']
+     embeds=[]
+     anim=null
+     note=
+ -->
+<section class="slide" data-id="B10" data-title="英语端午交流：三问落到英语表达" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T06" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B10</span>
+  </div>
+  <h2 class="title">英语端午交流：三问落到英语表达</h2>
+  <p class="sub reveal-none">先说来访者能听懂的介绍，再回应追问</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">我想得到什么</div><p class="text">学生能用英语介绍端午的一项习俗，并回应来访者的一到两个追问。</p></div>
+    <div class="reveal"><div class="label">AI扮演什么角色</div><p class="text">AI扮演来访的外校同学，提出具体问题，不替学生写出整段介绍。</p></div>
+    <div class="reveal"><div class="label">需要什么上下文</div><p class="text">提供端午习俗清单、学生已学过的英文句子，以及听众是外校同学这一信息。</p></div>
+    <div class="reveal"><div class="label">示例对话（虚构）</div><p class="text">来访者问：What do people eat on this festival? 学生答：We eat zongzi. It is rice wrapped in leaves. 来访者追问：Why do you wrap it in leaves? 这时学生需要补充自己的说法，而不是照读介绍。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">虚构教学对话；追问涉及的文化事实应另行核查。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：学生能用英语介绍端午的一项习俗，并回应来访者的一到两个追问。 AI扮演来访的外校同学，提出具体问题，不替学生写出整段介绍。 提供端午习俗清单、学生已学过的英文句子，以及听众是外校同学这一信息。 来访者问：What do people eat on this festival? 学生答：We eat zongzi. It is rice wrapped in leaves. 来访者追问：Why do you wrap it in leaves? 这时学生需要补充自己的说法，而不是照读介绍。
+    作用：把三问与复盘结构迁移到英语表达任务，替换主线的中文共读角。</aside>
+</section>
+
+
+##### 页 B11（模板 T12）
+<!-- PLAN template=T12 executor=pi pace=按替换片段安排 layout_ref=L08
+     reveal=['角色卡限定身份', '知识范围要写清', '示例对话（虚构）', '回应要留在边界内']
+     embeds=[{"asset": "DOC_D13", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       IMG_D13_SHOT → assets/img/darwin_duihua_liangping.png (img) 现有截图（角色模拟，非真实发言）
+       DOC_D13 → links/D13/ (link)  -->
+<section class="slide" data-id="B11" data-title="采访达尔文：角色卡写清能说什么" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T12" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B11</span>
+  </div>
+  <h2 class="title">采访达尔文：角色卡写清能说什么</h2>
+  <p class="sub reveal-none">身份、知识范围与代写边界</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">角色卡限定身份</div><p class="text">对话对象是依据材料设定的达尔文角色，不是历史人物的真实发言。</p></div>
+    <div class="reveal"><div class="label">知识范围要写清</div><p class="text">角色只依据本次提供的材料回答，材料之外的问题可以说不知道。</p></div>
+    <div class="reveal"><div class="label">示例对话（虚构）</div><p class="text">学生问：我能不能直接把你的回答抄进作业？角色答：我可以帮你把思路说清楚，整段照抄会让老师看不出你自己的判断。学生接着问：那你先问我一个问题。角色问：你观察到的证据是什么？</p></div>
+    <div class="reveal"><div class="label">回应要留在边界内</div><p class="text">角色可以追问、可以举例，但不替学生完成作业，也不编造历史细节。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">示例对话；已有角色卡和客户端截图另附资源预览。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：对话对象是依据材料设定的达尔文角色，不是历史人物的真实发言。 角色只依据本次提供的材料回答，材料之外的问题可以说不知道。 学生问：我能不能直接把你的回答抄进作业？角色答：我可以帮你把思路说清楚，整段照抄会让老师看不出你自己的判断。学生接着问：那你先问我一个问题。角色问：你观察到的证据是什么？ 角色可以追问、可以举例，但不替学生完成作业，也不编造历史细节。
+    作用：用角色卡与对话示例，把身份、知识与代写三条边界讲清楚。</aside>
+</section>

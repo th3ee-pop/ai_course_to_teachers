@@ -1,0 +1,69 @@
+<!-- PLAN template=T04 executor=opus pace=按替换片段安排 layout_ref=L05
+     reveal=['生成的情境画面', '联网天气数据', '本地观察记录', '项目问题接在这里']
+     embeds=[{"asset": "VID_V04", "mode": "video"}, {"asset": "TOOL_S10", "mode": "iframe", "fallback": "CAP_S10"}]
+     anim=null
+     note=三栏：生成短片（video）／联网看板（iframe，断网回退示例数据并标注）／本地记录要点（文字）。
+     assets:
+       IMG_V04_STILL → assets/img/qixiangzhan_still.png (img) 现有首图，用作视频封面
+       CAP_S10 → assets/img/cap_qixiang_kanban.png (capture) iframe 未加载时的回退截图
+       VID_V04 → assets/video/qixiangzhan_5s.mp4 (video)
+       TOOL_S10 → assets/tools/qixiangzhan_kanban.html (iframe) 单文件；取网络天气，断网回退示例数据 -->
+<section class="slide" data-id="B12" data-title="校园气象站：三个来源要分清" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T04" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
+    <span class="pid">B12</span>
+  </div>
+  <h2 class="title">校园气象站：三个来源要分清</h2>
+  <p class="sub reveal-none">生成画面、联网天气与本地实测</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="B12"] .body { flex-direction: row; align-items: stretch; gap: 56px; }
+    .slide[data-id="B12"] .colv { flex: 0 0 480px; display: flex; flex-direction: column; justify-content: center; }
+    .slide[data-id="B12"] .colv .fig { flex: 0 0 auto; }
+    .slide[data-id="B12"] .colv .pic { height: 270px; background: #1d2d3d; }
+    .slide[data-id="B12"] .colv .pic video { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .slide[data-id="B12"] .corner-tag { right: 14px; top: 12px; }
+    .slide[data-id="B12"] .embed { flex: 0 0 640px; }
+    .slide[data-id="B12"] .embed iframe { width: 1276px; height: 1266px; transform: scale(.5016); transform-origin: 0 0; }
+    .slide[data-id="B12"] .pts { flex: 1 1 0; min-width: 0; justify-content: center; gap: 24px; }
+    .slide[data-id="B12"] .pts .text { font-size: 26px; line-height: 1.6; }
+    .slide[data-id="B12"] .pts .label { font-size: 24px; margin-bottom: 10px; }
+  </style>
+  <div class="body">
+    <div class="colv">
+      <div class="fig">
+        <span class="tag fill corner-tag">AI生成试样</span>
+        <div class="pic">
+          <video src="assets/video/qixiangzhan_5s.mp4" controls preload="metadata" poster="assets/img/qixiangzhan_still.png"></video>
+        </div>
+      </div>
+    </div>
+    <div class="embed" data-src="assets/tools/qixiangzhan_kanban.html">
+      <div class="fallback"><img src="assets/img/cap_qixiang_kanban.png" alt="校园气象站看板界面截图"></div>
+      <div class="hint">断网时显示示例数据</div>
+    </div>
+    <div class="stack pts">
+      <div class="reveal">
+        <div class="label">生成的情境画面</div>
+        <p class="text">短片用情境画面引出校园观测项目，其中仪器和线缆经过生成补绘，不用来讲设备结构。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">联网天气数据</div>
+        <p class="text">看板取网络天气，取不到时使用示例数据，并标明数据来源。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">本地观察记录</div>
+        <p class="text">学生自己记录的温度、天气现象和观测时间，才是这个项目的实测部分。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">项目问题接在这里</div>
+        <p class="text">把三类信息放在一起，学生要判断哪一条能回答自己的问题，哪一条只是背景。</p>
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">视频为生成情境；天气看板与学生实测记录的来源分别标注。</div>
+  <aside class="notes">【按替换片段安排】左栏短片点击播放、翻页自动暂停；中栏是内嵌的校园气象站看板，联网时取网络天气，断网时显示示例数据；右栏是三类信息的区分要点。讲述时依次说明：短片用情境画面引出校园观测项目，其中仪器和线缆经过生成补绘，不用来讲设备结构。 看板取网络天气，取不到时使用示例数据，并标明数据来源。 学生自己记录的温度、天气现象和观测时间，才是这个项目的实测部分。 把三类信息放在一起，学生要判断哪一条能回答自己的问题，哪一条只是背景。
+    作用：用大图把情境画面、联网数据与本地记录分清楚，避免混为一谈。
+    资源：<a href="../19_逐页内容脚本/资源预览/V04.html">V04 校园数字气象站：5秒试样</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/videos/20_校园数字气象站_H3_768P_5s_播放版.mp4" title="原路径，仅本机有效">素材入口</a> <a href="../19_逐页内容脚本/资源预览/S10.html">S10 校园气象站看板</a> <a href="assets/docs/S10/01_校园气象站看板.html">素材入口</a></aside>
+</section>

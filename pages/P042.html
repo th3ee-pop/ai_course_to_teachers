@@ -1,0 +1,186 @@
+<!-- PLAN template=T14 executor=opus pace=停讲 layout_ref=L07
+     reveal=['原倾角', '倾角0°', '解释']
+     embeds=[]
+     anim={"id": "ANIM_E_昼长曲线", "spec": "自绘 SVG：横轴 1–12 月，纵轴昼长 0–24h，固定北纬 40°；滑块‘地轴倾角’从 23.4° 到 0°，曲线实时由天文近似公式（cos H = −tanφ·tanδ，δ = ε·sin(黄经)）重绘；0° 时变成 12h 水平线；旁标‘理想模型’。作为模型结果的可控复现，而非替代 S01。"}
+     note=
+     assets:
+       CAP_S01_CURVE_23 → assets/img/cap_siji_curve_23.png (capture) 本会话用浏览器操作截图
+       CAP_S01_CURVE_0 → assets/img/cap_siji_curve_0.png (capture) 同上 -->
+<section class="slide" data-id="P042" data-title="同一地点的全年昼长曲线发生了什么变化？" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T14" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
+    <span class="pid">P042</span>
+  </div>
+  <h2 class="title">同一地点的全年昼长曲线发生了什么变化？</h2>
+  <p class="sub reveal-none">比较条件：北纬40°；同一模型；只改变地轴倾角。</p>
+  <!-- BODY:START -->
+  <style>
+  .slide[data-id="P042"] .body { gap: 44px; margin-top: 24px; }
+  .slide[data-id="P042"] .anim { flex: 1 1 0; }
+  .slide[data-id="P042"] .a42 { position: absolute; inset: 0; padding: 16px 26px 82px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; }
+  .slide[data-id="P042"] .a42 svg { width: 100%; height: auto; display: block; }
+  .slide[data-id="P042"] .a42 .axis { stroke: var(--divider); stroke-width: 1.5; }
+  .slide[data-id="P042"] .a42 .grid { stroke: #e7e7ea; stroke-width: 1; }
+  .slide[data-id="P042"] .a42 .ref { stroke: var(--light-blue); stroke-width: 1.5; stroke-dasharray: 8 7; }
+  .slide[data-id="P042"] .a42 .curve { fill: none; stroke: var(--accent); stroke-width: 3.5; stroke-linejoin: round; }
+  .slide[data-id="P042"] .a42 .tk { font-family: var(--font-cond); font-size: 24px; fill: var(--muted-2); }
+  .slide[data-id="P042"] .a42 .axlab { font-size: 24px; fill: var(--muted-2); }
+  .slide[data-id="P042"] .a42 .inlab { font-size: 26px; fill: var(--accent-dark); }
+  .slide[data-id="P042"] .a42 .ctlrow { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .slide[data-id="P042"] .a42 .ctlrow .cap { font-size: 26px; color: var(--accent); letter-spacing: .08em; flex: 0 0 auto; }
+  .slide[data-id="P042"] .a42 input[type="range"] { flex: 1 1 0; min-width: 240px; accent-color: var(--accent); height: 32px; }
+  .slide[data-id="P042"] .a42 .val { font-family: var(--font-cond); font-size: 30px; letter-spacing: .06em; color: var(--accent-dark); flex: 0 0 150px; text-align: right; }
+  .slide[data-id="P042"] .a42 .readout { display: flex; gap: 34px; font-size: 25px; color: var(--muted-2); }
+  .slide[data-id="P042"] .a42 .readout b { font-family: var(--font-cond); font-weight: 500; font-size: 27px; color: var(--accent-dark); letter-spacing: .04em; }
+  .slide[data-id="P042"] .anim > .tag.warn { position: absolute; right: 18px; top: 58px; z-index: 2; background: #fff; }
+  </style>
+  <div class="body cols" style="align-items:stretch">
+    <div class="anim" tabindex="0" role="group" aria-label="全年昼长曲线演示">
+      <span class="tag corner-tag">示意图</span>
+      <span class="tag warn">理想模型，非实测数据</span>
+      <div class="a42">
+        <svg viewBox="0 0 1100 396" role="img" aria-label="全年昼长曲线，横轴为月份，纵轴为昼长小时数">
+          <g class="gridlines"></g>
+          <line class="axis" x1="100" y1="24" x2="100" y2="346"></line>
+          <line class="axis" x1="100" y1="346" x2="1060" y2="346"></line>
+          <g class="yticks"></g>
+          <g class="xticks"></g>
+          <line class="ref" x1="100" y1="185" x2="1060" y2="185"></line>
+          <text class="axlab" x="18" y="20">昼长（小时）</text>
+          <text class="axlab" x="1006" y="386">月份</text>
+          <text class="inlab" x="120" y="56">北纬 40°</text>
+          <polyline class="curve" points=""></polyline>
+        </svg>
+        <div class="ctlrow">
+          <label class="cap" for="p042-eps">地轴倾角</label>
+          <input id="p042-eps" type="range" min="0" max="30" step="0.01" value="23.44">
+          <span class="val">23.44°</span>
+        </div>
+        <div class="readout">
+          <span>全年最长　<b class="rmax">—</b></span>
+          <span>全年最短　<b class="rmin">—</b></span>
+        </div>
+      </div>
+      <div class="controls">
+        <button type="button" class="primary" data-act="next">下一个</button>
+        <button type="button" data-act="reset">重置</button>
+      </div>
+    </div>
+    <div class="stack" style="flex:0 0 480px;justify-content:center;gap:32px">
+      <div class="reveal"><div class="label">原倾角</div><p class="text" style="font-size:29px">全年昼长曲线随日期变化，夏至与冬至的昼长不同。</p></div>
+      <div class="reveal"><div class="label">倾角0°</div><p class="text" style="font-size:29px">在这个理想模型中，全年昼长曲线变为12小时的水平线。</p></div>
+      <div class="reveal"><div class="label">解释</div><p class="text" style="font-size:29px">这个对照帮助我们分析地轴倾斜与昼长季节变化的关系。</p></div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    'use strict';
+    var sec = (document.currentScript && document.currentScript.closest('section.slide')) ||
+              document.querySelector('section.slide[data-id="P042"]');
+    if (!sec) return;
+    var svg = sec.querySelector('.a42 svg');
+    var curve = sec.querySelector('.curve');
+    var slider = sec.querySelector('#p042-eps');
+    var valEl = sec.querySelector('.a42 .val');
+    var rmax = sec.querySelector('.rmax');
+    var rmin = sec.querySelector('.rmin');
+    var btnNext = sec.querySelector('[data-act="next"]');
+    var btnReset = sec.querySelector('[data-act="reset"]');
+    var NS = 'http://www.w3.org/2000/svg';
+
+    var L = 100, R = 1060, T = 24, B = 346;      /* 绘图区 */
+    var PHI = 40;                                 /* 纬度：北纬 40°，固定 */
+    var DEFAULT_EPS = 23.44;
+    var DAYS = 365.25, SPRING = 79;               /* 春分约在第 80 天，按 0 起算 */
+    var d2r = Math.PI / 180;
+
+    function y(h) { return B - (h / 24) * (B - T); }
+    function x(d) { return L + (d / 364) * (R - L); }
+
+    /* 理想模型：δ = ε·sin λ；cos H = −tan φ · tan δ；昼长 = 2H/15 小时 */
+    function dayLength(eps, d) {
+      var lam = 2 * Math.PI * (d - SPRING) / DAYS;
+      var dec = eps * Math.sin(lam);
+      var c = -Math.tan(PHI * d2r) * Math.tan(dec * d2r);
+      if (c > 1) c = 1; if (c < -1) c = -1;
+      var H = Math.acos(c) / d2r;
+      return 2 * H / 15;
+    }
+
+    function el(name, attrs) {
+      var n = document.createElementNS(NS, name);
+      for (var k in attrs) if (Object.prototype.hasOwnProperty.call(attrs, k)) n.setAttribute(k, attrs[k]);
+      return n;
+    }
+    function buildAxes() {
+      var g = svg.querySelector('.gridlines'), yt = svg.querySelector('.yticks'), xt = svg.querySelector('.xticks');
+      g.innerHTML = ''; yt.innerHTML = ''; xt.innerHTML = '';
+      for (var h = 0; h <= 24; h += 4) {
+        var yy = y(h);
+        if (h > 0) g.appendChild(el('line', { 'class': 'grid', x1: L, y1: yy, x2: R, y2: yy }));
+        var t = el('text', { 'class': 'tk', x: L - 14, y: yy + 8, 'text-anchor': 'end' });
+        t.appendChild(document.createTextNode(h + 'h'));
+        yt.appendChild(t);
+      }
+      /* 月份刻度：各月首日 */
+      var ml = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+      for (var m = 0; m < 12; m++) {
+        var xx = x(ml[m]);
+        xt.appendChild(el('line', { 'class': 'axis', x1: xx, y1: B, x2: xx, y2: B + 8 }));
+        var lt = el('text', { 'class': 'tk', x: xx, y: B + 34, 'text-anchor': 'middle' });
+        lt.appendChild(document.createTextNode(String(m + 1)));
+        xt.appendChild(lt);
+      }
+    }
+
+    function draw(eps) {
+      var pts = [], hi = -1, lo = 99;
+      for (var d = 0; d <= 364; d++) {
+        var h = dayLength(eps, d);
+        if (h > hi) hi = h;
+        if (h < lo) lo = h;
+        pts.push(Math.round(x(d) * 10) / 10 + ',' + Math.round(y(h) * 10) / 10);
+      }
+      curve.setAttribute('points', pts.join(' '));
+      valEl.textContent = (Math.round(eps * 100) / 100).toFixed(2) + '°';
+      rmax.textContent = hi.toFixed(1) + ' 小时';
+      rmin.textContent = lo.toFixed(1) + ' 小时';
+    }
+
+    var raf = null;
+    function stopAnim() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    function animateTo(target, ms) {
+      stopAnim();
+      var from = parseFloat(slider.value), t0 = null;
+      ms = ms || 900;
+      (function tick(ts) {
+        if (t0 === null) t0 = ts;
+        var k = Math.min(1, (ts - t0) / ms);
+        var e = from + (target - from) * (k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
+        slider.value = e; draw(e);
+        if (k < 1) raf = requestAnimationFrame(tick); else { raf = null; slider.value = target; draw(target); }
+      })(performance.now());
+    }
+    function reset() { stopAnim(); slider.value = DEFAULT_EPS; draw(DEFAULT_EPS); }
+
+    slider.addEventListener('input', function () { stopAnim(); draw(parseFloat(slider.value)); });
+    if (btnNext) btnNext.addEventListener('click', function () {
+      animateTo(parseFloat(slider.value) > 1 ? 0 : DEFAULT_EPS);
+    });
+    if (btnReset) btnReset.addEventListener('click', reset);
+
+    new MutationObserver(function () {
+      if (!sec.classList.contains('active')) reset();
+    }).observe(sec, { attributes: true, attributeFilter: ['class'] });
+
+    buildAxes();
+    reset();
+    window.__anim_P042 = { draw: draw, reset: reset, animateTo: animateTo };
+  })();
+  </script>
+  <!-- BODY:END -->
+  <div class="foot">模型结果需要结合模型假设理解。</div>
+  <aside class="notes">【停讲】比较全年曲线。0°时曲线在这个理想模型中为12小时水平线；这能支持关于地轴与昼长变化的讨论，不能单凭这个模型断言所有气候因素都已被验证。
+    作用：用具体模型结果引导听众解释比较条件。
+    资源：<a href="../19_逐页内容脚本/资源预览/S01.html">S01 四季循环v2</a> <a href="assets/docs/S01/index.html">素材入口</a> <a href="assets/docs/S01/验证记录.md">开发与验证记录</a> <a href="../19_逐页内容脚本/资源预览/S02.html">S02 教学观察台：四季采集与回看</a> <a href="assets/docs/S02/README.md">素材入口</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动局域网演示.command" title="原路径，仅本机有效">启动局域网演示.command</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command" title="原路径，仅本机有效">启动本机演示.command</a></aside>
+</section>

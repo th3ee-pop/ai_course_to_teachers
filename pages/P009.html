@@ -1,0 +1,138 @@
+<!-- PLAN template=T05 executor=pi pace=快过 layout_ref=L03
+     reveal=['提出意图', '形成原型', '移植与修改', '运行验证']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       SVG_CODEX_P009_PIPE → 已改为页内内联 SVG（四步流水线图），原 assets/svg/p009_pipeline.svg 已删除 -->
+<section class="slide" data-id="P009" data-title="一个教学想法，需要经过制作、试用和修改。" data-module="02 四季循环：从念头到交互" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>02</b><span class="on">四季循环：从念头到交互</span></div>
+    <span class="pid">P009</span>
+  </div>
+  <h2 class="title">一个教学想法，需要经过制作、试用和修改。</h2>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P009"] .pipetxt .text { font-size: 30px; line-height: 1.65; }
+    .slide[data-id="P009"] .pipetxt .label { margin-bottom: 10px; }
+    .slide[data-id="P009"] .pipefig { flex: 0 0 1080px; }
+    .slide[data-id="P009"] .pipefig svg { display: block; width: 100%; height: auto; }
+    .slide[data-id="P009"] .pipefig svg text { font-family: var(--font-sans); }
+  </style>
+  <div class="body cols" style="align-items:center">
+    <div class="stack pipetxt" style="gap:24px">
+      <div class="reveal" data-step="1">
+        <div class="label">提出意图</div>
+        <p class="text">教师说明希望学生观察什么、操作什么、解释什么。</p>
+      </div>
+      <div class="reveal" data-step="2">
+        <div class="label">形成原型</div>
+        <p class="text">AI辅助形成交互原型，明确场景和控制方式。</p>
+      </div>
+      <div class="reveal" data-step="3">
+        <div class="label">移植与修改</div>
+        <p class="text">开发过程将原型移植为可独立运行的版本，处理资源加载和交互适配。</p>
+      </div>
+      <div class="reveal" data-step="4">
+        <div class="label">运行验证</div>
+        <p class="text">根据实际运行结果核对功能与计算，修正发现的问题。</p>
+      </div>
+    </div>
+    <div class="vline" style="align-self:stretch"></div>
+    <div class="fig pipefig">
+      <span class="tag">示意图</span>
+      <svg viewBox="0 0 1080 440" role="img" aria-label="提出意图、形成原型、移植与修改、运行验证四步流水线示意图">
+        <defs>
+          <linearGradient id="p9Card" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e2ecf7"/>
+          </linearGradient>
+          <linearGradient id="p9Ico" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#eaf3fb"/><stop offset="1" stop-color="#b9d3ec"/>
+          </linearGradient>
+          <filter id="p9Sh" x="-14%" y="-14%" width="128%" height="136%">
+            <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#2d4a66" flood-opacity="0.17"/>
+          </filter>
+          <marker id="p9Ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0.4 0.6 L9.4 5 L0.4 9.4 Z" fill="#416180"/>
+          </marker>
+        </defs>
+
+        <!-- 提出意图 -->
+        <g class="reveal" data-step="1">
+          <rect x="0" y="20" width="214" height="330" rx="22" fill="url(#p9Card)" stroke="#5980a6" stroke-width="2.5" filter="url(#p9Sh)"/>
+          <g transform="translate(47,64)">
+            <path d="M14 12 H106 A14 14 0 0 1 120 26 V78 A14 14 0 0 1 106 92 H56 L30 114 V92 H14 A14 14 0 0 1 0 78 V26 A14 14 0 0 1 14 12 Z" fill="url(#p9Ico)" stroke="#416180" stroke-width="3.5" stroke-linejoin="round"/>
+            <rect x="22" y="36" width="76" height="8" rx="4" fill="#5980a6"/>
+            <rect x="22" y="58" width="54" height="8" rx="4" fill="#5980a6"/>
+          </g>
+          <text x="107" y="300" text-anchor="middle" font-size="34" font-weight="600" fill="#1d1f20">提出意图</text>
+        </g>
+
+        <!-- 形成原型 -->
+        <g class="reveal" data-step="2">
+          <path d="M228 185 H281" fill="none" stroke="#416180" stroke-width="4" stroke-linecap="round" marker-end="url(#p9Ar)"/>
+          <rect x="289" y="20" width="214" height="330" rx="22" fill="url(#p9Card)" stroke="#5980a6" stroke-width="2.5" filter="url(#p9Sh)"/>
+          <g transform="translate(336,64)">
+            <rect x="4" y="14" width="96" height="96" rx="9" fill="#ffffff" stroke="#416180" stroke-width="3.5"/>
+            <rect x="17" y="27" width="70" height="20" rx="5" fill="url(#p9Ico)"/>
+            <rect x="17" y="57" width="31" height="26" rx="5" fill="#94bce3"/>
+            <rect x="56" y="57" width="31" height="26" rx="5" fill="#c3d8ea"/>
+            <rect x="17" y="92" width="70" height="8" rx="4" fill="#5980a6"/>
+            <g transform="rotate(-42 98 94)">
+              <rect x="90" y="58" width="17" height="42" rx="5" fill="#94bce3" stroke="#416180" stroke-width="3"/>
+              <path d="M90 100 H107 L98.5 116 Z" fill="#416180"/>
+            </g>
+          </g>
+          <text x="396" y="300" text-anchor="middle" font-size="34" font-weight="600" fill="#1d1f20">形成原型</text>
+        </g>
+
+        <!-- 移植与修改 -->
+        <g class="reveal" data-step="3">
+          <path d="M517 185 H570" fill="none" stroke="#416180" stroke-width="4" stroke-linecap="round" marker-end="url(#p9Ar)"/>
+          <rect x="577" y="20" width="214" height="330" rx="22" fill="url(#p9Card)" stroke="#5980a6" stroke-width="2.5" filter="url(#p9Sh)"/>
+          <g transform="translate(624,64)">
+            <path d="M28 28 C28 0 92 0 92 24" fill="none" stroke="#416180" stroke-width="4" stroke-linecap="round" marker-end="url(#p9Ar)"/>
+            <rect x="4" y="34" width="48" height="76" rx="8" fill="url(#p9Ico)" stroke="#416180" stroke-width="3.5"/>
+            <rect x="14" y="48" width="28" height="7" rx="3.5" fill="#5980a6"/>
+            <rect x="14" y="64" width="28" height="7" rx="3.5" fill="#5980a6"/>
+            <rect x="14" y="80" width="18" height="7" rx="3.5" fill="#5980a6"/>
+            <rect x="68" y="34" width="48" height="76" rx="8" fill="#ffffff" stroke="#416180" stroke-width="3.5"/>
+            <rect x="78" y="48" width="28" height="7" rx="3.5" fill="#94bce3"/>
+            <rect x="78" y="64" width="28" height="7" rx="3.5" fill="#94bce3"/>
+            <rect x="78" y="80" width="18" height="7" rx="3.5" fill="#94bce3"/>
+          </g>
+          <text x="684" y="300" text-anchor="middle" font-size="34" font-weight="600" fill="#1d1f20">移植与修改</text>
+        </g>
+
+        <!-- 运行验证（含回环） -->
+        <g class="reveal" data-step="4">
+          <path d="M805 185 H858" fill="none" stroke="#416180" stroke-width="4" stroke-linecap="round" marker-end="url(#p9Ar)"/>
+          <rect x="866" y="20" width="214" height="330" rx="22" fill="url(#p9Card)" stroke="#5980a6" stroke-width="2.5" filter="url(#p9Sh)"/>
+          <g transform="translate(913,64)">
+            <rect x="0" y="16" width="120" height="90" rx="10" fill="#ffffff" stroke="#416180" stroke-width="3.5"/>
+            <path d="M1.8 27 A10 10 0 0 1 11.8 17 H108.2 A10 10 0 0 1 118.2 27 V40 H1.8 Z" fill="#c3d8ea"/>
+            <path d="M0 40 H120" stroke="#416180" stroke-width="3"/>
+            <g fill="#416180"><circle cx="15" cy="28" r="4"/><circle cx="29" cy="28" r="4"/><circle cx="43" cy="28" r="4"/></g>
+            <rect x="15" y="55" width="56" height="8" rx="4" fill="#94bce3"/>
+            <rect x="15" y="74" width="38" height="8" rx="4" fill="#94bce3"/>
+            <circle cx="94" cy="82" r="25" fill="#416180"/>
+            <path d="M82 82 L91 91 L107 72" fill="none" stroke="#ffffff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <text x="973" y="300" text-anchor="middle" font-size="34" font-weight="600" fill="#1d1f20">运行验证</text>
+        </g>
+
+        <!-- 回环：修正发现的问题 -->
+        <g class="reveal" data-step="4">
+          <path d="M1030 356 V392 Q1030 410 1012 410 H638 Q620 410 620 392 V358" fill="none" stroke="#416180" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="12 10" marker-end="url(#p9Ar)"/>
+          <rect x="722" y="391" width="206" height="38" rx="6" fill="#f2f2f3"/>
+          <text x="825" y="419" text-anchor="middle" font-size="26" fill="#416180">修正发现的问题</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">依据《091_四季循环》开发规格与验证记录整理。</div>
+  <aside class="notes">【快过】讲述时依次说明：教师说明希望学生观察什么、操作什么、解释什么。 AI辅助形成交互原型，明确场景和控制方式。 开发过程将原型移植为可独立运行的版本，处理资源加载和交互适配。 根据实际运行结果核对功能与计算，修正发现的问题。
+    作用：从制作事实过渡到模型为什么能接到行动，说明成品不是凭空出现。
+    资源：<a href="../19_逐页内容脚本/资源预览/S01.html">S01 四季循环v2</a> <a href="assets/docs/S01/index.html">素材入口</a> <a href="assets/docs/S01/验证记录.md">开发与验证记录</a> <a href="../19_逐页内容脚本/资源预览/R05.html">R05 专著资源使用说明与实测台账</a> <a href="assets/docs/R05/00_使用说明.md">素材入口</a> <a href="assets/docs/R05/16_WorkBuddy能力实测与样章校订记录.md">实测校订记录</a></aside>
+</section>

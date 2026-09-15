@@ -1,0 +1,18 @@
+{
+  "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/05_案例/喀什初三高三备考讲座/初三数据/英语_小题得分详情.csv",
+  "rows": 16434,
+  "item": 24,
+  "options": {
+    "A": 5586,
+    "C": 4099,
+    "B": 6617,
+    "#": 132
+  },
+  "score_distribution": {
+    "0.00": 12335,
+    "1.00": 4099
+  },
+  "score_rate_percent": 24.94,
+  "answer_C_matches_score_1": true,
+  "note": "只导出聚合数据；#保留原编码。"
+}

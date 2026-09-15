@@ -1,0 +1,190 @@
+你是课件页面排版助手。输入是若干页“骨架 HTML”（1920×1080 投影课件的一页），你只需要重写每页 <!-- BODY:START --> 与 <!-- BODY:END --> 之间的正文区，让它按模板要求排版并有分步出现。
+
+硬性规则（违反会被校验脚本退回）：
+1. 只输出正文区。不要输出 <section>、.hdr、h2.title、.sub、.foot、<aside class="notes">，也不要改它们。
+2. 文字零改写：骨架正文里每个 .label 与 .text 的文字必须逐字保留（不增删字、不改标点、不合并、不翻译）。可以增加的只有很短的视觉标签：“示意图”“示例对话”“AI生成试样”“待放入实拍照片”“角色模拟，非历史人物真实发言”。不得加入骨架里没有的事实、数字、引语、英文。
+3. 只用给定的 CSS 类与少量内联样式（flex/grid/gap/margin/max-width/font-size/color 用变量）。不写 <style>、<script>、不引外部图片或外部链接。
+4. 图片只用 PLAN 注释 assets 里给出的相对路径；`(capture)` `(codex-svg)` `(img)` 类的路径可以直接 <img src>。路径含 * 的（如 cap_D04_word_*.png）按 _1、_2 展开。`(placeholder)` 类或文件标注“待…”的不放 img，用 <div class="slot"><div class="placeholder">待放入产品截图</div></div>。`(external)` `(link)` 类不是图片：`(link)` 用 <a class="file-card" href="路径">文件名</a>；`(external)` 用 <a class="link-card unset" data-config="observatoryUrl|magnetUrl|labUrl|ecoUrl"><b>系统名</b><span>现场启动后填入地址</span></a>（观察台→observatoryUrl，掌中磁场→magnetUrl，掌中实验室→labUrl，生态岛→ecoUrl）。
+5. 分步：PLAN 注释 reveal=[...] 列出的条目按顺序各自加 class="reveal"（同一条目的标签与正文放在同一个 .reveal 容器内）；reveal 为空的页不加 .reveal。不要自创其它动效类。骨架里已有的 .reveal 划分要保留。
+6. 结构：正文区最外层固定是 <div class="body">…</div>（可加 style），.cols / .grid-3 / .stack / .dialog 等都作为 .body 的子元素，不要把这些类直接加在 .body 上。图片写法固定为 <div class="fig" style="max-height:…px"><div class="pic"><img src="…" alt=""></div><figcaption class="caption">…</figcaption></div>（figcaption 可省），或 <div class="slot" style="height:…px"><img src="…" alt=""></div>。
+7. 尺寸：正文字号 28–40px，行高 1.6 左右；一页正文最多 4 个块；图片用 .slot 或 .fig 包裹并设 max-height，保证在 1080 高度内不溢出（标题区约占 220px，页脚约 80px，正文可用高约 700px）。
+8. 输出格式：每页依次
+=== P004 ===
+<!-- BODY:START -->
+...
+<!-- BODY:END -->
+不要 Markdown 代码围栏，不要任何解释。
+
+可用 CSS 类（deck.css）：
+- 布局：.body（正文容器，flex 列）.stack（竖排 gap 28）.cols（横排等分，子元素 flex:1；可放 <div class="vline"></div> 分隔线）.cols.tight .grid-2 .grid-3 .grid-4
+- 文本：.label（小标题，26px 强调色）.text（32px）.lead（36px）.small（26px 灰）.muted .hl（强调色加粗）.num（等宽序号，配合 .label 使用：<span class="num">01</span>）.kicker（24px 字距大）.serif .cond .big（196px 大数字）.rule（分隔线）.takeaway（结论行）.quote-block（大引文）
+- 卡片：.card（边框卡；内含 .label 与 <p>）.card.fill（灰底）.card.accent（强调边）.card.role-pipe/.card.role-tool/.card.role-subject（角色配色）
+- 流程：.flow > .node（每步一格，含 .label 与 <p>）与 .arr（<div class="arr">→</div>）；.flow.vertical 竖排；.steps > li（带 01 02 序号的列表，<b> 为要点）
+- 对话：.dialog > .turn（.who + .say）；AI 一方加 .turn.ai；.transcript > .line（.who + 文本，.mark 高亮）
+- 对照：.before-after（两栏网格，每栏 <div>，内用 .label + p；.diff 标记差异，.fix 标记修正）
+- 图片：.slot（居中容器，img 自适应；内可放 <div class="placeholder">待放入…</div>）.fig（图＋<figcaption class="caption">）.blueprint（蓝图边框）.kf（关键帧格）
+- 标签：.tag（小标签）.tag.fill .tag.warn；.corner-tag（角标）
+- 入口：.file-card（文件卡片链接）.link-card（外链卡片，配 data-config）.embed（内嵌 iframe 容器：<div class="embed" data-src="路径"><div class="hint">点击加载</div></div>）
+- 组件：<div class="map433" data-stage="设计|实施|评价|教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-reveal="1" data-size="full|compact"></div>（4＋3＋3 总图，自动渲染）；<div class="cycle" data-nodes="A|B|C|D" data-center="中心字" data-size="480"></div>（环形循环图）
+颜色变量：var(--accent) #5980a6、var(--accent-dark) #416180、var(--light-blue) #94bce3、var(--muted) 灰、var(--surface) 浅灰底、var(--divider) 分隔线。
+
+模板要求：
+模板 T04「大图＋任务卡」：.cols 布局，左栏（flex:0 0 520px）是 .stack 的任务卡：每条 .reveal 含 <span class="num">01</span>、.label、p.text；右栏是 .blueprint 或 .slot 大图（img max-height 640px）。若有多张截图（如三张系统截图），右栏改为 .grid-3 缩略图卡片，每张 .fig + figcaption。(external) 系统用 .link-card unset 放在左栏底部。缺图时用 .slot .placeholder 写“待放入实拍照片”或“待截图”。
+
+已实现的同模板样页（只看排版气质与密度，不要照抄其文字；样页用了内联样式，你优先用上面的类）：
+
+--- 样页 T04 ---
+<section class="slide" data-id="P008" data-title="先比较冬夏，再切换观察视角。" data-module="02 四季循环：从念头到交互" data-stage="课堂实施">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P008</span>
+  </div>
+  <div style="display:flex;gap:64px;margin-top:40px;flex:1 1 auto;min-height:0">
+    <div style="flex:0 0 500px;display:flex;flex-direction:column">
+      <h2 style="font-size:56px;line-height:1.34">先比较冬夏，<br>再切换观察视角。</h2>
+      <div style="margin-top:44px;display:flex;gap:20px">
+        <span class="cond" style="font-size:34px;color:#5980a6;line-height:1.2">01</span>
+        <div>
+          <div class="kicker" style="margin-bottom:10px">观察任务</div>
+          <p style="font-size:32px;line-height:1.7">固定同一地点，比较冬季与夏季的太阳高度和昼长。</p>
+        </div>
+      </div>
+      <div style="margin-top:36px;display:flex;gap:20px">
+        <span class="cond" style="font-size:34px;color:#5980a6;line-height:1.2">02</span>
+        <div>
+          <div class="kicker" style="margin-bottom:10px">继续追问</div>
+          <p style="font-size:32px;line-height:1.7">切换太空与地面视角，说明两种画面之间有什么联系。</p>
+        </div>
+      </div>
+      <div class="foot" style="padding-top:32px"><a href="../../../【专著】人工智能学科教学丛书/自建模拟种子仓库/091_四季循环/v2/index.html" target="_blank" rel="noopener" title="在新标签页打开四季循环v2；讲完后切回本窗口继续">资源：四季循环v2 ↗</a></div>
+    </div>
+    <div class="blueprint" style="flex:1 1 0;min-width:0;background:#e7e7ea;align-self:center;aspect-ratio:5784/1800;max-height:100%">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="slot" style="padding:18px;height:100%">
+        <img src="assets/siji_v2_xiazhi_dongzhi.png" alt="四季循环v2 实际界面截图：夏至与冬至对比">
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+请为以下 4 页重写正文区，按输出格式逐页给出。
+
+
+##### 页 B05（模板 T04）
+<!-- PLAN template=T04 executor=pi pace=按替换片段安排 layout_ref=L09
+     reveal=['观察任务', '操作与对照', '复盘问题']
+     embeds=[{"asset": "SYS_S05", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       CAP_S05_GEO → assets/img/cap_zhangzhong_jihe.png (capture) 
+       SYS_S05 → （本机启动 dist） (external) 同上 -->
+<section class="slide" data-id="B05" data-title="掌中几何：先写预测，再切一刀" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T04" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B05</span>
+  </div>
+  <h2 class="title">掌中几何：先写预测，再切一刀</h2>
+  <p class="sub reveal-none">正方体截面与二维正视图</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">观察任务</div><p class="text">操作之前，先让学生写下预测：沿不同方向切下去，截面会是什么形状。</p></div>
+    <div class="reveal"><div class="label">操作与对照</div><p class="text">改变切面的方向或位置，再对照二维正视图。只转动观察视角时，注意区分外观变化与截面本身的变化。</p></div>
+    <div class="reveal"><div class="label">复盘问题</div><p class="text">哪些预测成立，哪些需要修改？修改的依据是刚才看到的哪一步操作？</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">先用鼠标操作完成任务，再比较不同输入方式的便利性。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：操作之前，先让学生写下预测：沿不同方向切下去，截面会是什么形状。 改变切面的方向或位置，再对照二维正视图。只转动观察视角时，注意区分外观变化与截面本身的变化。 哪些预测成立，哪些需要修改？修改的依据是刚才看到的哪一步操作？
+    作用：用演示入口把数学听众带入操作，先预测后操作，保留复盘问题。</aside>
+</section>
+
+
+##### 页 B06（模板 T04）
+<!-- PLAN template=T04 executor=pi pace=按替换片段安排 layout_ref=L09
+     reveal=['先预测', '再验证', '说明依据']
+     embeds=[{"asset": "SYS_S05", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       CAP_S05_LIGHT → assets/img/cap_zhangzhong_guanglu.png (capture) 
+       SYS_S05 → （本机启动 dist） (external) 同上 -->
+<section class="slide" data-id="B06" data-title="掌中光路：反射方向先预测再验证" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T04" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B06</span>
+  </div>
+  <h2 class="title">掌中光路：反射方向先预测再验证</h2>
+  <p class="sub reveal-none">平面镜反射的投屏操作</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">先预测</div><p class="text">保持入射光方向不变，改变镜面角度，预测反射光将怎样转动。</p></div>
+    <div class="reveal"><div class="label">再验证</div><p class="text">在模拟中调整镜面，比较入射光、法线和反射光的位置。</p></div>
+    <div class="reveal"><div class="label">说明依据</div><p class="text">请以法线为参照，说明入射角与反射角的关系。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">模拟用于比较光路；真实光学实验仍需规范操作。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：保持入射光方向不变，改变镜面角度，预测反射光将怎样转动。 在模拟中调整镜面，比较入射光、法线和反射光的位置。 请以法线为参照，说明入射角与反射角的关系。
+    作用：用投屏操作完成光路预测与验证，保留可回看的鼠标路径。</aside>
+</section>
+
+
+##### 页 B07（模板 T04）
+<!-- PLAN template=T04 executor=pi pace=按替换片段安排 layout_ref=L09
+     reveal=['观察任务', '操作与观察', '一条边界', '手势的作用']
+     embeds=[{"asset": "SYS_S04", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       CAP_S04 → assets/img/cap_zhangzhong_cichang.png (capture) 本机启动后截图
+       SYS_S04 → （本机启动 dist） (external) vite 项目，需摄像头；外链＋截图 -->
+<section class="slide" data-id="B07" data-title="掌中磁场：反转电流看方向" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T04" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B07</span>
+  </div>
+  <h2 class="title">掌中磁场：反转电流看方向</h2>
+  <p class="sub reveal-none">方向线表示方向，不表示强弱</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">观察任务</div><p class="text">改变电流方向之前，先预测小磁针或端面的指向会怎样变化。</p></div>
+    <div class="reveal"><div class="label">操作与观察</div><p class="text">反转电流，观察端面方向随之改变，再与预测对照。</p></div>
+    <div class="reveal"><div class="label">一条边界</div><p class="text">画面中的方向线只表示方向，不表示磁场强弱，不能当作定量结果使用。</p></div>
+    <div class="reveal"><div class="label">手势的作用</div><p class="text">手势只是输入方式，用来控制操作，不参与判断方向的对错。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">方向示意不等于磁场强度测量。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：改变电流方向之前，先预测小磁针或端面的指向会怎样变化。 反转电流，观察端面方向随之改变，再与预测对照。 画面中的方向线只表示方向，不表示磁场强弱，不能当作定量结果使用。 手势只是输入方式，用来控制操作，不参与判断方向的对错。
+    作用：用反转电流的操作讲清方向判断，同时划出方向线不做定量、手势不做评价的边界。</aside>
+</section>
+
+
+##### 页 B08（模板 T04）
+<!-- PLAN template=T04 executor=pi pace=按替换片段安排 layout_ref=L09
+     reveal=['先预测', '建立对照', '比较结果', '形成报告']
+     embeds=[{"asset": "SYS_S06", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       CAP_S06 → assets/img/cap_shengtaidao.png (capture) 
+       SYS_S06 → （本机启动） (external) 服务端系统；外链＋截图 -->
+<section class="slide" data-id="B08" data-title="生态岛：只改一个条件的公平对照" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T04" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B08</span>
+  </div>
+  <h2 class="title">生态岛：只改一个条件的公平对照</h2>
+  <p class="sub reveal-none">预测、布置、对照、解释、报告</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">先预测</div><p class="text">小组先提出一个关于生态条件的预测。</p></div>
+    <div class="reveal"><div class="label">建立对照</div><p class="text">复制相同的初始配置，一次只改变一个可控条件。</p></div>
+    <div class="reveal"><div class="label">比较结果</div><p class="text">保持运行时长等设置一致，对照结果，并考虑模型中的随机因素。</p></div>
+    <div class="reveal"><div class="label">形成报告</div><p class="text">记录条件、结果与解释，再讨论模型简化了哪些真实生态关系。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">模拟中的变化不能直接当作真实生态系统的预测。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：小组先提出一个关于生态条件的预测。 复制相同的初始配置，一次只改变一个可控条件。 保持运行时长等设置一致，对照结果，并考虑模型中的随机因素。 记录条件、结果与解释，再讨论模型简化了哪些真实生态关系。
+    作用：展示一次完整的小组公平对照流程，明确对照条件与解释要求。</aside>
+</section>

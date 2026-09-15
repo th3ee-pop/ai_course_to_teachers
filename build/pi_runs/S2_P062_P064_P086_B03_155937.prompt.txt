@@ -1,0 +1,181 @@
+你是课件页面排版助手。输入是若干页“骨架 HTML”（1920×1080 投影课件的一页），你只需要重写每页 <!-- BODY:START --> 与 <!-- BODY:END --> 之间的正文区，让它按模板要求排版并有分步出现。
+
+硬性规则（违反会被校验脚本退回）：
+1. 只输出正文区。不要输出 <section>、.hdr、h2.title、.sub、.foot、<aside class="notes">，也不要改它们。
+2. 文字零改写：骨架正文里每个 .label 与 .text 的文字必须逐字保留（不增删字、不改标点、不合并、不翻译）。可以增加的只有很短的视觉标签：“示意图”“示例对话”“AI生成试样”“待放入实拍照片”“角色模拟，非历史人物真实发言”。不得加入骨架里没有的事实、数字、引语、英文。
+3. 只用给定的 CSS 类与少量内联样式（flex/grid/gap/margin/max-width/font-size/color 用变量）。不写 <style>、<script>、不引外部图片或外部链接。
+4. 图片只用 PLAN 注释 assets 里给出的相对路径；`(capture)` `(codex-svg)` `(img)` 类的路径可以直接 <img src>。路径含 * 的（如 cap_D04_word_*.png）按 _1、_2 展开。`(placeholder)` 类或文件标注“待…”的不放 img，用 <div class="slot"><div class="placeholder">待放入产品截图</div></div>。`(external)` `(link)` 类不是图片：`(link)` 用 <a class="file-card" href="路径">文件名</a>；`(external)` 用 <a class="link-card unset" data-config="observatoryUrl|magnetUrl|labUrl|ecoUrl"><b>系统名</b><span>现场启动后填入地址</span></a>（观察台→observatoryUrl，掌中磁场→magnetUrl，掌中实验室→labUrl，生态岛→ecoUrl）。
+5. 分步：PLAN 注释 reveal=[...] 列出的条目按顺序各自加 class="reveal"（同一条目的标签与正文放在同一个 .reveal 容器内）；reveal 为空的页不加 .reveal。不要自创其它动效类。骨架里已有的 .reveal 划分要保留。
+6. 结构：正文区最外层固定是 <div class="body">…</div>（可加 style），.cols / .grid-3 / .stack / .dialog 等都作为 .body 的子元素，不要把这些类直接加在 .body 上。图片写法固定为 <div class="fig" style="max-height:…px"><div class="pic"><img src="…" alt=""></div><figcaption class="caption">…</figcaption></div>（figcaption 可省），或 <div class="slot" style="height:…px"><img src="…" alt=""></div>。
+7. 尺寸：正文字号 28–40px，行高 1.6 左右；一页正文最多 4 个块；图片用 .slot 或 .fig 包裹并设 max-height，保证在 1080 高度内不溢出（标题区约占 220px，页脚约 80px，正文可用高约 700px）。
+8. 输出格式：每页依次
+=== P004 ===
+<!-- BODY:START -->
+...
+<!-- BODY:END -->
+不要 Markdown 代码围栏，不要任何解释。
+
+可用 CSS 类（deck.css）：
+- 布局：.body（正文容器，flex 列）.stack（竖排 gap 28）.cols（横排等分，子元素 flex:1；可放 <div class="vline"></div> 分隔线）.cols.tight .grid-2 .grid-3 .grid-4
+- 文本：.label（小标题，26px 强调色）.text（32px）.lead（36px）.small（26px 灰）.muted .hl（强调色加粗）.num（等宽序号，配合 .label 使用：<span class="num">01</span>）.kicker（24px 字距大）.serif .cond .big（196px 大数字）.rule（分隔线）.takeaway（结论行）.quote-block（大引文）
+- 卡片：.card（边框卡；内含 .label 与 <p>）.card.fill（灰底）.card.accent（强调边）.card.role-pipe/.card.role-tool/.card.role-subject（角色配色）
+- 流程：.flow > .node（每步一格，含 .label 与 <p>）与 .arr（<div class="arr">→</div>）；.flow.vertical 竖排；.steps > li（带 01 02 序号的列表，<b> 为要点）
+- 对话：.dialog > .turn（.who + .say）；AI 一方加 .turn.ai；.transcript > .line（.who + 文本，.mark 高亮）
+- 对照：.before-after（两栏网格，每栏 <div>，内用 .label + p；.diff 标记差异，.fix 标记修正）
+- 图片：.slot（居中容器，img 自适应；内可放 <div class="placeholder">待放入…</div>）.fig（图＋<figcaption class="caption">）.blueprint（蓝图边框）.kf（关键帧格）
+- 标签：.tag（小标签）.tag.fill .tag.warn；.corner-tag（角标）
+- 入口：.file-card（文件卡片链接）.link-card（外链卡片，配 data-config）.embed（内嵌 iframe 容器：<div class="embed" data-src="路径"><div class="hint">点击加载</div></div>）
+- 组件：<div class="map433" data-stage="设计|实施|评价|教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-reveal="1" data-size="full|compact"></div>（4＋3＋3 总图，自动渲染）；<div class="cycle" data-nodes="A|B|C|D" data-center="中心字" data-size="480"></div>（环形循环图）
+颜色变量：var(--accent) #5980a6、var(--accent-dark) #416180、var(--light-blue) #94bce3、var(--muted) 灰、var(--surface) 浅灰底、var(--divider) 分隔线。
+
+模板要求：
+模板 T05「机制流程·分步条目」：参考结构：<div class="body"><div class="cols" style="align-items:center;flex:1"><div class="stack" style="flex:1">…reveal 条目…</div><div class="vline"></div><div class="fig" style="flex:0 0 760px;max-height:520px"><span class="tag">示意图</span><div class="pic"><img src="…"></div></div></div></div>。把 reveal 里的各步排成一条流程。步数 ≤4 且每步文字短时用横向 .flow（每步一个 .node.reveal，含 .label 与 <p>，步间 <div class="arr">→</div>）；文字较长时用 .steps 列表或 .stack。若 assets 里有 (codex-svg) 示意图，放在流程上方或左侧的 .fig 里（max-height 约 360px），并加 <span class="tag">示意图</span>。
+
+已实现的同模板样页（只看排版气质与密度，不要照抄其文字；样页用了内联样式，你优先用上面的类）：
+
+--- 样页 T05 ---
+<section class="slide" data-id="P013" data-title="自然语言，接到代码与工具" data-module="03 最简原理：从语言到行动" data-stage="">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P013</span>
+  </div>
+  <h2 style="margin-top:36px;font-size:64px;line-height:1.3">自然语言，接到代码与工具</h2>
+  <div style="display:flex;align-items:stretch;gap:0;margin-top:64px">
+    <div style="flex:2.6 1 0;min-width:0">
+      <div class="cond" style="font-size:30px;letter-spacing:.14em;color:#5980a6;padding-bottom:14px;border-bottom:2px solid #5980a6;margin-bottom:26px">教师</div>
+      <p style="font-size:32px;line-height:1.7">教师用自然语言说出想要的教学材料或活动安排。</p>
+    </div>
+    <div style="flex:0 0 96px;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;color:#94bce3;font-size:44px">→</div>
+    <div style="flex:3.6 1 0;min-width:0">
+      <div class="cond" style="font-size:30px;letter-spacing:.14em;color:#5980a6;padding-bottom:14px;border-bottom:2px solid #5980a6;margin-bottom:26px">模型</div>
+      <p style="font-size:32px;line-height:1.7">模型把目标整理成步骤、代码或调用参数，供程序继续处理。</p>
+    </div>
+    <div style="flex:0 0 96px;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;color:#94bce3;font-size:44px">→</div>
+    <div style="flex:3.2 1 0;min-width:0">
+      <div class="cond" style="font-size:30px;letter-spacing:.14em;color:#5980a6;padding-bottom:14px;border-bottom:2px solid #5980a6;margin-bottom:26px">程序</div>
+      <p style="font-size:32px;line-height:1.7">程序运行后，可能得到文档、图表、网页等不同形式的产物。</p>
+    </div>
+  </div>
+  <div style="margin-top:72px;background:#1d2d3d;color:#f2f2f3;padding:36px 44px;display:flex;gap:36px;align-items:baseline">
+    <span class="kicker" style="color:#94bce3;flex:0 0 auto">注意</span>
+    <p style="font-size:34px;line-height:1.6">代码和产物由不同环节产生，不能把模型生成直接当成程序执行。</p>
+  </div>
+  <div class="foot">依据原理材料整理的简化讲法。</div>
+  
+</section>
+
+
+请为以下 4 页重写正文区，按输出格式逐页给出。
+
+
+##### 页 P062（模板 T05）
+<!-- PLAN template=T05 executor=pi pace=快过 layout_ref=L03
+     reveal=['说明问题', '选择方法', '执行计算', '核查结果']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       SVG_CODEX_P062_CHAIN → assets/svg/p062_chain.svg (codex-svg)  -->
+<section class="slide" data-id="P062" data-title="教师说明分析问题，AI协助选择方法并编写程序" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="主线" data-template="T05" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span class="on">教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P062</span>
+  </div>
+  <h2 class="title">教师说明分析问题，AI协助选择方法并编写程序</h2>
+  <p class="sub reveal-none">计算过程可重做，教学判断有依据。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">说明问题</div><p class="text">先确定要比较整体分布、题型表现，还是某道题的选项差异。</p></div>
+    <div class="reveal"><div class="label">选择方法</div><p class="text">请AI根据字段含义、数据类型、缺失情况和问题选择适合的方法，并说明理由。</p></div>
+    <div class="reveal"><div class="label">执行计算</div><p class="text">让AI编写Python或R程序，完成整理、计算和图表输出。</p></div>
+    <div class="reveal"><div class="label">核查结果</div><p class="text">核对样本范围、题号、分值、单位与计算结果，再决定教学调整。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <aside class="notes">【快过】讲述时依次说明：先确定要比较整体分布、题型表现，还是某道题的选项差异。 请AI根据字段含义、数据类型、缺失情况和问题选择适合的方法，并说明理由。 让AI编写Python或R程序，完成整理、计算和图表输出。 核对样本范围、题号、分值、单位与计算结果，再决定教学调整。
+    作用：呈现从教学问题到分析结果的四步链条，明确哪一步由程序做、哪一步由人做。</aside>
+</section>
+
+
+##### 页 P064（模板 T05）
+<!-- PLAN template=T05 executor=pi pace=停讲 layout_ref=L03
+     reveal=['教师审题', '复习与支架', '复测', '新证据']
+     embeds=[]
+     anim=null
+     note=
+ -->
+<section class="slide" data-id="P064" data-title="生成题目之后，还要审核、复测和调整" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="主线" data-template="T05" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span class="on">教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P064</span>
+  </div>
+  <h2 class="title">生成题目之后，还要审核、复测和调整</h2>
+  <p class="sub reveal-none">一次改进要走完四个动作</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">教师审题</div><p class="text">先逐题核对答案、条件与难度，不合适的改掉或者不用。</p></div>
+    <div class="reveal"><div class="label">复习与支架</div><p class="text">根据审过的题目安排复习内容和课堂支架，明确这一步补的是哪个知识关系。</p></div>
+    <div class="reveal"><div class="label">复测</div><p class="text">用同类题再看一次学生的表现，记录哪些人仍然困难、困难在哪一步。</p></div>
+    <div class="reveal"><div class="label">新证据</div><p class="text">复测结果成为下一轮的证据，用来判断这次调整是否有效。题库里有题，不等于已经证明能提高成绩。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <aside class="notes">【停讲】题目生成出来只是半成品。接下来四步：先审题，把答案、条件、难度核一遍；再根据要补的知识关系安排复习和课堂支架；然后用同类题做一次复测；复测的结果就是新的证据。有一点要说清楚，题库里现在有多少题，并不说明它已经能提高成绩，效果要靠复测来看。
+    作用：把变式题放进完整的教学回路，强调审核与复测不可省，并说明题库不等于效果。</aside>
+</section>
+
+
+##### 页 P086（模板 T05）
+<!-- PLAN template=T05 executor=pi pace=停讲 layout_ref=L03
+     reveal=['实物与纸笔', '拍照或扫描', '电脑与投屏', '回到活动']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       SVG_CODEX_P086_DEVICES → assets/svg/p086_devices.svg (codex-svg)  -->
+<section class="slide" data-id="P086" data-title="实物、采集终端、交互终端，各有职责" data-module="10 回到真实学习：实物、终端与伦理" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P086</span>
+  </div>
+  <h2 class="title">实物、采集终端、交互终端，各有职责</h2>
+  <p class="sub reveal-none">设备按任务选，不要求全部购置</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">实物与纸笔</div><p class="text">学生操作、观察并留下纸质记录，形成可讨论的原始材料。</p></div>
+    <div class="reveal"><div class="label">拍照或扫描</div><p class="text">把需要整理的记录数字化，保留原图与采集条件。</p></div>
+    <div class="reveal"><div class="label">电脑与投屏</div><p class="text">核对、汇总数字材料，让全班能够共同读取和讨论。</p></div>
+    <div class="reveal"><div class="label">回到活动</div><p class="text">依据讨论结果修改装置、补充观察或完成下一次任务。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">设备按任务选择，可以使用现有设备与共用终端。</div>
+  <aside class="notes">【停讲】讲述时依次说明：学生操作、观察并留下纸质记录，形成可讨论的原始材料。 把需要整理的记录数字化，保留原图与采集条件。 核对、汇总数字材料，让全班能够共同读取和讨论。 依据讨论结果修改装置、补充观察或完成下一次任务。
+    作用：说明实物、采集、整理与投屏之间的连接路径。</aside>
+</section>
+
+
+##### 页 B03（模板 T05）
+<!-- PLAN template=T05 executor=pi pace=按替换片段安排 layout_ref=L02
+     reveal=['四步任务链', '材料清单管什么', '量规管什么', '告知书与前测后测']
+     embeds=[{"asset": "DOC_D05", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       DOC_D05 → links/D05/ (link) 同上 -->
+<section class="slide" data-id="B03" data-title="科学护眼项目需要相互配套的材料" data-module="05 教学设计：让方案适合本班" data-stage="教学设计" data-kind="备选" data-replaces="模块05 教学设计：让方案适合本班" data-template="T05" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span class="on">教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B03</span>
+  </div>
+  <h2 class="title">科学护眼项目需要相互配套的材料</h2>
+  <p class="sub reveal-none">任务决定材料，量规决定作品要求</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">四步任务链</div><p class="text">提出用眼问题、设计记录方式、完成护眼方案作品、展示并互评，四步依次进行。</p></div>
+    <div class="reveal"><div class="label">材料清单管什么</div><p class="text">清单写清每组要用到的记录纸、测量工具和展示材料，缺什么当场补。</p></div>
+    <div class="reveal"><div class="label">量规管什么</div><p class="text">作品量规看方案是否说得清依据，过程量规看记录是否按时完成、分工是否落实。</p></div>
+    <div class="reveal"><div class="label">告知书与前测后测</div><p class="text">告知书让家长知道孩子要做什么、需要配合什么；前后测只记录方案中约定的观察项。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">依据已有方案包整理的任务示例，不涉及健康效果结论。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：提出用眼问题、设计记录方式、完成护眼方案作品、展示并互评，四步依次进行。 清单写清每组要用到的记录纸、测量工具和展示材料，缺什么当场补。 作品量规看方案是否说得清依据，过程量规看记录是否按时完成、分工是否落实。 告知书让家长知道孩子要做什么、需要配合什么；前后测只记录方案中约定的观察项。
+    作用：展示项目设计如何把任务、材料、评价与家长沟通连成一套可交付的材料。</aside>
+</section>

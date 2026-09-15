@@ -1,0 +1,197 @@
+127.0.0.1 - - [14/Sep/2026 15:39:21] "HEAD /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] code 404, message File not found
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /deck.css HTTP/1.1" 304 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /assets/fonts/fonts.css HTTP/1.1" 404 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /components/qrcode.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /config.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /assets/pov_01_wanglushan.png HTTP/1.1" 304 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /assets/siji_v2_xiazhi_dongzhi.png HTTP/1.1" 304 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /components/map433.js HTTP/1.1" 304 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /components/cycle.js HTTP/1.1" 304 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /deck.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /assets/wanglushan_15s.mp4 HTTP/1.1" 304 -
+127.0.0.1 - - [14/Sep/2026 15:39:25] code 404, message File not found
+127.0.0.1 - - [14/Sep/2026 15:39:25] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [14/Sep/2026 15:39:49] code 404, message File not found
+127.0.0.1 - - [14/Sep/2026 15:39:49] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [14/Sep/2026 15:48:59] "GET /assets/tools/siji_v2/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:48:59] "GET /assets/tools/siji_v2/seasons-stage.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:48:59] "GET /assets/tools/siji_v2/libs/three.module.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:48:59] "GET /assets/tools/siji_v2/libs/three.core.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /assets/fonts/fonts.css HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /deck.css HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /assets/svg/p004_sop.svg HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /assets/siji_v2_xiazhi_dongzhi.png HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /assets/svg/p009_pipeline.svg HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /assets/pov_01_wanglushan.png HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /config.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /components/qrcode.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /components/map433.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /components/cycle.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /deck.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:27] "GET /assets/wanglushan_15s.mp4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.105.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/HTxwL3I-JCGChYJ8VI-L6OO_au7B4-Lwz3bWuYMBYro.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.109.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.117.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.118.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALRLoKI2w328g.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.114.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.113.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.118.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.119.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.116.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.115.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.116.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.117.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7kqGWbhppHtk.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.115.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:31] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.104.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:50:32] code 404, message File not found
+127.0.0.1 - - [14/Sep/2026 15:50:32] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /index.html?all HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /assets/fonts/fonts.css HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /deck.css HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /assets/svg/p004_sop.svg HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /assets/siji_v2_xiazhi_dongzhi.png HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /assets/svg/p009_pipeline.svg HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /assets/pov_01_wanglushan.png HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /config.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /components/qrcode.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /components/map433.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /components/cycle.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /deck.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:37] "GET /assets/wanglushan_15s.mp4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.105.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/HTxwL3I-JCGChYJ8VI-L6OO_au7B4-Lwz3bWuYMBYro.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.109.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.117.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.118.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALRLoKI2w328g.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.114.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.113.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.119.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.104.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.116.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.118.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.117.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.116.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.115.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.119.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.115.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.112.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.111.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.108.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:51:41] code 404, message File not found
+127.0.0.1 - - [14/Sep/2026 15:51:41] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 56223)
+Traceback (most recent call last):
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 1422, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 732, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 739, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 942, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/shutil.py", line 257, in copyfileobj
+    fdst_write(buf)
+    ~~~~~~~~~~^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /index.html?all HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /assets/fonts/fonts.css HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /deck.css HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /assets/svg/p004_sop.svg HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /assets/siji_v2_xiazhi_dongzhi.png HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /assets/svg/p009_pipeline.svg HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /assets/pov_01_wanglushan.png HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /config.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /components/qrcode.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /components/map433.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /components/cycle.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /deck.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:08] "GET /assets/wanglushan_15s.mp4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.105.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.109.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/HTxwL3I-JCGChYJ8VI-L6OO_au7B4-Lwz3bWuYMBYro.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.117.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.118.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALRLoKI2w328g.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.114.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.113.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.119.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.104.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.116.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.118.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.116.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.117.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/H4chBXePl9DZ0Xe7gG9cyOj7oqOcaThrVMcaeccjhXXDsOyAEEmuIi6j7j64sLjgBtMI1z49XW4.115.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.119.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.112.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.111.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.115.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /assets/fonts/k3kXo84MPvpLmixcA63oeALhLIiP-Q-87KaAaH7rzeAODp22mF0qmF4CSjmPC6A0Rg5g1igg1w.108.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Sep/2026 15:58:12] code 404, message File not found
+127.0.0.1 - - [14/Sep/2026 15:58:12] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 57628)
+Traceback (most recent call last):
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 1422, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 732, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 739, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/http/server.py", line 942, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/shutil.py", line 257, in copyfileobj
+    fdst_write(buf)
+    ~~~~~~~~~~^^^^^
+  File "/Users/chensirui/.local/share/uv/python/cpython-3.14.2-macos-aarch64-none/lib/python3.14/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------

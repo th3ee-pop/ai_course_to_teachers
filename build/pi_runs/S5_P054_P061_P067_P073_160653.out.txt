@@ -1,0 +1,93 @@
+=== P054 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="cols" style="align-items:center;gap:64px">
+    <div class="fig" style="flex:0 0 40%;max-height:520px">
+      <div class="pic"><img src="assets/img/darwin_duihua_liangping.png" alt=""></div>
+      <figcaption class="caption"><span class="tag">角色模拟，非历史人物真实发言</span></figcaption>
+    </div>
+    <div class="stack" style="flex:1 1 0;min-width:0;gap:32px">
+      <div class="reveal">
+        <div class="label">主体角色</div>
+        <p class="text">它进入任务，回应学生的表达，并追问理由，让学生继续说、继续想。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">辅助角色</div>
+        <p class="text">背景整合帮助学生找到依据，资源生成帮助学生展开成果，但它们不替学生表达。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">判断标准</div>
+        <p class="text">不是所有软件交互都等于主体；要看它是否推动学生继续表达与思考。</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P061 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="cols" style="gap:48px">
+    <div class="reveal">
+      <div class="label">可以核对的事实</div>
+      <p class="text">第24题中，选择B的记录多于选择C的记录。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">尚待检验的解释</div>
+      <p class="text">学生可能没有理解语境，也可能混淆词义，或在作答时采用了其他策略。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">需要补充的证据</div>
+      <p class="text">请学生说明为什么选择time，并指出支持选择的上下文；再比较同类题的作答。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P067 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-4" style="gap:32px;align-items:stretch">
+    <div class="card reveal">
+      <div class="label">事实</div>
+      <p class="text">操作者把倾角改为0°，随后查看了全年昼长曲线。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label">可能解释</div>
+      <p class="text">他可能在检验关于地轴的猜想，也可能只是在试用控件。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label">缺少的证据</div>
+      <p class="text">还缺少操作前的预测和操作后的解释。</p>
+    </div>
+    <div class="card reveal">
+      <div class="label">下一句追问</div>
+      <p class="text">改变倾角之前，你预测曲线会怎样变化？现在的结果是否支持你的预测？</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P073 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="cols" style="gap:48px">
+    <div class="reveal">
+      <div class="label">下次怎样问</div>
+      <p class="text">同一块橡皮泥变形前后，哪些条件变了，哪些没有变？请用记录说明。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">学生需要做什么</div>
+      <p class="text">对照称量记录与沉浮记录，写出观察事实，再提出解释。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">教师观察什么</div>
+      <p class="text">检查学生是否引用证据，是否区分材料、轻重与形状，并保留代表性回应供下次教研。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

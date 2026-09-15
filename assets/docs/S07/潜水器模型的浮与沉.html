@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>潜水器模型的浮与沉</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+ background:linear-gradient(180deg,#e3f1fb 0%,#cde5f5 100%);min-height:100vh;
+ display:flex;flex-direction:column;align-items:center;padding:16px 20px 34px;color:#173a5e}
+header{text-align:center;margin-bottom:14px}
+h1{font-size:38px;color:#0f3557;letter-spacing:3px}
+.subtitle{font-size:19px;color:#47708f;margin-top:4px}
+.stage{display:flex;gap:26px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+
+/* ================= 水槽 ================= */
+.tank{position:relative;width:470px;height:640px;border:6px solid #35648f;border-radius:26px;
+ overflow:hidden;background:linear-gradient(180deg,#eaf8ff 0%,#d4efff 100%)}
+.water{position:absolute;left:0;right:0;top:140px;bottom:0;
+ background:linear-gradient(180deg,rgba(96,182,238,.88) 0%,rgba(38,120,186,.94) 55%,rgba(16,84,146,.96) 100%)}
+.wave{position:absolute;left:0;top:128px;width:564px;height:28px;animation:waveMove 4s linear infinite}
+@keyframes waveMove{from{transform:translateX(0)}to{transform:translateX(-94px)}}
+.bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,.30);
+ border:2px solid rgba(255,255,255,.55);animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}10%{opacity:.9}80%{opacity:.6}100%{transform:translateY(-490px);opacity:0}}
+.seaweed{position:absolute;bottom:-4px;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+.fish{position:absolute;top:320px;left:0;animation:swim 17s linear infinite}
+@keyframes swim{from{transform:translateX(-90px)}to{transform:translateX(560px)}}
+
+/* ================= 潜水器 ================= */
+#subWrap{position:absolute;left:50%;margin-left:-150px;width:300px;height:150px;
+ transition:top 1.4s cubic-bezier(.45,.05,.35,1)}
+#subWrap .bob{width:100%;height:100%;animation:bob 3.6s ease-in-out infinite}
+#subWrap.hovering .bob{animation-duration:6s}
+#subWrap.sunk .bob{animation:none}
+#subWrap svg{width:100%;height:100%;display:block;transition:transform 1s ease}
+#subWrap.sunk svg{transform:rotate(7deg)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+#cabinWater{transition:y .5s ease,height .5s ease}
+.blk{transition:opacity .4s ease}
+.tank-note{width:470px;font-size:16px;color:#47708f;text-align:center;margin-top:10px;line-height:1.5}
+
+/* ================= 控制面板 ================= */
+.panel{width:440px;display:flex;flex-direction:column;gap:16px}
+.states{display:flex;gap:10px}
+.pill{flex:1;text-align:center;font-size:22px;font-weight:700;padding:10px 0;border-radius:14px;
+ background:#ffffff;color:#7d97ad;border:3px solid #d7e6f2;letter-spacing:6px;text-indent:6px}
+.pill.on-float{background:#e6f7ef;border-color:#1e9e6a;color:#137a52}
+.pill.on-hover{background:#fdf3d7;border-color:#e8a200;color:#9a6d00}
+.pill.on-sink{background:#fdeae7;border-color:#e05a4e;color:#b0372c}
+.status-card{background:#fff;border-radius:18px;padding:16px 20px;min-height:104px;
+ box-shadow:0 4px 14px rgba(23,58,94,.10);border-left:10px solid #1e9e6a}
+.status-card.float{border-left-color:#1e9e6a}
+.status-card.float .badge{background:#1e9e6a}
+.status-card.hover{border-left-color:#e8a200}
+.status-card.hover .badge{background:#e8a200}
+.status-card.sink{border-left-color:#e05a4e}
+.status-card.sink .badge{background:#e05a4e}
+.badge{display:inline-block;font-size:24px;font-weight:800;padding:4px 20px;border-radius:999px;
+ color:#fff;letter-spacing:6px;text-indent:6px;margin-bottom:8px}
+#statusText{font-size:22px;line-height:1.5;color:#24486b}
+.control{background:#fff;border-radius:18px;padding:16px 20px 14px;box-shadow:0 4px 14px rgba(23,58,94,.10)}
+.ctrl-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.ctrl-name{font-size:22px;font-weight:700;color:#173a5e}
+.ctrl-val{font-size:20px;color:#2a7bb8;font-weight:700}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:16px;border-radius:8px;
+ background:linear-gradient(90deg,#bfe0f5,#2a7bb8);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:36px;height:36px;
+ border-radius:50%;background:#ff9d2e;border:5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#ff9d2e;
+ border:5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer}
+.ctrl-ends{display:flex;justify-content:space-between;font-size:16px;color:#7d97ad;margin-top:4px}
+.quick{display:flex;gap:10px;margin-top:10px}
+.quick button{flex:1;font-size:18px;padding:8px 0;border:none;border-radius:10px;background:#eaf4fb;
+ color:#2a7bb8;font-weight:700;cursor:pointer}
+.quick button:hover{background:#d8ebf8}
+.tips{background:#fff;border-radius:18px;padding:14px 20px;box-shadow:0 4px 14px rgba(23,58,94,.10)}
+.tips b{font-size:20px;color:#173a5e}
+.tips ol{margin:6px 0 0 26px;font-size:18px;line-height:1.65;color:#33587c}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>潜水器模型的浮与沉</h1>
+  <p class="subtitle">调节「配重」和「注水量」，观察潜水器会发生什么</p>
+</header>
+
+<div class="stage">
+
+  <!-- ============ 水槽 ============ -->
+  <section>
+    <div class="tank">
+      <div class="water">
+        <div class="bubble" style="left:70px;bottom:30px;width:14px;height:14px;animation-duration:9s;animation-delay:-2s"></div>
+        <div class="bubble" style="left:160px;bottom:80px;width:10px;height:10px;animation-duration:7s;animation-delay:-5s"></div>
+        <div class="bubble" style="left:280px;bottom:40px;width:18px;height:18px;animation-duration:11s;animation-delay:-7s"></div>
+        <div class="bubble" style="left:360px;bottom:110px;width:12px;height:12px;animation-duration:8s;animation-delay:-1s"></div>
+        <div class="bubble" style="left:420px;bottom:60px;width:9px;height:9px;animation-duration:7.5s;animation-delay:-4s"></div>
+        <svg class="fish" width="60" height="36" viewBox="0 0 60 36">
+          <ellipse cx="24" cy="18" rx="18" ry="11" fill="#ff8c42"/>
+          <path d="M40 18 L57 8 L57 28 Z" fill="#ff8c42"/>
+          <circle cx="16" cy="15" r="2.6" fill="#fff"/>
+          <circle cx="16.6" cy="15" r="1.2" fill="#333"/>
+        </svg>
+        <svg class="seaweed" style="left:46px;width:44px;height:96px" viewBox="0 0 44 96">
+          <path d="M22 96 C 8 66 32 54 18 30 C 12 16 24 10 20 0" stroke="#2e8b57" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <svg class="seaweed" style="left:210px;width:34px;height:74px;animation-delay:-2s" viewBox="0 0 44 96">
+          <path d="M22 96 C 8 66 32 54 18 30 C 12 16 24 10 20 0" stroke="#35a06a" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <svg class="seaweed" style="left:396px;width:40px;height:88px;animation-delay:-3.5s" viewBox="0 0 44 96">
+          <path d="M22 96 C 8 66 32 54 18 30 C 12 16 24 10 20 0" stroke="#2e8b57" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <svg class="wave" viewBox="0 0 564 28" preserveAspectRatio="none">
+        <path d="M0 16 Q 23.5 2 47 16 T 94 16 T 141 16 T 188 16 T 235 16 T 282 16 T 329 16 T 376 16 T 423 16 T 470 16 T 517 16 T 564 16 V 28 H 0 Z" fill="#a8dcf7"/>
+      </svg>
+
+      <!-- 潜水器 -->
+      <div id="subWrap" style="top:35px">
+        <div class="bob">
+          <svg viewBox="0 0 260 130">
+            <defs>
+              <clipPath id="cabinClip"><rect x="42" y="50" width="152" height="46" rx="14"/></clipPath>
+            </defs>
+            <!-- 螺旋桨 -->
+            <rect x="212" y="66" width="18" height="9" rx="4" fill="#e8a02c"/>
+            <ellipse cx="238" cy="57" rx="6" ry="13" fill="#f2b23c" stroke="#c07f14" stroke-width="2"/>
+            <ellipse cx="238" cy="84" rx="6" ry="13" fill="#f2b23c" stroke="#c07f14" stroke-width="2"/>
+            <!-- 指挥塔与潜望镜 -->
+            <rect x="112" y="0" width="7" height="18" rx="3" fill="#cf9512"/>
+            <rect x="112" y="0" width="15" height="7" rx="3" fill="#cf9512"/>
+            <rect x="98" y="14" width="46" height="36" rx="10" fill="#ffc23d" stroke="#cf9512" stroke-width="3"/>
+            <!-- 艇身 -->
+            <ellipse cx="116" cy="72" rx="102" ry="44" fill="#ffc23d" stroke="#cf9512" stroke-width="3"/>
+            <!-- 舷窗 -->
+            <circle cx="30" cy="64" r="8" fill="#bfe6fb" stroke="#cf9512" stroke-width="3"/>
+            <circle cx="202" cy="64" r="8" fill="#bfe6fb" stroke="#cf9512" stroke-width="3"/>
+            <!-- 水舱（透视窗） -->
+            <rect x="42" y="50" width="152" height="46" rx="14" fill="#e9f6ff"/>
+            <g clip-path="url(#cabinClip)">
+              <rect id="cabinWater" x="42" y="95" width="152" height="0" fill="#57ade8" opacity="0.9"/>
+              <g>
+                <rect class="blk" x="46"  y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="60.8" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="75.6" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="90.4" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="105.2" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="120" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="134.8" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="149.6" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="164.4" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+                <rect class="blk" x="179.2" y="80" width="13" height="14" rx="2" fill="#737d8c" stroke="#525b68" stroke-width="1.5"/>
+              </g>
+            </g>
+            <rect x="42" y="50" width="152" height="46" rx="14" fill="none" stroke="#cf9512" stroke-width="3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <p class="tank-note">潜水器身上的透明窗口是<b>水舱</b>：<br>蓝色是灌进去的水，灰色方块是配重铁块。</p>
+  </section>
+
+  <!-- ============ 控制面板 ============ -->
+  <aside class="panel">
+    <div class="states">
+      <span class="pill on-float" id="pillFloat">漂浮</span>
+      <span class="pill" id="pillHover">悬浮</span>
+      <span class="pill" id="pillSink">沉底</span>
+    </div>
+
+    <div class="status-card float" id="card">
+      <span class="badge" id="badge">漂浮</span>
+      <p id="statusText">水舱里的水很少，潜水器很轻，高高浮在水面上。</p>
+    </div>
+
+    <div class="control">
+      <div class="ctrl-head"><span class="ctrl-name">① 配重（铁块）</span><span class="ctrl-val" id="ballastVal">0 格</span></div>
+      <input type="range" id="ballast" min="0" max="100" value="0" step="1">
+      <div class="ctrl-ends"><span>无</span><span>最多</span></div>
+      <div class="quick">
+        <button data-set="ballast:0">去掉配重</button>
+        <button data-set="ballast:100">加满配重</button>
+      </div>
+    </div>
+
+    <div class="control">
+      <div class="ctrl-head"><span class="ctrl-name">② 注水量</span><span class="ctrl-val" id="waterVal">0 ％</span></div>
+      <input type="range" id="water" min="0" max="100" value="0" step="1">
+      <div class="ctrl-ends"><span>空</span><span>满</span></div>
+      <div class="quick">
+        <button data-set="water:0">排空水</button>
+        <button data-set="water:100">注满水</button>
+      </div>
+    </div>
+
+    <div class="tips">
+      <b>试一试</b>
+      <ol>
+        <li>慢慢注水，潜水器会怎样？</li>
+        <li>沉底后，把水排空，能浮起来吗？</li>
+        <li>配重加到最多，再排空水，还能浮起来吗？为什么？</li>
+      </ol>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+// ===== 简化模型（只用于保证规律正确，页面不显示任何数字计算） =====
+// 潜水器总重量 = 空艇重量 + 配重 + 水舱里的水
+// 当总重量超过水的最大托力（100）时，就沉底。
+var HULL = 30;                 // 空艇重量
+var B_MAX = 100;               // 水的最大托力
+var SURFACE_Y = 140;           // 水面位置（水槽内坐标）
+var TANK_H = 640, SUB_H = 150; // 水槽高 / 潜水器高
+
+var ballastInput = document.getElementById('ballast');
+var waterInput   = document.getElementById('water');
+var sub      = document.getElementById('subWrap');
+var cabinWater = document.getElementById('cabinWater');
+var blocks  = document.querySelectorAll('.blk');
+var badge   = document.getElementById('badge');
+var card    = document.getElementById('card');
+var statusText = document.getElementById('statusText');
+var pills = { float: document.getElementById('pillFloat'),
+              hover: document.getElementById('pillHover'),
+              sink:  document.getElementById('pillSink') };
+
+// 根据总重量和水量，判断状态并给出五年级能懂的说明
+function getState(W, w) {
+  if (W > B_MAX) {
+    if (w < 15) return { k:'sink', t:'水舱里的水不多了，可是配重太重，潜水器浮不上来了！' };
+    return { k:'sink', t:'水舱里的水越来越多，潜水器变重了，沉到了水底。' };
+  }
+  if (W >= 93) return { k:'hover', t:'潜水器不轻也不重，正好停在水中，不上也不下。' };
+  if (W >= 75) return { k:'float', t:'潜水器已经挺重了，几乎全身泡在水里，只露出一点点。' };
+  if (W >= 55) return { k:'float', t:'潜水器漂在水面上，一大半身子在水下。' };
+  return { k:'float', t:'水舱里的水很少，潜水器很轻，高高浮在水面上。' };
+}
+
+function update() {
+  var b = +ballastInput.value;
+  var w = +waterInput.value;
+  document.getElementById('ballastVal').textContent = b + ' 格';
+  document.getElementById('waterVal').textContent = w + ' ％';
+
+  var W = HULL + 0.9 * b + 0.8 * w;
+
+  // ---- 联动一：潜水器在水槽中的位置 ----
+  sub.classList.remove('sunk', 'hovering');
+  var top;
+  if (W > B_MAX) {                    // 沉底
+    top = TANK_H - SUB_H - 4;
+    sub.classList.add('sunk');
+  } else if (W >= 93) {               // 悬浮：停在水中
+    var t = (W - 93) / 7;             // 越接近极限，停得越深
+    top = SURFACE_Y + 130 * t;
+    sub.classList.add('hovering');
+  } else {                            // 漂浮：越重吃水越深
+    var s = Math.max(0.22, Math.min(1, W / B_MAX));
+    top = Math.max(8, SURFACE_Y - SUB_H * (1 - s));
+  }
+  sub.style.top = top + 'px';
+
+  // ---- 水舱里的水位与配重铁块 ----
+  var h = 43 * w / 100;
+  cabinWater.setAttribute('y', 95 - h);
+  cabinWater.setAttribute('height', h);
+  var n = Math.round(b / 10);
+  for (var i = 0; i < blocks.length; i++) {
+    blocks[i].style.opacity = (i < n) ? 1 : 0;
+  }
+
+  // ---- 联动二：状态徽章与说明 ----
+  var st = getState(W, w);
+  card.classList.remove('float', 'hover', 'sink');
+  card.classList.add(st.k);
+  badge.textContent = { float:'漂浮', hover:'悬浮', sink:'沉底' }[st.k];
+  statusText.textContent = st.t;
+  pills.float.className = 'pill' + (st.k === 'float' ? ' on-float' : '');
+  pills.hover.className = 'pill' + (st.k === 'hover' ? ' on-hover' : '');
+  pills.sink.className  = 'pill' + (st.k === 'sink'  ? ' on-sink'  : '');
+}
+
+ballastInput.addEventListener('input', update);
+waterInput.addEventListener('input', update);
+
+// 快捷按钮：注满 / 排空 / 加满 / 去掉
+var btns = document.querySelectorAll('[data-set]');
+for (var j = 0; j < btns.length; j++) {
+  btns[j].addEventListener('click', function () {
+    var parts = this.getAttribute('data-set').split(':');
+    var input = parts[0] === 'ballast' ? ballastInput : waterInput;
+    input.value = parts[1];
+    update();
+  });
+}
+
+update();
+</script>
+
+</body>
+</html>

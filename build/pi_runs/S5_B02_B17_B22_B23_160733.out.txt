@@ -1,0 +1,117 @@
+=== B02 ===
+<!-- BODY:START -->
+<div class="body" style="display:flex;flex-direction:column;justify-content:center;gap:44px">
+  <div class="cols" style="gap:48px;align-items:flex-start">
+    <div class="reveal">
+      <div class="label">教师方案</div>
+      <p class="text">写清实验目的、控制变量、组织方式与核对要点。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">学生记录表</div>
+      <p class="text">留下变量、测量次数、数据与解释位置，支持学生自己记录和判断。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">教师评析材料</div>
+      <p class="text">分析可能的错误及其依据，帮助教师追问，不预先替学生填写结果。</p>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:20px">
+    <a class="file-card" href="links/D02/">DOC_D02</a>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B17 ===
+<!-- BODY:START -->
+<div class="body" style="display:flex;flex-direction:column;justify-content:center;gap:44px">
+  <div class="cols" style="gap:48px;align-items:flex-start">
+    <div class="reveal">
+      <div class="label">测评卷</div>
+      <p class="text">通过具体问题观察学生是否理解概念、会解释现象。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">登记表</div>
+      <p class="text">保存题号、得分与必要备注，支持比较前后表现。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">作品量规</div>
+      <p class="text">依据作品与过程判断学生是否说明证据、改进方案并完成合作任务。</p>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:20px">
+    <a class="file-card" href="links/D06/">DOC_D06</a>
+    <a class="file-card" href="links/D05/">DOC_D05</a>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B22 ===
+<!-- BODY:START -->
+<div class="body" style="display:flex;flex-direction:column;justify-content:center;gap:40px">
+  <div class="cols" style="gap:48px;align-items:flex-start">
+    <div class="reveal">
+      <div class="label">依据</div>
+      <p class="text">UNESCO 2023年生成式AI教育指南强调人本、隐私保护、适龄和公平使用。这是国际指南的概括，不是本地法律。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">校内核对</div>
+      <p class="text">处理学生材料前，先确认学校关于数据、账号和发布的规定；谁批准采集、谁负责保存，都要写清楚。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">一个真实决定</div>
+      <p class="text">如果要把课堂数据用于教研，先定采集范围和保存期限，再决定哪些环节可以用AI，哪些环节必须人工完成。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B23 ===
+<!-- BODY:START -->
+<div class="body" style="display:flex;flex-direction:column;justify-content:center;gap:30px">
+  <div class="grid-4" style="gap:32px;align-items:flex-start">
+    <div class="reveal">
+      <div class="label">需要学生观察与操作</div>
+      <p class="text" style="font-size:28px">查看四季循环、月相、潜水器与掌中实验室。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">需要成套教学材料</div>
+      <p class="text" style="font-size:28px">查看单元全案、实验记录表、项目方案包和评价材料。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">需要情境与交流</div>
+      <p class="text" style="font-size:28px">查看《望庐山瀑布》视频、共读角交流与达尔文角色卡。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">需要调整自己的委托</div>
+      <p class="text" style="font-size:28px">查看提示词库，并补充本班目标、角色要求和背景。</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <div class="cols" style="gap:36px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a class="file-card" href="links/D01/">DOC_D01</a>
+      <a class="file-card" href="links/D02/">DOC_D02</a>
+      <a class="file-card" href="links/D05/">DOC_D05</a>
+      <a class="file-card" href="links/D13/">DOC_D13</a>
+    </div>
+    <div class="vline"></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="embed" data-src="assets/tools/siji_v2/index.html" style="height:84px"><div class="hint">点击加载</div></div>
+      <div class="embed" data-src="assets/tools/yuexiang.html" style="height:84px"><div class="hint">点击加载</div></div>
+      <div class="embed" data-src="assets/tools/qianshuiqi.html" style="height:84px"><div class="hint">点击加载</div></div>
+    </div>
+    <div class="vline"></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a class="file-card" href="assets/wanglushan_15s.mp4">VID_V01</a>
+      <a class="link-card unset" data-config="labUrl"><b>掌中实验室</b><span>现场启动后填入地址</span></a>
+      <a class="link-card unset" data-config="ecoUrl"><b>语言文化交流</b><span>现场启动后填入地址</span></a>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

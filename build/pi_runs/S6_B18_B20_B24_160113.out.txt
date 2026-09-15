@@ -1,0 +1,77 @@
+=== B18 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-2" style="gap:24px">
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">01</span>
+      <div class="label">教师的问题</div>
+      <p class="text" style="font-size:30px;line-height:1.5;margin-top:12px">课堂上这个没弄明白的困惑，能不能变成一个小课题，用两三周的时间做一次实证？</p>
+    </div>
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">02</span>
+      <div class="label">目标</div>
+      <p class="text" style="font-size:30px;line-height:1.5;margin-top:12px">我想弄清：学生在改变一个条件后，是否能用证据说明变化。研究范围限定在一个班、两到三周，先看一个可观察的行为。</p>
+    </div>
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">03</span>
+      <div class="label">角色</div>
+      <p class="text" style="font-size:30px;line-height:1.5;margin-top:12px">AI负责把困惑整理成可检验的问题，并列出需要补充的材料。研究结论由我判断，不把它的建议当作研究结果。</p>
+    </div>
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">04</span>
+      <div class="label">背景</div>
+      <p class="text" style="font-size:30px;line-height:1.5;margin-top:12px">提供课标要求、班级已有基础和可用的器材与课时，让整理出来的问题不脱离实际教学条件。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B20 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-3 reveal-group" style="gap:26px;margin-top:auto;margin-bottom:auto">
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">01</span>
+      <div class="label">我想得到什么</div>
+      <p>例如，一份可编辑的活动安排和一份配套记录表，或一份可以核查的周报。</p>
+    </div>
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">02</span>
+      <div class="label">AI需要扮演什么角色</div>
+      <p>先整合资料与记录，再生成文件；需要讨论取舍时，再请它参与协商。</p>
+    </div>
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">03</span>
+      <div class="label">我能提供什么上下文</div>
+      <p>提供已有材料、读者、格式、期限、学校要求和应保留的来源。</p>
+    </div>
+  </div>
+  <div style="display:flex;gap:20px;justify-content:center;margin-top:36px">
+    <a class="file-card" href="links/D04/">DOC_D04</a>
+    <a class="file-card" href="links/D12/">DOC_D12</a>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B24 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-3 reveal-group" style="gap:26px;margin-top:auto;margin-bottom:auto">
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">01</span>
+      <div class="label">你希望学生或自己完成什么</div>
+      <p>说明一个具体的学习表现、教学决定或工作产出。</p>
+    </div>
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">02</span>
+      <div class="label">AI可以承担哪部分工作</div>
+      <p>判断需要整合材料、生成制品，还是参与持续的交流与追问。</p>
+    </div>
+    <div class="card reveal">
+      <span class="num" style="display:block;font-size:24px;color:var(--light-blue);line-height:1.2">03</span>
+      <div class="label">还缺少什么背景或证据</div>
+      <p>补充学段、已有材料、任务条件与判断标准，再决定下一步。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>眼球成像光路模拟器</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;color:#1e293b}
+body{background:#e8eef5;padding:16px}
+.wrap{max-width:1500px;margin:0 auto}
+header{text-align:center;margin-bottom:12px}
+h1{font-size:34px;letter-spacing:1px;margin-bottom:2px}
+.sub{font-size:19px;color:#475569;margin-bottom:12px}
+svg text{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+
+.presets{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.preset-btn{font-family:inherit;font-size:19px;font-weight:800;padding:12px 22px;border-radius:14px;border:3px solid #c3d0e0;background:#fff;color:#334155;cursor:pointer;transition:.15s}
+.preset-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+.preset-btn:hover{border-color:#2563eb}
+
+.mainrow{display:flex;gap:14px;margin-top:14px;align-items:stretch}
+.panel{background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(15,23,42,.08);padding:12px 14px}
+.panelhead{display:flex;justify-content:space-between;align-items:baseline;padding:2px 4px 6px;font-size:19px;font-weight:800}
+.note{font-size:15px;color:#64748b;font-weight:400}
+.diagram{flex:1;min-width:0}
+.diagram svg{width:100%;display:block}
+.rightcol{width:400px;flex:none;display:flex;flex-direction:column;gap:14px}
+
+.status{border-radius:16px;padding:14px 18px;display:flex;gap:14px;align-items:center;border:4px solid transparent}
+.status.clear{background:#dcfce7;border-color:#16a34a}
+.status.blur{background:#fee2e2;border-color:#dc2626}
+.status .sicon{font-size:52px;font-weight:900;line-height:1;flex:none}
+.status.clear .sicon{color:#16a34a}
+.status.blur .sicon{color:#dc2626}
+.stitle{font-size:31px;font-weight:900;line-height:1.2}
+.status.clear .stitle{color:#065f46}
+.status.blur .stitle{color:#991b1b}
+.sdesc{font-size:19px;line-height:1.5;margin-top:5px;color:#334155}
+
+.seen{display:flex;flex-direction:column;gap:8px;flex:1}
+.sharpnote{font-size:15px;color:#64748b;font-weight:400}
+.bar{height:12px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-bottom:2px}
+.barfill{height:100%;width:100%;background:#16a34a;border-radius:999px;transition:width .15s}
+.seenimg{flex:1;min-height:220px;border:3px solid #d8e0ea;border-radius:12px;overflow:hidden;background:#fff}
+.seenimg svg{width:100%;height:100%;display:block}
+.invertrow{display:flex;gap:12px;align-items:center}
+.thumb{width:84px;height:84px;flex:none;border:3px solid #d8e0ea;border-radius:10px;overflow:hidden;background:#fff}
+.thumb svg{width:100%;height:100%;display:block}
+.cap{font-size:16px;color:#475569;line-height:1.5}
+
+.controls{display:grid;grid-template-columns:1fr 1.35fr 1.1fr;gap:14px;margin-top:14px}
+.card{background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(15,23,42,.08);padding:16px 18px 18px}
+.cardtitle{display:flex;align-items:center;gap:9px;font-size:21px;font-weight:800;margin-bottom:10px}
+.cnum{width:30px;height:30px;border-radius:999px;background:#2563eb;color:#fff;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none}
+.row{display:flex;justify-content:space-between;align-items:baseline;font-size:18px;color:#475569;margin:8px 0 2px}
+.row b{font-size:22px;color:#111827}
+.row .sub2{display:block;font-size:15px;color:#64748b;margin-top:3px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:26px;background:transparent;cursor:pointer;display:block;margin:4px 0}
+input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:999px;background:#d3dce8}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;margin-top:-8px;border-radius:999px;background:#fff;border:4px solid #2563eb;box-shadow:0 2px 6px rgba(20,40,80,.25)}
+input[type=range]::-moz-range-track{height:10px;border-radius:999px;background:#d3dce8}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:999px;background:#fff;border:4px solid #2563eb}
+input[type=range]:disabled::-webkit-slider-thumb{border-color:#9fb0c4}
+input[type=range]:disabled::-moz-range-thumb{border-color:#9fb0c4}
+.hints{display:flex;justify-content:space-between;font-size:16px;color:#64748b;margin-top:-2px}
+
+.toggle-row{display:flex;align-items:center;gap:12px;margin-top:4px}
+.switch{position:relative;display:inline-block;width:74px;height:40px;flex:none}
+.switch input{opacity:0;width:0;height:0}
+.pill{position:absolute;inset:0;background:#94a3b8;border-radius:20px;cursor:pointer;transition:.2s}
+.pill:before{content:"";position:absolute;width:32px;height:32px;left:4px;top:4px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 2px 5px rgba(0,0,0,.25)}
+.switch input:checked+.pill{background:#2563eb}
+.switch input:checked+.pill:before{transform:translateX(34px)}
+.tlabel{font-size:18px;font-weight:700;color:#334155}
+.btn{border:3px solid #2563eb;background:#eff6ff;color:#1d4ed8;font-family:inherit;font-size:18px;font-weight:800;padding:9px 16px;border-radius:12px;cursor:pointer;margin-left:auto}
+.btn:hover{background:#dbeafe}
+
+footer{margin-top:14px;background:#fff7ed;border:3px dashed #f59e0b;border-radius:16px;padding:14px 22px;text-align:center}
+footer p{font-size:19px;color:#7c2d12;line-height:1.5}
+footer .f1{font-weight:800}
+
+@media (max-width:1100px){
+  .mainrow{flex-direction:column}
+  .rightcol{width:100%}
+  .controls{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="eyechart" viewBox="0 0 100 100">
+<rect x="0" y="0" width="100" height="100" fill="#fff"/>
+<g fill="#1b2430" font-family="Georgia, serif" font-weight="700" text-anchor="middle" dominant-baseline="central">
+<text x="50" y="20" font-size="26">E</text>
+<text x="30" y="46" font-size="16" transform="rotate(180 30 46)">E</text>
+<text x="70" y="46" font-size="16" transform="rotate(90 70 46)">E</text>
+<text x="24" y="66" font-size="11" transform="rotate(270 24 66)">E</text>
+<text x="50" y="66" font-size="11">E</text>
+<text x="76" y="66" font-size="11" transform="rotate(180 76 66)">E</text>
+<text x="22" y="82" font-size="8" transform="rotate(90 22 82)">E</text>
+<text x="41" y="82" font-size="8">E</text>
+<text x="60" y="82" font-size="8" transform="rotate(270 60 82)">E</text>
+<text x="79" y="82" font-size="8" transform="rotate(180 79 82)">E</text>
+</g>
+</symbol>
+<filter id="retblur" x="-40%" y="-40%" width="180%" height="180%">
+<feGaussianBlur id="blurEl" stdDeviation="0"/>
+</filter>
+</defs>
+</svg>
+
+<div class="wrap">
+<header>
+<h1>眼球成像光路模拟器</h1>
+<p class="sub">调一调这只眼睛，看看光聚在哪里，你又看得清不清楚。</p>
+<div class="presets" id="presets"></div>
+</header>
+
+<div class="mainrow">
+<div class="panel diagram">
+<div class="panelhead"><span>光在眼睛里走的路</span><span class="note">示意图，不按真实比例</span></div>
+<svg id="diagram" viewBox="0 0 720 400" role="img" aria-label="眼球成像光路示意图"></svg>
+</div>
+<div class="rightcol">
+<div class="status clear" id="status">
+<div class="sicon" id="statusIcon">✓</div>
+<div>
+<div class="stitle" id="statusTitle">看得清清楚楚！</div>
+<div class="sdesc" id="statusDesc"></div>
+</div>
+</div>
+<div class="panel seen">
+<div class="panelhead"><span>这只眼睛看到的画面</span><span class="sharpnote" id="sharpText">清晰度 100%</span></div>
+<div class="bar"><div class="barfill" id="sharpBar"></div></div>
+<div class="seenimg"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><rect x="0" y="0" width="200" height="200" fill="#fff"/><g filter="url(#retblur)"><use id="seenUse" href="#eyechart" xlink:href="#eyechart"/></g></svg></div>
+<div class="invertrow">
+<div class="thumb"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><rect x="0" y="0" width="200" height="200" fill="#fff"/><g transform="rotate(180 100 100)" filter="url(#retblur)"><use id="thumbUse" href="#eyechart" xlink:href="#eyechart"/></g></svg></div>
+<div class="cap">落在视网膜上的像是<b>倒着的</b>，大脑会帮我们转回来。</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="controls">
+<div class="card">
+<div class="cardtitle"><span class="cnum">1</span><span>你在看什么</span></div>
+<div class="row"><span>视力表离眼睛</span><b id="distLabel">2.8 米</b></div>
+<input type="range" id="distSlider" min="0" max="100" step="1" value="78">
+<div class="hints"><span>近（看书）</span><span>远（看黑板）</span></div>
+</div>
+
+<div class="card">
+<div class="cardtitle"><span class="cnum">2</span><span>这只眼睛长什么样</span></div>
+<div class="row"><span>眼球前后长</span><b id="lenVal">24.0 毫米</b></div>
+<input type="range" id="lenSlider" min="24" max="25.5" step="0.1" value="24">
+<div class="row" style="margin-top:2px"><span class="sub2" id="lenNote">正常长度</span></div>
+<div class="row"><span>晶状体厚薄</span><b id="lensThick">正常</b></div>
+<div class="toggle-row">
+<label class="switch"><input type="checkbox" id="accomToggle" checked><span class="pill"></span></label>
+<span class="tlabel">睫状肌自动调节</span>
+</div>
+<div class="row" style="margin-top:2px"><span class="sub2">打开后看近处，晶状体会自动变厚。</span></div>
+</div>
+
+<div class="card">
+<div class="cardtitle"><span class="cnum">3</span><span>戴一副眼镜</span></div>
+<div class="toggle-row">
+<label class="switch"><input type="checkbox" id="glassesToggle"><span class="pill"></span></label>
+<span class="tlabel" id="glassesTxt">没戴眼镜</span>
+<button type="button" class="btn" id="autoFitBtn">帮它配一副</button>
+</div>
+<div class="row"><span>镜片度数</span><b id="powerLabel">没戴眼镜</b></div>
+<input type="range" id="powerSlider" min="-8" max="0" step="0.25" value="0" disabled>
+<div class="hints"><span>度数大（镜片厚）</span><span>0 度（平光）</span></div>
+</div>
+</div>
+
+<footer>
+<p class="f1">※ 这是示意模拟，画的是简化示意图，不能代替真实实验。</p>
+<p>看远处总是模糊，要告诉老师和爸爸妈妈，去医院请医生检查。</p>
+</footer>
+</div>
+
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg";
+var XLINK="http://www.w3.org/1999/xlink";
+var $=function(id){return document.getElementById(id);};
+var clamp=function(v,a,b){return Math.max(a,Math.min(b,v));};
+
+var N=1336, LENS_REST=15.67, BASE=40+LENS_REST; // 正常眼放松时晶状体对应的值
+
+var S={distT:78, L:24, accomOn:true, glassesOn:false, F:0, preset:"normal"};
+
+function distText(d){return d<1?Math.round(d*100)+" 厘米":d.toFixed(1)+" 米";}
+function fitPower(L){return clamp(Math.round((N/L-BASE)*4)/4,-8,0);}
+
+var PRESETS=[
+ {id:"normal", label:"正常眼", patch:{L:24, glassesOn:false, F:0}},
+ {id:"myopic", label:"近视（眼轴太长）", patch:{L:25.5, glassesOn:false, F:0}},
+ {id:"corrected", label:"近视戴镜矫正", patch:{L:25.5, glassesOn:true, F:null}}
+];
+
+// 顶部预设按钮
+PRESETS.forEach(function(p){
+ var b=document.createElement("button");
+ b.type="button"; b.className="preset-btn"; b.id="pb-"+p.id; b.textContent=p.label;
+ b.addEventListener("click",function(){
+  var patch={}; for(var k in p.patch) patch[k]=p.patch[k];
+  if(patch.F===null) patch.F=fitPower(patch.L);
+  Object.assign(S,{distT:78, accomOn:true}, patch, {preset:p.id});
+  syncInputs(); render();
+ });
+ $("presets").appendChild(b);
+});
+
+function syncInputs(){
+ $("distSlider").value=S.distT;
+ $("lenSlider").value=S.L;
+ $("accomToggle").checked=S.accomOn;
+ $("glassesToggle").checked=S.glassesOn;
+ $("powerSlider").value=S.F;
+ $("powerSlider").disabled=!S.glassesOn;
+ document.querySelectorAll(".preset-btn").forEach(function(b){b.classList.remove("active");});
+ var ab=$("pb-"+S.preset); if(ab) ab.classList.add("active");
+}
+
+$("distSlider").addEventListener("input",function(){S.distT=+this.value; render();});
+$("lenSlider").addEventListener("input",function(){S.L=+this.value; S.preset=null; syncInputs(); render();});
+$("accomToggle").addEventListener("change",function(){S.accomOn=this.checked; S.preset=null; syncInputs(); render();});
+$("glassesToggle").addEventListener("change",function(){S.glassesOn=this.checked; S.preset=null; syncInputs(); render();});
+$("powerSlider").addEventListener("input",function(){S.F=+this.value; S.preset=null; syncInputs(); render();});
+$("autoFitBtn").addEventListener("click",function(){S.glassesOn=true; S.F=fitPower(S.L); S.preset=null; syncInputs(); render();});
+
+function ns(n){return document.createElementNS(NS,n);}
+function add(parent,n,a){var e=ns(n); for(var k in a) e.setAttribute(k,a[k]); parent.appendChild(e); return e;}
+function setHref(e){e.setAttribute("href","#eyechart"); e.setAttributeNS(XLINK,"xlink:href","#eyechart");}
+
+function drawDiagram(o){
+ var svg=$("diagram"); svg.innerHTML="";
+ var g=ns("g"); svg.appendChild(g);
+ function t(x,y,s,color,size,anchor,sw){
+  var e=add(g,"text",{x:x,y:y,"font-size":size||15,"font-weight":"bold",fill:color||"#334155","text-anchor":anchor||"middle"});
+  if(sw){e.setAttribute("stroke","#fff");e.setAttribute("stroke-width",sw);e.setAttribute("paint-order","stroke");}
+  e.textContent=s; return e;
+ }
+ var L=S.L;
+ var Rx=400+L*8;
+ var eyeCx=(380+Rx)/2, eyeRx=(Rx-380)/2;
+ var a=55*Math.PI/180;
+ var cp1=eyeCx+eyeRx*Math.cos(a), sp1=200-100*Math.sin(a);
+ var cp2=cp1, sp2=200+100*Math.sin(a);
+ var retinaPath="M "+cp1.toFixed(1)+" "+sp1.toFixed(1)+" A "+eyeRx.toFixed(1)+" 100 0 0 1 "+cp2.toFixed(1)+" "+sp2.toFixed(1);
+ var cpx=eyeCx-eyeRx*Math.cos(a);
+ var corneaPath="M "+cpx.toFixed(1)+" "+(200-100*Math.sin(a)).toFixed(1)+" A "+eyeRx.toFixed(1)+" 100 0 0 0 "+cpx.toFixed(1)+" "+(200+100*Math.sin(a)).toFixed(1);
+
+ add(g,"ellipse",{cx:eyeCx.toFixed(1),cy:200,rx:eyeRx.toFixed(1),ry:100,fill:"#fffdf4",stroke:"#7c8aa0","stroke-width":4});
+ add(g,"path",{d:retinaPath,fill:"none",stroke:"#e11d48","stroke-width":12,"stroke-linecap":"round"});
+ add(g,"path",{d:corneaPath,fill:"none",stroke:"#93c5fd","stroke-width":5,"stroke-linecap":"round"});
+
+ var denom=o.P-1/o.d;
+ var v=denom>8?N/denom:400;
+ var MAG=5;
+ var Fx=clamp(Rx+(v-L)*8*MAG,412,Rx+62);
+ var k=(Rx-400)/(Fx-400);
+ var yAt=function(h){return clamp(200+h*(1-k),100,300);};
+
+ var objX=200-170*(S.distT/100);
+ var objSize=clamp(66/Math.pow(o.d,0.3),32,92);
+ var objY=200-objSize/2;
+
+ var ray=function(h){
+  var yp=200+h, pts=[];
+  if(S.glassesOn){
+   var yl=clamp(h*(1-0.10*S.F),-72,72);
+   pts.push([objX+objSize/2,200+h]);
+   pts.push([330,200+h]);
+   pts.push([400,200+yl]);
+  }else{
+   pts.push([objX+objSize/2,200+h]);
+   pts.push([400,200+h]);
+  }
+  if(Fx<Rx && h!==0) pts.push([Fx,200]);
+  pts.push([Rx,yAt(h)]);
+  return pts.map(function(p){return p[0].toFixed(1)+","+p[1].toFixed(1);}).join(" ");
+ };
+ [-34,0,34].forEach(function(h){add(g,"polyline",{points:ray(h),fill:"none",stroke:"#f97316","stroke-width":3,"stroke-linejoin":"round"});});
+
+ if(S.glassesOn){
+  var hw=8+Math.abs(S.F)*3, gx=330;
+  add(g,"path",{d:"M "+(gx-hw)+" 128 L "+(gx+hw)+" 128 Q "+gx+" 200 "+(gx+hw)+" 272 L "+(gx-hw)+" 272 Q "+gx+" 200 "+(gx-hw)+" 128 Z",fill:"#dbeafe",stroke:"#1d4ed8","stroke-width":3});
+  add(g,"line",{x1:(gx+hw).toFixed(1),y1:150,x2:378,y2:150,stroke:"#94a3b8","stroke-width":3});
+  add(g,"line",{x1:(gx+hw).toFixed(1),y1:250,x2:378,y2:250,stroke:"#94a3b8","stroke-width":3});
+  t(330,100,"眼镜片","#1d4ed8",15,"middle",3);
+ }
+
+ var lensRx=4+(o.thick-12)*0.9;
+ add(g,"ellipse",{cx:400,cy:200,rx:lensRx.toFixed(1),ry:46,fill:"#bae6fd",stroke:"#0284c7","stroke-width":3});
+
+ add(g,"line",{x1:Fx.toFixed(1),y1:94,x2:Fx.toFixed(1),y2:191,stroke:o.focusColor,"stroke-width":2,"stroke-dasharray":"3 5",opacity:.55});
+ add(g,"circle",{cx:Fx.toFixed(1),cy:200,r:7,fill:"#fff",stroke:o.focusColor,"stroke-width":4});
+ t(clamp(Fx,90,630),62,"光聚在这里",o.focusColor,15,"middle",3);
+
+ var spot=clamp(4+Math.abs(o.err)*7,4,60);
+ add(g,"rect",{x:(Rx-4).toFixed(1),y:(200-spot).toFixed(1),width:9,height:(spot*2).toFixed(1),rx:4.5,fill:o.focusColor,opacity:.85});
+
+ if(Fx>Rx+4){
+  add(g,"polyline",{points:Rx.toFixed(1)+","+yAt(-34).toFixed(1)+" "+Fx.toFixed(1)+",200",fill:"none",stroke:"#f97316","stroke-width":2.5,"stroke-dasharray":"6 6",opacity:.6});
+  add(g,"polyline",{points:Rx.toFixed(1)+","+yAt(34).toFixed(1)+" "+Fx.toFixed(1)+",200",fill:"none",stroke:"#f97316","stroke-width":2.5,"stroke-dasharray":"6 6",opacity:.6});
+ }
+
+ var ou=add(g,"use",{x:objX.toFixed(1),y:objY.toFixed(1),width:objSize.toFixed(1),height:objSize.toFixed(1)});
+ setHref(ou);
+ add(g,"rect",{x:objX.toFixed(1),y:objY.toFixed(1),width:objSize.toFixed(1),height:objSize.toFixed(1),fill:"none",stroke:"#7c8aa0","stroke-width":2,rx:3});
+ t(objX+objSize/2,200+objSize/2+32,"视力表 · "+distText(o.d),"#475569",14,"middle",3);
+
+ t(400,272,"晶状体","#0c4a6e",15,"middle",3);
+ t(Rx+14,128,"视网膜","#be123c",15,"start",3);
+
+ add(g,"line",{x1:380,y1:330,x2:Rx.toFixed(1),y2:330,stroke:"#7c8aa0","stroke-width":2});
+ add(g,"line",{x1:380,y1:322,x2:380,y2:338,stroke:"#7c8aa0","stroke-width":2});
+ add(g,"line",{x1:Rx.toFixed(1),y1:322,x2:Rx.toFixed(1),y2:338,stroke:"#7c8aa0","stroke-width":2});
+ t((380+Rx)/2,356,"眼轴 "+L.toFixed(1)+" 毫米","#334155",15,"middle",3);
+}
+
+function render(){
+ var d=0.2*Math.pow(30,S.distT/100);
+ var Feff=S.glassesOn?S.F:0;
+ var Preq=N/S.L+1/d;
+ var acomMax=S.glassesOn?0.5:8;
+ var accom=S.accomOn?clamp(Preq-(BASE+Feff),0,acomMax):0;
+ var P=BASE+accom+Feff;
+ var err=P-Preq;
+ var onRetina=Math.abs(err)<0.5;
+ var distNear=d<0.5;
+
+ $("distLabel").textContent=distText(d);
+ $("lenVal").textContent=S.L.toFixed(1)+" 毫米";
+ $("lenNote").textContent=S.L>24.6?"比正常长（像近视）":(S.L<23.4?"比正常短":"正常长度");
+ var thick=LENS_REST+accom;
+ var lensLabels=["很薄","偏薄","正常","偏厚","很厚"];
+ var li=clamp(Math.round((thick-LENS_REST)/2)+2,0,4);
+ var accomActive=S.accomOn&&accom>0.35;
+ $("lensThick").textContent=lensLabels[li]+(accomActive?"（在用力）":"");
+ $("powerLabel").textContent=!S.glassesOn?"没戴眼镜":(Math.abs(S.F)<0.05?"平光 0 度":"近视镜 "+Math.round(Math.abs(S.F)*100)+" 度");
+ $("glassesTxt").textContent=S.glassesOn?"戴着眼镜":"没戴眼镜";
+
+ var sharpPct=Math.round(clamp(100-Math.abs(err)*22,2,100));
+ var focusColor=onRetina?"#16a34a":(Math.abs(err)<1?"#d97706":"#dc2626");
+ $("sharpText").textContent="清晰度 "+sharpPct+"%";
+ $("sharpBar").style.background=focusColor;
+ $("sharpBar").style.width=sharpPct+"%";
+
+ var icon,title,desc,cls;
+ if(onRetina){
+  icon="✓"; cls="clear"; title="看得清清楚楚！";
+  if(S.glassesOn&&Math.abs(S.F)>=0.05) desc="这副眼镜把光的方向修正好，光正好聚在视网膜上。";
+  else if(S.glassesOn) desc="这副眼镜是平光的，等于没戴，眼睛自己就能看清。";
+  else desc="光正好聚在视网膜上，像最清楚。";
+  if(accomActive) desc+=(distNear?" 看近处时，睫状肌在用力，把晶状体变厚了。":" 睫状肌也在帮忙，把晶状体变厚了一点。");
+ }else if(err>0){
+  icon="✗"; cls="blur"; title="模模糊糊，看不清！";
+  if(S.glassesOn) desc="眼镜的度数还不够，光还是聚得太早，落在视网膜前面。";
+  else if(distNear) desc="离这么近还看不清，说明这只眼睛太长了。";
+  else desc="眼球太长，光还没走到视网膜就聚成了点，散开来落在视网膜上，变成一团糊。这就是近视。";
+ }else{
+  icon="✗"; cls="blur"; title="模模糊糊，看不清！";
+  if(S.glassesOn){
+   if(distNear) desc="看近处时，近视眼镜会把光散得太多，还是模糊。看书时可以不戴它。";
+   else desc="眼镜把光散得太开，光聚到了视网膜后面。近视眼镜不能随便乱戴，度数要请医生配。";
+  }else if(!S.accomOn&&distNear){
+   desc="睫状肌的自动调节关掉了，晶状体没有变厚，光聚不到视网膜上。打开自动调节试试。";
+  }else if(distNear){
+   desc="看近处时晶状体没能再变厚，光聚不到视网膜上，所以模糊。";
+  }else{
+   desc="光聚得太晚，还没聚成点就撞上了视网膜。";
+  }
+ }
+ var st=$("status"); st.className="status "+cls;
+ $("statusIcon").textContent=icon;
+ $("statusTitle").textContent=title;
+ $("statusDesc").textContent=desc;
+
+ drawDiagram({d:d,P:P,err:err,onRetina:onRetina,thick:thick,focusColor:focusColor,distNear:distNear});
+
+ var seen=clamp(190/Math.pow(d,0.45),70,460);
+ var blurStd=clamp((Math.abs(err)-0.25)*3.2,0,26);
+ $("blurEl").setAttribute("stdDeviation",blurStd.toFixed(1));
+ var sx=(100-seen/2), sy=(100-seen/2);
+ [$("seenUse"),$("thumbUse")].forEach(function(u){
+  u.setAttribute("x",sx.toFixed(1)); u.setAttribute("y",sy.toFixed(1));
+  u.setAttribute("width",seen.toFixed(1)); u.setAttribute("height",seen.toFixed(1));
+ });
+}
+
+syncInputs();
+render();
+})();
+</script>
+</body>
+</html>

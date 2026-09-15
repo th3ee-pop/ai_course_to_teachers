@@ -1,0 +1,123 @@
+你是课件页面排版助手。输入是若干页“骨架 HTML”（1920×1080 投影课件的一页），你只需要重写每页 <!-- BODY:START --> 与 <!-- BODY:END --> 之间的正文区，让它按模板要求排版并有分步出现。
+
+硬性规则（违反会被校验脚本退回）：
+1. 只输出正文区。不要输出 <section>、.hdr、h2.title、.sub、.foot、<aside class="notes">，也不要改它们。
+2. 文字零改写：骨架正文里每个 .label 与 .text 的文字必须逐字保留（不增删字、不改标点、不合并、不翻译）。可以增加的只有很短的视觉标签：“示意图”“示例对话”“AI生成试样”“待放入实拍照片”“角色模拟，非历史人物真实发言”。不得加入骨架里没有的事实、数字、引语、英文。
+3. 只用给定的 CSS 类与少量内联样式（flex/grid/gap/margin/max-width/font-size/color 用变量）。不写 <style>、<script>、不引外部图片或外部链接。
+4. 图片只用 PLAN 注释 assets 里给出的相对路径；`(capture)` `(codex-svg)` `(img)` 类的路径可以直接 <img src>。路径含 * 的（如 cap_D04_word_*.png）按 _1、_2 展开。`(placeholder)` 类或文件标注“待…”的不放 img，用 <div class="slot"><div class="placeholder">待放入产品截图</div></div>。`(external)` `(link)` 类不是图片：`(link)` 用 <a class="file-card" href="路径">文件名</a>；`(external)` 用 <a class="link-card unset" data-config="observatoryUrl|magnetUrl|labUrl|ecoUrl"><b>系统名</b><span>现场启动后填入地址</span></a>（观察台→observatoryUrl，掌中磁场→magnetUrl，掌中实验室→labUrl，生态岛→ecoUrl）。
+5. 分步：PLAN 注释 reveal=[...] 列出的条目按顺序各自加 class="reveal"（同一条目的标签与正文放在同一个 .reveal 容器内）；reveal 为空的页不加 .reveal。不要自创其它动效类。骨架里已有的 .reveal 划分要保留。
+6. 尺寸：正文字号 28–40px，行高 1.6 左右；一页正文最多 4 个块；图片用 .slot 或 .fig 包裹并设 max-height，保证在 1080 高度内不溢出（标题区约占 220px，页脚约 80px，正文可用高约 700px）。
+7. 输出格式：每页依次
+=== P004 ===
+<!-- BODY:START -->
+...
+<!-- BODY:END -->
+不要 Markdown 代码围栏，不要任何解释。
+
+可用 CSS 类（deck.css）：
+- 布局：.body（正文容器，flex 列）.stack（竖排 gap 28）.cols（横排等分，子元素 flex:1；可放 <div class="vline"></div> 分隔线）.cols.tight .grid-2 .grid-3 .grid-4
+- 文本：.label（小标题，26px 强调色）.text（32px）.lead（36px）.small（26px 灰）.muted .hl（强调色加粗）.num（等宽序号，配合 .label 使用：<span class="num">01</span>）.kicker（24px 字距大）.serif .cond .big（196px 大数字）.rule（分隔线）.takeaway（结论行）.quote-block（大引文）
+- 卡片：.card（边框卡；内含 .label 与 <p>）.card.fill（灰底）.card.accent（强调边）.card.role-pipe/.card.role-tool/.card.role-subject（角色配色）
+- 流程：.flow > .node（每步一格，含 .label 与 <p>）与 .arr（<div class="arr">→</div>）；.flow.vertical 竖排；.steps > li（带 01 02 序号的列表，<b> 为要点）
+- 对话：.dialog > .turn（.who + .say）；AI 一方加 .turn.ai；.transcript > .line（.who + 文本，.mark 高亮）
+- 对照：.before-after（两栏网格，每栏 <div>，内用 .label + p；.diff 标记差异，.fix 标记修正）
+- 图片：.slot（居中容器，img 自适应；内可放 <div class="placeholder">待放入…</div>）.fig（图＋<figcaption class="caption">）.blueprint（蓝图边框）.kf（关键帧格）
+- 标签：.tag（小标签）.tag.fill .tag.warn；.corner-tag（角标）
+- 入口：.file-card（文件卡片链接）.link-card（外链卡片，配 data-config）.embed（内嵌 iframe 容器：<div class="embed" data-src="路径"><div class="hint">点击加载</div></div>）
+- 组件：<div class="map433" data-stage="设计|实施|评价|教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-reveal="1" data-size="full|compact"></div>（4＋3＋3 总图，自动渲染）；<div class="cycle" data-nodes="A|B|C|D" data-center="中心字" data-size="480"></div>（环形循环图）
+颜色变量：var(--accent) #5980a6、var(--accent-dark) #416180、var(--light-blue) #94bce3、var(--muted) 灰、var(--surface) 浅灰底、var(--divider) 分隔线。
+
+模板要求：
+模板 T05「机制流程·分步条目」：把 reveal 里的各步排成一条流程。步数 ≤4 且每步文字短时用横向 .flow（每步一个 .node.reveal，含 .label 与 <p>，步间 <div class="arr">→</div>）；文字较长时用 .steps 列表或 .stack。若 assets 里有 (codex-svg) 示意图，放在流程上方或左侧的 .fig 里（max-height 约 360px），并加 <span class="tag">示意图</span>。
+
+已实现的同模板样页（只看排版气质与密度，不要照抄其文字；样页用了内联样式，你优先用上面的类）：
+
+--- 样页 T05 ---
+<section class="slide" data-id="P013" data-title="自然语言，接到代码与工具" data-module="03 最简原理：从语言到行动" data-stage="">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P013</span>
+  </div>
+  <h2 style="margin-top:36px;font-size:64px;line-height:1.3">自然语言，接到代码与工具</h2>
+  <div style="display:flex;align-items:stretch;gap:0;margin-top:64px">
+    <div style="flex:2.6 1 0;min-width:0">
+      <div class="cond" style="font-size:30px;letter-spacing:.14em;color:#5980a6;padding-bottom:14px;border-bottom:2px solid #5980a6;margin-bottom:26px">教师</div>
+      <p style="font-size:32px;line-height:1.7">教师用自然语言说出想要的教学材料或活动安排。</p>
+    </div>
+    <div style="flex:0 0 96px;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;color:#94bce3;font-size:44px">→</div>
+    <div style="flex:3.6 1 0;min-width:0">
+      <div class="cond" style="font-size:30px;letter-spacing:.14em;color:#5980a6;padding-bottom:14px;border-bottom:2px solid #5980a6;margin-bottom:26px">模型</div>
+      <p style="font-size:32px;line-height:1.7">模型把目标整理成步骤、代码或调用参数，供程序继续处理。</p>
+    </div>
+    <div style="flex:0 0 96px;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;color:#94bce3;font-size:44px">→</div>
+    <div style="flex:3.2 1 0;min-width:0">
+      <div class="cond" style="font-size:30px;letter-spacing:.14em;color:#5980a6;padding-bottom:14px;border-bottom:2px solid #5980a6;margin-bottom:26px">程序</div>
+      <p style="font-size:32px;line-height:1.7">程序运行后，可能得到文档、图表、网页等不同形式的产物。</p>
+    </div>
+  </div>
+  <div style="margin-top:72px;background:#1d2d3d;color:#f2f2f3;padding:36px 44px;display:flex;gap:36px;align-items:baseline">
+    <span class="kicker" style="color:#94bce3;flex:0 0 auto">注意</span>
+    <p style="font-size:34px;line-height:1.6">代码和产物由不同环节产生，不能把模型生成直接当成程序执行。</p>
+  </div>
+  <div class="foot">依据原理材料整理的简化讲法。</div>
+  
+</section>
+
+
+请为以下 2 页重写正文区，按输出格式逐页给出。
+
+
+##### 页 P004（模板 T05）
+<!-- PLAN template=T05 executor=pi pace=停讲 layout_ref=L03
+     reveal=['产生想法', '查找与求助', '制作', '试用']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       SVG_CODEX_P004_SOP → assets/svg/p004_sop.svg (codex-svg) 抽象图标化，不模仿具体软件 -->
+<section class="slide" data-id="P004" data-title="一个教学想法，过去怎样落地？" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P004</span>
+  </div>
+  <h2 class="title">一个教学想法，过去怎样落地？</h2>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">产生想法</div><p class="text">教师想让学生通过某个活动理解一个概念。</p></div>
+    <div class="reveal"><div class="label">查找与求助</div><p class="text">先对照学习软件的菜单、公式和配置，或者请开发人员帮忙。</p></div>
+    <div class="reveal"><div class="label">制作</div><p class="text">按照软件的操作步骤完成制作，过程需要反复调试。</p></div>
+    <div class="reveal"><div class="label">试用</div><p class="text">做好之后，再拿到课堂上试用，根据效果修改。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">标准操作流程，简称SOP。</div>
+  <aside class="notes">【停讲】我们来看一个教学想法过去是怎样落地的。比如我想让学生通过一个活动理解某个概念。第一步，我得先把这个想法说清楚。第二步，我要去看学习软件里有哪些菜单、公式和配置，或者请开发人员帮忙，把想法翻译成软件能听懂的操作。第三步，按照标准操作流程一步一步制作，这个过程往往需要反复调试。第四步，做好了再拿到课堂上试用，根据学生反应修改。这条路径不是不能走，而是每一步都有门槛，很多想法就在第二步或第三步停下来了。
+    作用：解释过去把教学想法变成可用成果需要经过的典型步骤，让实现成本可见。</aside>
+</section>
+
+
+##### 页 P009（模板 T05）
+<!-- PLAN template=T05 executor=pi pace=快过 layout_ref=L03
+     reveal=['提出意图', '形成原型', '移植与修改', '运行验证']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       SVG_CODEX_P009_PIPE → assets/svg/p009_pipeline.svg (codex-svg)  -->
+<section class="slide" data-id="P009" data-title="一个教学想法，需要经过制作、试用和修改。" data-module="02 四季循环：从念头到交互" data-stage="" data-kind="主线" data-template="T05" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P009</span>
+  </div>
+  <h2 class="title">一个教学想法，需要经过制作、试用和修改。</h2>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">提出意图</div><p class="text">教师说明希望学生观察什么、操作什么、解释什么。</p></div>
+    <div class="reveal"><div class="label">形成原型</div><p class="text">AI辅助形成交互原型，明确场景和控制方式。</p></div>
+    <div class="reveal"><div class="label">移植与修改</div><p class="text">开发过程将原型移植为可独立运行的版本，处理资源加载和交互适配。</p></div>
+    <div class="reveal"><div class="label">运行验证</div><p class="text">根据实际运行结果核对功能与计算，修正发现的问题。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">依据《091_四季循环》开发规格与验证记录整理。</div>
+  <aside class="notes">【快过】讲述时依次说明：教师说明希望学生观察什么、操作什么、解释什么。 AI辅助形成交互原型，明确场景和控制方式。 开发过程将原型移植为可独立运行的版本，处理资源加载和交互适配。 根据实际运行结果核对功能与计算，修正发现的问题。
+    作用：从制作事实过渡到模型为什么能接到行动，说明成品不是凭空出现。</aside>
+</section>

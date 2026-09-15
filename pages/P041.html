@@ -1,0 +1,67 @@
+<!-- PLAN template=T04 executor=opus pace=演示 layout_ref=L09
+     reveal=['进入体验', '完成一次对照', '留下解释']
+     embeds=[{"asset": "SYS_S02", "mode": "external-link-card", "config": "config.js: observatoryUrl"}, {"asset": "TOOL_S01", "mode": "iframe-fallback"}]
+     anim=null
+     note=演示页：大二维码＋链接卡片（地址来自 config.js 的 observatoryUrl，现场填写），右侧内嵌四季循环作为断网备份。绝不写入教师管理地址。
+     assets:
+       SYS_S02 → （现场启动，链接卡片填参与者地址） (external) 只给听众参与者链接
+       TOOL_S01 → assets/tools/siji_v2/index.html (iframe) 本地可离线运行
+       IMG_S01_SHOT → assets/img/cap_siji_curve_23.png (capture) iframe 未加载时的回退截图
+       CAP_S02_SEASONS → assets/img/cap_guanchatai_siji.png 尚无截图（本页未使用，改用本地模拟作替身） -->
+<section class="slide" data-id="P041" data-title="三分钟四季体验" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T04" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
+    <span class="pid">P041</span>
+  </div>
+  <h2 class="title">三分钟四季体验</h2>
+  <p class="sub reveal-none">请先写下预测，再操作模型。</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P041"] .body { gap: 28px; }
+    .slide[data-id="P041"] .row { flex: 1 1 auto; min-height: 0; align-items: center; gap: 56px; }
+    .slide[data-id="P041"] .entry { flex: 0 0 820px; align-self: stretch; display: flex; align-items: center; }
+    .slide[data-id="P041"] .link-card { width: 100%; gap: 40px; }
+    .slide[data-id="P041"] .link-card .qr { flex: 0 0 290px; width: 290px; height: 290px; }
+    .slide[data-id="P041"] .link-card .name { font-size: 36px; }
+    .slide[data-id="P041"] .embed { flex: 1 1 0; min-width: 0; align-self: stretch; }
+    .slide[data-id="P041"] .embed iframe { width: 1180px; height: 686px; transform: scale(.664); transform-origin: 0 0; }
+    .slide[data-id="P041"] .steps3 { flex: 0 0 auto; }
+  </style>
+  <div class="body">
+    <div class="cols row">
+      <div class="entry">
+        <a class="link-card unset" data-config="observatoryUrl" data-placeholder="地址现场填写（config.js）" href="#">
+          <div class="qr" data-config="observatoryUrl" data-placeholder="现场填写 config.js 后显示二维码"></div>
+          <div class="info">
+            <div class="name">教学观察台 · 四季探究</div>
+            <div class="desc">参与者入口</div>
+            <div class="url"></div>
+          </div>
+        </a>
+      </div>
+      <div class="embed" data-src="assets/tools/siji_v2/index.html">
+        <div class="fallback"><img src="assets/img/cap_siji_curve_23.png" alt="四季循环界面截图"></div>
+        <div class="hint">断网时用本机模拟作演示替身</div>
+      </div>
+    </div>
+    <div class="grid-3 steps3">
+      <div class="reveal">
+        <div class="label">进入体验</div>
+        <p class="text">进入教学观察台，选择四季探究。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">完成一次对照</div>
+        <p class="text">固定北纬40°，比较原倾角与0°时的全年昼长曲线。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">留下解释</div>
+        <p class="text">写一句话：我改变了什么，观察到了什么，这支持怎样的解释？</p>
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">本次体验可以选择仅操作、不记录。</div>
+  <aside class="notes">【演示】请先写一句预测，再完成一次对照。记录选项由参与者选择；不记录也可以操作。约3分钟后回来讨论解释。二维码与地址来自 config.js 的 observatoryUrl，培训当天填写参与者地址；右侧内嵌的本机四季模拟只作断网时的演示替身。
+    作用：组织一次有明确任务的体验，为后面的过程评价留下入口。
+    资源：<a href="../19_逐页内容脚本/资源预览/S02.html">S02 教学观察台：四季采集与回看</a> <a href="assets/docs/S02/README.md">素材入口</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动局域网演示.command" title="原路径，仅本机有效">启动局域网演示.command</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command" title="原路径，仅本机有效">启动本机演示.command</a></aside>
+</section>

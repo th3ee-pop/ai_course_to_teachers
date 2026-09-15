@@ -1,0 +1,24 @@
+=== B15 ===
+<!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="cols" style="gap:0;align-items:stretch">
+      <div class="reveal" style="padding-right:56px;display:flex;flex-direction:column;justify-content:center">
+        <div class="label">应用文任务</div>
+        <p class="text" style="margin-top:14px">邀请英国好友Peter组队参加跨文化数字故事创作大赛，需要交代邀请目的与合作安排。</p>
+      </div>
+      <div class="vline"></div>
+      <div class="reveal" style="padding-left:56px;display:flex;flex-direction:column;justify-content:center">
+        <div class="label">读后续写任务</div>
+        <p class="text" style="margin-top:14px">围绕养老院钢琴演出的情境续写，需要衔接人物、事件与前文线索。</p>
+      </div>
+    </div>
+    <div class="reveal card fill" style="padding:36px 44px">
+      <div class="label">分别寻找证据</div>
+      <p class="text" style="margin-top:14px">把对应得分与作文文本、评分标准放在一起，区分内容遗漏、衔接困难和语言表达问题。</p>
+    </div>
+    <div class="reveal takeaway" style="padding:28px 40px">
+      <div class="label">决定下一步</div>
+      <p class="text" style="margin-top:10px">依据核实的问题安排短练习，保留修改前后的文本，观察学生是否能作出有理由的修订。</p>
+    </div>
+  </div>
+  <!-- BODY:END -->

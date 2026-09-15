@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>讲者视图 · 中小学教师AI培训</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#14181c; --panel:#1d2d3d; --line:#416180; --text:#e7e7ea; --muted:#98989b; --blue:#94bce3; --blue2:#749dc4; --accent:#5980a6; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--text); font-family:'Noto Sans SC','PingFang SC',sans-serif; }
+  body { display:grid; grid-template-rows:auto 1fr; }
+  header { display:flex; align-items:center; gap:18px; padding:12px 20px; border-bottom:1px solid var(--line); font-size:14px; }
+  header .cond, .cond { font-family:'Barlow Condensed','Noto Sans SC',sans-serif; letter-spacing:.14em; font-weight:500; }
+  header .clock { margin-left:auto; font-size:22px; color:var(--blue); }
+  header .timer { font-size:22px; color:#fff; }
+  header button { background:var(--panel); color:var(--text); border:1px solid var(--line); padding:6px 12px; font:inherit; cursor:pointer; }
+  header button:hover { background:var(--line); }
+  main { display:grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: auto 1fr; gap:16px; padding:16px 20px 20px; min-height:0; }
+  .frame { position:relative; background:#000; border:1px solid var(--line); }
+  .frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; background:#14181c; }
+  .frame .lab { position:absolute; left:10px; top:8px; z-index:2; font-size:12px; letter-spacing:.14em; color:var(--blue); background:rgba(20,24,28,.7); padding:2px 8px; }
+  #cur { aspect-ratio:16/9; grid-column:1; grid-row:1; }
+  #nxt { aspect-ratio:16/9; grid-column:2; grid-row:1; max-height:100%; }
+  #nxt iframe { pointer-events:none; }
+  #notes { grid-column:1 / span 2; grid-row:2; background:var(--panel); border:1px solid var(--line); padding:20px 26px; overflow:auto; min-height:0; }
+  #notes .id { font-size:14px; color:var(--blue2); margin-bottom:6px; }
+  #notes h2 { margin:0 0 14px; font-size:22px; font-weight:500; }
+  #notes .body { font-size:24px; line-height:1.75; }
+  #notes .res { margin-top:18px; padding-top:14px; border-top:1px solid var(--line); font-size:15px; color:var(--muted); line-height:1.9; }
+  #notes .res a { color:var(--blue); }
+  #next-title { font-size:14px; color:var(--muted); margin-top:12px; }
+  #warn { display:none; padding:14px 20px; background:#5a2a1f; color:#fff; font-size:14px; }
+  #warn.show { display:block; }
+</style>
+</head>
+<body>
+<header>
+  <span class="cond" style="color:var(--blue)">讲者视图</span>
+  <button data-step="-1">← 上一步</button>
+  <button data-step="1">下一步 / 下一页 →</button>
+  <span id="pos" class="cond">— / —</span>
+  <span id="timer" class="timer cond" title="点击归零">00:00</span>
+  <span id="clock" class="clock cond"></span>
+</header>
+<div id="warn">未连接到课件窗口。请在课件窗口（index.html）按 N 打开讲者视图，不要直接打开本页。</div>
+<main>
+  <div id="cur" class="frame"><span class="lab">当前页</span><iframe id="cur-frame" src="index.html?embed=1&offset=0"></iframe></div>
+  <div id="nxt" class="frame"><span class="lab">下一页</span><iframe id="nxt-frame" src="index.html?embed=1&offset=1"></iframe></div>
+  <div id="notes">
+    <div class="id cond" id="n-id"></div>
+    <h2 id="n-title"></h2>
+    <div class="body" id="n-body"></div>
+    <div class="res" id="n-res"></div>
+    <div id="next-title"></div>
+  </div>
+</main>
+<script>
+(function(){
+  const TAG='ai-training-deck';
+  const opener=window.opener;
+  const cur=document.getElementById('cur-frame'), nxt=document.getElementById('nxt-frame');
+  let last=null, ready=0;
+  function relay(m){ [cur,nxt].forEach(f=>{ try{ f.contentWindow.postMessage(m,'*'); }catch(e){} }); }
+  function render(m){
+    last=m;
+    const d=m.slides[m.index]||{}; const n=m.slides[m.index+1];
+    document.getElementById('pos').textContent=(m.index+1)+' / '+m.total+(m.steps?('  ·  步 '+m.rv+'/'+m.steps):'');
+    document.getElementById('n-id').textContent=(d.num||d.id||'')+(d.stage?'  ·  '+d.stage:'')+(d.module?'  ·  '+d.module:'');
+    document.getElementById('n-title').textContent=d.title||'';
+    document.getElementById('n-body').textContent=d.notes||'（本页无讲者备注）';
+    const res=document.getElementById('n-res');
+    res.innerHTML=(d.resources&&d.resources.length)?('资源入口：'+d.resources.map(r=>'<a href="'+r.href+'" target="_blank" rel="noopener">'+r.text+'</a>').join('　')):'';
+    document.getElementById('next-title').textContent=n?('下一页：'+n.id+' '+n.title):'（已是最后一页）';
+    relay(m);
+  }
+  window.addEventListener('message',e=>{ const m=e.data; if(!m||m.tag!==TAG)return; if(m.type==='state')render(m); if(m.type==='bye')document.getElementById('warn').classList.add('show'); });
+  [cur,nxt].forEach(f=>f.addEventListener('load',()=>{ ready++; if(last)relay(last); }));
+  document.querySelectorAll('[data-step]').forEach(b=>b.addEventListener('click',()=>send({type:'step',delta:parseInt(b.dataset.step,10)})));
+  function send(m){ m.tag=TAG; if(opener&&!opener.closed){ try{ opener.postMessage(m,'*'); }catch(e){} } }
+  window.addEventListener('keydown',e=>{
+    if(e.metaKey||e.ctrlKey||e.altKey)return;
+    const k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||k===' '||k==='ArrowDown'){send({type:'step',delta:1});e.preventDefault();}
+    else if(k==='ArrowLeft'||k==='PageUp'||k==='ArrowUp'){send({type:'step',delta:-1});e.preventDefault();}
+  });
+  if(opener&&!opener.closed){ send({type:'ready'}); } else { document.getElementById('warn').classList.add('show'); }
+  // 时钟与计时
+  const t0=Date.now(); let base=t0;
+  const timer=document.getElementById('timer'); timer.addEventListener('click',()=>{ base=Date.now(); });
+  setInterval(()=>{ const s=Math.floor((Date.now()-base)/1000); timer.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); const d=new Date(); document.getElementById('clock').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); },500);
+})();
+</script>
+</body>
+</html>

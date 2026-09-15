@@ -1,0 +1,129 @@
+<!-- PLAN template=T14 executor=opus pace=停讲 layout_ref=L06
+     reveal=['轨迹片段', '已知事实', '仍然不知道']
+     embeds=[]
+     anim={"id": "ANIM_G_轨迹回看", "spec": "‘操作日志’面板逐行打印（三条带时间戳的操作），每行右侧标出‘已知’；随后两行结论逐步出现，分别标‘已知’与‘不知道’；常显角标‘教学示例，不是现场记录’。与 P067 共用样式。"}
+     note=
+     assets:
+       CAP_S02_TRACE → assets/img/cap_guanchatai_trace.png (capture) 同上；无学生真实记录，用演示账号 -->
+<section class="slide" data-id="P066" data-title="一次操作轨迹，能说明什么？" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="主线" data-template="T14" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>07</b><span class="on">教学评价：让证据开启后续教学</span></div>
+    <span class="pid">P066</span>
+  </div>
+  <h2 class="title">一次操作轨迹，能说明什么？</h2>
+  <p class="sub">回看日期、纬度、倾角和视角的主动操作。</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P066"] .anim { display: flex; flex-direction: column; }
+    .slide[data-id="P066"] .g66 { flex: 1 1 auto; min-height: 0; padding: 30px 48px 86px; display: flex; flex-direction: column; }
+    .slide[data-id="P066"] .g66-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid var(--divider); }
+    .slide[data-id="P066"] .g66-top .label { margin-bottom: 0; }
+    .slide[data-id="P066"] .g66-rows { margin-top: 8px; }
+    .slide[data-id="P066"] .g66-row { display: flex; align-items: flex-start; gap: 30px; padding: 19px 0; border-bottom: 1px solid var(--divider); }
+    .slide[data-id="P066"] .g66-row:last-child { border-bottom: 0; }
+    .slide[data-id="P066"] .g66-row.sum { padding: 24px 0; }
+    .slide[data-id="P066"] .g66-row.first-sum { border-top: 2px solid var(--accent); margin-top: 14px; }
+    .slide[data-id="P066"] .g66-side { flex: 0 0 240px; padding-top: 6px; }
+    .slide[data-id="P066"] .g66-time { font-family: var(--font-cond); font-weight: 500; font-size: 28px; letter-spacing: .06em; color: var(--muted-3); }
+    .slide[data-id="P066"] .g66-side .label { margin-bottom: 0; }
+    .slide[data-id="P066"] .g66-txt { flex: 1 1 0; min-width: 0; font-size: 32px; line-height: 1.6; }
+    .slide[data-id="P066"] .g66-row.log .g66-txt::after { content: ""; display: inline-block; width: 14px; height: 30px; margin-left: 6px; background: var(--accent); vertical-align: -5px; opacity: 0; }
+    .slide[data-id="P066"] .g66-row.log.typing .g66-txt::after { opacity: 1; animation: p66blink .7s steps(1) infinite; }
+    @keyframes p66blink { 50% { opacity: 0; } }
+    .slide[data-id="P066"] .g66-mark { flex: 0 0 150px; text-align: right; padding-top: 6px; }
+    .slide[data-id="P066"] .g66-row.log { opacity: 0; transition: opacity .25s ease; }
+    .slide[data-id="P066"] .g66-row.log.shown { opacity: 1; }
+    .slide[data-id="P066"] .g66-row .g66-mark .tag { opacity: 0; transition: opacity .3s ease; }
+    .slide[data-id="P066"] .g66-row.done .g66-mark .tag { opacity: 1; }
+  </style>
+  <div class="body">
+    <div class="anim" tabindex="0" aria-label="操作日志逐行打印">
+      <div class="g66">
+        <div class="g66-top">
+          <div class="label">轨迹片段</div>
+          <span class="tag">教学示例，不是现场记录</span>
+        </div>
+        <div class="g66-rows">
+          <div class="g66-row log"><div class="g66-side"><span class="g66-time">09:14:02</span></div><div class="g66-txt">观察纬度为北纬40°</div><div class="g66-mark"><span class="tag">已知</span></div></div>
+          <div class="g66-row log"><div class="g66-side"><span class="g66-time">09:14:38</span></div><div class="g66-txt">将倾角改为0°</div><div class="g66-mark"><span class="tag">已知</span></div></div>
+          <div class="g66-row log"><div class="g66-side"><span class="g66-time">09:15:20</span></div><div class="g66-txt">查看全年昼长曲线。</div><div class="g66-mark"><span class="tag">已知</span></div></div>
+          <div class="reveal g66-row sum first-sum done"><div class="g66-side"><div class="label">已知事实</div></div><div class="g66-txt">我们知道操作者改变过倾角，并查看了曲线。</div><div class="g66-mark"><span class="tag">已知</span></div></div>
+          <div class="reveal g66-row sum done"><div class="g66-side"><div class="label">仍然不知道</div></div><div class="g66-txt">这些操作本身没有记录他的预测、理由和对结果的解释。</div><div class="g66-mark"><span class="tag warn">不知道</span></div></div>
+        </div>
+      </div>
+      <div class="controls">
+        <button type="button" class="primary" data-a="play">重播</button>
+        <button type="button" data-a="reset">重置</button>
+      </div>
+    </div>
+  </div>
+  <script>
+  /* P066 ANIM_G：操作日志逐行打印（三行文字固定写在 HTML 里，脚本只控制显示节奏） */
+  (function () {
+    'use strict';
+    var sec = document.currentScript.closest('section.slide');
+    if (!sec) return;
+    var anim = sec.querySelector('.anim');
+    var logs = Array.prototype.slice.call(sec.querySelectorAll('.g66-row.log'));
+    var full = logs.map(function (r) { return r.querySelector('.g66-txt').textContent; });
+    var timers = [], played = false;
+
+    function clear() { timers.forEach(clearTimeout); timers = []; }
+    function blank() {
+      logs.forEach(function (r) {
+        r.classList.remove('shown', 'typing', 'done');
+        r.querySelector('.g66-txt').textContent = '';
+      });
+    }
+    function reset() { clear(); played = false; blank(); }
+    function fill() {
+      clear();
+      logs.forEach(function (r, i) {
+        r.classList.add('shown', 'done');
+        r.classList.remove('typing');
+        r.querySelector('.g66-txt').textContent = full[i];
+      });
+    }
+    function typeLine(i, done) {
+      var r = logs[i], el = r.querySelector('.g66-txt'), s = full[i], k = 0;
+      r.classList.add('shown', 'typing');
+      (function tick() {
+        el.textContent = s.slice(0, ++k);
+        if (k < s.length) { timers.push(setTimeout(tick, 42)); }
+        else {
+          r.classList.remove('typing');
+          timers.push(setTimeout(function () { r.classList.add('done'); done && done(); }, 220));
+        }
+      })();
+    }
+    function play() {
+      clear(); played = true; blank();
+      var i = 0;
+      (function next() {
+        if (i >= logs.length) return;
+        typeLine(i++, function () { timers.push(setTimeout(next, 180)); });
+      })();
+    }
+
+    anim.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-a]'); if (!b) return;
+      if (b.getAttribute('data-a') === 'play') play(); else reset();
+    });
+
+    blank();
+    function sync() {
+      if (sec.classList.contains('active')) {
+        if (!played) { played = true; if (sec.classList.contains('all-on')) fill(); else play(); }
+      } else { reset(); }
+    }
+    new MutationObserver(sync).observe(sec, { attributes: true, attributeFilter: ['class'] });
+    sync();
+    window.__anim_P066 = { play: play, reset: reset, fill: fill };
+  })();
+  </script>
+  <!-- BODY:END -->
+  <div class="foot">轨迹片段为教学示例，不是现场记录。</div>
+  <aside class="notes">【停讲】一条操作只能说明执行了哪些动作。即使路径看似合理，也不能直接宣布学生掌握了概念。需要继续问预测与解释。
+    作用：区分可观察操作与尚待确认的理解。
+    资源：<a href="../19_逐页内容脚本/资源预览/S02.html">S02 教学观察台：四季采集与回看</a> <a href="assets/docs/S02/README.md">素材入口</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动局域网演示.command" title="原路径，仅本机有效">启动局域网演示.command</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command" title="原路径，仅本机有效">启动本机演示.command</a></aside>
+</section>

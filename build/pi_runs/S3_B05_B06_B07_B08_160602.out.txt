@@ -1,0 +1,161 @@
+=== B05 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:0 0 520px;gap:16px">
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">01</span>
+        <div>
+          <div class="label">观察任务</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">操作之前，先让学生写下预测：沿不同方向切下去，截面会是什么形状。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">02</span>
+        <div>
+          <div class="label">操作与对照</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">改变切面的方向或位置，再对照二维正视图。只转动观察视角时，注意区分外观变化与截面本身的变化。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">03</span>
+        <div>
+          <div class="label">复盘问题</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">哪些预测成立，哪些需要修改？修改的依据是刚才看到的哪一步操作？</p>
+        </div>
+      </div>
+      <a class="link-card unset" data-config="labUrl" style="margin-top:6px;padding:12px 16px"><b>掌中实验室</b><span>现场启动后填入地址</span></a>
+    </div>
+    <div class="blueprint" style="flex:1 1 0;min-width:0;align-self:center">
+      <div class="slot" style="height:620px;padding:16px">
+        <img src="assets/img/cap_zhangzhong_jihe.png" alt="掌中几何截图">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B06 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:0 0 520px;gap:16px">
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">01</span>
+        <div>
+          <div class="label">先预测</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">保持入射光方向不变，改变镜面角度，预测反射光将怎样转动。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">02</span>
+        <div>
+          <div class="label">再验证</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">在模拟中调整镜面，比较入射光、法线和反射光的位置。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">03</span>
+        <div>
+          <div class="label">说明依据</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">请以法线为参照，说明入射角与反射角的关系。</p>
+        </div>
+      </div>
+      <a class="link-card unset" data-config="labUrl" style="margin-top:6px;padding:12px 16px"><b>掌中实验室</b><span>现场启动后填入地址</span></a>
+    </div>
+    <div class="blueprint" style="flex:1 1 0;min-width:0;align-self:center">
+      <div class="slot" style="height:620px;padding:16px">
+        <img src="assets/img/cap_zhangzhong_guanglu.png" alt="掌中光路截图">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B07 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:0 0 520px;gap:14px">
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">01</span>
+        <div>
+          <div class="label">观察任务</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">改变电流方向之前，先预测小磁针或端面的指向会怎样变化。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">02</span>
+        <div>
+          <div class="label">操作与观察</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">反转电流，观察端面方向随之改变，再与预测对照。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">03</span>
+        <div>
+          <div class="label">一条边界</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">画面中的方向线只表示方向，不表示磁场强弱，不能当作定量结果使用。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">04</span>
+        <div>
+          <div class="label">手势的作用</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">手势只是输入方式，用来控制操作，不参与判断方向的对错。</p>
+        </div>
+      </div>
+      <a class="link-card unset" data-config="magnetUrl" style="margin-top:4px;padding:12px 16px"><b>掌中磁场</b><span>现场启动后填入地址</span></a>
+    </div>
+    <div class="blueprint" style="flex:1 1 0;min-width:0;align-self:center">
+      <div class="slot" style="height:600px;padding:16px">
+        <img src="assets/img/cap_zhangzhong_cichang.png" alt="掌中磁场截图">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B08 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:0 0 520px;gap:14px">
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">01</span>
+        <div>
+          <div class="label">先预测</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">小组先提出一个关于生态条件的预测。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">02</span>
+        <div>
+          <div class="label">建立对照</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">复制相同的初始配置，一次只改变一个可控条件。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">03</span>
+        <div>
+          <div class="label">比较结果</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">保持运行时长等设置一致，对照结果，并考虑模型中的随机因素。</p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:16px">
+        <span class="num" style="font-size:30px">04</span>
+        <div>
+          <div class="label">形成报告</div>
+          <p class="text" style="margin:0;font-size:28px;line-height:1.55">记录条件、结果与解释，再讨论模型简化了哪些真实生态关系。</p>
+        </div>
+      </div>
+      <a class="link-card unset" data-config="ecoUrl" style="margin-top:4px;padding:12px 16px"><b>生态岛</b><span>现场启动后填入地址</span></a>
+    </div>
+    <div class="blueprint" style="flex:1 1 0;min-width:0;align-self:center">
+      <div class="slot" style="height:600px;padding:16px">
+        <img src="assets/img/cap_shengtaidao.png" alt="生态岛截图">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

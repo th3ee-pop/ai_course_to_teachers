@@ -1,0 +1,159 @@
+<!-- PLAN template=T03 executor=pi pace=快过 layout_ref=L07
+     reveal=['模拟可以做的', '真实观察要做的', '保留现实实践']
+     embeds=[]
+     anim=null
+     note=右栏无实拍时用示意图并标‘示意图’，或留‘待放入实拍照片’。
+     assets:
+       IMG_S01_SHOT → assets/img/siji_v2_xiazhi_dongzhi.png (img) 已在 assets/，现有
+       SVG_CODEX_P044_SHADOW → 页内内联 SVG（日影＋昼长曲线，原 assets/svg/p044_riying.svg 已删除）标示意图；不冒充实拍 -->
+<section class="slide" data-id="P044" data-title="模拟帮助比较，真实观察仍要发生" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T03" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
+    <span class="pid">P044</span>
+  </div>
+  <h2 class="title">模拟帮助比较，真实观察仍要发生</h2>
+  <p class="sub reveal-none">把模型中的问题带回持续观察。</p>
+  <!-- BODY:START -->
+  <style>
+  .slide[data-id="P044"] .body { gap: 30px; }
+  .slide[data-id="P044"] .cols { gap: 46px; align-items: stretch; }
+  .slide[data-id="P044"] .c-sim { flex: 0 0 600px; display: flex; flex-direction: column; justify-content: flex-start; }
+  .slide[data-id="P044"] .c-real { flex: 1 1 0; display: flex; flex-direction: column; justify-content: flex-start; min-width: 0; }
+  .slide[data-id="P044"] .c-sim .slot { flex: 1 1 auto; height: auto; min-height: 188px; margin-top: 16px; background: #fff; border: 1px solid var(--divider); }
+  .slide[data-id="P044"] .fig { flex: 0 0 auto; margin-top: 16px; }
+  .slide[data-id="P044"] .fig .pic { background: #fff; padding: 0; }
+  .slide[data-id="P044"] .fig .pic .p44svg { display: block; width: 100%; height: auto; }
+  .slide[data-id="P044"] .takeaway { margin-top: 0; }
+  .slide[data-id="P044"] .p44svg text { font-family: var(--font-sans); fill: #1d1f20; }
+  .slide[data-id="P044"] .p44svg .lb { font-size: 32px; font-weight: 500; paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
+  .slide[data-id="P044"] .p44svg .ttl { font-size: 34px; font-weight: 600; }
+  .slide[data-id="P044"] .p44svg .tk { font-family: var(--font-cond); font-size: 28px; fill: #5d5d60; }
+  .slide[data-id="P044"] .p44svg .ax-t { font-size: 28px; fill: #5d5d60; }
+  .slide[data-id="P044"] .p44svg .pt { font-size: 30px; font-weight: 500; paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
+  .slide[data-id="P044"] .p44svg .note { font-size: 26px; fill: #7a7a7d; }
+  .slide[data-id="P044"] .p44svg .ray { stroke: #416180; stroke-width: 3; stroke-dasharray: 11 8; stroke-linecap: round; }
+  .slide[data-id="P044"] .p44svg .grid line { stroke: #dde6ef; stroke-width: 2; }
+  .slide[data-id="P044"] .p44svg .ax line { stroke: #5d5d60; stroke-width: 2.5; stroke-linecap: round; }
+  .slide[data-id="P044"] .p44svg .mk line { stroke: #8fb2d4; stroke-width: 2.5; stroke-dasharray: 7 7; }
+  </style>
+  <div class="body">
+    <div class="cols">
+      <div class="reveal c-sim">
+        <div class="label" style="color:var(--muted)">模拟可以做的</div>
+        <p class="text" style="font-size:28px;line-height:1.6;color:var(--muted-2)">快速改变倾角与日期，比较同一地点的画面和昼长曲线。</p>
+        <div class="slot"><img src="assets/img/siji_v2_xiazhi_dongzhi.png" alt=""></div>
+      </div>
+      <div class="vline"></div>
+      <div class="reveal c-real">
+        <div class="label">真实观察要做的</div>
+        <p class="text" style="font-size:32px;line-height:1.55">在校园固定地点记录日影或昼长，保留真实天气与测量误差。</p>
+        <div class="fig schematic">
+          <span class="tag corner-tag">示意图</span>
+          <div class="pic">
+            <svg class="p44svg" viewBox="0 0 1100 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="左：夏至与冬至太阳高度造成的短影与长影；右：北纬40°昼长曲线">
+              <defs>
+                <linearGradient id="p44pole" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#7099bf"/><stop offset=".40" stop-color="#3c5f80"/><stop offset="1" stop-color="#22374a"/>
+                </linearGradient>
+                <radialGradient id="p44sunS" cx=".36" cy=".32" r=".78">
+                  <stop offset="0" stop-color="#ffe6a6"/><stop offset=".55" stop-color="#f6bc63"/><stop offset="1" stop-color="#e2842a"/>
+                </radialGradient>
+                <radialGradient id="p44sunW" cx=".36" cy=".32" r=".78">
+                  <stop offset="0" stop-color="#fdefd2"/><stop offset=".55" stop-color="#eccc95"/><stop offset="1" stop-color="#cf9a52"/>
+                </radialGradient>
+                <linearGradient id="p44area" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#94bce3" stop-opacity=".40"/><stop offset="1" stop-color="#94bce3" stop-opacity=".04"/>
+                </linearGradient>
+                <filter id="p44sh" x="-40%" y="-40%" width="200%" height="200%">
+                  <feDropShadow dx="2" dy="5" stdDeviation="4.5" flood-color="#1d2d3d" flood-opacity=".26"/>
+                </filter>
+                <marker id="p44arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" fill="#416180"/>
+                </marker>
+                <marker id="p44axa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M0 1 L10 5 L0 9 z" fill="#5d5d60"/>
+                </marker>
+              </defs>
+            
+              <!-- ───── 左：日影场景 ───── -->
+              <g class="scene">
+                <!-- 冬至太阳（低角度） -->
+                <circle cx="56" cy="112" r="38" fill="#e8c78d" opacity=".16"/>
+                <g stroke="#cf9a52" stroke-width="4" stroke-linecap="round"><line x1="85.9" y1="120.0" x2="95.6" y2="122.6"/><line x1="77.9" y1="133.9" x2="85.0" y2="141.0"/><line x1="64.0" y1="141.9" x2="66.6" y2="151.6"/><line x1="48.0" y1="141.9" x2="45.4" y2="151.6"/><line x1="34.1" y1="133.9" x2="27.0" y2="141.0"/><line x1="26.1" y1="120.0" x2="16.4" y2="122.6"/><line x1="26.1" y1="104.0" x2="16.4" y2="101.4"/><line x1="34.1" y1="90.1" x2="27.0" y2="83.0"/><line x1="48.0" y1="82.1" x2="45.4" y2="72.4"/><line x1="64.0" y1="82.1" x2="66.6" y2="72.4"/><line x1="77.9" y1="90.1" x2="85.0" y2="83.0"/><line x1="85.9" y1="104.0" x2="95.6" y2="101.4"/></g>
+                <circle cx="56" cy="112" r="26" fill="url(#p44sunW)" stroke="#b98a45" stroke-width="2" filter="url(#p44sh)"/>
+                <text class="lb" x="56" y="198" text-anchor="middle">冬至</text>
+            
+                <!-- 夏至太阳（高角度） -->
+                <circle cx="132" cy="60" r="44" fill="#f0a84a" opacity=".16"/>
+                <g stroke="#e2842a" stroke-width="4" stroke-linecap="round"><line x1="168.0" y1="60.0" x2="178.0" y2="60.0"/><line x1="163.2" y1="78.0" x2="171.8" y2="83.0"/><line x1="150.0" y1="91.2" x2="155.0" y2="99.8"/><line x1="132.0" y1="96.0" x2="132.0" y2="106.0"/><line x1="114.0" y1="91.2" x2="109.0" y2="99.8"/><line x1="100.8" y1="78.0" x2="92.2" y2="83.0"/><line x1="96.0" y1="60.0" x2="86.0" y2="60.0"/><line x1="100.8" y1="42.0" x2="92.2" y2="37.0"/><line x1="114.0" y1="28.8" x2="109.0" y2="20.2"/><line x1="132.0" y1="24.0" x2="132.0" y2="14.0"/><line x1="150.0" y1="28.8" x2="155.0" y2="20.2"/><line x1="163.2" y1="42.0" x2="171.8" y2="37.0"/></g>
+                <circle cx="132" cy="60" r="30" fill="url(#p44sunS)" stroke="#c96f1f" stroke-width="2" filter="url(#p44sh)"/>
+                <text class="lb" x="182" y="62">夏至</text>
+            
+                <!-- 光线：太阳 → 竿顶 → 影端 -->
+                <line class="ray" x1="90" y1="129" x2="503" y2="330" marker-end="url(#p44arr)"/>
+                <line class="ray" x1="151" y1="95" x2="276" y2="330" marker-end="url(#p44arr)"/>
+            
+                <!-- 影子：长影（浅）→ 短影（深） -->
+                <path d="M189 330 H503 L511 350 H181 Z" fill="#c3d9ee" stroke="#8fb2d4" stroke-width="1.5"/>
+                <path d="M189 330 H276 L282 350 H181 Z" fill="#5f87ad" stroke="#3d5f80" stroke-width="1.5"/>
+            
+                <!-- 地面 -->
+                <line x1="20" y1="330" x2="536" y2="330" stroke="#2c4459" stroke-width="4" stroke-linecap="round"/>
+            
+                <!-- 标竿 -->
+                <ellipse cx="196" cy="331" rx="28" ry="6" fill="#1d2d3d" opacity=".22"/>
+                <rect x="188" y="180" width="16" height="150" rx="4" fill="url(#p44pole)" stroke="#2c4459" stroke-width="1.5" filter="url(#p44sh)"/>
+                <circle cx="196" cy="180" r="7" fill="#dfe9f3" stroke="#2c4459" stroke-width="2"/>
+                <text class="lb" x="182" y="316" text-anchor="end">标竿</text>
+            
+                <!-- 影长标注 -->
+                <g stroke="#5d5d60" stroke-width="2">
+                  <line x1="232" y1="352" x2="232" y2="368"/><line x1="392" y1="352" x2="392" y2="368"/>
+                </g>
+                <text class="lb" x="232" y="396" text-anchor="middle">短影</text>
+                <text class="lb" x="392" y="396" text-anchor="middle">长影</text>
+              </g>
+            
+                <line x1="556" y1="34" x2="556" y2="410" stroke="#d3dce5" stroke-width="2"/>
+            
+              <!-- ───── 右：昼长曲线 ───── -->
+              <g class="chart">
+                <text class="ttl" x="574" y="48">北纬40°昼长曲线</text>
+                <g class="grid"><line x1="656" y1="274.19" x2="1086" y2="274.19"/><line x1="656" y1="218.37" x2="1086" y2="218.37"/><line x1="656" y1="162.56" x2="1086" y2="162.56"/><line x1="656" y1="106.74" x2="1086" y2="106.74"/></g>
+                <path d="M 673.92 291.01 L 681.08 288.44 L 688.25 285.05 L 695.42 280.89 L 702.58 276 L 709.75 270.43 L 716.92 264.24 L 724.08 257.5 L 731.25 250.29 L 738.42 242.69 L 745.58 234.77 L 752.75 226.63 L 759.92 218.35 L 767.08 210.02 L 774.25 201.74 L 781.42 193.6 L 788.58 185.68 L 795.75 178.08 L 802.92 170.87 L 810.08 164.13 L 817.25 157.95 L 824.42 152.38 L 831.58 147.48 L 838.75 143.32 L 845.92 139.93 L 853.08 137.36 L 860.25 135.63 L 867.42 134.76 L 874.58 134.76 L 881.75 135.63 L 888.92 137.36 L 896.08 139.93 L 903.25 143.32 L 910.42 147.48 L 917.58 152.38 L 924.75 157.95 L 931.92 164.13 L 939.08 170.87 L 946.25 178.08 L 953.42 185.68 L 960.58 193.6 L 967.75 201.74 L 974.92 210.02 L 982.08 218.35 L 989.25 226.63 L 996.42 234.77 L 1003.58 242.69 L 1010.75 250.29 L 1017.92 257.5 L 1025.08 264.24 L 1032.25 270.43 L 1039.42 276 L 1046.58 280.89 L 1053.75 285.05 L 1060.92 288.44 L 1068.08 291.01 L 1068.08 330 L 673.92 330 Z" fill="url(#p44area)"/>
+                <g class="ax"><line x1="656" y1="330" x2="1094" y2="330" marker-end="url(#p44axa)"/>
+                  <line x1="656" y1="330" x2="656" y2="82" marker-end="url(#p44axa)"/>
+                  <line x1="673.92" y1="330" x2="673.92" y2="338"/><line x1="709.75" y1="330" x2="709.75" y2="338"/><line x1="745.58" y1="330" x2="745.58" y2="338"/><line x1="781.42" y1="330" x2="781.42" y2="338"/><line x1="817.25" y1="330" x2="817.25" y2="338"/><line x1="853.08" y1="330" x2="853.08" y2="338"/><line x1="888.92" y1="330" x2="888.92" y2="338"/><line x1="924.75" y1="330" x2="924.75" y2="338"/><line x1="960.58" y1="330" x2="960.58" y2="338"/><line x1="996.42" y1="330" x2="996.42" y2="338"/><line x1="1032.25" y1="330" x2="1032.25" y2="338"/><line x1="1068.08" y1="330" x2="1068.08" y2="338"/><line x1="648" y1="330" x2="656" y2="330"/><line x1="648" y1="274.19" x2="656" y2="274.19"/><line x1="648" y1="218.37" x2="656" y2="218.37"/><line x1="648" y1="162.56" x2="656" y2="162.56"/><line x1="648" y1="106.74" x2="656" y2="106.74"/></g>
+                <g class="tk" text-anchor="middle"><text x="673.92" y="366">1</text><text x="709.75" y="366">2</text><text x="745.58" y="366">3</text><text x="781.42" y="366">4</text><text x="817.25" y="366">5</text><text x="853.08" y="366">6</text><text x="888.92" y="366">7</text><text x="924.75" y="366">8</text><text x="960.58" y="366">9</text><text x="996.42" y="366">10</text><text x="1032.25" y="366">11</text><text x="1068.08" y="366">12</text></g>
+                <g class="tk" text-anchor="end"><text x="644" y="340">8</text><text x="644" y="284.19">10</text><text x="644" y="228.37">12</text><text x="644" y="172.56">14</text><text x="644" y="116.74">16</text></g>
+                <text class="ax-t" x="600" y="214" text-anchor="middle" transform="rotate(-90 600 214)">昼长（小时）</text>
+                <text class="ax-t" x="871" y="402" text-anchor="middle">月份</text>
+            
+                <path d="M 673.92 291.01 L 681.08 288.44 L 688.25 285.05 L 695.42 280.89 L 702.58 276 L 709.75 270.43 L 716.92 264.24 L 724.08 257.5 L 731.25 250.29 L 738.42 242.69 L 745.58 234.77 L 752.75 226.63 L 759.92 218.35 L 767.08 210.02 L 774.25 201.74 L 781.42 193.6 L 788.58 185.68 L 795.75 178.08 L 802.92 170.87 L 810.08 164.13 L 817.25 157.95 L 824.42 152.38 L 831.58 147.48 L 838.75 143.32 L 845.92 139.93 L 853.08 137.36 L 860.25 135.63 L 867.42 134.76 L 874.58 134.76 L 881.75 135.63 L 888.92 137.36 L 896.08 139.93 L 903.25 143.32 L 910.42 147.48 L 917.58 152.38 L 924.75 157.95 L 931.92 164.13 L 939.08 170.87 L 946.25 178.08 L 953.42 185.68 L 960.58 193.6 L 967.75 201.74 L 974.92 210.02 L 982.08 218.35 L 989.25 226.63 L 996.42 234.77 L 1003.58 242.69 L 1010.75 250.29 L 1017.92 257.5 L 1025.08 264.24 L 1032.25 270.43 L 1039.42 276 L 1046.58 280.89 L 1053.75 285.05 L 1060.92 288.44 L 1068.08 291.01" fill="none" stroke="#2c4459" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            
+                <g class="mk">
+                  <line x1="871.0" y1="134.65" x2="871.0" y2="330"/><line x1="1068.08" y1="291.01" x2="1068.08" y2="330"/>
+                </g>
+                <circle cx="871.0" cy="134.65" r="9.5" fill="#e2842a" stroke="#fff" stroke-width="3.5"/>
+                <circle cx="1068.08" cy="291.01" r="9.5" fill="#416180" stroke="#fff" stroke-width="3.5"/>
+                <text class="pt" x="871.0" y="116" text-anchor="middle">夏至</text>
+                <text class="pt" x="1056" y="262" text-anchor="middle">冬至</text>
+            
+                <text class="note" x="1094" y="434" text-anchor="end">理想模型，非实测数据</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway reveal" style="display:flex;align-items:baseline;gap:24px">
+      <span class="label" style="white-space:nowrap;margin-bottom:0">保留现实实践</span>
+      <span class="text" style="font-size:30px">模拟用来提出解释，真实记录用来核对解释是否站得住。</span>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">日影观察不需要直视太阳；真实记录保留日期、地点、天气和测量条件。</div>
+  <aside class="notes">【快过】讲述时依次说明：快速改变倾角与日期，比较同一地点的画面和昼长曲线。 在校园固定地点记录日影或昼长，保留真实天气与测量误差。 模拟用来提出解释，真实记录用来核对解释是否站得住。
+    作用：判断模拟的边界，明确真实观察不可替代。
+    资源：<a href="../19_逐页内容脚本/资源预览/S01.html">S01 四季循环v2</a> <a href="assets/docs/S01/index.html">素材入口</a> <a href="assets/docs/S01/验证记录.md">开发与验证记录</a> <a href="../19_逐页内容脚本/资源预览/D04.html">D04 天气观测派活：两份Word</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/2.3_天气观测派活" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D04/天气观测活动安排（三年级）.docx">天气观测活动安排（三年级）.docx</a> <a href="assets/docs/D04/学生两周天气记录表.docx">学生两周天气记录表.docx</a></aside>
+</section>

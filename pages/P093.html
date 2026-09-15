@@ -1,0 +1,105 @@
+<!-- PLAN template=T05 executor=opus pace=快过 layout_ref=L03
+     reveal=['真实行动', '必要采集', 'AI辅助', '判断与再实践']
+     embeds=[]
+     anim={"id": "ANIM_H_回到现实循环", "spec": "五节点环（真实行动→必要采集→AI辅助→师生判断→再实践），点‘播放’顺时针依次高亮（cycle.js 的 Cycle.play），右侧原文要点随分步出现；‘AI辅助’节点明显小于其余节点以体现主次。组件 cycle.js 同时供 P056 静态版使用。"}
+     note=
+ -->
+<section class="slide" data-id="P093" data-title="AI辅助之后，还要回到真实学习中检验" data-module="10 回到真实学习：实物、终端与伦理" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>10</b><span class="on">回到真实学习：实物、终端与伦理</span></div>
+    <span class="pid">P093</span>
+  </div>
+  <h2 class="title">AI辅助之后，还要回到真实学习中检验</h2>
+  <p class="sub">真实行动 → 必要采集 → AI辅助 → 师生判断 → 再实践</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P093"] .body { gap: 56px; }
+    .slide[data-id="P093"] .h93-anim { flex: 0 0 640px; display: flex; align-items: center; justify-content: center; }
+    .slide[data-id="P093"] .h93-anim .cycle { margin-bottom: 46px; }
+    .slide[data-id="P093"] .h93-list { flex: 1 1 0; min-width: 0; justify-content: center; gap: 30px; }
+    .slide[data-id="P093"] .h93-list .label { margin-bottom: 10px; }
+    .slide[data-id="P093"] .h93-list .text { font-size: 31px; }
+  </style>
+  <div class="body cols">
+    <div class="anim h93-anim" tabindex="0" aria-label="回到真实学习的五节点循环">
+      <div class="cycle" data-nodes="真实行动|必要采集|AI辅助|师生判断|再实践" data-center="回到真实学习" data-size="520"></div>
+      <div class="controls">
+        <button type="button" class="primary" data-a="play">播放</button>
+        <button type="button" data-a="reset">重置</button>
+      </div>
+    </div>
+    <div class="stack h93-list">
+      <div class="reveal">
+        <div class="label">真实行动</div>
+        <p class="text">学生先做实验、观察、纸笔记录，产生原始材料。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">必要采集</div>
+        <p class="text">只把需要核对或汇总的证据拍照、录入，保留原图。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">AI辅助</div>
+        <p class="text">整理、比较、提示疑点，不替学生下结论。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">判断与再实践</div>
+        <p class="text">教师和学生依据原图与任务要求作决定，修改方案后进入下一次实验。</p>
+      </div>
+    </div>
+  </div>
+  <script>
+  /* P093 ANIM_H：五节点循环。节点顺时针高亮，与右侧分步同步；AI辅助节点缩小以体现主次。 */
+  (function () {
+    'use strict';
+    var sec = document.currentScript.closest('section.slide');
+    if (!sec) return;
+    var anim = sec.querySelector('.anim');
+    var box = sec.querySelector('.cycle');
+    var shrunk = false;
+
+    function shrink() {
+      if (shrunk || !box.getAttribute('data-cycle-rendered')) return;
+      var nodes = box.querySelectorAll('.cy-node');
+      for (var i = 0; i < nodes.length; i++) {
+        var t = nodes[i].querySelector('.cy-label');
+        if (!t || t.textContent !== 'AI辅助') continue;
+        var c = nodes[i].querySelector('.cy-disc');
+        c.setAttribute('r', String(Math.round(parseFloat(c.getAttribute('r')) * 0.6)));
+        t.setAttribute('font-size', '24');
+        nodes[i].classList.add('cy-small');
+        shrunk = true;
+      }
+    }
+    function ready() {
+      if (!window.Cycle) return false;
+      if (!box.getAttribute('data-cycle-rendered')) window.Cycle.render(box);
+      shrink();
+      return true;
+    }
+    function reset() { if (window.Cycle) { window.Cycle.stop(box); window.Cycle.setActive(box, -1); } }
+    function play() { if (ready()) window.Cycle.play(box, 1100); }
+
+    anim.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-a]'); if (!b) return;
+      if (b.getAttribute('data-a') === 'play') play(); else reset();
+    });
+
+    function sync() {
+      if (!ready()) return;
+      if (!sec.classList.contains('active')) { reset(); return; }
+      var n = parseInt(sec.dataset.rv || '0', 10) || 0;
+      if (n > 0) { window.Cycle.stop(box); window.Cycle.setActive(box, n - 1); }
+      else if (!box.__cycleTimer) window.Cycle.setActive(box, -1);
+    }
+    new MutationObserver(sync).observe(sec, { attributes: true, attributeFilter: ['class', 'data-rv'] });
+    function init() { ready(); sync(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+    window.__anim_P093 = { play: play, reset: reset };
+  })();
+  </script>
+  <!-- BODY:END -->
+  <aside class="notes">【快过】讲述时依次说明：学生先做实验、观察、纸笔记录，产生原始材料。 只把需要核对或汇总的证据拍照、录入，保留原图。 整理、比较、提示疑点，不替学生下结论。 教师和学生依据原图与任务要求作决定，修改方案后进入下一次实验。
+    作用：把伦理和流程合成一条回到现实的循环。
+    资源：<a href="../19_逐页内容脚本/资源预览/D02.html">D02 摆的秘密：实验全案三件</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.2_摆的秘密实验全案" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D02/摆的秘密-分组实验记录表.docx">摆的秘密-分组实验记录表.docx</a> <a href="assets/docs/D02/摆的秘密-教师完整方案.docx">摆的秘密-教师完整方案.docx</a> <a href="assets/docs/D02/摆的秘密-评析活动材料（含教师对照清单）.docx">摆的秘密-评析活动材料（含教师对照清单）.docx</a> <a href="../19_逐页内容脚本/资源预览/D07.html">D07 天气数据：CSV→Excel→反馈→HTML</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D07/班级天气看板.html">看板</a> <a href="assets/docs/D07/天气观测个别化反馈初稿_全班.md">反馈初稿</a> <a href="assets/docs/D07/四年级天气观测_全班月度汇总.xlsx">四年级天气观测_全班月度汇总.xlsx</a> <a href="assets/docs/D07/天气观测个别化反馈初稿_全班.md">天气观测个别化反馈初稿_全班.md</a> <a href="assets/docs/D07/班级天气看板.html">班级天气看板.html</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/第1组天气观测记录.csv" title="原路径，仅本机有效">第1组天气观测记录.csv</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/第2组天气观测记录.csv" title="原路径，仅本机有效">第2组天气观测记录.csv</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/第3组天气观测记录.csv" title="原路径，仅本机有效">第3组天气观测记录.csv</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/第4组天气观测记录.csv" title="原路径，仅本机有效">第4组天气观测记录.csv</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/第5组天气观测记录.csv" title="原路径，仅本机有效">第5组天气观测记录.csv</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/第6组天气观测记录.csv" title="原路径，仅本机有效">第6组天气观测记录.csv</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/第7组天气观测记录.csv" title="原路径，仅本机有效">第7组天气观测记录.csv</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/第8组天气观测记录.csv" title="原路径，仅本机有效">第8组天气观测记录.csv</a></aside>
+</section>

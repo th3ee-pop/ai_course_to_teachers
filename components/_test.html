@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>components 预览</title>
+<link rel="stylesheet" href="../deck.css">
+<style>
+  /* 预览页专用：把 1920×1080 的页盒缩到 50% 平铺，不影响 deck.css 本体 */
+  html, body { height: auto; overflow: auto; background: #14181c; }
+  body { padding: 24px; }
+  .wrap { display: flex; flex-wrap: wrap; gap: 24px; }
+  .box { position: relative; width: 960px; height: 540px; overflow: hidden; outline: 1px solid #3a4550; }
+  .box > .slide { display: flex !important; position: absolute; left: 0; top: 0;
+                  transform: scale(.5); transform-origin: top left; }
+  .tagline { font-family: var(--font-cond); font-size: 13px; letter-spacing: .14em;
+             color: #94bce3; margin: 0 0 8px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- 1. 浅色 · map433 full · 高亮「课堂实施」＋角色「工具」 -->
+  <div>
+    <p class="tagline">1 / LIGHT · FULL · stage=课堂实施 · roles=工具</p>
+    <div class="box">
+      <section class="slide">
+        <div class="hdr">
+          <div class="locator"><b>4＋3＋3</b></div>
+          <span class="pid">T001</span>
+        </div>
+        <div class="body">
+          <div class="map433" data-stage="课堂实施" data-roles="工具"
+               data-show="stages,roles,questions" data-size="full"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- 2. 深色 · map433 full · 无高亮 -->
+  <div>
+    <p class="tagline">2 / DARK · FULL · 无高亮</p>
+    <div class="box">
+      <section class="slide dark">
+        <div class="hdr">
+          <div class="locator"><b>4＋3＋3</b></div>
+          <span class="pid">T002</span>
+        </div>
+        <div class="body">
+          <div class="map433" data-size="full"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- 3. 深色 · map433 compact · 只显示 stages（页面上半部定位图） -->
+  <div>
+    <p class="tagline">3 / DARK · COMPACT · show=stages · stage=教学评价</p>
+    <div class="box">
+      <section class="slide dark">
+        <div class="hdr">
+          <div class="locator"><b>4＋3＋3</b></div>
+          <span class="pid">T003</span>
+        </div>
+        <div class="body">
+          <div class="map433" data-size="compact" data-show="stages" data-stage="评价"></div>
+          <div style="display:flex;justify-content:center;margin-top:40px">
+            <div class="cycle" data-nodes="观察|预测|操作|解释|记录" data-on="2"
+                 data-center="教学评价" data-size="440"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- 4. 浅色 · cycle 五节点 · play -->
+  <div>
+    <p class="tagline">4 / LIGHT · CYCLE · play()</p>
+    <div class="box">
+      <section class="slide">
+        <div class="hdr">
+          <div class="locator"><b>4＋3＋3</b><span class="on">课堂实施</span></div>
+          <span class="pid">T004</span>
+        </div>
+        <div class="body" style="align-items:center;justify-content:center">
+          <div class="cycle" id="cy-play" data-nodes="观察|预测|操作|解释|记录"
+               data-on="0" data-center="课堂实施" data-size="620"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+
+<script src="map433.js"></script>
+<script src="cycle.js"></script>
+<script>
+  // 第 4 格自动循环高亮；点击任一节点会停止循环并定位到该节点
+  window.addEventListener('load', function () {
+    Cycle.play(document.getElementById('cy-play'), 1400);
+  });
+</script>
+</body>
+</html>

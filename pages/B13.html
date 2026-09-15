@@ -1,0 +1,48 @@
+<!-- PLAN template=T04 executor=opus pace=按替换片段安排 layout_ref=L09
+     reveal=['模型从哪里来', '怎样检验', '怎样解释']
+     embeds=[{"asset": "TOOL_S13", "mode": "iframe", "fallback": "CAP_S13", "requires": "network"}]
+     anim=null
+     note=内嵌AI分类器工坊；该页依赖 tfjs/teachablemachine CDN，离线时回退截图。
+     assets:
+       CAP_S13 → assets/img/cap_fenleiqi.png (capture) iframe 未加载时的回退截图
+       TOOL_S13 → assets/tools/fenleiqi_gongfang.html (iframe) 依赖 tfjs/teachablemachine CDN，需联网 -->
+<section class="slide" data-id="B13" data-title="AI分类器工坊" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T04" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
+    <span class="pid">B13</span>
+  </div>
+  <h2 class="title">AI分类器工坊</h2>
+  <p class="sub reveal-none">先在外部平台训练模型，再在网页里加载并观察分类</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="B13"] .body { flex-direction: row; align-items: stretch; gap: 56px; }
+    .slide[data-id="B13"] .embed { flex: 0 0 1020px; }
+    .slide[data-id="B13"] .embed iframe { width: 1276px; height: 792px; transform: scale(.7994); transform-origin: 0 0; }
+    .slide[data-id="B13"] .pts { flex: 1 1 0; min-width: 0; justify-content: center; gap: 40px; }
+  </style>
+  <div class="body">
+    <div class="embed" data-src="assets/tools/fenleiqi_gongfang.html">
+      <div class="fallback"><img src="assets/img/cap_fenleiqi.png" alt="AI分类器工坊界面截图"></div>
+      <div class="hint">需联网加载模型库；断网时显示界面截图</div>
+    </div>
+    <div class="stack pts">
+      <div class="reveal">
+        <div class="label">模型从哪里来</div>
+        <p class="text">在外部平台训练分类模型，再把模型地址加载到网页中进行识别。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">怎样检验</div>
+        <p class="text">用没有用于训练的图片检查结果，改变背景、光线或角度，记录哪些情形容易分错。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">怎样解释</div>
+        <p class="text">输出的类别分数不等于事实正确率。需要检查训练样本是否覆盖任务条件。</p>
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">教学任务示例。</div>
+  <aside class="notes">【按替换片段安排】页内直接内嵌AI分类器工坊，需联网加载模型库；断网时显示界面截图，改口头说明流程。讲述时依次说明：在外部平台训练分类模型，再把模型地址加载到网页中进行识别。 用没有用于训练的图片检查结果，改变背景、光线或角度，记录哪些情形容易分错。 输出的类别分数不等于事实正确率。需要检查训练样本是否覆盖任务条件。
+    作用：讲清外部训练与网页推理的分工，作为模块六演示入口的备选，替换P056之后的内容。
+    资源：<a href="../19_逐页内容脚本/资源预览/S13.html">S13 AI分类器工坊</a> <a href="assets/docs/S13/04_AI分类器工坊.html">素材入口</a></aside>
+</section>

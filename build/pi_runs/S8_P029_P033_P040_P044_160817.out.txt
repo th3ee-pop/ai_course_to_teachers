@@ -1,0 +1,96 @@
+=== P029 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center;gap:56px">
+  <div class="cols" style="align-items:flex-start;gap:56px">
+    <div class="reveal">
+      <div class="label" style="color:var(--muted)">笼统描述</div>
+      <p class="text" style="font-size:32px;line-height:1.6;color:var(--muted)">本班学生基础一般，对植物有兴趣，动手能力参差不齐。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">具体描述</div>
+      <p class="text" style="font-size:40px;line-height:1.55">学生能辨认植物的种子和叶片，但没有连续测量株高的经历；他们需要学习怎样固定测量起点并记录日期。</p>
+    </div>
+  </div>
+  <div class="takeaway reveal" style="display:flex;align-items:baseline;gap:24px">
+    <span class="label" style="white-space:nowrap">设计因此改变</span>
+    <span class="text" style="font-size:30px">教师可以先安排一次测量练习，再让学生开始连续观察。</span>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P033 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center;gap:44px">
+  <div class="cols" style="align-items:flex-start;gap:56px">
+    <div class="reveal">
+      <div class="label" style="color:var(--muted)">资料整理</div>
+      <p class="text" style="font-size:30px;line-height:1.6;color:var(--muted)">调研索引把政策、课标和案例按教学问题组织，帮助教师找到相关依据。</p>
+      <div class="slot" style="height:225px;margin-top:18px"><img src="assets/img/cap_R02_index.png" alt=""></div>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">文档制作</div>
+      <p class="text" style="font-size:38px;line-height:1.55">天气观测材料把活动安排与学生记录表做成可编辑、可打印的文件。</p>
+      <div style="display:flex;gap:20px;margin-top:18px">
+        <div class="slot" style="height:225px;flex:1"><img src="assets/img/cap_D04_word_1.png" alt=""></div>
+        <div class="slot" style="height:225px;flex:1"><img src="assets/img/cap_D04_word_2.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway reveal" style="display:flex;align-items:baseline;gap:24px">
+    <span class="label" style="white-space:nowrap">教师需要核对</span>
+    <span class="text" style="font-size:30px">整理后的依据能否回到来源，交付的文件能否支持实际教学。</span>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P040 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center;gap:36px">
+  <div class="cols" style="align-items:flex-start;gap:56px">
+    <div class="reveal">
+      <div class="label" style="color:var(--muted)">固定地点</div>
+      <p class="text" style="font-size:32px;line-height:1.6;color:var(--muted)">将观察纬度设为北纬40°，比较同一地点的全年昼长曲线。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">改变倾角</div>
+      <p class="text" style="font-size:40px;line-height:1.55">先观察原倾角下的曲线，再把地轴倾角改为0°。</p>
+    </div>
+  </div>
+  <div class="takeaway reveal" style="display:flex;align-items:baseline;gap:24px">
+    <span class="label" style="white-space:nowrap">记录依据</span>
+    <span class="text" style="font-size:30px">写下曲线怎样变化，以及你保持了哪些条件不变。</span>
+  </div>
+  <div class="reveal" style="display:flex;justify-content:center">
+    <div class="slot" style="height:270px;width:100%;max-width:1100px"><img src="assets/img/cap_siji_curve_23.png" alt=""></div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P044 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center;gap:44px">
+  <div class="cols" style="align-items:flex-start;gap:56px">
+    <div class="reveal">
+      <div class="label" style="color:var(--muted)">模拟可以做的</div>
+      <p class="text" style="font-size:30px;line-height:1.6;color:var(--muted)">快速改变倾角与日期，比较同一地点的画面和昼长曲线。</p>
+      <div class="slot" style="height:215px;margin-top:18px"><img src="assets/img/siji_v2_xiazhi_dongzhi.png" alt=""></div>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">真实观察要做的</div>
+      <p class="text" style="font-size:38px;line-height:1.55">在校园固定地点记录日影或昼长，保留真实天气与测量误差。</p>
+      <div class="fig" style="max-height:215px;margin-top:18px">
+        <div class="pic"><img src="assets/svg/p044_riying.svg" alt=""></div>
+        <figcaption class="caption">示意图</figcaption>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway reveal" style="display:flex;align-items:baseline;gap:24px">
+    <span class="label" style="white-space:nowrap">保留现实实践</span>
+    <span class="text" style="font-size:30px">模拟用来提出解释，真实记录用来核对解释是否站得住。</span>
+  </div>
+</div>
+<!-- BODY:END -->

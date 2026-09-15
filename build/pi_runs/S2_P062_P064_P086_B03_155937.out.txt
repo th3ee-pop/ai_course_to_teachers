@@ -1,0 +1,74 @@
+=== P062 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="cols" style="align-items:center;gap:44px">
+    <div class="stack" style="flex:1.25;gap:22px">
+      <div class="reveal"><div class="label">说明问题</div><p class="text">先确定要比较整体分布、题型表现，还是某道题的选项差异。</p></div>
+      <div class="reveal"><div class="label">选择方法</div><p class="text">请AI根据字段含义、数据类型、缺失情况和问题选择适合的方法，并说明理由。</p></div>
+      <div class="reveal"><div class="label">执行计算</div><p class="text">让AI编写Python或R程序，完成整理、计算和图表输出。</p></div>
+      <div class="reveal"><div class="label">核查结果</div><p class="text">核对样本范围、题号、分值、单位与计算结果，再决定教学调整。</p></div>
+    </div>
+    <div class="vline"></div>
+    <div class="fig" style="flex:0 0 620px;max-height:420px">
+      <span class="tag">示意图</span>
+      <div class="pic"><img src="assets/svg/p062_chain.svg" alt=""></div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P064 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="flow">
+    <div class="node reveal"><div class="label">教师审题</div><p class="text">先逐题核对答案、条件与难度，不合适的改掉或者不用。</p></div>
+    <div class="arr">→</div>
+    <div class="node reveal"><div class="label">复习与支架</div><p class="text">根据审过的题目安排复习内容和课堂支架，明确这一步补的是哪个知识关系。</p></div>
+    <div class="arr">→</div>
+    <div class="node reveal"><div class="label">复测</div><p class="text">用同类题再看一次学生的表现，记录哪些人仍然困难、困难在哪一步。</p></div>
+    <div class="arr">→</div>
+    <div class="node reveal"><div class="label">新证据</div><p class="text">复测结果成为下一轮的证据，用来判断这次调整是否有效。题库里有题，不等于已经证明能提高成绩。</p></div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P086 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="stack" style="gap:30px">
+    <div class="fig" style="max-height:300px;align-self:center">
+      <span class="tag">示意图</span>
+      <div class="pic"><img src="assets/svg/p086_devices.svg" alt=""></div>
+    </div>
+    <div class="flow">
+      <div class="node reveal"><div class="label">实物与纸笔</div><p class="text">学生操作、观察并留下纸质记录，形成可讨论的原始材料。</p></div>
+      <div class="arr">→</div>
+      <div class="node reveal"><div class="label">拍照或扫描</div><p class="text">把需要整理的记录数字化，保留原图与采集条件。</p></div>
+      <div class="arr">→</div>
+      <div class="node reveal"><div class="label">电脑与投屏</div><p class="text">核对、汇总数字材料，让全班能够共同读取和讨论。</p></div>
+      <div class="arr">→</div>
+      <div class="node reveal"><div class="label">回到活动</div><p class="text">依据讨论结果修改装置、补充观察或完成下一次任务。</p></div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B03 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="stack" style="gap:40px">
+    <div class="flow">
+      <div class="node reveal"><div class="label">四步任务链</div><p class="text">提出用眼问题、设计记录方式、完成护眼方案作品、展示并互评，四步依次进行。</p></div>
+      <div class="arr">→</div>
+      <div class="node reveal"><div class="label">材料清单管什么</div><p class="text">清单写清每组要用到的记录纸、测量工具和展示材料，缺什么当场补。</p></div>
+      <div class="arr">→</div>
+      <div class="node reveal"><div class="label">量规管什么</div><p class="text">作品量规看方案是否说得清依据，过程量规看记录是否按时完成、分工是否落实。</p></div>
+      <div class="arr">→</div>
+      <div class="node reveal"><div class="label">告知书与前测后测</div><p class="text">告知书让家长知道孩子要做什么、需要配合什么；前后测只记录方案中约定的观察项。</p></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:24px">
+      <a class="file-card" href="links/D05/">DOC_D05</a>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

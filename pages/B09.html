@@ -1,0 +1,56 @@
+<!-- PLAN template=T03 executor=opus pace=按替换片段安排 layout_ref=L07
+     reveal=['月相：双视图联动', '潜水器：配重与注水', '比较维度']
+     embeds=[{"asset": "TOOL_S08", "mode": "iframe", "fallback": "IMG_S08_SHOT"}, {"asset": "TOOL_S07", "mode": "iframe", "fallback": "IMG_S07_SHOT"}]
+     anim=null
+     note=左右各内嵌一个单文件模拟器（等比缩放到半屏），右侧窄栏放三条观察要点。
+     assets:
+       IMG_S08_SHOT → assets/img/yuexiang_shangxian_vs_manyue.png (img) 现有截图
+       IMG_S07_SHOT → assets/img/qianshuiqi_piaofu_vs_peizhong.png (img) 现有截图
+       TOOL_S08 → assets/tools/yuexiang.html (iframe) 单文件
+       TOOL_S07 → assets/tools/qianshuiqi.html (iframe) 单文件，无外部依赖 -->
+<section class="slide" data-id="B09" data-title="月相与潜水器：两种可以操作的关系" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="备选" data-replaces="模块06 课堂实施：观察、操纵、交流和解释" data-template="T03" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
+    <span class="pid">B09</span>
+  </div>
+  <h2 class="title">月相与潜水器：两种可以操作的关系</h2>
+  <p class="sub reveal-none">联动视图与配重注水</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="B09"] .body { flex-direction: row; align-items: stretch; gap: 56px; }
+    .slide[data-id="B09"] .embed { flex: 0 0 574px; }
+    .slide[data-id="B09"] .embed.moon iframe { width: 1000px; height: 1060px; transform: scale(.574); transform-origin: 0 0; }
+    .slide[data-id="B09"] .embed.sub iframe { width: 1100px; height: 1010px; transform: scale(.522); transform-origin: 0 0; }
+    .slide[data-id="B09"] .pts { flex: 1 1 0; min-width: 0; justify-content: center; gap: 36px; }
+    .slide[data-id="B09"] .pts .text { font-size: 28px; }
+  </style>
+  <div class="body">
+    <div class="embed moon" data-src="assets/tools/yuexiang.html">
+      <div class="fallback"><img src="assets/img/yuexiang_shangxian_vs_manyue.png" alt="月相变化模拟界面截图"></div>
+      <div class="hint">月相变化模拟：拖动日期滑块</div>
+    </div>
+    <div class="embed sub" data-src="assets/tools/qianshuiqi.html">
+      <div class="fallback"><img src="assets/img/qianshuiqi_piaofu_vs_peizhong.png" alt="潜水器浮沉模拟界面截图"></div>
+      <div class="hint">潜水器浮沉模拟：拖动配重与注水量</div>
+    </div>
+    <div class="stack pts">
+      <div class="reveal">
+        <div class="label">月相：双视图联动</div>
+        <p class="text">调整农历日期，俯视图与地面看到的月相同时变化，两边一起看。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">潜水器：配重与注水</div>
+        <p class="text">改变配重和注水量，对照漂浮、悬浮、沉底三种状态。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">比较维度</div>
+        <p class="text">两个例子都先预测再操作，区别在于一个看日期与位置的联动，一个看条件与状态的对应。</p>
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">根据已有交互页面设计的观察任务。</div>
+  <aside class="notes">【按替换片段安排】两个模拟器都内嵌在页内，可直接在投影上拖动；加载失败时显示界面截图。讲述时依次说明：调整农历日期，俯视图与地面看到的月相同时变化，两边一起看。 改变配重和注水量，对照漂浮、悬浮、沉底三种状态。 两个例子都先预测再操作，区别在于一个看日期与位置的联动，一个看条件与状态的对应。
+    作用：并列两个交互例子，供按听众和课时择一深入。
+    资源：<a href="../19_逐页内容脚本/资源预览/S08.html">S08 月相变化模拟</a> <a href="assets/docs/S08/月相变化模拟.html">素材入口</a> <a href="../19_逐页内容脚本/资源预览/S07.html">S07 潜水器浮沉模拟</a> <a href="assets/docs/S07/潜水器模型的浮与沉.html">素材入口</a></aside>
+</section>

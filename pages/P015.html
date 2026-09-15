@@ -1,0 +1,169 @@
+<!-- PLAN template=T05 executor=opus pace=停讲 layout_ref=L03
+     reveal=['执行', '核对', '修订', '教学适切性']
+     embeds=[]
+     anim={"id": "ANIM_D_反馈环", "spec": "执行→核对→修订 三节点环形，中心计数‘第 n 轮’。第一轮：结果含明显错误（示例：昼长曲线不随日期变化），核对标红；第二轮修订参数后通过；第三节点‘教学适切性’由教师勾选（内容准确/难度合适/学生能懂）才允许‘进入课堂’。与四季循环验证记录呼应。"}
+     note=
+ -->
+<section class="slide" data-id="P015" data-title="能检查、能修改，任务才能继续" data-module="03 最简原理：从语言到行动" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>03</b><span class="on">最简原理：从语言到行动</span></div>
+    <span class="pid">P015</span>
+  </div>
+  <h2 class="title">能检查、能修改，任务才能继续</h2>
+  <!-- BODY:START -->
+  <style>
+  .slide[data-id="P015"] .body { gap: 44px; }
+  .slide[data-id="P015"] .anim { flex: 1 1 0; }
+  .slide[data-id="P015"] .a15 { position: absolute; inset: 0; padding: 14px 26px 78px; box-sizing: border-box; display: flex; gap: 22px; align-items: stretch; }
+  .slide[data-id="P015"] .a15 .ring { flex: 0 0 546px; display: flex; align-items: center; justify-content: center; }
+  .slide[data-id="P015"] .a15 .cycle { transform: none; }
+  .slide[data-id="P015"] .a15 .list { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 18px; border-left: 1px solid var(--divider); padding-left: 26px; }
+  .slide[data-id="P015"] .a15 .ck { display: flex; align-items: center; gap: 14px; font-size: 27px; line-height: 1.4; padding: 15px 16px; border: 1px solid var(--divider); background: var(--surface); cursor: pointer; opacity: .45; }
+  .slide[data-id="P015"] .a15 .list.live .ck { opacity: 1; cursor: pointer; }
+  .slide[data-id="P015"] .a15 .ck input { width: 26px; height: 26px; accent-color: var(--accent); flex: 0 0 auto; }
+  .slide[data-id="P015"] .a15 .ck.done { border-color: var(--accent); background: #f4f8fc; color: var(--accent-dark); }
+  .slide[data-id="P015"] .a15 .state { font-size: 25px; line-height: 1.45; color: var(--muted-2); min-height: 72px; display: flex; align-items: center; border: 1px solid var(--divider); padding: 10px 14px; }
+  .slide[data-id="P015"] .a15 .state.warn { color: #b2603f; border-color: #b2603f; }
+  .slide[data-id="P015"] .a15 .state.ok { color: var(--accent-dark); border-color: var(--accent); background: #f4f8fc; }
+  </style>
+  <div class="body cols" style="align-items:stretch">
+    <div class="anim" tabindex="0" role="group" aria-label="执行、核对、修订的反馈环演示">
+      <span class="tag corner-tag">示意图</span>
+      <div class="a15">
+        <div class="ring">
+          <div class="cycle" data-nodes="执行|核对|修订" data-on="" data-center="第 1 轮" data-size="540"></div>
+        </div>
+        <div class="list">
+          <div class="label" style="margin-bottom:2px">教师核对清单</div>
+          <label class="ck"><input type="checkbox" data-ck="0" disabled><span>内容是否准确</span></label>
+          <label class="ck"><input type="checkbox" data-ck="1" disabled><span>难度是否合适</span></label>
+          <label class="ck"><input type="checkbox" data-ck="2" disabled><span>学生能否理解</span></label>
+          <div class="state">按「下一个」开始一轮</div>
+        </div>
+      </div>
+      <div class="controls">
+        <button type="button" class="primary" data-act="next">下一个</button>
+        <button type="button" data-act="play">播放</button>
+        <button type="button" data-act="reset">重置</button>
+      </div>
+    </div>
+    <div class="stack" style="flex:0 0 500px;justify-content:center;gap:26px">
+      <div class="reveal"><div class="label">执行</div><p class="text" style="font-size:28px">程序运行，得到结果或错误提示。</p></div>
+      <div class="reveal"><div class="label">核对</div><p class="text" style="font-size:28px">教师和制作者检查结果是否符合任务要求，是否适合课堂教学。</p></div>
+      <div class="reveal"><div class="label">修订</div><p class="text" style="font-size:28px">根据核对发现的问题，修改目标、代码或参数，再次运行。</p></div>
+      <div class="reveal"><div class="label">教学适切性</div><p class="text" style="font-size:28px">教师重点判断内容是否准确、难度是否合适、学生能否理解。</p></div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    'use strict';
+    var sec = (document.currentScript && document.currentScript.closest('section.slide')) ||
+              document.querySelector('section.slide[data-id="P015"]');
+    if (!sec) return;
+    var cy = sec.querySelector('.cycle');
+    var list = sec.querySelector('.a15 .list');
+    var boxes = Array.prototype.slice.call(sec.querySelectorAll('.ck input'));
+    var state = sec.querySelector('.a15 .state');
+    var btnNext = sec.querySelector('[data-act="next"]');
+    var btnPlay = sec.querySelector('[data-act="play"]');
+    var btnReset = sec.querySelector('[data-act="reset"]');
+
+    /* 固定脚本化的状态文字（功能性提示，不引入新的讲稿内容） */
+    var NODE = ['执行', '核对', '修订'];
+    var node = -1, round = 1, playing = false, timer = null;
+
+    function drawRing() {
+      if (!window.Cycle || !cy) return;
+      cy.setAttribute('data-center', '第 ' + round + ' 轮');
+      window.Cycle.render(cy);
+      window.Cycle.setActive(cy, node);
+    }
+    function setState(txt, cls) {
+      state.className = 'state' + (cls ? ' ' + cls : '');
+      state.textContent = txt;
+    }
+    function refreshChecks() {
+      boxes.forEach(function (b) { b.parentNode.classList.toggle('done', b.checked); });
+    }
+    function allChecked() { return boxes.every(function (b) { return b.checked; }); }
+    function enableChecks(on) {
+      list.classList.toggle('live', !!on);
+      boxes.forEach(function (b) { b.disabled = !on; });
+    }
+    function stopTimer() { if (timer) { clearTimeout(timer); timer = null; } playing = false; if (btnPlay) btnPlay.textContent = '播放'; }
+
+    function reset() {
+      stopTimer();
+      node = -1; round = 1;
+      boxes.forEach(function (b) { b.checked = false; });
+      refreshChecks();
+      enableChecks(false);
+      setState('按「下一个」开始一轮');
+      drawRing();
+    }
+
+    function goto(i) {
+      node = i;
+      if (i === 0) {
+        enableChecks(false);
+        boxes.forEach(function (b) { b.checked = false; });
+        refreshChecks();
+        setState('第 ' + round + ' 轮 · 执行');
+      } else if (i === 1) {
+        enableChecks(true);
+        setState('第 ' + round + ' 轮 · 核对：勾完三项进入修订');
+      } else {
+        enableChecks(false);
+        setState('第 ' + round + ' 轮 · 修订');
+      }
+      drawRing();
+    }
+
+    function next() {
+      if (node === 2) { round += 1; goto(0); return; }
+      goto(node < 0 ? 0 : node + 1);
+    }
+
+    function play() {
+      if (playing) { stopTimer(); return; }
+      playing = true;
+      if (btnPlay) btnPlay.textContent = '暂停';
+      (function tick() {
+        if (!playing) return;
+        if (node === 1) { boxes.forEach(function (b) { b.checked = true; }); refreshChecks(); }
+        next();
+        if (round > 3) { stopTimer(); return; }
+        timer = setTimeout(tick, 1500);
+      })();
+    }
+
+    if (btnNext) btnNext.addEventListener('click', function () { stopTimer(); next(); });
+    if (btnPlay) btnPlay.addEventListener('click', play);
+    if (btnReset) btnReset.addEventListener('click', reset);
+    boxes.forEach(function (b) {
+      b.addEventListener('change', function () {
+        refreshChecks();
+        if (node === 1 && allChecked()) {
+          setState('三项已核对 · 进入修订', 'ok');
+          timer = setTimeout(function () { goto(2); }, 700);
+        }
+      });
+    });
+
+    new MutationObserver(function () {
+      if (!sec.classList.contains('active')) reset();
+    }).observe(sec, { attributes: true, attributeFilter: ['class'] });
+
+    function boot() { reset(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+
+    window.__anim_P015 = { next: next, play: play, reset: reset };
+  })();
+  </script>
+  <!-- BODY:END -->
+  <div class="foot">依据原理材料与四季循环验证记录整理的简化讲法。</div>
+  <aside class="notes">【停讲】执行之后会有结果，也会有错误，或者做出来的东西不符合目标。这时候任务要能继续，就需要检查和修改。程序运行得到结果或错误提示，教师和制作者核对是否符合任务要求、是否适合课堂，再根据问题修改目标、代码或参数，再次运行。这个反馈环里，教师重点判断的是教学适切性：内容是否准确，难度是否合适，学生能不能理解。准确性来自这个需要验证的过程，不是概率机制自动保证的。
+    作用：说明任务需要反馈环才能继续，准确性来自验证过程而不是概率机制。
+    资源：<a href="../19_逐页内容脚本/资源预览/R03.html">R03 Agent原理与术语材料</a> <a href="assets/docs/R03/04_Agent原理讲法.md">素材入口</a> <a href="../19_逐页内容脚本/资源预览/S01.html">S01 四季循环v2</a> <a href="assets/docs/S01/index.html">素材入口</a> <a href="assets/docs/S01/验证记录.md">开发与验证记录</a></aside>
+</section>

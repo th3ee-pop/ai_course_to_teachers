@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>错题扫描仪 · 本机识别</title>
+<style>
+  :root{
+    --paper:#f6f5f0; --ink:#1b1a15; --ink-2:#6d6b60; --line:#dcdad0; --accent:#a33327;
+    --mono:"SF Mono","Menlo","Consolas",monospace;
+    --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+    --sans:"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+
+  header{padding:40px 0 0}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:2px solid var(--ink);padding-bottom:14px}
+  .masthead h1{font-family:var(--serif);font-size:34px;font-weight:700;letter-spacing:.08em}
+  .masthead .tag{font-family:var(--mono);font-size:13px;color:var(--ink-2);letter-spacing:.05em}
+
+  .privacy{display:flex;gap:14px;align-items:baseline;margin-top:20px;padding:16px 22px;
+    border:1px solid var(--ink);font-size:16px}
+  .privacy .lock{font-family:var(--serif);font-size:20px;font-weight:700;white-space:nowrap}
+  .privacy p{color:var(--ink-2);font-size:14.5px}
+  .privacy b{color:var(--ink)}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:36px 0}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+  .sec-no{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.15em}
+  .sec-title{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.1em}
+
+  .tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .tabs button{appearance:none;background:none;border:none;cursor:pointer;font-size:15px;
+    color:var(--ink-2);padding:9px 18px 8px;letter-spacing:.15em;
+    border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tabs button.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+
+  #videoBox{display:none;border:1px solid var(--line);background:#000}
+  #cam{display:block;width:100%}
+  #preview{border:1px solid var(--line);max-width:100%;display:none;margin-top:14px}
+
+  .drop{border:1px dashed var(--ink-2);padding:44px 20px;text-align:center;color:var(--ink-2);
+    font-size:15px;cursor:pointer;transition:border-color .15s}
+  .drop:hover{border-color:var(--accent);color:var(--ink)}
+
+  .btn{appearance:none;cursor:pointer;background:var(--ink);color:var(--paper);
+    border:1px solid var(--ink);font-size:15px;letter-spacing:.2em;padding:11px 26px;
+    transition:background .15s,color .15s;margin-top:16px}
+  .btn:hover{background:var(--paper);color:var(--ink)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn[disabled]{opacity:.4;cursor:default;pointer-events:none}
+
+  .progress{margin-top:18px;display:none}
+  .progress .bar{height:2px;background:var(--line);position:relative}
+  .progress .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);width:0}
+  .progress .pct{font-family:var(--mono);font-size:12px;color:var(--ink-2);margin-top:8px;letter-spacing:.1em}
+
+  textarea#result{width:100%;min-height:220px;border:1px solid var(--line);background:transparent;
+    font-family:var(--sans);font-size:17px;line-height:1.8;padding:16px;outline:none;resize:vertical;color:var(--ink)}
+  textarea#result:focus{border-color:var(--ink)}
+  .meta-row{display:flex;gap:20px;align-items:end;margin-top:16px}
+  .meta-row label{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.15em;display:block;margin-bottom:6px}
+  select,input[type=text].subj{border:none;border-bottom:1px solid var(--ink);background:transparent;
+    font-size:16px;padding:5px 2px;outline:none;font-family:var(--sans);color:var(--ink)}
+
+  table.log{width:100%;border-collapse:collapse;margin-top:6px}
+  table.log th{font-family:var(--mono);font-size:12px;color:var(--ink-2);font-weight:400;
+    letter-spacing:.15em;text-align:left;padding:0 12px 10px 0;border-bottom:1px solid var(--ink)}
+  table.log td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
+  table.log .txt{max-width:340px}
+  table.log .del{color:var(--accent);cursor:pointer;font-family:var(--mono);font-size:12px}
+  .empty{color:var(--ink-2);font-size:15px;padding:16px 0}
+  .list-actions{display:flex;gap:12px;margin-top:18px}
+
+  footer{padding:8px 0 40px;font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.1em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="masthead">
+      <h1>错题扫描仪</h1>
+      <div class="tag">OFFLINE OCR · 拍下来，就变成可以改的字</div>
+    </div>
+    <div class="privacy">
+      <span class="lock">只在这台电脑上运行</span>
+      <p>识别过程<b>全部在你的浏览器里完成</b>，照片和文字不会上传到任何网站。这就是「本地人工智能」——聪明，而且守秘密。（首次使用需要联网，下载一次识别引擎。）</p>
+    </div>
+  </header>
+
+  <div class="grid">
+    <!-- 左：采集与识别 -->
+    <div>
+      <div class="sec-head"><span class="sec-no">01</span><span class="sec-title">拍一张</span></div>
+      <div class="tabs">
+        <button id="tabCam" class="on">用摄像头拍</button>
+        <button id="tabFile">选一张图片</button>
+      </div>
+
+      <div id="paneCam">
+        <div id="videoBox"><video id="cam" autoplay playsinline muted></video></div>
+        <button class="btn ghost" id="openCam">打开摄像头</button>
+        <button class="btn" id="shotBtn" disabled>拍下来</button>
+      </div>
+
+      <div id="paneFile" style="display:none">
+        <div class="drop" id="drop">点击选择图片，或把图片拖到这里<br>
+          <span style="font-family:var(--mono);font-size:12px">支持练习册照片 · 屏幕截图</span></div>
+        <input type="file" id="fileInput" accept="image/*" style="display:none">
+      </div>
+
+      <img id="preview" alt="待识别的图片">
+      <div>
+        <button class="btn" id="ocrBtn" disabled>开始识别</button>
+        <div class="progress" id="prog">
+          <div class="bar"><i id="progFill"></i></div>
+          <div class="pct" id="progText">准备中…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右：结果与保存 -->
+    <div>
+      <div class="sec-head"><span class="sec-no">02</span><span class="sec-title">改一改，存起来</span></div>
+      <textarea id="result" placeholder="识别出来的文字会出现在这里。电脑也会认错字，请你当小老师，把它改对。"></textarea>
+      <div class="meta-row">
+        <div><label>学科 SUBJECT</label>
+          <select id="subject">
+            <option>语文</option><option>数学</option><option>英语</option>
+            <option>科学</option><option>其他</option>
+          </select></div>
+        <div style="flex:1"><label>我错在哪里 NOTE</label>
+          <input type="text" class="subj" id="note" style="width:100%" placeholder="例如：乘法口诀记混了"></div>
+        <button class="btn" id="saveBtn">存入错题本</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid var(--line);padding-top:30px">
+    <div class="sec-head"><span class="sec-no">03</span><span class="sec-title">我的错题本</span>
+      <span style="margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--ink-2)" id="countNote"></span></div>
+    <table class="log">
+      <thead><tr><th style="width:110px">时间</th><th style="width:70px">学科</th><th>题目内容</th><th style="width:160px">我错在哪里</th><th></th></tr></thead>
+      <tbody id="logBody"></tbody>
+    </table>
+    <div class="empty" id="logEmpty">错题本还是空的。存进第一道题，你就开始变得更厉害了。</div>
+    <div class="list-actions">
+      <button class="btn ghost" id="exportBtn" style="display:none">导出为表格文件</button>
+      <button class="btn ghost" id="clearBtn" style="display:none">全部清空</button>
+    </div>
+  </div>
+
+  <footer>识别引擎 tesseract.js（开源） · 数据保存在本机浏览器 · 不联网也能查看错题本</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+const LS_KEY = "wrongbook_v1";
+let currentImage = null;   // canvas 或 img，供识别
+let stream = null;
+
+/* ─── 选项卡 ─── */
+const tabCam = document.getElementById("tabCam"), tabFile = document.getElementById("tabFile");
+const paneCam = document.getElementById("paneCam"), paneFile = document.getElementById("paneFile");
+tabCam.onclick = ()=>{ tabCam.classList.add("on"); tabFile.classList.remove("on");
+  paneCam.style.display="block"; paneFile.style.display="none"; };
+tabFile.onclick = ()=>{ tabFile.classList.add("on"); tabCam.classList.remove("on");
+  paneFile.style.display="block"; paneCam.style.display="none"; stopCam(); };
+
+/* ─── 摄像头 ─── */
+const cam = document.getElementById("cam");
+document.getElementById("openCam").onclick = async ()=>{
+  try{
+    stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}});
+    cam.srcObject = stream;
+    document.getElementById("videoBox").style.display = "block";
+    document.getElementById("shotBtn").disabled = false;
+    document.getElementById("openCam").textContent = "摄像头已打开";
+  }catch(e){ alert("打不开摄像头。请检查浏览器权限，或改用「选一张图片」。"); }
+};
+function stopCam(){ if(stream){ stream.getTracks().forEach(t=>t.stop()); stream=null; } }
+document.getElementById("shotBtn").onclick = ()=>{
+  const cv = document.createElement("canvas");
+  cv.width = cam.videoWidth; cv.height = cam.videoHeight;
+  cv.getContext("2d").drawImage(cam,0,0);
+  showPreview(cv.toDataURL("image/png"));
+};
+
+/* ─── 文件 ─── */
+const drop = document.getElementById("drop"), fileInput = document.getElementById("fileInput");
+drop.onclick = ()=>fileInput.click();
+drop.ondragover = e=>e.preventDefault();
+drop.ondrop = e=>{ e.preventDefault(); if(e.dataTransfer.files[0]) readFile(e.dataTransfer.files[0]); };
+fileInput.onchange = ()=>{ if(fileInput.files[0]) readFile(fileInput.files[0]); };
+function readFile(f){
+  const r = new FileReader();
+  r.onload = ()=>showPreview(r.result);
+  r.readAsDataURL(f);
+}
+function showPreview(url){
+  const img = document.getElementById("preview");
+  img.src = url; img.style.display = "block";
+  currentImage = url;
+  document.getElementById("ocrBtn").disabled = false;
+}
+
+/* ─── OCR ─── */
+document.getElementById("ocrBtn").onclick = async ()=>{
+  if(typeof Tesseract === "undefined"){
+    alert("识别引擎还没加载好。第一次使用需要联网下载，请稍等片刻再点一次。"); return;
+  }
+  const btn = document.getElementById("ocrBtn");
+  btn.disabled = true;
+  const prog = document.getElementById("prog");
+  const fill = document.getElementById("progFill");
+  const text = document.getElementById("progText");
+  prog.style.display = "block";
+  try{
+    const worker = await Tesseract.createWorker("chi_sim+eng", 1, {
+      logger: m=>{
+        if(m.status === "recognizing text"){
+          fill.style.width = Math.round(m.progress*100) + "%";
+          text.textContent = "正在一个字一个字地认…… " + Math.round(m.progress*100) + "%";
+        }else{
+          text.textContent = "正在准备识别引擎……";
+        }
+      }
+    });
+    const {data} = await worker.recognize(currentImage);
+    await worker.terminate();
+    const cleaned = data.text.replace(/[ \t]+\n/g,"\n").trim();
+    document.getElementById("result").value =
+      cleaned || "（没有认出文字。试试把照片拍得更清楚、更亮一些。）";
+    text.textContent = "识别完成，请到右边检查修改。";
+    fill.style.width = "100%";
+  }catch(e){
+    text.textContent = "识别失败了。检查网络后重试，或换一张更清楚的图片。";
+  }
+  btn.disabled = false;
+};
+
+/* ─── 错题本 ─── */
+function getLog(){ try{return JSON.parse(localStorage.getItem(LS_KEY))||[]}catch(e){return[]} }
+function saveLog(l){ localStorage.setItem(LS_KEY, JSON.stringify(l)); }
+
+document.getElementById("saveBtn").onclick = ()=>{
+  const t = document.getElementById("result").value.trim();
+  if(!t){ alert("先识别或输入题目内容，再保存。"); return; }
+  const log = getLog();
+  const n = new Date();
+  log.push({ time:`${n.getMonth()+1}/${n.getDate()} ${String(n.getHours()).padStart(2,"0")}:${String(n.getMinutes()).padStart(2,"0")}`,
+    subj:document.getElementById("subject").value, text:t.slice(0,500),
+    note:document.getElementById("note").value.trim().slice(0,50) });
+  saveLog(log);
+  document.getElementById("note").value = "";
+  renderLog();
+};
+
+function renderLog(){
+  const log = getLog(), tb = document.getElementById("logBody");
+  document.getElementById("logEmpty").style.display = log.length?"none":"block";
+  document.getElementById("exportBtn").style.display = log.length?"inline-block":"none";
+  document.getElementById("clearBtn").style.display = log.length?"inline-block":"none";
+  document.getElementById("countNote").textContent = log.length ? `共 ${log.length} 条 · 只存在这台电脑上` : "";
+  tb.innerHTML = log.map((r,i)=>`
+    <tr><td>${r.time}</td><td>${r.subj}</td>
+    <td class="txt">${escapeHtml(r.text).slice(0,120)}${r.text.length>120?"……":""}</td>
+    <td>${escapeHtml(r.note)||"—"}</td>
+    <td><span class="del" data-i="${i}">删除</span></td></tr>`).reverse().join("");
+  tb.querySelectorAll(".del").forEach(el=>el.onclick=()=>{
+    const log2 = getLog(); log2.splice(+el.dataset.i,1); saveLog(log2); renderLog();
+  });
+}
+function escapeHtml(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+document.getElementById("exportBtn").onclick = ()=>{
+  const log = getLog();
+  const rows = [["时间","学科","题目内容","我错在哪里"],
+    ...log.map(r=>[r.time,r.subj,r.text.replace(/\s+/g," "),r.note])];
+  const csv = "﻿" + rows.map(r=>r.map(c=>`"${String(c||"").replace(/"/g,'""')}"`).join(",")).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+  a.download = "我的错题本.csv"; a.click();
+};
+document.getElementById("clearBtn").onclick = ()=>{
+  if(confirm("确定清空整个错题本吗？清空后找不回来。")){ localStorage.removeItem(LS_KEY); renderLog(); }
+};
+renderLog();
+</script>
+</body>
+</html>

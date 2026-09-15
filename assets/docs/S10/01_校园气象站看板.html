@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="S3A3zHNM5Q594P0AHlMN7D">
+<head data-page-node-id="rKBGkdS6tU8DmTQw4U50Eo">
+<meta charset="UTF-8" data-page-node-id="ZspNur7H4WMPFEx5BGGcxJ">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="ypH9FVMBZbA11W9x5pznZD">
+<title>校园气象站 · 数据看板</title>
+<style>
+  :root{
+    --paper:#f6f5f0;
+    --ink:#1b1a15;
+    --ink-2:#6d6b60;
+    --line:#dcdad0;
+    --accent:#a33327;
+    --mono:"SF Mono","Menlo","Consolas",monospace;
+    --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+    --sans:"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{background:var(--paper)}
+  body{
+    font-family:var(--sans);color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;line-height:1.6;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+
+  /* ── 刊头 ── */
+  header{padding:44px 0 0}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:2px solid var(--ink);padding-bottom:14px}
+  .masthead h1{font-family:var(--serif);font-size:34px;font-weight:700;letter-spacing:.08em}
+  .masthead .date{font-family:var(--mono);font-size:13px;color:var(--ink-2);letter-spacing:.05em}
+  .subline{display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0 0;font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.12em}
+  .badge{display:inline-flex;align-items:center;gap:7px;letter-spacing:.12em}
+  .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .badge.live::before{background:#3a7d44}
+  .badge.off::before{background:var(--accent)}
+
+  /* ── 城市切换：文字标签页 ── */
+  nav.cities{display:flex;gap:0;border-bottom:1px solid var(--line);margin-top:26px}
+  nav.cities button{
+    appearance:none;background:none;border:none;cursor:pointer;
+    font-family:var(--sans);font-size:17px;color:var(--ink-2);
+    padding:12px 22px 10px;letter-spacing:.2em;border-bottom:2px solid transparent;
+    margin-bottom:-1px;transition:color .15s;
+  }
+  nav.cities button:hover{color:var(--ink)}
+  nav.cities button.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+
+  /* ── 分节 ── */
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  section:last-child{border-bottom:none}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px}
+  .sec-no{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.15em}
+  .sec-title{font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:.1em}
+  .sec-note{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+
+  /* ── 当前天气 ── */
+  .now{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:end}
+  .now .temp{font-family:var(--serif);font-size:150px;font-weight:700;line-height:1;
+    font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .now .temp sup{font-size:44px;font-weight:400;color:var(--ink-2)}
+  .now .desc{margin-top:14px;font-size:20px;letter-spacing:.15em;color:var(--ink)}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+  .fact{padding:16px 0;border-bottom:1px solid var(--line)}
+  .fact:nth-child(odd){border-right:1px solid var(--line);padding-right:24px}
+  .fact:nth-child(even){padding-left:24px}
+  .fact .k{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.15em}
+  .fact .v{font-family:var(--serif);font-size:30px;margin-top:4px;font-variant-numeric:tabular-nums}
+  .fact .v small{font-size:14px;color:var(--ink-2);font-family:var(--sans)}
+
+  /* ── 图表 ── */
+  canvas.chart{width:100%;display:block}
+
+  /* ── 7 天预报：排印式表格 ── */
+  .week{font-variant-numeric:tabular-nums}
+  .wk-row{display:grid;grid-template-columns:110px 90px 1fr 90px;gap:20px;align-items:center;
+    padding:13px 0;border-bottom:1px solid var(--line);font-size:17px}
+  .wk-row:first-child{border-top:1px solid var(--line)}
+  .wk-row .d{font-family:var(--mono);font-size:14px;letter-spacing:.05em}
+  .wk-row .lo{text-align:right;color:var(--ink-2);font-family:var(--mono)}
+  .wk-row .hi{font-family:var(--mono)}
+  .wk-bar{height:8px;background:#e9e7de;position:relative}
+  .wk-bar i{position:absolute;top:0;bottom:0;background:var(--ink)}
+  .wk-row.today .d::after{content:"· 今天";color:var(--accent);font-size:12px}
+
+  /* ── 观测记录 ── */
+  .observe{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .ob-form label{display:block;font-size:15px;color:var(--ink-2);margin:18px 0 6px;letter-spacing:.1em}
+  .ob-form input{
+    width:100%;border:none;border-bottom:1px solid var(--ink);background:transparent;
+    font-family:var(--mono);font-size:26px;padding:6px 2px;outline:none;color:var(--ink);
+  }
+  .ob-form input:focus{border-bottom-color:var(--accent)}
+  .btn{
+    appearance:none;cursor:pointer;margin-top:24px;
+    background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+    font-family:var(--sans);font-size:15px;letter-spacing:.25em;padding:12px 34px;
+    transition:background .15s,color .15s;
+  }
+  .btn:hover{background:var(--paper);color:var(--ink)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+  table.log{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  table.log th{font-family:var(--mono);font-size:12px;color:var(--ink-2);font-weight:400;
+    letter-spacing:.15em;text-align:left;padding:0 12px 10px 0;border-bottom:1px solid var(--ink)}
+  table.log td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);font-size:16px}
+  table.log .diff-warm{color:var(--accent)}
+  .empty{color:var(--ink-2);font-size:15px;padding:20px 0}
+
+  /* ── 讲解条 ── */
+  .aside{
+    margin-top:26px;padding:18px 22px;border-left:2px solid var(--accent);
+    font-size:15px;color:var(--ink-2);max-width:760px;
+  }
+  .aside b{color:var(--ink);font-weight:600}
+
+  footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--ink-2);
+    letter-spacing:.1em;display:flex;justify-content:space-between}
+
+  @media (max-width:900px){
+    .wrap{padding:0 24px}
+    .now{grid-template-columns:1fr}
+    .observe{grid-template-columns:1fr}
+    .now .temp{font-size:110px}
+  }
+</style>
+</head>
+<body data-page-node-id="HWZ0DCmQ1yq0ifjQS7Oeqt">
+<div class="wrap" data-page-node-id="hYSC2RqkS1RqqhT9CnIuT0">
+
+  <header data-page-node-id="4L4FDByJ6Ttl2eo4lcCIQV">
+    <div class="masthead" data-page-node-id="bCbQBRzKOkJdOiAGHeOFF5">
+      <h1 data-page-node-id="neDYsTzp2T2JwR5HiyhoV8">校园气象站</h1>
+      <div class="date" id="dateLine" data-page-node-id="cBrIjPxTU0S83zCXpOfqzH">—</div>
+    </div>
+    <div class="subline" data-page-node-id="rncBah9C8fCNA5rherdoUW">
+      <span data-page-node-id="3KDKmiyivK92d9TbIBeQjc">WEATHER OBSERVATORY · 在线数字气象站 · 跨学科主题学习</span>
+      <span class="badge off" id="statusBadge" data-page-node-id="vCVDea4kr5RhpnaYyCUlhT">正在连接数据…</span>
+    </div>
+    <nav class="cities" id="cityNav" data-page-node-id="DXW6ZaOxt39vkrQpG8B9Zt"></nav>
+  </header>
+
+  <section data-page-node-id="huwlV6QF3GMh6JP7x21cEs">
+    <div class="sec-head" data-page-node-id="TOK9MY8c6nmVXXKlj5l8Mk">
+      <span class="sec-no" data-page-node-id="oaF6UyfikyDURwLRinrEVD">01</span><span class="sec-title" data-page-node-id="SF33tPahFTUDZdu71YaByB">此时此刻</span>
+      <span class="sec-note" id="updateNote" data-page-node-id="MgtJLhANU9A7lafWkW4nAs"></span>
+    </div>
+    <div class="now" data-page-node-id="85ma964ANCDZJtbNOeCY0j">
+      <div data-page-node-id="d6r4lrfu1eMCqsyVV7mymY">
+        <div class="temp" id="curTemp" data-page-node-id="x1KUtXJAcHvrunDLJ5txeD">--<sup data-page-node-id="hTiHP7OOZgbiLqdPB5FEHl">°C</sup></div>
+        <div class="desc" id="curDesc" data-page-node-id="UxVlCm1a9MPEp55iFIFNbF">读取中…</div>
+      </div>
+      <div class="facts" data-page-node-id="1oCB5QAcB6BdFVO4MhDRKO">
+        <div class="fact" data-page-node-id="1wzqyD0RlySgC9nsdAkWyz"><div class="k" data-page-node-id="cGR8mqMcrlvKZFIE2t35TH">体感温度 FEELS LIKE</div><div class="v" id="feelsLike" data-page-node-id="b3iU1ooZutNAyGRYavCiXA">--</div></div>
+        <div class="fact" data-page-node-id="Raf9EJvN54xHIVZs1dNomn"><div class="k" data-page-node-id="DZKO2huJC1BE5LHq0gmqyx">相对湿度 HUMIDITY</div><div class="v" id="humidity" data-page-node-id="lXFyfisc7ROC1UJ6DENOTq">--</div></div>
+        <div class="fact" data-page-node-id="VJwzHoRsnhOEYpPZbINeW1"><div class="k" data-page-node-id="j5dr5i36kvrA5QmReCPHFc">风速 WIND</div><div class="v" id="wind" data-page-node-id="oSyNuyTvxFdUGZFoPGAgeu">--</div></div>
+        <div class="fact" data-page-node-id="UUmecvhC193HgVqrAu45hn"><div class="k" data-page-node-id="EkbGHKjzSTpTlzSrUDj52R">今日节气 SOLAR TERM</div><div class="v" id="term" data-page-node-id="I1jFC7fsf3mhXmOGOmHbLn">--</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-page-node-id="ofGKbblGGjq7DTayXGxvKj">
+    <div class="sec-head" data-page-node-id="zOnf71H0hOFXyG5mlBqYEL">
+      <span class="sec-no" data-page-node-id="usmHMXDyjnakW9GRPIHY1u">02</span><span class="sec-title" data-page-node-id="ATo1VikfBAXPeCNXxuVEyB">一天的气温变化</span>
+      <span class="sec-note" data-page-node-id="87WhDjPWh4djQTSe9SAOJu">今天 0 时 → 23 时 · 单位 °C</span>
+    </div>
+    <canvas class="chart" id="dayChart" height="260" data-page-node-id="WNX6vP8JJ9yq3ujUG4a9ri"></canvas>
+    <div class="aside" data-page-node-id="4iWdWqVhBEnyaAsnfqjoib">看一看：一天里<b data-page-node-id="Boc6qj7DYfdSCuUD8Bcqjv">什么时候最热、什么时候最冷</b>？和太阳升起落下的时间有什么关系？</div>
+  </section>
+
+  <section data-page-node-id="jLVnLLxgLQEaai3DDFoaod">
+    <div class="sec-head" data-page-node-id="1tPl9CkflWOhzAhkMU2Bhz">
+      <span class="sec-no" data-page-node-id="z4jkMIFYlDLFBgm6uT2tiy">03</span><span class="sec-title" data-page-node-id="Pj6IPE0Rob47YOsDzG4ITv">未来七天</span>
+      <span class="sec-note" data-page-node-id="DTSF03ES3gdM3frtLYteRa">黑色横条 = 当天最低温到最高温的范围</span>
+    </div>
+    <div class="week" id="weekList" data-page-node-id="CuJEa00mqEc7gpXnAzhKAt"></div>
+    <div class="aside" data-page-node-id="V7dxIfYK7L9OTQtvWyLegE">比一比：换几个城市看看，<b data-page-node-id="PydpW2tOFDeXBrtrsZEAXG">哪个城市七天内温差最大</b>？猜猜是什么原因。</div>
+  </section>
+
+  <section data-page-node-id="yDwp7NhLhJwn6BlKeGLFwD">
+    <div class="sec-head" data-page-node-id="KNqNR8CWlvBv7KQRunVT2D">
+      <span class="sec-no" data-page-node-id="JRCeWfqXLMZix9ckDhhY6D">04</span><span class="sec-title" data-page-node-id="KRiVcjYV7rp6sCQMgxEzx0">我们的观测记录</span>
+      <span class="sec-note" data-page-node-id="4Sdwkfhm4JgJRCZb4msn4L">记录只保存在这台电脑上</span>
+    </div>
+    <div class="observe" data-page-node-id="6Fl9LjQFJMb5IehOJF60P8">
+      <div class="ob-form" data-page-node-id="eKNrWefBzUFzIAMeU3p5xe">
+        <label data-page-node-id="X7hXoaspBli4Az3USTmkR2">我们用温度计测到的气温（°C）</label>
+        <input type="number" id="obTemp" step="0.1" placeholder="例如 26.5" data-page-node-id="ViVZDiN7OgSBffsuPTwyni">
+        <label data-page-node-id="knbUz2ByVTv8Csw69OpUHZ">备注（可选）</label>
+        <input type="text" id="obNote" placeholder="例如：操场树荫下测量" data-page-node-id="HoQ1iVTashjFcpM3jsKTZW">
+        <button class="btn" id="saveOb" data-page-node-id="ibhVh159VmpbdUJ91jtRVq">记下这次观测</button>
+        <div class="aside" data-page-node-id="K8MbCiCpfWxFa4AsDdOd85">把我们<b data-page-node-id="fdtBW3DXPcGcJlZPGwEqs3">亲手测的数据</b>和网站上卫星、大机器算出的数据放在一起比一比——这就是真正的气象观测员做的事。</div>
+      </div>
+      <div data-page-node-id="TblQi22u9OsUm9HCGx0OEM">
+        <table class="log" data-page-node-id="CeJZm2oCjF1lHF8Fi3HFeU">
+          <thead data-page-node-id="oArYfA2MkXwcCjG6hRsVIF"><tr data-page-node-id="ScYGMX05DV7ZT2LYOwUpjS"><th data-page-node-id="vDYa0MEGaFgu4fkMIsBbBb">时间</th><th data-page-node-id="acOAGoETxghcxh5WYyj2gb">我们测的</th><th data-page-node-id="GjxBOyH8wa34qxJTsrjMUH">网站数据</th><th data-page-node-id="DoysjhbfBlCJLzOBNE0bfE">相差</th><th data-page-node-id="o2ppiiXYrPQ7zhwVxWsOhe">备注</th></tr></thead>
+          <tbody id="logBody" data-page-node-id="kqtYSCmPgszkEgQJhxSryG"></tbody>
+        </table>
+        <div class="empty" id="logEmpty" data-page-node-id="yoGe8i2NrjQOhoi7RraEBF">还没有观测记录，来记第一条吧。</div>
+        <button class="btn ghost" id="clearOb" style="display:none" data-page-node-id="OMHfdRw45uuSMDojRt9E79">清空记录</button>
+      </div>
+    </div>
+  </section>
+
+  <footer data-page-node-id="VdkOXHi9oI6BgJCVgqNVDc">
+    <span data-page-node-id="I2Rg4eic8uJIn430CbDiQP">数据来源 · Open-Meteo（开放气象数据）</span>
+    <span data-page-node-id="2HPcD8V6GC2QFY23f27Wga">离线时自动切换为示例数据 · 可断网演示</span>
+  </footer>
+</div>
+
+<script>
+/* ═══════════ 配置 ═══════════ */
+const CITIES = [
+  {name:"北京",  lat:39.90, lon:116.40},
+  {name:"上海",  lat:31.23, lon:121.47},
+  {name:"广州",  lat:23.13, lon:113.26},
+  {name:"哈尔滨",lat:45.80, lon:126.53},
+  {name:"拉萨",  lat:29.65, lon:91.14},
+  {name:"三亚",  lat:18.25, lon:109.51},
+];
+const LS_KEY = "weather_obs_log_v1";
+let curCity = 0, curData = null;
+
+/* ═══════════ 天气代码 → 中文 ═══════════ */
+const WMO = {0:"晴",1:"大部晴朗",2:"多云",3:"阴",45:"雾",48:"雾",
+  51:"毛毛雨",53:"毛毛雨",55:"毛毛雨",56:"冻毛毛雨",57:"冻毛毛雨",
+  61:"小雨",63:"中雨",65:"大雨",66:"冻雨",67:"冻雨",
+  71:"小雪",73:"中雪",75:"大雪",77:"雪粒",
+  80:"阵雨",81:"阵雨",82:"强阵雨",85:"阵雪",86:"阵雪",
+  95:"雷阵雨",96:"雷阵雨伴冰雹",99:"雷阵雨伴冰雹"};
+
+/* ═══════════ 节气（通用公式估算，个别年份可能差一天） ═══════════ */
+const TERMS = [["小寒",6.11],["大寒",20.84],["立春",3.87],["雨水",18.73],
+  ["惊蛰",5.63],["春分",20.65],["清明",4.81],["谷雨",20.1],
+  ["立夏",5.52],["小满",21.04],["芒种",5.68],["夏至",21.37],
+  ["小暑",7.11],["大暑",22.83],["立秋",7.5],["处暑",23.13],
+  ["白露",7.65],["秋分",23.04],["寒露",8.32],["霜降",23.44],
+  ["立冬",7.44],["小雪",22.36],["大雪",7.18],["冬至",21.94]];
+function termDay(year, idx){          // idx 0=小寒(1月) … 23=冬至(12月)
+  const y = year % 100, C = TERMS[idx][1];
+  const month = idx < 2 ? 1 : Math.floor(idx/2) + 1;
+  const leap = Math.floor((y - (month <= 2 ? 1 : 0)) / 4);
+  return {month, day: Math.floor(y * 0.2422 + C) - leap};
+}
+function todayTerm(){
+  const now = new Date(), y = now.getFullYear(), m = now.getMonth()+1, d = now.getDate();
+  for(let i=0;i<24;i++){
+    const t = termDay(y, i);
+    if(t.month === m && Math.abs(t.day - d) <= 1)
+      return TERMS[i][0] + (t.day === d ? "" : "（前后）");
+  }
+  // 找最近的一个
+  let best=null,bd=99;
+  for(let i=0;i<24;i++){
+    const t = termDay(y,i);
+    const diff = Math.abs((t.month-m)*30 + (t.day-d));
+    if(diff<bd){bd=diff;best=TERMS[i][0];}
+  }
+  return best + " 前后";
+}
+
+/* ═══════════ 示例数据（断网兜底：北京某秋日） ═══════════ */
+function sampleData(){
+  const hours=[],temps=[];
+  const base=[9,8.6,8.2,7.9,7.6,7.4,7.5,8.3,9.8,11.6,13.4,15,16.3,17.2,17.8,18,17.4,16.2,14.6,13.1,12,11.1,10.4,9.7];
+  for(let i=0;i<24*7;i++){ hours.push(null); temps.push(base[i%24]); }
+  const dailyT=[],dMax=[],dMin=[];
+  for(let d=0;d<7;d++){ dailyT.push(null); dMax.push(16+d%3); dMin.push(7+d%2); }
+  return { _sample:true,
+    current:{temperature_2m:17.2,apparent_temperature:16.1,relative_humidity_2m:42,
+      weather_code:1,wind_speed_10m:8.6,time:new Date().toISOString()},
+    hourly:{time:hours,temperature_2m:temps},
+    daily:{time:dailyT,temperature_2m_max:dMax,temperature_2m_min:dMin}};
+}
+
+/* ═══════════ 拉取数据 ═══════════ */
+async function loadCity(i){
+  curCity = i;
+  document.querySelectorAll("nav.cities button").forEach((b,k)=>b.classList.toggle("on",k===i));
+  setStatus("正在连接数据…","off");
+  const c = CITIES[i];
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}`
+    + `&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m`
+    + `&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min`
+    + `&timezone=Asia%2FShanghai&forecast_days=7`;
+  try{
+    const ctl = new AbortController();
+    const timer = setTimeout(()=>ctl.abort(), 8000);
+    const res = await fetch(url,{signal:ctl.signal});
+    clearTimeout(timer);
+    if(!res.ok) throw 0;
+    curData = await res.json();
+    setStatus("实时数据 · " + c.name, "live");
+  }catch(e){
+    curData = sampleData();
+    setStatus("无网络 · 显示示例数据", "off");
+  }
+  render();
+}
+
+function setStatus(t, cls){
+  const b = document.getElementById("statusBadge");
+  b.textContent = t;
+  b.className = "badge " + cls;
+}
+
+/* ═══════════ 渲染 ═══════════ */
+function render(){
+  const d = curData, cur = d.current;
+  document.getElementById("curTemp").innerHTML =
+    Math.round(cur.temperature_2m) + "<sup>°C</sup>";
+  document.getElementById("curDesc").textContent =
+    (WMO[cur.weather_code] || "—") + " · " + CITIES[curCity].name;
+  document.getElementById("feelsLike").innerHTML = Math.round(cur.apparent_temperature) + "<small> °C</small>";
+  document.getElementById("humidity").innerHTML = cur.relative_humidity_2m + "<small> %</small>";
+  document.getElementById("wind").innerHTML = cur.wind_speed_10m.toFixed(1) + "<small> km/h</small>";
+  document.getElementById("term").textContent = todayTerm();
+  document.getElementById("updateNote").textContent = d._sample ? "示例数据" : "更新于 " + new Date().toTimeString().slice(0,5);
+  drawDayChart();
+  renderWeek();
+  renderLog();
+}
+
+/* 24 小时温度曲线 */
+function drawDayChart(){
+  const cv = document.getElementById("dayChart");
+  const W = cv.parentElement.clientWidth, H = 260;
+  cv.width = W * 2; cv.height = H * 2;
+  cv.style.height = H + "px";
+  const g = cv.getContext("2d"); g.scale(2,2);
+
+  const temps = curData.hourly.temperature_2m.slice(0,24);
+  const lo = Math.floor(Math.min(...temps)) - 1, hi = Math.ceil(Math.max(...temps)) + 1;
+  const padL = 46, padR = 16, padT = 18, padB = 34;
+  const iw = W - padL - padR, ih = H - padT - padB;
+  const X = i => padL + iw * i / 23;
+  const Y = t => padT + ih * (hi - t) / (hi - lo);
+
+  g.strokeStyle = "#dcdad0"; g.fillStyle = "#6d6b60";
+  g.font = "12px Menlo, monospace"; g.lineWidth = 1;
+  for(let t = lo; t <= hi; t += Math.max(1, Math.round((hi-lo)/5))){
+    g.beginPath(); g.moveTo(padL, Y(t)); g.lineTo(W-padR, Y(t)); g.stroke();
+    g.textAlign = "right"; g.fillText(t + "°", padL - 8, Y(t) + 4);
+  }
+  g.textAlign = "center";
+  for(let h = 0; h <= 23; h += 3) g.fillText(h + "时", X(h), H - 12);
+
+  g.strokeStyle = "#1b1a15"; g.lineWidth = 2; g.beginPath();
+  temps.forEach((t,i)=> i ? g.lineTo(X(i),Y(t)) : g.moveTo(X(i),Y(t)));
+  g.stroke();
+
+  const nowH = new Date().getHours();
+  g.fillStyle = "#a33327";
+  g.beginPath(); g.arc(X(nowH), Y(temps[nowH]), 4.5, 0, 7); g.fill();
+  g.font = "bold 14px Menlo, monospace"; g.textAlign="center";
+  g.fillText("现在 " + Math.round(temps[nowH]) + "°", X(nowH), Y(temps[nowH]) - 12);
+}
+
+/* 7 天预报 */
+function renderWeek(){
+  const box = document.getElementById("weekList");
+  const dd = curData.daily, names = ["周日","周一","周二","周三","周四","周五","周六"];
+  const today = new Date();
+  const lo = Math.min(...dd.temperature_2m_min), hi = Math.max(...dd.temperature_2m_max);
+  box.innerHTML = dd.temperature_2m_max.map((mx,i)=>{
+    const dt = new Date(today); dt.setDate(today.getDate()+i);
+    const label = i===0 ? "今天" : (dt.getMonth()+1)+"月"+dt.getDate()+"日 "+names[dt.getDay()];
+    const l = (dd.temperature_2m_min[i]-lo)/(hi-lo)*100, w = (mx-dd.temperature_2m_min[i])/(hi-lo)*100;
+    return `<div class="wk-row ${i===0?'today':''}">
+      <span class="d">${label}</span>
+      <span class="lo">${Math.round(dd.temperature_2m_min[i])}°</span>
+      <span class="wk-bar"><i style="left:${l}%;width:${Math.max(w,2)}%"></i></span>
+      <span class="hi">${Math.round(mx)}°</span></div>`;
+  }).join("");
+}
+
+/* ═══════════ 观测记录 ═══════════ */
+function getLog(){ try{return JSON.parse(localStorage.getItem(LS_KEY))||[]}catch(e){return[]} }
+function renderLog(){
+  const log = getLog(), tb = document.getElementById("logBody");
+  document.getElementById("logEmpty").style.display = log.length ? "none" : "block";
+  document.getElementById("clearOb").style.display = log.length ? "inline-block" : "none";
+  tb.innerHTML = log.slice(-8).reverse().map(r=>{
+    const diff = (r.mine - r.site).toFixed(1);
+    const cls = Math.abs(diff) >= 2 ? "diff-warm" : "";
+    return `<tr><td>${r.time}</td><td>${r.mine.toFixed(1)}°</td>
+      <td>${r.site.toFixed(1)}°</td><td class="${cls}">${diff>0?"+":""}${diff}°</td>
+      <td>${r.note||"—"}</td></tr>`;
+  }).join("");
+}
+document.getElementById("saveOb").onclick = ()=>{
+  const v = parseFloat(document.getElementById("obTemp").value);
+  if(isNaN(v) || v < -50 || v > 60){ alert("请填入合理的气温数字（-50 到 60 之间）"); return; }
+  const log = getLog();
+  const now = new Date();
+  log.push({ time: (now.getMonth()+1)+"/"+now.getDate()+" "+String(now.getHours()).padStart(2,"0")+":"+String(now.getMinutes()).padStart(2,"0"),
+    mine: v, site: curData.current.temperature_2m,
+    note: document.getElementById("obNote").value.trim().slice(0,20) });
+  localStorage.setItem(LS_KEY, JSON.stringify(log));
+  document.getElementById("obTemp").value = "";
+  document.getElementById("obNote").value = "";
+  renderLog();
+};
+document.getElementById("clearOb").onclick = ()=>{
+  if(confirm("确定清空所有观测记录吗？")){ localStorage.removeItem(LS_KEY); renderLog(); }
+};
+
+/* ═══════════ 启动 ═══════════ */
+(function init(){
+  const nav = document.getElementById("cityNav");
+  CITIES.forEach((c,i)=>{
+    const b = document.createElement("button");
+    b.textContent = c.name;
+    b.onclick = ()=>loadCity(i);
+    nav.appendChild(b);
+  });
+  const now = new Date();
+  document.getElementById("dateLine").textContent =
+    `${now.getFullYear()} 年 ${now.getMonth()+1} 月 ${now.getDate()} 日 · ` +
+    ["周日","周一","周二","周三","周四","周五","周六"][now.getDay()];
+  loadCity(0);
+  window.addEventListener("resize", ()=>curData && drawDayChart());
+})();
+</script>
+</body>
+</html>

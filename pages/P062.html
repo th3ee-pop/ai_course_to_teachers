@@ -1,0 +1,147 @@
+<!-- PLAN template=T05 executor=pi pace=快过 layout_ref=L03
+     reveal=['说明问题', '选择方法', '执行计算', '核查结果']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       SVG_CODEX_P062_CHAIN → 已改为页内内联 SVG，原 assets/svg/p062_chain.svg 已删除  -->
+<section class="slide" data-id="P062" data-title="教师说明分析问题，AI协助选择方法并编写程序" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="主线" data-template="T05" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>07</b><span class="on">教学评价：让证据开启后续教学</span></div>
+    <span class="pid">P062</span>
+  </div>
+  <h2 class="title">教师说明分析问题，AI协助选择方法并编写程序</h2>
+  <p class="sub reveal-none">计算过程可重做，教学判断有依据。</p>
+  <!-- BODY:START -->
+<style>
+.slide[data-id="P062"] .p62cols { align-items: center; flex: 1 1 auto; gap: 36px; min-height: 0; }
+.slide[data-id="P062"] .p62txt { flex: 1 1 0; gap: 24px; }
+.slide[data-id="P062"] .p62fig {
+  flex: 0 0 1020px; position: relative; align-self: center;
+  background: #fff; border: 1px solid var(--divider);
+}
+.slide[data-id="P062"] .p62fig > svg { display: block; width: 1020px; height: 660px; }
+.slide[data-id="P062"] .p62fig .tag { position: absolute; right: 16px; bottom: 12px; background: #fff; }
+.slide[data-id="P062"] svg text { font-family: var(--font-sans); }
+.slide[data-id="P062"] svg .ln { font-size: 30px; letter-spacing: .06em; }
+.slide[data-id="P062"] svg .st { font-size: 28px; fill: #1d1f20; }
+.slide[data-id="P062"] svg .sd { font-size: 24px; fill: #5d5d60; }
+</style>
+<div class="body">
+  <div class="cols p62cols">
+    <div class="stack p62txt">
+      <div class="reveal" data-step="1"><div class="label">说明问题</div><p class="text">先确定要比较整体分布、题型表现，还是某道题的选项差异。</p></div>
+      <div class="reveal" data-step="2"><div class="label">选择方法</div><p class="text">请AI根据字段含义、数据类型、缺失情况和问题选择适合的方法，并说明理由。</p></div>
+      <div class="reveal" data-step="3"><div class="label">执行计算</div><p class="text">让AI编写Python或R程序，完成整理、计算和图表输出。</p></div>
+      <div class="reveal" data-step="4"><div class="label">核查结果</div><p class="text">核对样本范围、题号、分值、单位与计算结果，再决定教学调整。</p></div>
+    </div>
+    <div class="vline" style="flex:0 0 1px;align-self:stretch"></div>
+    <div class="p62fig">
+      <svg viewBox="0 0 1020 660" role="img" aria-label="教师、AI与程序的四步链条泳道示意图">
+        <defs>
+          <marker id="p62ar" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" refX="14" refY="9" orient="auto">
+            <path d="M1.5,2 L15,9 L1.5,16 Z" fill="#416180"></path>
+          </marker>
+          <filter id="p62sh" x="-15%" y="-25%" width="130%" height="160%">
+            <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#416180" flood-opacity=".18"></feDropShadow>
+          </filter>
+          <!-- 图标 -->
+          <g id="p62ic1">
+            <path d="M10,4 H34 a8,8 0 0 1 8,8 V25 a8,8 0 0 1 -8,8 H23 L13,42 V33 H10 a8,8 0 0 1 -8,-8 V12 a8,8 0 0 1 8,-8 Z"
+                  fill="#dfe9f3" stroke="#416180" stroke-width="2.6" stroke-linejoin="round"></path>
+            <g fill="#416180"><rect x="10" y="13" width="24" height="3.8" rx="1.9"></rect><rect x="10" y="21" width="15" height="3.8" rx="1.9"></rect></g>
+          </g>
+          <g id="p62ic2">
+            <g fill="none" stroke="#94bce3" stroke-width="3.2" stroke-linecap="round">
+              <path d="M6,22 H17"></path>
+              <path d="M17,22 C25,22 25,9 32,9"></path>
+              <path d="M17,22 C25,22 25,35 32,35"></path>
+            </g>
+            <path d="M17,22 H32" fill="none" stroke="#416180" stroke-width="3.6" stroke-linecap="round"></path>
+            <g fill="#94bce3"><path d="M31,4.5 L40,9 L31,13.5 Z"></path><path d="M31,30.5 L40,35 L31,39.5 Z"></path></g>
+            <path d="M31,17 L41,22 L31,27 Z" fill="#416180"></path>
+            <circle cx="17" cy="22" r="4.6" fill="#416180"></circle>
+          </g>
+          <g id="p62ic3">
+            <rect x="2" y="6" width="40" height="32" rx="6" fill="#fff" stroke="#416180" stroke-width="2.6"></rect>
+            <path d="M2,12 a6,6 0 0 1 6,-6 H36 a6,6 0 0 1 6,6 V16.5 H2 Z" fill="#94bce3"></path>
+            <g fill="#2f4a63"><circle cx="9" cy="11.2" r="1.9"></circle><circle cx="15.5" cy="11.2" r="1.9"></circle><circle cx="22" cy="11.2" r="1.9"></circle></g>
+            <g fill="#5980a6"><rect x="8" y="22" width="14" height="3.6" rx="1.8"></rect><rect x="25" y="22" width="10" height="3.6" rx="1.8"></rect><rect x="8" y="29.6" width="9" height="3.6" rx="1.8"></rect><rect x="20" y="29.6" width="15" height="3.6" rx="1.8"></rect></g>
+          </g>
+          <g id="p62ic4">
+            <rect x="5" y="7" width="34" height="35" rx="5" fill="#fff" stroke="#416180" stroke-width="2.6"></rect>
+            <rect x="15" y="2.5" width="14" height="9" rx="3.5" fill="#94bce3" stroke="#416180" stroke-width="2.2"></rect>
+            <g fill="none" stroke="#5980a6" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11,21.5 l3.2,3.2 l5.4,-6.4"></path>
+              <path d="M11,33.5 l3.2,3.2 l5.4,-6.4"></path>
+            </g>
+            <g fill="#c2d2e1"><rect x="23" y="20.5" width="12" height="3.6" rx="1.8"></rect><rect x="23" y="32.5" width="12" height="3.6" rx="1.8"></rect></g>
+          </g>
+        </defs>
+
+        <!-- 三条泳道 -->
+        <g>
+          <rect x="146" y="40" width="864" height="176" rx="10" fill="#e9eef4"></rect>
+          <path d="M146,50 a10,10 0 0 1 10,-10 H158 V216 H156 a10,10 0 0 1 -10,-10 Z" fill="#416180"></path>
+          <text class="ln" x="126" y="139" text-anchor="end" fill="#416180">教师</text>
+
+          <rect x="146" y="240" width="864" height="176" rx="10" fill="#dce8f4"></rect>
+          <path d="M146,250 a10,10 0 0 1 10,-10 H158 V416 H156 a10,10 0 0 1 -10,-10 Z" fill="#5980a6"></path>
+          <text class="ln" x="126" y="339" text-anchor="end" fill="#5980a6">AI</text>
+
+          <rect x="146" y="440" width="864" height="176" rx="10" fill="#edf0f3"></rect>
+          <path d="M146,450 a10,10 0 0 1 10,-10 H158 V616 H156 a10,10 0 0 1 -10,-10 Z" fill="#749dc4"></path>
+          <text class="ln" x="126" y="539" text-anchor="end" fill="#5d7f9f">程序</text>
+        </g>
+
+        <!-- 步骤一：说明问题（教师） -->
+        <g class="reveal" data-step="1">
+          <g filter="url(#p62sh)"><rect x="160" y="54" width="200" height="148" rx="12" fill="#fff" stroke="#416180" stroke-width="2.5"></rect></g>
+          <g transform="translate(238,84)"><use href="#p62ic1"></use></g>
+          <text class="st" x="260" y="176" text-anchor="middle">说明问题</text>
+        </g>
+
+        <!-- 步骤二：选择方法（AI） -->
+        <g class="reveal" data-step="2">
+          <path d="M260,202 V218 a10,10 0 0 0 10,10 H450 a10,10 0 0 1 10,10 V246"
+                fill="none" stroke="#416180" stroke-width="3.2" marker-end="url(#p62ar)"></path>
+          <g filter="url(#p62sh)"><rect x="370" y="254" width="200" height="148" rx="12" fill="#fff" stroke="#5980a6" stroke-width="2.5"></rect></g>
+          <g transform="translate(388,272)"><use href="#p62ic2"></use></g>
+          <text class="st" x="444" y="306">选择方法</text>
+          <line x1="390" y1="328" x2="550" y2="328" stroke="#dce4ec" stroke-width="2"></line>
+          <text class="sd" x="390" y="366">说明理由</text>
+        </g>
+
+        <!-- 步骤三：执行计算（程序） -->
+        <g class="reveal" data-step="3">
+          <path d="M470,402 V418 a10,10 0 0 0 10,10 H670 a10,10 0 0 1 10,10 V446"
+                fill="none" stroke="#416180" stroke-width="3.2" marker-end="url(#p62ar)"></path>
+          <g filter="url(#p62sh)"><rect x="580" y="454" width="200" height="148" rx="12" fill="#fff" stroke="#749dc4" stroke-width="2.5"></rect></g>
+          <g transform="translate(598,472)"><use href="#p62ic3"></use></g>
+          <text class="st" x="654" y="506">执行计算</text>
+          <line x1="600" y1="528" x2="760" y2="528" stroke="#dce4ec" stroke-width="2"></line>
+          <text class="sd" x="600" y="560">整理、计算、</text>
+          <text class="sd" x="600" y="590">图表</text>
+        </g>
+
+        <!-- 步骤四：核查结果（教师） -->
+        <g class="reveal" data-step="4">
+          <path d="M780,528 H885 a10,10 0 0 0 10,-10 V214"
+                fill="none" stroke="#416180" stroke-width="3.2" marker-end="url(#p62ar)"></path>
+          <g filter="url(#p62sh)"><rect x="790" y="54" width="200" height="148" rx="12" fill="#fff" stroke="#416180" stroke-width="2.5"></rect></g>
+          <g transform="translate(808,72)"><use href="#p62ic4"></use></g>
+          <text class="st" x="864" y="106">核查结果</text>
+          <line x1="810" y1="128" x2="970" y2="128" stroke="#dce4ec" stroke-width="2"></line>
+          <text class="sd" x="810" y="160">样本、题号、</text>
+          <text class="sd" x="810" y="190">分值、单位</text>
+        </g>
+      </svg>
+      <span class="tag">示意图</span>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+  <aside class="notes">【快过】讲述时依次说明：先确定要比较整体分布、题型表现，还是某道题的选项差异。 请AI根据字段含义、数据类型、缺失情况和问题选择适合的方法，并说明理由。 让AI编写Python或R程序，完成整理、计算和图表输出。 核对样本范围、题号、分值、单位与计算结果，再决定教学调整。
+    作用：呈现从教学问题到分析结果的四步链条，明确哪一步由程序做、哪一步由人做。
+    资源：<a href="../19_逐页内容脚本/资源预览/D08.html">D08 喀什：初三／高三分析报告</a> <a href="assets/docs/D08/初三英语模拟考数据分析报告.html">素材入口</a> <a href="assets/docs/D08/高三英语模拟考数据分析报告.html">高三报告</a> <a href="assets/docs/D08/试卷题目与数据列映射关系表.md">原题映射</a> <a href="assets/docs/D08/初三第24题复算.json">第24题聚合复算记录</a> <a href="assets/docs/D08/英语试卷.md">原试卷文本</a></aside>
+</section>

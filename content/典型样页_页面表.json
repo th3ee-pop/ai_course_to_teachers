@@ -1,0 +1,24 @@
+{
+  "version": "0.1",
+  "date": "2026-09-14",
+  "source": "Claude Design《中小学教师AI培训_典型样页.dc.html》＋ 19_逐页内容脚本 v0.2",
+  "note": "原ID→课件页 对应表。课件页码为 index.html 中的顺序；stage 为页首定位行的高亮环节（依设计稿），module 取自逐页内容脚本。",
+  "pages": [
+    {"page": 1,  "id": "P001", "title": "为什么要学习AI？", "module": "01 为什么要学习AI？", "stage": "", "type": "dark", "assets": []},
+    {"page": 2,  "id": "P002", "title": "政策正在推动人工智能进入教育教学。", "module": "01 为什么要学习AI？", "stage": "", "type": "light", "assets": []},
+    {"page": 3,  "id": "P005", "title": "现在，可以先用自己的话提出想法", "module": "01 为什么要学习AI？", "stage": "", "type": "light", "assets": []},
+    {"page": 4,  "id": "P008", "title": "先比较冬夏，再切换观察视角。", "module": "02 四季循环：从念头到交互", "stage": "课堂实施", "type": "light", "assets": ["assets/siji_v2_xiazhi_dongzhi.png"], "resources": ["S01 四季循环v2"]},
+    {"page": 5,  "id": "P013", "title": "自然语言，接到代码与工具", "module": "03 最简原理：从语言到行动", "stage": "", "type": "light", "assets": []},
+    {"page": 6,  "id": "P022", "title": "每次用AI前，问自己三个问题", "module": "04 4＋3＋3：给教师一张行动地图", "stage": "", "type": "light", "assets": []},
+    {"page": 7,  "id": "P046", "title": "四句诗，怎样转化为四个镜头？", "module": "06 课堂实施", "stage": "课堂实施", "type": "light", "assets": ["assets/wanglushan_keyframes.jpg"], "resources": ["V01 望庐山瀑布：15秒四镜意境版"]},
+    {"page": 8,  "id": "P047", "title": "望庐山瀑布：15秒四镜意境", "module": "06 课堂实施", "stage": "课堂实施", "type": "light", "assets": ["assets/wanglushan_15s.mp4", "assets/pov_01_wanglushan.png"], "resources": ["V01"]},
+    {"page": 9,  "id": "P059", "title": "16,434条成绩记录，可以缩到一个具体问题", "module": "07 教学评价", "stage": "教学评价", "type": "light", "assets": [], "resources": ["D08 喀什分析报告（聚合复算）"]},
+    {"page": 10, "id": "P063", "title": "从原题到变式，保留语境选词的要求", "module": "07 教学评价", "stage": "教学评价", "type": "light", "assets": []},
+    {"page": 11, "id": "P071", "title": "学生说出了现象，还缺少什么解释？", "module": "08 教师专业发展", "stage": "教学评价（依设计稿；脚本归模块08）", "type": "light", "assets": [], "resources": ["D11 沉与浮模拟课堂实录"]},
+    {"page": 12, "id": "P072", "title": "虚拟教研员可以帮助教师比较追问的方向", "module": "08 教师专业发展", "stage": "教师专业发展", "type": "light", "assets": []},
+    {"page": 13, "id": "P084", "title": "学生需要在真实材料和操作中形成经验", "module": "10 回到真实学习", "stage": "课堂实施（依设计稿）", "type": "light", "assets": [], "placeholders": ["实拍照片×3：材料质感、规范实验中的变化、装置漏水或测量波动"]},
+    {"page": 14, "id": "P088", "title": "保留原图，再核对小数点、单位和空白格", "module": "10 回到真实学习", "stage": "教学评价（依设计稿）", "type": "light", "assets": []},
+    {"page": 15, "id": "P092", "title": "学生完成学习，教师对教学判断负责", "module": "10 回到真实学习", "stage": "教师专业发展（依设计稿）", "type": "light", "assets": []},
+    {"page": 16, "id": "P095", "title": "4＋3＋3：让一次教学进入下一次教学", "module": "11 收束：下周的一件小事", "stage": "", "type": "dark", "assets": []}
+  ]
+}

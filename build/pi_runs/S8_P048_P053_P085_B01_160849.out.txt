@@ -1,0 +1,95 @@
+=== P048 ===
+<!-- BODY:START -->
+  <div class="body cols" style="gap:56px;align-items:center">
+    <div class="fig" style="flex:0 1 620px;max-height:520px">
+      <div class="pic"><img src="assets/wanglushan_keyframes.jpg" alt=""></div>
+      <figcaption class="caption">第一镜 0–4 秒关键帧</figcaption>
+    </div>
+    <div class="vline" style="flex:0 0 1px"></div>
+    <div class="stack" style="flex:1 1 0;gap:30px">
+      <div class="reveal">
+        <div class="label">诗句提供的依据</div>
+        <p class="text" style="font-size:38px">日光、香炉峰与紫烟构成这一句的主要景象。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">视频作出的选择</div>
+        <p class="text" style="font-size:38px"><span class="diff">第一人称仰视、逆光和淡紫水汽</span>，是分镜对诗句的具体呈现。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">学生需要作出的判断</div>
+        <p class="text" style="font-size:38px">请指出一个帮助理解的细节和一个可以另作处理的细节，并回到诗句说明理由。</p>
+      </div>
+    </div>
+  </div>
+<!-- BODY:END -->
+
+=== P053 ===
+<!-- BODY:START -->
+  <div class="body stack" style="justify-content:center;gap:26px">
+    <div class="reveal" style="display:flex;align-items:baseline;gap:36px">
+      <div class="label" style="flex:0 0 260px">学生第一次表达</div>
+      <p class="text" style="flex:1 1 0;font-size:38px">“我们的共读角<span class="diff">可以借书</span>。”</p>
+    </div>
+    <div class="reveal" style="display:flex;align-items:baseline;gap:36px">
+      <div class="label" style="flex:0 0 260px">来访者追问</div>
+      <p class="text" style="flex:1 1 0;font-size:38px">“第一次来的人要到哪里登记？”</p>
+    </div>
+    <div class="reveal" style="display:flex;align-items:baseline;gap:36px">
+      <div class="label" style="flex:0 0 260px">学生补充事实</div>
+      <p class="text" style="flex:1 1 0;font-size:38px">“请先在班级借阅表上登记，再到书架取书。”</p>
+    </div>
+    <div class="reveal" style="display:flex;align-items:baseline;gap:36px">
+      <div class="label" style="flex:0 0 260px">修订后表达</div>
+      <p class="text" style="flex:1 1 0;font-size:38px">“共读角在教室后排，书架侧面有班级借阅表。<span class="fix">第一次借书请先登记姓名和书名，再到书架取书。</span>”</p>
+    </div>
+  </div>
+<!-- BODY:END -->
+
+=== P085 ===
+<!-- BODY:START -->
+  <div class="body" style="display:flex;flex-direction:column;justify-content:center;gap:40px">
+    <div class="cols" style="gap:64px;align-items:flex-start">
+      <div class="reveal" style="flex:1 1 0">
+        <div class="label">模拟</div>
+        <p class="text muted" style="font-size:36px">可以反复改变日期、纬度、倾角，观察理想模型里的光路与季节变化。</p>
+      </div>
+      <div class="vline" style="flex:0 0 1px"></div>
+      <div class="reveal" style="flex:1 1 0">
+        <div class="label">实做</div>
+        <p class="text" style="font-size:40px">材料有差异，测量有波动，装置要调试，结果需要重复确认。</p>
+        <div class="slot" style="height:300px"><img src="assets/img/siji_v2_xiazhi_dongzhi.png" alt=""></div>
+      </div>
+    </div>
+    <div class="takeaway" style="display:flex;gap:64px">
+      <div class="reveal" style="flex:1 1 0">
+        <div class="label">相同条件</div>
+        <p style="font-size:28px;line-height:1.6">都围绕同一问题，都要求学生说明依据。</p>
+      </div>
+      <div class="reveal" style="flex:1 1 0">
+        <div class="label">互相支持</div>
+        <p style="font-size:28px;line-height:1.6">模拟帮助比较，实做提供真实经验，两者在课堂里交替使用。</p>
+      </div>
+    </div>
+  </div>
+<!-- BODY:END -->
+
+=== B01 ===
+<!-- BODY:START -->
+  <div class="body" style="display:flex;flex-direction:column;justify-content:center;gap:48px">
+    <div class="cols" style="gap:64px;align-items:flex-start">
+      <div class="reveal" style="flex:1 1 0">
+        <div class="label">保持学习目标</div>
+        <p class="text muted" style="font-size:36px">学生仍需依据连续记录描述植物变化；不把植物的真实生长过程压缩成演示结果。</p>
+      </div>
+      <div class="vline" style="flex:0 0 1px"></div>
+      <div class="reveal" style="flex:1 1 0">
+        <div class="label">调整课堂活动</div>
+        <p class="text" style="font-size:40px">集中讨论一组有代表性的连续记录，其他记录保留在小组交流中。</p>
+      </div>
+    </div>
+    <div class="takeaway reveal">
+      <div class="label">同步修改材料</div>
+      <p style="font-size:32px;line-height:1.6">教师流程、学生任务单与评价要求都改为：每组用两条以上记录说明一个变化。</p>
+    </div>
+  </div>
+<!-- BODY:END -->

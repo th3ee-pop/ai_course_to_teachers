@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月相变化模拟 · 小学科学</title>
+<style>
+  :root{
+    --bg:#0f1830; --panel:#16223f; --panel2:#1d2c4f;
+    --text:#eef2ff; --muted:#9fb0d8;
+    --sun:#ffd45e; --earth:#4a90e2; --lit:#f6f3e0; --dark:#2a2a33;
+    --accent:#ffd45e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Heiti SC",sans-serif;
+    -webkit-font-smoothing:antialiased; padding:18px;
+  }
+  .wrap{max-width:1000px; margin:0 auto;}
+  h1{font-size:26px; text-align:center; margin:6px 0 2px;}
+  .sub{text-align:center; color:var(--muted); font-size:15px; margin-bottom:14px;}
+  .panels{display:flex; flex-wrap:wrap; gap:16px; justify-content:center;}
+  .card{background:var(--panel); border-radius:16px; padding:14px 16px; flex:1 1 360px; min-width:300px;}
+  .card h2{font-size:17px; margin:0 0 8px; color:var(--accent);}
+  canvas{display:block; width:100%; height:auto; border-radius:10px; background:#0c1426;}
+  .phaseWrap{text-align:center;}
+  .phaseName{font-size:34px; font-weight:700; margin:10px 0 2px;}
+  .phaseTip{font-size:16px; color:var(--muted); min-height:22px;}
+  .controls{background:var(--panel); border-radius:16px; padding:18px 16px; margin-top:16px;}
+  .dayRow{display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center;}
+  .dayLabel{font-size:22px; font-weight:700; min-width:120px; text-align:center;}
+  input[type=range]{flex:1 1 320px; height:34px; accent-color:var(--accent); cursor:pointer;}
+  .btn{
+    background:var(--panel2); color:var(--text); border:2px solid #2c3c66;
+    border-radius:12px; font-size:18px; padding:10px 16px; cursor:pointer;
+    min-height:48px; font-family:inherit;
+  }
+  .btn:hover{border-color:var(--accent);}
+  .btn:active{transform:translateY(1px);}
+  .btn.primary{background:var(--accent); color:#222; border-color:var(--accent); font-weight:700;}
+  .quick{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:16px;}
+  .quick .btn{font-size:15px; padding:8px 12px; min-height:42px;}
+  .explain{
+    background:var(--panel); border-radius:16px; padding:16px 18px; margin-top:16px;
+    font-size:16px; line-height:1.7; color:#dfe6ff;
+  }
+  .explain b{color:var(--accent);}
+  .foot{text-align:center; color:var(--muted); font-size:13px; margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🌙 月相变化模拟</h1>
+  <div class="sub">拖动滑块，看看月球转到不同位置时，我们从地球看到什么样的月亮</div>
+
+  <div class="panels">
+    <div class="card">
+      <h2>俯视图：从上方看 太阳 · 地球 · 月球</h2>
+      <canvas id="topView" width="560" height="440"></canvas>
+    </div>
+    <div class="card phaseWrap">
+      <h2>从地球看到的月相</h2>
+      <canvas id="phaseView" width="320" height="320"></canvas>
+      <div class="phaseName" id="phaseName">新月</div>
+      <div class="phaseTip" id="phaseTip">月亮躲起来了，几乎看不见</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="dayRow">
+      <button class="btn" id="prevBtn">◀ 前一天</button>
+      <div class="dayLabel" id="dayLabel">初一</div>
+      <input type="range" id="daySlider" min="1" max="30" value="1" step="1">
+      <button class="btn" id="nextBtn">后一天 ▶</button>
+      <button class="btn primary" id="playBtn">▶ 自动演示</button>
+    </div>
+    <div class="quick" id="quickBtns"></div>
+  </div>
+
+  <div class="explain">
+    <b>小知识：</b>月球自己不会发光。我们看到的月光，是月球被太阳照亮的那一半。
+    月球天天绕着地球转，我们从地球上看过去，能看见的亮面有时多、有时少，这就形成了不同的<b>月相</b>。
+    <br><span style="color:var(--muted);font-size:14px;">（注意：月相不是地球影子遮住了月亮，而是我们能看见的"被太阳照亮的那一半"有多少不同。）</span>
+  </div>
+
+  <div class="foot">适用于小学四年级科学课 · 教师投屏演示 / 学生机房操作</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // 农历日 -> 角度（弧度）。初一=新月(0)，十五=满月(π)，月底回到新月(2π)
+  function dayToTheta(d){
+    if(d <= 15) return (d-1)/14 * Math.PI;        // 1->0, 15->π(满月)
+    if(d <= 29) return Math.PI + (d-15)/14 * Math.PI; // 15->π, 29->2π
+    return 2*Math.PI;                              // 三十 -> 新月
+  }
+
+  const cnDay = ['初一','初二','初三','初四','初五','初六','初七','初八','初九','初十',
+    '十一','十二','十三','十四','十五','十六','十七','十八','十九','二十',
+    '廿一','廿二','廿三','廿四','廿五','廿六','廿七','廿八','廿九','三十'];
+  function dayToChinese(d){ return cnDay[d-1]; }
+
+  function phaseInfo(d){
+    if(d===1 || d>=29) return {name:'新月', tip:'月亮躲起来了，几乎看不见'};
+    if(d<=6)  return {name:'蛾眉月', tip:'细细的弯月，亮面在右边'};
+    if(d<=8)  return {name:'上弦月', tip:'右半边亮'};
+    if(d<=14) return {name:'盈凸月', tip:'大部分亮，亮面在右边'};
+    if(d<=16) return {name:'满月', tip:'圆圆的，整夜都看得见'};
+    if(d<=21) return {name:'亏凸月', tip:'大部分亮，亮面在左边'};
+    if(d<=23) return {name:'下弦月', tip:'左半边亮'};
+    return {name:'残月', tip:'细细的弯月，亮面在左边'};
+  }
+
+  // 高分屏清晰化
+  function setup(canvas, w, h){
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+    canvas.style.height = (canvas.clientWidth * h / w) + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    return ctx;
+  }
+
+  const topCanvas = document.getElementById('topView');
+  const phaseCanvas = document.getElementById('phaseView');
+  const TW=560, TH=440, PW=320, PH=320;
+  let topCtx, phaseCtx;
+  function initCtx(){
+    topCtx = setup(topCanvas, TW, TH);
+    phaseCtx = setup(phaseCanvas, PW, PH);
+  }
+
+  function arrow(ctx,x1,y1,x2,y2,color,w){
+    ctx.strokeStyle=color; ctx.fillStyle=color; ctx.lineWidth=w||2;
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+    const a=Math.atan2(y2-y1,x2-x1), s=6;
+    ctx.beginPath();
+    ctx.moveTo(x2,y2);
+    ctx.lineTo(x2-s*Math.cos(a-0.4), y2-s*Math.sin(a-0.4));
+    ctx.lineTo(x2-s*Math.cos(a+0.4), y2-s*Math.sin(a+0.4));
+    ctx.closePath(); ctx.fill();
+  }
+
+  function drawTop(theta){
+    const ctx=topCtx; ctx.clearRect(0,0,TW,TH);
+    const cx=265, cy=225, OR=150, sunX=520, sunY=cy;
+    // 太阳光（平行光线，从右向左）
+    for(let i=0;i<6;i++){
+      const y=cy-120+i*48;
+      arrow(ctx, 505, y, 35, y, 'rgba(255,212,94,0.55)', 3);
+    }
+    // 太阳
+    ctx.beginPath(); ctx.arc(sunX,sunY,30,0,2*Math.PI);
+    ctx.fillStyle='#ffd45e'; ctx.fill();
+    ctx.fillStyle='#7a5b00'; ctx.font='bold 16px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('太阳', sunX, sunY+50);
+    // 太阳光方向大箭头 + 文字
+    arrow(ctx, 500, 40, 440, 40, '#ffd45e', 4);
+    ctx.fillStyle='#ffd45e'; ctx.font='bold 15px sans-serif';
+    ctx.fillText('太阳光方向', 470, 30);
+
+    // 轨道
+    ctx.beginPath(); ctx.arc(cx,cy,OR,0,2*Math.PI);
+    ctx.setLineDash([6,6]); ctx.strokeStyle='#3a4d7a'; ctx.lineWidth=2; ctx.stroke();
+    ctx.setLineDash([]);
+
+    // 地球
+    ctx.beginPath(); ctx.arc(cx,cy,26,0,2*Math.PI);
+    ctx.fillStyle='#4a90e2'; ctx.fill();
+    ctx.strokeStyle='#9ec5ff'; ctx.lineWidth=2; ctx.stroke();
+    ctx.fillStyle='#cfe6ff'; ctx.font='bold 14px sans-serif';
+    ctx.fillText('地球', cx, cy+44);
+
+    // 月球位置（俯视，太阳在右，新月时月球在地球右侧）
+    const mx=cx+OR*Math.cos(theta), my=cy-OR*Math.sin(theta);
+    // 视线（地球到月球）
+    ctx.setLineDash([4,4]); ctx.strokeStyle='rgba(255,255,255,0.35)'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(mx,my); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // 月球：朝向太阳（右侧）的半边被照亮
+    const mr=18;
+    ctx.beginPath(); ctx.arc(mx,my,mr,0,2*Math.PI); ctx.fillStyle='#2a2a33'; ctx.fill();
+    ctx.beginPath(); ctx.arc(mx,my,mr,-Math.PI/2,Math.PI/2,false); ctx.closePath();
+    ctx.fillStyle='#f6f3e0'; ctx.fill();
+    ctx.strokeStyle='#888'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(mx,my,mr,0,2*Math.PI); ctx.stroke();
+    ctx.fillStyle='#cfe6ff'; ctx.font='bold 14px sans-serif';
+    ctx.fillText('月球', mx, my-mr-8);
+
+    ctx.fillStyle='#9fb0d8'; ctx.font='13px sans-serif'; ctx.textAlign='left';
+    ctx.fillText('箭头表示太阳光的方向', 16, TH-14);
+  }
+
+  function drawPhase(theta){
+    const ctx=phaseCtx; ctx.clearRect(0,0,PW,PH);
+    const cx=PW/2, cy=PH/2, R=120;
+    // 暗圆盘
+    ctx.beginPath(); ctx.arc(cx,cy,R,0,2*Math.PI);
+    ctx.fillStyle='#2a2a33'; ctx.fill();
+    ctx.lineWidth=2; ctx.strokeStyle='#555'; ctx.stroke();
+
+    const waxing = theta <= Math.PI;
+    const x_t = R*Math.cos(theta);
+    const lit='#f6f3e0', dark='#2a2a33';
+
+    // 亮的一半（上弦前为右半，下弦后为左半）
+    ctx.fillStyle=lit;
+    ctx.beginPath();
+    if(waxing) ctx.arc(cx,cy,R,-Math.PI/2,Math.PI/2,false);
+    else ctx.arc(cx,cy,R,Math.PI/2,3*Math.PI/2,false);
+    ctx.closePath(); ctx.fill();
+
+    // 用半圆椭圆修正：蛾眉/残月要"挖掉"一块，盈凸/亏凸要"补上"一块
+    const rx=Math.abs(x_t);
+    if(rx>0.001){
+      ctx.beginPath();
+      if(waxing){
+        if(x_t>0){ ctx.fillStyle=dark; ctx.ellipse(cx,cy,rx,R,0,-Math.PI/2,Math.PI/2,false); }
+        else      { ctx.fillStyle=lit;  ctx.ellipse(cx,cy,rx,R,0, Math.PI/2,3*Math.PI/2,false); }
+      }else{
+        if(x_t>0){ ctx.fillStyle=dark; ctx.ellipse(cx,cy,rx,R,0, Math.PI/2,3*Math.PI/2,false); }
+        else      { ctx.fillStyle=lit;  ctx.ellipse(cx,cy,rx,R,0,-Math.PI/2,Math.PI/2,false); }
+      }
+      ctx.closePath(); ctx.fill();
+    }
+  }
+
+  // 状态与刷新
+  let day=1, playing=false, timer=null;
+  const slider=document.getElementById('daySlider');
+  const dayLabel=document.getElementById('dayLabel');
+  const phaseName=document.getElementById('phaseName');
+  const phaseTip=document.getElementById('phaseTip');
+
+  function render(){
+    const theta=dayToTheta(day);
+    drawTop(theta);
+    drawPhase(theta);
+    dayLabel.textContent=dayToChinese(day);
+    slider.value=day;
+    const info=phaseInfo(day);
+    phaseName.textContent=info.name;
+    phaseTip.textContent=info.tip;
+  }
+  function setDay(d){
+    if(d<1) d=30; if(d>30) d=1;
+    day=d; render();
+  }
+
+  slider.addEventListener('input', e=> setDay(parseInt(e.target.value,10)));
+  document.getElementById('prevBtn').onclick=()=>setDay(day-1);
+  document.getElementById('nextBtn').onclick=()=>setDay(day+1);
+  const playBtn=document.getElementById('playBtn');
+  playBtn.onclick=()=>{
+    playing=!playing;
+    if(playing){
+      playBtn.textContent='⏸ 暂停';
+      timer=setInterval(()=>setDay(day+1), 850);
+    }else{
+      playBtn.textContent='▶ 自动演示';
+      clearInterval(timer);
+    }
+  };
+  document.addEventListener('keydown', e=>{
+    if(e.key==='ArrowLeft') setDay(day-1);
+    if(e.key==='ArrowRight') setDay(day+1);
+  });
+
+  // 八个关键月相快捷按钮
+  const quick=[
+    {n:'新月',d:1},{n:'蛾眉月',d:4},{n:'上弦月',d:8},{n:'盈凸月',d:11},
+    {n:'满月',d:15},{n:'亏凸月',d:18},{n:'下弦月',d:22},{n:'残月',d:26}
+  ];
+  const qb=document.getElementById('quickBtns');
+  quick.forEach(q=>{
+    const b=document.createElement('button');
+    b.className='btn'; b.textContent=q.n;
+    b.onclick=()=>{ if(playing){playing=false;playBtn.textContent='▶ 自动演示';clearInterval(timer);} setDay(q.d); };
+    qb.appendChild(b);
+  });
+
+  initCtx();
+  window.addEventListener('resize', ()=>{ initCtx(); render(); });
+  render();
+})();
+</script>
+</body>
+</html>

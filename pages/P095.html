@@ -1,0 +1,147 @@
+<!-- PLAN template=T16 executor=opus pace=停讲 layout_ref=L02
+     reveal=['4环节', '3角色', '3问', '进入下一轮']
+     embeds=[]
+     anim={"id": "ANIM_I_总图收束", "spec": "暗底总图（components/map433.js）：四环节依次亮起 → 三角色落位 → 三问浮现 → ‘进入下一轮’箭头从教师专业发展回到教学设计并闪一次。每按一次 → 推进一阶段；‘播放’自动走完；‘重置’回到初态。三问不与三种角色一一对应，不画连线。"}
+     note= -->
+<section class="slide dark" data-id="P095" data-title="4＋3＋3：让一次教学进入下一次教学" data-module="11 收束：下周的一件小事" data-stage="" data-kind="主线" data-template="T16" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>11</b><span class="on">收束：下周的一件小事</span></div>
+    <span class="pid">P095</span>
+  </div>
+  <h2 class="title">4＋3＋3：让一次教学进入下一次教学</h2>
+  <p class="sub">每次使用前，用三问组织四个环节中的角色组合。</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P095"] .locator { color: var(--light-blue-2); }
+    .slide[data-id="P095"] .locator b { color: var(--light-blue); }
+    .slide[data-id="P095"] .anim { background: transparent; border: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 0 72px; }
+    .slide[data-id="P095"] .map433.m433-full { min-height: 0; gap: 34px; }
+    .slide[data-id="P095"] .m433-stage { padding: 28px 16px; }
+    .slide[data-id="P095"] .m433-loop { opacity: 0; transition: opacity .4s ease; }
+    .slide[data-id="P095"][data-rv="4"] .m433-loop,
+    .slide[data-id="P095"].all-on .m433-loop { opacity: 1; }
+    .slide[data-id="P095"] .m433-loop.p95-flash .m433-loop-line { animation: p95loop 1.1s ease 2; }
+    .slide[data-id="P095"] .m433-loop.p95-flash .m433-loop-text { animation: p95loopT 1.1s ease 2; }
+    @keyframes p95loop { 0%,100% { border-color: var(--accent); } 45% { border-color: var(--light-blue-3); } }
+    @keyframes p95loopT { 0%,100% { color: var(--light-blue); } 45% { color: var(--light-blue-3); } }
+    .slide[data-id="P095"] .p95-next { margin-top: 40px; }
+    .slide[data-id="P095"] .p95-next .arrow-line { background: var(--light-blue-2); }
+    .slide[data-id="P095"] .p95-next .arrow-line::after { border-top-color: var(--light-blue-2); border-right-color: var(--light-blue-2); }
+    .slide[data-id="P095"] .p95-next b { color: var(--dark-text); font-weight: 500; margin-right: 16px; }
+    .slide[data-id="P095"] .m433-fallback p { font-size: 30px; line-height: 1.7; }
+    .slide[data-id="P095"] .m433-fallback b { color: var(--light-blue); font-weight: 500; margin-right: 18px; }
+  </style>
+  <div class="body">
+    <div class="anim" tabindex="0" aria-label="4＋3＋3 总图分步收束">
+      <!-- map433.js 渲染前的静态内容；组件可用时被整块替换 -->
+      <div class="map433" data-stage="" data-roles="" data-show="stages,roles,questions" data-reveal="1" data-size="full">
+        <div class="m433-fallback">
+          <p><b>4环节</b>设计、实施、评价、教师专业发展。</p>
+          <p><b>3角色</b>信息加工整合的管道、生成落地的工具、新的教育实践主体。</p>
+          <p><b>3问</b>我想得到什么、AI需要扮演什么角色、能提供什么上下文。</p>
+        </div>
+      </div>
+      <div class="reveal takeaway p95-next">
+        <span class="arrow-line"></span>
+        <p><b>进入下一轮</b>一次教学留下的材料与判断，进入下一轮的设计与实施。</p>
+      </div>
+      <div class="controls">
+        <button type="button" class="primary" data-a="play">播放</button>
+        <button type="button" data-a="reset">重置</button>
+      </div>
+    </div>
+  </div>
+  <script>
+  /* P095 ANIM_I：四环节依次亮起 → 三角色落位 → 三问浮现 → 进入下一轮箭头闪一次。
+     分步与 deck.js 的 data-rv 同步：按 → 推进一阶段；“播放”自动走完；“重置”回到初态。 */
+  (function () {
+    'use strict';
+    var sec = document.currentScript.closest('section.slide');
+    if (!sec) return;
+    var anim = sec.querySelector('.anim');
+    var map = sec.querySelector('.map433');
+    var STAGES = ['教学设计', '课堂实施', '教学评价', '教师专业发展'];
+    var ROLES = ['管道', '管道,工具', '管道,工具,主体'];
+    var timers = [], done = {};
+
+    function clear() { timers.forEach(clearTimeout); timers = []; }
+    function set(o) { if (window.Map433) window.Map433.set(map, o); }
+    function loopEl() { return map.querySelector('.m433-loop'); }
+
+    function reveals() { return Array.prototype.slice.call(sec.querySelectorAll('.reveal')); }
+    function setRv(n) {
+      var g = reveals();
+      n = Math.max(0, Math.min(g.length, n));
+      sec.dataset.rv = String(n);
+      g.forEach(function (el, k) {
+        el.classList.toggle('on', k < n);
+        el.classList.toggle('last', k === n - 1);
+      });
+      sec.classList.toggle('all-on', n >= g.length);
+      apply(n);
+    }
+
+    function runStages() {
+      if (done.s) return; done.s = true;
+      STAGES.forEach(function (name, i) {
+        timers.push(setTimeout(function () { set({ stage: name }); }, i * 430));
+      });
+      timers.push(setTimeout(function () { set({ stage: '' }); }, STAGES.length * 430 + 260));
+    }
+    function runRoles() {
+      if (done.r) return; done.r = true;
+      ROLES.forEach(function (r, i) {
+        timers.push(setTimeout(function () { set({ roles: r }); }, i * 380));
+      });
+      timers.push(setTimeout(function () { set({ roles: '' }); }, ROLES.length * 380 + 260));
+    }
+    function runLoop() {
+      if (done.l) return; done.l = true;
+      var el = loopEl(); if (!el) return;
+      el.classList.remove('p95-flash');
+      void el.offsetWidth;
+      el.classList.add('p95-flash');
+    }
+    function apply(n) {
+      if (n >= 1) runStages();
+      if (n >= 2) runRoles();
+      if (n >= 4) runLoop();
+    }
+
+    function reset() {
+      clear(); done = {};
+      var el = loopEl(); if (el) el.classList.remove('p95-flash');
+      set({ stage: '', roles: '' });
+      setRv(0);
+      done = {};
+    }
+    function play() {
+      reset();
+      [1, 2, 3, 4].forEach(function (n, i) {
+        timers.push(setTimeout(function () { setRv(n); }, 300 + i * 2200));
+      });
+    }
+
+    anim.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-a]'); if (!b) return;
+      if (b.getAttribute('data-a') === 'play') play(); else reset();
+    });
+
+    function sync() {
+      if (!sec.classList.contains('active')) { clear(); done = {}; set({ stage: '', roles: '' }); return; }
+      if (sec.classList.contains('all-on')) { done = { s: 1, r: 1, l: 1 }; set({ stage: '', roles: '' }); return; }
+      apply(parseInt(sec.dataset.rv || '0', 10) || 0);
+    }
+    new MutationObserver(sync).observe(sec, { attributes: true, attributeFilter: ['class', 'data-rv'] });
+    function init() {
+      if (window.Map433 && !map.getAttribute('data-map433-rendered')) window.Map433.render(map);
+      sync();
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+    window.__anim_P095 = { play: play, reset: reset };
+  })();
+  </script>
+  <!-- BODY:END -->
+  <aside class="notes">全场唯一完整总图。依次说明四个环节、三种角色、三问，最后说明材料与判断怎样进入下一轮。三问不与三种角色一一对应。</aside>
+</section>

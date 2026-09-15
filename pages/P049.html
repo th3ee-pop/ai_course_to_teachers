@@ -1,0 +1,63 @@
+<!-- PLAN template=T04 executor=opus pace=停讲 layout_ref=L10
+     reveal=['恐龙短片', '尺子试样', '谁来决定']
+     embeds=[{"asset": "VID_V05", "mode": "video"}, {"asset": "VID_V03", "mode": "video"}]
+     anim=null
+     note=双视频并排（各自点击播放，不自动播放，翻页自动暂停），下方三条审看要点逐条出现；‘AI生成试样’角标常显。
+     assets:
+       VID_V05 → assets/video/konglong_daoru.mp4 (video) poster=assets/img/konglong_sanjiashuo_zhen.png
+       VID_V03 → assets/video/chizi_5s.mp4 (video) poster=assets/img/chizi_frames.jpg -->
+<section class="slide" data-id="P049" data-title="恐龙短片与尺子试样：生成后还要审看" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T04" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
+    <span class="pid">P049</span>
+  </div>
+  <h2 class="title">恐龙短片与尺子试样：生成后还要审看</h2>
+  <p class="sub reveal-none">生成资源进入课堂前，需要核对内容与动作。</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P049"] .body { gap: 28px; }
+    .slide[data-id="P049"] .vids { flex: 1 1 auto; min-height: 0; align-items: stretch; gap: 56px; }
+    .slide[data-id="P049"] .vids > .fig { flex: 1 1 0; min-width: 0; }
+    .slide[data-id="P049"] .fig .pic { height: 100%; aspect-ratio: 16 / 9; width: auto; margin: 0 auto; background: #1d2d3d; }
+    .slide[data-id="P049"] .fig .pic video { width: 100%; height: 100%; display: block; }
+    .slide[data-id="P049"] .fig .pic.cover video { object-fit: cover; }
+    .slide[data-id="P049"] .fig .pic.fit video { object-fit: contain; }
+    .slide[data-id="P049"] .corner-tag { right: 14px; top: 12px; }
+    .slide[data-id="P049"] .pts { flex: 0 0 auto; gap: 40px 48px; }
+  </style>
+  <div class="body">
+    <div class="cols vids">
+      <div class="fig">
+        <span class="tag fill corner-tag">AI生成试样</span>
+        <div class="pic cover">
+          <video src="assets/video/konglong_daoru.mp4" controls preload="metadata" poster="assets/img/konglong_sanjiashuo_zhen.png"></video>
+        </div>
+      </div>
+      <div class="fig">
+        <span class="tag fill corner-tag">AI生成试样</span>
+        <div class="pic fit">
+          <video src="assets/video/chizi_5s.mp4" controls preload="metadata" poster="assets/img/chizi_frames.jpg"></video>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3 pts">
+      <div class="reveal">
+        <div class="label">恐龙短片</div>
+        <p class="text">片中提出多种解释，要问：每种解释有没有证据？不能把三种解释直接当作同等成立的科学结论。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">尺子试样</div>
+        <p class="text">测量动作的端点承接不清楚，不能作为规范示范；可以用来讨论“哪里需要检查”。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">谁来决定</div>
+        <p class="text">教师决定能否在课堂使用、用于什么环节，以及要不要补拍或修订。</p>
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">两段均为AI生成试样。尺子片中的端点衔接不宜作为规范操作示范。</div>
+  <aside class="notes">【停讲】两段视频各自点击播放，不自动播放，翻页自动暂停。左为恐龙导入短片，右为身体上的尺子5秒试样（封面是试样帧图）。讲述时依次说明：片中提出多种解释，要问：每种解释有没有证据？不能把三种解释直接当作同等成立的科学结论。 测量动作的端点承接不清楚，不能作为规范示范；可以用来讨论“哪里需要检查”。 教师决定能否在课堂使用、用于什么环节，以及要不要补拍或修订。
+    作用：建立生成资源的审看责任，说明可用边界。
+    资源：<a href="../19_逐页内容脚本/资源预览/V03.html">V03 身体上的尺子：5秒试样</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/videos/04_身体上的尺子_H3_768P_5s_播放版.mp4" title="原路径，仅本机有效">素材入口</a> <a href="../19_逐页内容脚本/资源预览/V05.html">V05 恐龙为什么消失了：课堂导入</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/4.1_讲解视频/恐龙为什么消失了-课堂导入.mp4" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/V05/清单.md">任务与截图台账</a></aside>
+</section>

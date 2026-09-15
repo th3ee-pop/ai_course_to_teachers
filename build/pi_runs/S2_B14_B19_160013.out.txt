@@ -1,0 +1,54 @@
+=== B14 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:1.1">
+      <div class="reveal" style="border-left:4px solid var(--light-blue);padding-left:24px">
+        <div class="label">说明意图</div>
+        <p class="text" style="font-size:30px;line-height:1.6">先写清学习问题、关键画面、时长和不能误画的内容。</p>
+      </div>
+      <div class="reveal" style="border-left:4px solid var(--light-blue);padding-left:24px">
+        <div class="label">选择路线</div>
+        <p class="text" style="font-size:30px;line-height:1.6">需要连续场景时，可以使用视频生成模型；需要精确文字、图形与时序时，可以用程序制作动画。</p>
+      </div>
+      <div class="reveal" style="border-left:4px solid var(--light-blue);padding-left:24px">
+        <div class="label">生成与编排</div>
+        <p class="text" style="font-size:30px;line-height:1.6">形成首图与分镜，生成或编排镜头，再处理拼接、字幕和声音。</p>
+      </div>
+      <div class="reveal" style="border-left:4px solid var(--light-blue);padding-left:24px">
+        <div class="label">审看后使用</div>
+        <p class="text" style="font-size:30px;line-height:1.6">逐段核查概念、动作、字幕与来源，并明确哪些画面是生成的。</p>
+      </div>
+    </div>
+    <div class="vline"></div>
+    <div class="fig" style="flex:1;max-height:520px">
+      <span class="tag">示意图</span>
+      <div class="pic"><img src="assets/wanglushan_keyframes.jpg" alt=""></div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== B19 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="stack" style="gap:26px">
+    <div class="reveal" style="border-left:4px solid var(--light-blue);padding-left:26px">
+      <div class="label">输入约定</div>
+      <p class="text" style="font-size:30px;line-height:1.6">提供应交名单、当周记录、字段说明和上次记录；用编号代替身份信息。</p>
+    </div>
+    <div class="reveal" style="border-left:4px solid var(--light-blue);padding-left:26px">
+      <div class="label">固定步骤</div>
+      <p class="text" style="font-size:30px;line-height:1.6">先查重复与缺项，再按同一口径汇总；样本变化时单列说明，不补造记录。</p>
+    </div>
+    <div class="reveal" style="border-left:4px solid var(--light-blue);padding-left:26px">
+      <div class="label">输出约定</div>
+      <p class="text" style="font-size:30px;line-height:1.6">交付汇总表、缺漏清单和需要教师确认的问题，每个结论可以回到来源。</p>
+    </div>
+    <div class="reveal" style="border-left:4px solid var(--light-blue);padding-left:26px">
+      <div class="label">换一份材料检验</div>
+      <p class="text" style="font-size:30px;line-height:1.6">用另一周记录重复执行，并人工抽核。一次结果正确，还不能证明方法稳定。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

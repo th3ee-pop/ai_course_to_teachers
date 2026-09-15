@@ -1,0 +1,149 @@
+<!-- PLAN template=T05 executor=pi pace=停讲 layout_ref=L03
+     reveal=['产生想法', '查找与求助', '制作', '试用']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       SVG_CODEX_P004_SOP → 已改为页内内联 SVG（四步卡片流程图），原 assets/svg/p004_sop.svg 已删除 -->
+<section class="slide" data-id="P004" data-title="一个教学想法，过去怎样落地？" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
+    <span class="pid">P004</span>
+  </div>
+  <h2 class="title">一个教学想法，过去怎样落地？</h2>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P004"] .body { justify-content: center; gap: 0; }
+    .slide[data-id="P004"] .sopfig { width: 100%; margin-top: 10px; }
+    .slide[data-id="P004"] .sopfig svg { display: block; width: 100%; height: auto; }
+    .slide[data-id="P004"] .sopfig svg text { font-family: var(--font-sans); }
+    .slide[data-id="P004"] .soptxt { margin-top: 26px; gap: 36px; align-items: flex-start; }
+    .slide[data-id="P004"] .soptxt .text { font-size: 28px; line-height: 1.7; }
+    .slide[data-id="P004"] .soptxt .label { margin-bottom: 10px; }
+  </style>
+  <div class="body">
+    <span class="tag">示意图</span>
+    <div class="sopfig">
+      <svg viewBox="0 0 1700 440" role="img" aria-label="产生想法、查找与求助、制作、试用四步流程示意图">
+        <defs>
+          <linearGradient id="p4Card" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e2ecf7"/>
+          </linearGradient>
+          <linearGradient id="p4Ico" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#eaf3fb"/><stop offset="1" stop-color="#b9d3ec"/>
+          </linearGradient>
+          <filter id="p4Sh" x="-14%" y="-16%" width="128%" height="140%">
+            <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#2d4a66" flood-opacity="0.17"/>
+          </filter>
+          <marker id="p4Ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0.4 0.6 L9.4 5 L0.4 9.4 Z" fill="#416180"/>
+          </marker>
+        </defs>
+
+        <!-- 步骤一 产生想法 -->
+        <g class="reveal" data-step="1">
+          <rect x="32" y="92" width="320" height="248" rx="20" fill="url(#p4Card)" stroke="#5980a6" stroke-width="2.5" filter="url(#p4Sh)"/>
+          <g transform="translate(140,122)">
+            <g stroke="#5980a6" stroke-width="5" stroke-linecap="round">
+              <path d="M52 12 V2"/><path d="M22 24 L15 17"/><path d="M82 24 L89 17"/>
+              <path d="M14 54 H4"/><path d="M90 54 H100"/>
+            </g>
+            <path d="M52 22 C35 22 22 35 22 51 C22 62 29 69 33 76 L71 76 C75 69 82 62 82 51 C82 35 69 22 52 22 Z" fill="url(#p4Ico)" stroke="#416180" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M43 76 V64 C43 58 61 58 61 64 V76" fill="none" stroke="#416180" stroke-width="3" stroke-linejoin="round"/>
+            <rect x="37" y="79" width="30" height="9" rx="4.5" fill="#416180"/>
+            <rect x="42" y="92" width="20" height="8" rx="4" fill="#416180"/>
+          </g>
+          <text x="192" y="298" text-anchor="middle" font-size="32" font-weight="600" fill="#1d1f20">产生想法</text>
+        </g>
+
+        <!-- 步骤二 查找与求助 -->
+        <g class="reveal" data-step="2">
+          <path d="M364 216 H452" fill="none" stroke="#416180" stroke-width="4" stroke-linecap="round" marker-end="url(#p4Ar)"/>
+          <rect x="470" y="92" width="320" height="248" rx="20" fill="url(#p4Card)" stroke="#5980a6" stroke-width="2.5" filter="url(#p4Sh)"/>
+          <g transform="translate(578,122)">
+            <rect x="2" y="6" width="64" height="88" rx="9" fill="url(#p4Ico)" stroke="#416180" stroke-width="3.5"/>
+            <rect x="14" y="22" width="40" height="7" rx="3.5" fill="#5980a6"/>
+            <rect x="14" y="38" width="40" height="7" rx="3.5" fill="#5980a6"/>
+            <rect x="14" y="54" width="26" height="7" rx="3.5" fill="#5980a6"/>
+            <path d="M88 80 L100 92" stroke="#416180" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="72" cy="64" r="23" fill="#ffffff" fill-opacity="0.95" stroke="#416180" stroke-width="4"/>
+            <circle cx="72" cy="64" r="13" fill="#94bce3" fill-opacity="0.75"/>
+          </g>
+          <text x="630" y="298" text-anchor="middle" font-size="32" font-weight="600" fill="#1d1f20">查找与求助</text>
+        </g>
+
+        <!-- 步骤三 制作（含反复调试小循环） -->
+        <g class="reveal" data-step="3">
+          <path d="M802 216 H890" fill="none" stroke="#416180" stroke-width="4" stroke-linecap="round" marker-end="url(#p4Ar)"/>
+          <text x="1070" y="34" text-anchor="middle" font-size="26" fill="#416180">反复调试</text>
+          <path d="M1016 86 C1016 44 1124 44 1124 86" fill="none" stroke="#416180" stroke-width="3.5" stroke-linecap="round" marker-end="url(#p4Ar)"/>
+          <rect x="910" y="92" width="320" height="248" rx="20" fill="url(#p4Card)" stroke="#5980a6" stroke-width="2.5" filter="url(#p4Sh)"/>
+          <g transform="translate(1018,122)">
+            <g fill="#416180">
+              <rect x="25" y="18" width="10" height="14" rx="3"/>
+              <rect x="25" y="18" width="10" height="14" rx="3" transform="rotate(45 30 48)"/>
+              <rect x="25" y="18" width="10" height="14" rx="3" transform="rotate(90 30 48)"/>
+              <rect x="25" y="18" width="10" height="14" rx="3" transform="rotate(135 30 48)"/>
+              <rect x="25" y="18" width="10" height="14" rx="3" transform="rotate(180 30 48)"/>
+              <rect x="25" y="18" width="10" height="14" rx="3" transform="rotate(225 30 48)"/>
+              <rect x="25" y="18" width="10" height="14" rx="3" transform="rotate(270 30 48)"/>
+              <rect x="25" y="18" width="10" height="14" rx="3" transform="rotate(315 30 48)"/>
+            </g>
+            <circle cx="30" cy="48" r="20.5" fill="url(#p4Ico)" stroke="#416180" stroke-width="3.5"/>
+            <circle cx="30" cy="48" r="7.5" fill="#ffffff" stroke="#416180" stroke-width="3"/>
+            <g fill="#c3d8ea">
+              <rect x="68" y="24" width="34" height="7" rx="3.5"/>
+              <rect x="68" y="44" width="34" height="7" rx="3.5"/>
+              <rect x="68" y="64" width="34" height="7" rx="3.5"/>
+            </g>
+            <g fill="#416180">
+              <circle cx="80" cy="27.5" r="8"/><circle cx="94" cy="47.5" r="8"/><circle cx="76" cy="67.5" r="8"/>
+            </g>
+          </g>
+          <text x="1070" y="298" text-anchor="middle" font-size="32" font-weight="600" fill="#1d1f20">制作</text>
+        </g>
+
+        <!-- 步骤四 试用（含根据效果修改的返回虚线） -->
+        <g class="reveal" data-step="4">
+          <path d="M1242 216 H1330" fill="none" stroke="#416180" stroke-width="4" stroke-linecap="round" marker-end="url(#p4Ar)"/>
+          <rect x="1348" y="92" width="320" height="248" rx="20" fill="url(#p4Card)" stroke="#5980a6" stroke-width="2.5" filter="url(#p4Sh)"/>
+          <g transform="translate(1456,122)">
+            <rect x="6" y="8" width="92" height="64" rx="8" fill="#416180"/>
+            <rect x="13" y="15" width="78" height="50" rx="4" fill="#33506b"/>
+            <rect x="24" y="26" width="46" height="6" rx="3" fill="#dfe9f3"/>
+            <rect x="24" y="40" width="30" height="6" rx="3" fill="#94bce3"/>
+            <path d="M52 72 V86" stroke="#416180" stroke-width="7" stroke-linecap="round"/>
+            <path d="M26 102 L52 85" stroke="#416180" stroke-width="7" stroke-linecap="round"/>
+            <path d="M78 102 L52 85" stroke="#416180" stroke-width="7" stroke-linecap="round"/>
+          </g>
+          <text x="1508" y="298" text-anchor="middle" font-size="32" font-weight="600" fill="#1d1f20">试用</text>
+          <path d="M1508 346 V378 Q1508 396 1490 396 H1088 Q1070 396 1070 378 V348" fill="none" stroke="#416180" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="12 10" marker-end="url(#p4Ar)"/>
+          <rect x="1195" y="377" width="188" height="38" rx="6" fill="#f2f2f3"/>
+          <text x="1289" y="405" text-anchor="middle" font-size="26" fill="#416180">根据效果修改</text>
+        </g>
+      </svg>
+    </div>
+    <div class="cols soptxt">
+      <div class="reveal" data-step="1">
+        <div class="label">产生想法</div>
+        <p class="text">教师想让学生通过某个活动理解一个概念。</p>
+      </div>
+      <div class="reveal" data-step="2">
+        <div class="label">查找与求助</div>
+        <p class="text">先对照学习软件的菜单、公式和配置，或者请开发人员帮忙。</p>
+      </div>
+      <div class="reveal" data-step="3">
+        <div class="label">制作</div>
+        <p class="text">按照软件的操作步骤完成制作，过程需要反复调试。</p>
+      </div>
+      <div class="reveal" data-step="4">
+        <div class="label">试用</div>
+        <p class="text">做好之后，再拿到课堂上试用，根据效果修改。</p>
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">标准操作流程，简称SOP。</div>
+  <aside class="notes">【停讲】我们来看一个教学想法过去是怎样落地的。比如我想让学生通过一个活动理解某个概念。第一步，我得先把这个想法说清楚。第二步，我要去看学习软件里有哪些菜单、公式和配置，或者请开发人员帮忙，把想法翻译成软件能听懂的操作。第三步，按照标准操作流程一步一步制作，这个过程往往需要反复调试。第四步，做好了再拿到课堂上试用，根据学生反应修改。这条路径不是不能走，而是每一步都有门槛，很多想法就在第二步或第三步停下来了。
+    作用：解释过去把教学想法变成可用成果需要经过的典型步骤，让实现成本可见。</aside>
+</section>

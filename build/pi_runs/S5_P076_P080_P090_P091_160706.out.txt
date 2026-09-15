@@ -1,0 +1,110 @@
+=== P076 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="fig" style="max-height:140px;align-self:center;margin-bottom:36px">
+    <div class="pic"><img src="assets/svg/p076_icons.svg" alt=""></div>
+  </div>
+  <div class="cols">
+    <div class="reveal">
+      <div class="label">资料库：留材料</div>
+      <p class="text">课堂实录、学生作品、观测记录等原始材料按课例归档，保留来源和时间。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">笔记：留判断</div>
+      <p class="text">写下当时的判断和理由，例如“这次追问给早了，学生还没预测”。判断要能对应到具体材料。</p>
+    </div>
+    <div class="vline"></div>
+    <div class="reveal">
+      <div class="label">模板或Skill：留方法</div>
+      <p class="text">把反复要用的步骤固化成模板，例如提问链模板、课例分析模板；使用时仍需按课调整。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P080 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="fig" style="max-height:270px;align-self:center;margin-bottom:36px">
+    <div class="pic"><img src="assets/img/guanglu_jinshi_vs_daijing.png" alt=""></div>
+    <figcaption class="caption">示意图</figcaption>
+  </div>
+  <div class="grid-4">
+    <div class="reveal">
+      <div class="label">方案包</div>
+      <p class="text">把任务链、材料清单、量规、告知书和前后测方案成套交付。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">模拟器</div>
+      <p class="text">用可控光路帮助比较成像条件，不替代实物观察。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">量规</div>
+      <p class="text">让作品与过程有共同评价依据。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">周报</div>
+      <p class="text">把持续背景和阶段进展留下来，供下一轮教学使用。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P090 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="cols" style="align-items:center">
+    <div style="flex:0 0 32%;min-width:0">
+      <div class="fig" style="max-height:460px">
+        <div class="pic"><img src="assets/img/cap_guanchatai_optin.png" alt=""></div>
+        <figcaption class="caption">示意图</figcaption>
+      </div>
+    </div>
+    <div style="flex:1 1 0;min-width:0">
+      <div class="grid-2">
+        <div class="reveal">
+          <div class="label">说明目的与范围</div>
+          <p class="text">只处理本次任务确实需要的材料，去除无关的姓名、面部和联系方式。</p>
+        </div>
+        <div class="reveal">
+          <div class="label">确认处理去向</div>
+          <p class="text">了解材料会发送到哪里、谁能访问、保存多久，以及怎样删除。</p>
+        </div>
+        <div class="reveal">
+          <div class="label">落实校内要求</div>
+          <p class="text">按学校要求安排知情说明、权限与必要授权，再选择合适的工具。</p>
+        </div>
+        <div class="reveal">
+          <div class="label">本次体验的选择</div>
+          <p class="text">教学观察台允许只体验、不记录，也可以停止并删除自己的记录。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P091 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-4">
+    <div class="reveal">
+      <div class="label">差异来源</div>
+      <p class="text">字迹、口音、设备和环境都可能让识别结果不完整。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">保留纸笔路径</div>
+      <p class="text">学生可以重新写清或口头说明，不因为一次识别失败被判定不会。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">保留投屏与共用终端</div>
+      <p class="text">不要求人人有设备，小组共用和纸笔记录仍然有效。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">允许学生澄清</div>
+      <p class="text">请学生核对识别结果；更正识别文本或补充说明，同时保留原记录。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

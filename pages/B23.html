@@ -1,0 +1,70 @@
+<!-- PLAN template=T15 executor=pi pace=按替换片段安排 layout_ref=L02
+     reveal=['需要学生观察与操作', '需要成套教学材料', '需要情境与交流', '需要调整自己的委托']
+     embeds=[{"asset": "TOOL_S01", "mode": "link"}, {"asset": "TOOL_S08", "mode": "link"}, {"asset": "TOOL_S07", "mode": "link"}, {"asset": "SYS_S05", "mode": "link"}, {"asset": "DOC_D01", "mode": "link"}, {"asset": "DOC_D02", "mode": "link"}, {"asset": "DOC_D05", "mode": "link"}, {"asset": "VID_V01", "mode": "link"}, {"asset": "SYS_S03", "mode": "link"}, {"asset": "DOC_D13", "mode": "link"}]
+     anim=null
+     note=资源入口页：四行各配链接卡片。
+     assets:
+       TOOL_S01 → assets/tools/siji_v2/index.html (iframe) 整目录复制（4.1MB，含 libs/ assets/ seasons-stage.js），本地可离线运行
+       TOOL_S08 → assets/tools/yuexiang.html (iframe) 单文件
+       TOOL_S07 → assets/tools/qianshuiqi.html (iframe) 单文件，无外部依赖
+       SYS_S05 → （本机启动 dist） (external) 同上
+       DOC_D01 → links/D01/ (link) 文档链接，进讲者备注与页脚
+       DOC_D02 → links/D02/ (link) 同上
+       DOC_D05 → links/D05/ (link) 同上
+       VID_V01 → assets/wanglushan_15s.mp4 (video) 已在 assets/
+       SYS_S03 → （同上，语言文化交流入口） (external) 同 S02
+       DOC_D13 → links/D13/ (link)  -->
+<section class="slide" data-id="B23" data-title="按你的教学任务寻找资源" data-module="11 收束：下周的一件小事" data-stage="" data-kind="备选" data-replaces="模块11 收束：下周的一件小事" data-template="T15" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>11</b><span class="on">收束：下周的一件小事</span></div>
+    <span class="pid">B23</span>
+  </div>
+  <h2 class="title">按你的教学任务寻找资源</h2>
+  <p class="sub reveal-none">系统、文档、视频和提示词都可以从具体需求出发选择。</p>
+  <!-- BODY:START -->
+<div class="body" style="display:flex;flex-direction:column;justify-content:center;gap:30px">
+  <div class="grid-4" style="gap:32px;align-items:flex-start">
+    <div class="reveal">
+      <div class="label">需要学生观察与操作</div>
+      <p class="text" style="font-size:28px">查看四季循环、月相、潜水器与掌中实验室。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">需要成套教学材料</div>
+      <p class="text" style="font-size:28px">查看单元全案、实验记录表、项目方案包和评价材料。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">需要情境与交流</div>
+      <p class="text" style="font-size:28px">查看《望庐山瀑布》视频、共读角交流与达尔文角色卡。</p>
+    </div>
+    <div class="reveal">
+      <div class="label">需要调整自己的委托</div>
+      <p class="text" style="font-size:28px">查看提示词库，并补充本班目标、角色要求和背景。</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <div class="cols" style="gap:36px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a class="file-card" href="assets/docs/D01/"><span class="ext">DIR</span><span class="fname">《植物的一生》单元全案（5 份）</span></a>
+      <a class="file-card" href="assets/docs/D02/"><span class="ext">DOCX</span><span class="fname">《摆的秘密》实验全案（3 份）</span></a>
+      <a class="file-card" href="assets/docs/D05/"><span class="ext">DOCX</span><span class="fname">《科学护眼》方案包五件套</span></a>
+      <a class="file-card" href="assets/docs/D13/"><span class="ext">MD</span><span class="fname">“采访达尔文”角色卡模板示例</span></a>
+    </div>
+    <div class="vline"></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="embed" data-src="assets/tools/siji_v2/index.html" style="height:84px"><div class="hint">点击加载</div></div>
+      <div class="embed" data-src="assets/tools/yuexiang.html" style="height:84px"><div class="hint">点击加载</div></div>
+      <div class="embed" data-src="assets/tools/qianshuiqi.html" style="height:84px"><div class="hint">点击加载</div></div>
+    </div>
+    <div class="vline"></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a class="file-card" href="assets/wanglushan_15s.mp4"><span class="ext">MP4</span><span class="fname">《望庐山瀑布》四镜意境 15 秒</span></a>
+      <a class="link-card unset" data-config="labUrl"><b>掌中实验室</b><span>现场启动后填入地址</span></a>
+      <a class="link-card unset" data-config="ecoUrl"><b>语言文化交流</b><span>现场启动后填入地址</span></a>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+  <aside class="notes">【按替换片段安排】请先从自己的问题找资源。文档、系统和视频的使用条件不同，资源预览会给出本机入口与说明。复制到别的设备时，需要同时带上资源并检查链接。
+    作用：提供可按教学任务检索的资源入口。
+    资源：<a href="../19_逐页内容脚本/资源预览/S01.html">S01 四季循环v2</a> <a href="assets/docs/S01/index.html">素材入口</a> <a href="assets/docs/S01/验证记录.md">开发与验证记录</a> <a href="../19_逐页内容脚本/资源预览/S05.html">S05 掌中实验室：光路与几何</a> <a href="assets/docs/S05/教学任务.md">素材入口</a> <a href="assets/docs/S05/README.md">启动说明</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/掌中实验室/启动.command" title="原路径，仅本机有效">启动.command</a> <a href="../19_逐页内容脚本/资源预览/S07.html">S07 潜水器浮沉模拟</a> <a href="assets/docs/S07/潜水器模型的浮与沉.html">素材入口</a> <a href="../19_逐页内容脚本/资源预览/D01.html">D01 植物的一生：单元全案五件</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.1_植物的一生单元全案" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D01/01-单元整体设计一览表.md">01-单元整体设计一览表.md</a> <a href="assets/docs/D01/02-8课时活动详案与记录要求.md">02-8课时活动详案与记录要求.md</a> <a href="assets/docs/D01/03-学情前测.md">03-学情前测.md</a> <a href="assets/docs/D01/04-第一课时完整教案.md">04-第一课时完整教案.md</a> <a href="assets/docs/D01/05-学生观察记录册框架.md">05-学生观察记录册框架.md</a> <a href="../19_逐页内容脚本/资源预览/D02.html">D02 摆的秘密：实验全案三件</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.2_摆的秘密实验全案" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D02/摆的秘密-分组实验记录表.docx">摆的秘密-分组实验记录表.docx</a> <a href="assets/docs/D02/摆的秘密-教师完整方案.docx">摆的秘密-教师完整方案.docx</a> <a href="assets/docs/D02/摆的秘密-评析活动材料（含教师对照清单）.docx">摆的秘密-评析活动材料（含教师对照清单）.docx</a> <a href="../19_逐页内容脚本/资源预览/D05.html">D05 科学护眼：方案包五件套</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/附录_方案包五件套" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D05/1.《科学护眼》6课时任务链.docx">1.《科学护眼》6课时任务链.docx</a> <a href="assets/docs/D05/2.《科学护眼》项目材料清单.docx">2.《科学护眼》项目材料清单.docx</a> <a href="assets/docs/D05/3.《科学护眼》评价量规（作品量规＋过程量规）.docx">3.《科学护眼》评价量规（作品量规＋过程量规）.docx</a> <a href="assets/docs/D05/4.《科学护眼》家长告知书.docx">4.《科学护眼》家长告知书.docx</a> <a href="assets/docs/D05/5.《科学护眼》前后测方案.docx">5.《科学护眼》前后测方案.docx</a> <a href="../19_逐页内容脚本/资源预览/V01.html">V01 望庐山瀑布：15秒四镜意境版</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/01_望庐山瀑布_15秒多分镜/望庐山瀑布_四镜意境_15秒.mp4" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/V01/分镜说明.md">分镜说明</a> <a href="../19_逐页内容脚本/资源预览/S03.html">S03 教学观察台：语言文化交流</a> <a href="assets/docs/S03/README.md">素材入口</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动局域网演示.command" title="原路径，仅本机有效">启动局域网演示.command</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command" title="原路径，仅本机有效">启动本机演示.command</a> <a href="../19_逐页内容脚本/资源预览/D13.html">D13 采访达尔文：角色卡与实拍对话</a> <a href="assets/docs/D13/4.4_02_提示词框1_角色卡模板代入——“采访达尔文”_示例.md">素材入口</a> <a href="assets/docs/D13/4.4素材_达尔文试对话_两屏并列.png">对话截图</a> <a href="../19_逐页内容脚本/资源预览/R01.html">R01 提示词库：46条模板与实例</a> <a href="assets/docs/R01/00_总目录.md">素材入口</a></aside>
+</section>

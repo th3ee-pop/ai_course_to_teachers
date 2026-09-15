@@ -1,0 +1,131 @@
+=== P007 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:0 0 520px;gap:30px">
+      <div class="reveal">
+        <div class="label"><span class="num">01</span>从地面观察</div>
+        <p class="text" style="font-size:30px;line-height:1.6">学生比较同一地点在冬季和夏季的太阳高度与昼长。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">02</span>从太空观察</div>
+        <p class="text" style="font-size:30px;line-height:1.6">学生把地球运动和地轴倾斜与地面的变化联系起来。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">03</span>改变条件</div>
+        <p class="text" style="font-size:30px;line-height:1.6">学生调整日期、纬度和倾角，检验自己的解释。</p>
+      </div>
+    </div>
+    <div class="blueprint" style="flex:1 1 0;min-width:0">
+      <div class="slot" style="height:600px;padding:18px">
+        <img src="assets/img/siji_v2_xiazhi_dongzhi.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P019 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:0 0 560px;gap:22px">
+      <div class="reveal">
+        <div class="label"><span class="num">01</span>一句教学意图</div>
+        <p class="text" style="font-size:28px;line-height:1.5">教师用一句话说明想要的活动、材料或评价方式。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">02</span>展开过程</div>
+        <p class="text" style="font-size:28px;line-height:1.5">把意图补全成任务步骤、内容材料和呈现形式。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">03</span>具体产物</div>
+        <p class="text" style="font-size:28px;line-height:1.5">可以形成文档、视频、交互页等不同形态的成果。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">04</span>教师确认</div>
+        <p class="text" style="font-size:28px;line-height:1.5">产物是否可用，仍由教师根据课堂需要判断。</p>
+      </div>
+    </div>
+    <div class="grid-3" style="flex:1 1 0;min-width:0;gap:22px;align-items:center">
+      <div class="fig" style="max-height:320px">
+        <div class="pic" style="height:230px"><img src="assets/img/cap_D04_word_1.png" alt=""></div>
+      </div>
+      <div class="fig" style="max-height:320px">
+        <div class="pic" style="height:230px"><img src="assets/pov_01_wanglushan.png" alt=""></div>
+      </div>
+      <div class="fig" style="max-height:320px">
+        <div class="pic" style="height:230px"><img src="assets/img/siji_v2_xiazhi_dongzhi.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P055 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:0 0 520px;gap:20px">
+      <div class="reveal">
+        <div class="label"><span class="num">01</span>掌中几何与光路</div>
+        <p class="text" style="font-size:28px;line-height:1.5">先预测，再动手操作，观察截面或反射路径的变化。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">02</span>掌中磁场</div>
+        <p class="text" style="font-size:28px;line-height:1.5">反转电流，观察端面，把手势方向和螺线管方向联系起来。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">03</span>生态岛</div>
+        <p class="text" style="font-size:28px;line-height:1.5">小组共机布置条件，做一次公平对照，再解释结果。</p>
+      </div>
+      <div class="stack" style="gap:12px;margin-top:8px">
+        <a class="link-card unset" data-config="labUrl"><b>掌中几何与光路</b><span>现场启动后填入地址</span></a>
+        <a class="link-card unset" data-config="magnetUrl"><b>掌中磁场</b><span>现场启动后填入地址</span></a>
+        <a class="link-card unset" data-config="ecoUrl"><b>生态岛</b><span>现场启动后填入地址</span></a>
+      </div>
+    </div>
+    <div class="grid-3" style="flex:1 1 0;min-width:0;gap:22px;align-items:center">
+      <div class="fig" style="max-height:400px">
+        <div class="pic" style="height:320px"><img src="assets/img/cap_zhangzhong_jihe.png" alt=""></div>
+      </div>
+      <div class="fig" style="max-height:400px">
+        <div class="pic" style="height:320px"><img src="assets/img/cap_zhangzhong_cichang.png" alt=""></div>
+      </div>
+      <div class="fig" style="max-height:400px">
+        <div class="pic" style="height:320px"><img src="assets/img/cap_shengtaidao.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P074 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="cols" style="gap:56px;align-items:center">
+    <div class="stack" style="flex:0 0 620px;gap:18px">
+      <div class="reveal">
+        <div class="label"><span class="num">01</span>学生的问题</div>
+        <p class="text" style="font-size:28px;line-height:1.5">这个问题指向月亮可见的条件和太阳的位置关系，超出当堂课的准备范围。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">02</span>上课时可以怎样回应</div>
+        <p class="text" style="font-size:28px;line-height:1.5">先请学生说出自己观察到的现象：什么时候、在天空哪个位置看到月亮；把问题记到班级问题墙上，约定查证后再回来。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">03</span>教师的知识补给</div>
+        <p class="text" style="font-size:28px;line-height:1.5">用知识补给提示整理月亮可见的条件、月相与太阳角度的关系，并核对示意图中的方位与比例。</p>
+      </div>
+      <div class="reveal">
+        <div class="label"><span class="num">04</span>查证入口</div>
+        <p class="text" style="font-size:28px;line-height:1.5">天文科普资料、教材配套材料，以及学生连续几天的观察记录。</p>
+      </div>
+    </div>
+    <div class="fig" style="flex:1 1 0;min-width:0;max-height:640px">
+      <div class="pic" style="height:580px"><img src="assets/img/baitian_yueliang_ai_shiyitu.png" alt=""></div>
+      <figcaption class="caption">示意图</figcaption>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

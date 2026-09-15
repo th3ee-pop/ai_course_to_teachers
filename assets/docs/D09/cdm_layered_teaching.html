@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GDINA认知诊断与分层教学策略报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; height: 100%;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #0b1021 0%, #111827 50%, #0b1021 100%);
+  color: #e2e8f0;
+  overflow: hidden;
+}
+#container {
+  width: 100%; height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+.section {
+  width: 100%; min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 36px 56px;
+  position: relative;
+}
+.card {
+  background: rgba(30, 41, 59, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px -15px rgba(0,0,0,0.55);
+}
+.slide-title {
+  font-size: 2.4rem; font-weight: 700;
+  background: linear-gradient(90deg, #38bdf8, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.slide-subtitle {
+  font-size: 1.1rem; color: #94a3b8;
+  text-align: center; margin-bottom: 22px;
+}
+.chart-container {
+  width: 100%; height: 100%;
+  border-radius: 14px; overflow: hidden;
+}
+.text-block {
+  font-size: 1.05rem; line-height: 1.85;
+  color: #cbd5e1; padding: 18px;
+}
+.text-block strong { color: #f59e0b; }
+.highlight-box {
+  background: rgba(56, 189, 248, 0.08);
+  border-left: 3px solid #38bdf8;
+  padding: 14px 18px; border-radius: 8px;
+  margin: 10px 0;
+}
+.danger-box {
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 3px solid #ef4444;
+  padding: 14px 18px; border-radius: 8px;
+  margin: 10px 0;
+}
+.success-box {
+  background: rgba(34, 197, 94, 0.08);
+  border-left: 3px solid #22c55e;
+  padding: 14px 18px; border-radius: 8px;
+  margin: 10px 0;
+}
+.grid-2 {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 26px; width: 100%; max-width: 1580px; align-items: stretch;
+}
+.grid-1 {
+  width: 100%; max-width: 1380px;
+}
+.kpi-row {
+  display: flex; gap: 22px; justify-content: center; margin-top: 18px;
+}
+.kpi-card {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 16px; padding: 24px 32px;
+  text-align: center; min-width: 160px;
+}
+.kpi-value {
+  font-size: 2.8rem; font-weight: 800;
+  background: linear-gradient(180deg, #38bdf8, #0284c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.kpi-label {
+  font-size: 0.9rem; color: #94a3b8; margin-top: 4px;
+}
+.nav-dots {
+  position: fixed; right: 22px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 10px;
+  z-index: 100;
+}
+.nav-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: rgba(148,163,184,0.3);
+  cursor: pointer; transition: all 0.3s;
+}
+.nav-dot.active { background: #f59e0b; transform: scale(1.3); box-shadow: 0 0 10px #f59e0b; }
+.scroll-hint {
+  position: absolute; bottom: 26px; left: 50%;
+  transform: translateX(-50%);
+  color: #64748b; font-size: 0.85rem;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce { 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,8px);} }
+.principle-card {
+  background: rgba(15,23,42,0.45);
+  border: 1px dashed rgba(148,163,184,0.25);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 10px;
+}
+.principle-title {
+  color: #38bdf8; font-weight: 600; font-size: 0.98rem; margin-bottom: 6px;
+}
+.passage-box {
+  background: rgba(15,23,42,0.6);
+  border-left: 4px solid #f59e0b;
+  padding: 18px 22px;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+</style>
+</head>
+<body>
+<div class="nav-dots">
+<div class="nav-dot" data-idx="0"></div>
+<div class="nav-dot" data-idx="1"></div>
+<div class="nav-dot" data-idx="2"></div>
+<div class="nav-dot" data-idx="3"></div>
+<div class="nav-dot" data-idx="4"></div>
+<div class="nav-dot" data-idx="5"></div>
+<div class="nav-dot" data-idx="6"></div>
+<div class="nav-dot" data-idx="7"></div>
+<div class="nav-dot" data-idx="8"></div>
+<div class="nav-dot" data-idx="9"></div>
+</div>
+<div id="container">
+
+    <div class="section">
+      <div style="text-align:center;">
+        <div style="font-size:1rem; color:#94a3b8; letter-spacing:4px; margin-bottom:10px;">循证教学 · 认知诊断</div>
+        <div class="slide-title" style="font-size:3.2rem; margin-bottom:16px;">GDINA认知诊断与<br>分层教学策略报告</div>
+        <div style="font-size:1.2rem; color:#cbd5e1; margin-bottom:40px;">基于Q-matrix的学生能力聚类与差异化教学路径</div>
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="kpi-value">16,434</div><div class="kpi-label">初三学生诊断</div></div>
+          <div class="kpi-card"><div class="kpi-value">5,337</div><div class="kpi-label">高三理科学生诊断</div></div>
+          <div class="kpi-card"><div class="kpi-value">4+6</div><div class="kpi-label">核心认知属性</div></div>
+        </div>
+      </div>
+      <div class="scroll-hint">↓ 滚动查看分层策略</div>
+    </div>
+    
+
+    <div class="section">
+      <div class="slide-title">什么是 GDINA 认知诊断？</div>
+      <div class="slide-subtitle">从"总分排名"到"属性掌握模式"的范式转换</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1400px;">
+        <div class="card" style="padding:28px;">
+          <div style="font-size:1.3rem; font-weight:700; color:#38bdf8; margin-bottom:14px;">传统评价的局限</div>
+          <div class="text-block" style="padding:0; font-size:1rem; line-height:1.9;">
+            <p>• 两个学生都考了 20 分，但<strong>失分原因可能完全不同</strong></p>
+            <p>• 一个学生可能是"词汇量不足但结构感好"，另一个可能是"词汇还行但推理能力差"</p>
+            <p>• 用同一张试卷、同一套讲评，无法解决不同的能力缺口</p>
+          </div>
+        </div>
+        <div class="card" style="padding:28px;">
+          <div style="font-size:1.3rem; font-weight:700; color:#f59e0b; margin-bottom:14px;">GDINA 的突破</div>
+          <div class="text-block" style="padding:0; font-size:1rem; line-height:1.9;">
+            <p>• 为每道题贴上<strong>能力属性标签</strong>（Q-matrix）</p>
+            <p>• 通过学生作答反推其<strong>属性掌握概率</strong></p>
+            <p>• 把学生聚类成不同的<strong>"掌握模式群体"</strong></p>
+            <p>• 为每个群体设计<strong>差异化的教学内容与题目</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="section">
+      <div class="slide-title">初三学生认知画像：五大群体</div>
+      <div class="slide-subtitle">GDINA 诊断后的聚类分布（完形+阅读 38题）</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1400px;">
+        <div class="card" style="padding:16px; height:56vh;">
+          <div id="chart-junior-pie" class="chart-container"></div>
+        </div>
+        <div>
+          <div class="text-block" style="padding:0;">
+            <div class="highlight-box">
+              <strong>关键发现：</strong>初三学生呈现明显的"两极分化+中间断层"。
+            </div>
+            <p>• <strong>基础薄弱型（27.3%）</strong> + <strong>结构感知型（26.6%）</strong> 合计超过一半，说明超过半数学生在词汇或结构上存在根本性缺陷。</p>
+            <p>• <strong>全面发展型（13.5%）</strong> 是班级中的头部学生，但比例偏低。</p>
+            <p>• <strong>词汇单一型（13.4%）</strong> 能认单词但读不懂语篇，这是最可惜的群体——有词汇基础但缺乏语篇意识。</p>
+          </div>
+          <div class="principle-card" style="margin-top:14px;">
+            <div class="principle-title">🎯 教学启示</div>
+            <div style="font-size:0.95rem; color:#94a3b8;">不要对全班使用同一套复习材料。至少准备<strong>三套差异化学案</strong>：基础重建版、结构强化版、高阶突破版。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      const chart = echarts.init(document.getElementById('chart-junior-pie'));
+      const option = {
+        backgroundColor: 'transparent',
+        tooltip: { trigger: 'item', formatter: '{b}: {c}人 ({d}%)<br/>得分率: {e}%' },
+        legend: { orient: 'vertical', left: 'left', textStyle: { color: '#e2e8f0' } },
+        series: [{
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: { borderRadius: 10, borderColor: '#1e293b', borderWidth: 2 },
+          label: { show: true, color: '#e2e8f0', formatter: '{b}\n{d}%' },
+          data: [{"value": 4488, "name": "A. 基础薄弱型", "score_rate": 31.3}, {"value": 4378, "name": "B. 结构感知型", "score_rate": 46.0}, {"value": 2226, "name": "I. 全面发展型", "score_rate": 66.3}, {"value": 2204, "name": "C. 词汇单一型", "score_rate": 31.5}, {"value": 1591, "name": "F. 词汇情感型", "score_rate": 44.3}, {"value": 1545, "name": "D. 情感直觉型", "score_rate": 32.9}, {"value": 2, "name": "G. 词汇结构型", "score_rate": 55.3}]
+        }]
+      };
+      chart.setOption(option);
+      charts['junior-pie'] = chart;
+    })();
+    </script>
+    
+
+    <div class="section">
+      <div class="slide-title">高三理科学生认知画像：四大群体</div>
+      <div class="slide-subtitle">GDINA 诊断后的聚类分布（阅读+完形 35题）</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1400px;">
+        <div class="card" style="padding:16px; height:56vh;">
+          <div id="chart-senior-pie" class="chart-container"></div>
+        </div>
+        <div>
+          <div class="text-block" style="padding:0;">
+            <div class="highlight-box">
+              <strong>关键发现：</strong>高三群体的"中间层"非常厚实，但高分群体稀缺。
+            </div>
+            <p>• <strong>全面待补型（30.5%）</strong> 是最大群体，高三临近高考仍有近三分之一学生基础未建立。</p>
+            <p>• <strong>局部掌握型（23.3%）</strong> + <strong>中上潜力型（20.1%）</strong> 构成了厚实的中层，他们是分层教学的重点突破口。</p>
+            <p>• <strong>准学霸型（11.4%）</strong> 比例偏低，说明拔尖人才培养任重道远。</p>
+          </div>
+          <div class="principle-card" style="margin-top:14px;">
+            <div class="principle-title">🎯 教学启示</div>
+            <div style="font-size:0.95rem; color:#94a3b8;">高三复习的致命误区是"齐步走"。对于<strong>30%的全面待补型</strong>，必须果断降级到基础重建；对于<strong>中上潜力型</strong>，要精准补1-2个高阶属性。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      const chart = echarts.init(document.getElementById('chart-senior-pie'));
+      const option = {
+        backgroundColor: 'transparent',
+        tooltip: { trigger: 'item', formatter: '{b}: {c}人 ({d}%)<br/>得分率: {e}%' },
+        legend: { orient: 'vertical', left: 'left', textStyle: { color: '#e2e8f0' } },
+        series: [{
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: { borderRadius: 10, borderColor: '#1e293b', borderWidth: 2 },
+          label: { show: true, color: '#e2e8f0', formatter: '{b}\n{d}%' },
+          data: [{"value": 1628, "name": "A. 全面待补型", "score_rate": 24.4}, {"value": 1241, "name": "E. 局部掌握型", "score_rate": 38.9}, {"value": 1071, "name": "G. 中上潜力型", "score_rate": 39.8}, {"value": 607, "name": "H. 准学霸型", "score_rate": 64.0}, {"value": 396, "name": "C. 只会找细节型", "score_rate": 34.1}, {"value": 300, "name": "F. 阅读强语法弱型", "score_rate": 46.1}, {"value": 94, "name": "D. 词汇语法型", "score_rate": 31.2}]
+        }]
+      };
+      chart.setOption(option);
+      charts['senior-pie'] = chart;
+    })();
+    </script>
+    
+
+    <div class="section">
+      <div class="slide-title">分层教学策略与差异化题目</div>
+      <div class="slide-subtitle">基于 GDINA 聚类的精准教学路径</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1500px;">
+        
+        <div class="card" style="padding:22px; overflow-y:auto;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8;">初三 · A. 基础薄弱型</div>
+            <span style="background:#ef444422; color:#ef4444; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">4488人 · 得分率31.3%</span>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8;">
+            <p><strong>群体画像：</strong>四个核心属性（K1词汇、R1细节、R5情感、R6结构）全部缺失。得分率约31%。</p>
+            <div class="highlight-box" style="margin:10px 0;">
+              <strong>教学策略：</strong>从<strong>高频词汇+基础句法</strong>开始，不要碰完形和阅读的综合题。先让学生能读懂句子主干。
+            </div>
+            <p><strong>推荐材料：</strong>① 初中核心800词闪卡；② 五种基本句型翻译练习；③ 简单的T/F判断题（只改一个词）。</p>
+            <div class="passage-box" style="margin-top:12px; font-size:0.92rem;">
+              
+        <p style="margin-bottom:8px;"><strong>推荐题型：基础细节定位（降低认知负荷）</strong></p>
+        <p style="line-height:1.7; color:#cbd5e1; font-size:0.92rem;">
+        Read the sentence: "Robots in hotels can welcome guests and bring food."
+        <br>Question: What can robots in hotels do? (Choose TWO)
+        <br>A. welcome guests &nbsp; B. drive cars &nbsp; C. bring food &nbsp; D. fly planes
+        <br><span style="color:#22c55e;">答案：A, C</span>
+        </p>
+        
+            </div>
+          </div>
+        </div>
+            
+        <div class="card" style="padding:22px; overflow-y:auto;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8;">初三 · B. 结构感知型</div>
+            <span style="background:#f59e0b22; color:#f59e0b; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">4378人 · 得分率46.0%</span>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8;">
+            <p><strong>群体画像：</strong>R6（语篇结构）已掌握，但K1、R1、R5缺失。得分率约46%。能感知文章结构但读不懂细节和情感词。</p>
+            <div class="highlight-box" style="margin:10px 0;">
+              <strong>教学策略：</strong>在保持结构优势的同时，<strong>强化词汇在语境中的含义</strong>。用'结构带读+关键词标注'双管齐下。
+            </div>
+            <p><strong>推荐材料：</strong>① 完形填空'情感词库'专题；② 说明文结构模板（总-分-总）+ 细节定位训练。</p>
+            <div class="passage-box" style="margin-top:12px; font-size:0.92rem;">
+              
+        <p style="margin-bottom:8px;"><strong>推荐题型：结构已知，聚焦词汇辨析</strong></p>
+        <p style="line-height:1.7; color:#cbd5e1; font-size:0.92rem;">
+        （文章结构已给出：Paragraph 1 引入话题 → Paragraph 2 举例说明 → Paragraph 3 总结观点）<br>
+        In the last paragraph, the writer says helping others brings us <span style="color:#f59e0b;">____</span> instead of money.
+        <br>A. price &nbsp; B. time &nbsp; C. joy
+        <br><span style="color:#22c55e;">答案：C（情感态度词，与文章主旨匹配）</span>
+        </p>
+        
+            </div>
+          </div>
+        </div>
+            </div></div>
+
+    <div class="section">
+      <div class="slide-title">分层教学策略与差异化题目</div>
+      <div class="slide-subtitle">基于 GDINA 聚类的精准教学路径</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1500px;">
+        
+        <div class="card" style="padding:22px; overflow-y:auto;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8;">初三 · I. 全面发展型</div>
+            <span style="background:#22c55e22; color:#22c55e; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">2226人 · 得分率66.3%</span>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8;">
+            <p><strong>群体画像：</strong>掌握3-4个核心属性，得分率约66%。在班级中属于头部学生。</p>
+            <div class="highlight-box" style="margin:10px 0;">
+              <strong>教学策略：</strong>不要停留于基础重复训练。提供<strong>长难句分析、跨篇章推断、议论文深度阅读</strong>等高阶材料。
+            </div>
+            <p><strong>推荐材料：</strong>① 高考难度的说明文/议论文限时阅读；② 读后续写微技能训练（情感描写+情节转折）。</p>
+            <div class="passage-box" style="margin-top:12px; font-size:0.92rem;">
+              
+        <p style="margin-bottom:8px;"><strong>推荐题型：高阶推理+跨篇章比较</strong></p>
+        <p style="line-height:1.7; color:#cbd5e1; font-size:0.92rem;">
+        Text A talks about Robotaxis in Wuhan. Text B talks about the 15th National Games.<br>
+        Question: What do the two texts have in common?<br>
+        A. They both describe historical events.<br>
+        B. They both aim to introduce new technology.<br>
+        C. They both provide information about modern China.<br>
+        D. They both tell personal stories.
+        <br><span style="color:#22c55e;">答案：C（跨篇章体裁推断）</span>
+        </p>
+        
+            </div>
+          </div>
+        </div>
+            
+        <div class="card" style="padding:22px; overflow-y:auto;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8;">初三 · C. 词汇单一型</div>
+            <span style="background:#ef444422; color:#ef4444; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">2204人 · 得分率31.5%</span>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8;">
+            <p><strong>群体画像：</strong>仅掌握K1（词汇辨析），得分率约31%。能认单词但无法形成语篇理解。</p>
+            <div class="highlight-box" style="margin:10px 0;">
+              <strong>教学策略：</strong>将孤立的词汇学习迁移到<strong>语篇语境</strong>中。每个新词必须配一个完整句子或段落。
+            </div>
+            <p><strong>推荐材料：</strong>① 语境猜词训练；② 简单的完形填空（只挖5个空，提供中文提示）。</p>
+            <div class="passage-box" style="margin-top:12px; font-size:0.92rem;">
+              
+        <p style="margin-bottom:8px;"><strong>推荐题型：语境中词汇匹配</strong></p>
+        <p style="line-height:1.7; color:#cbd5e1; font-size:0.92rem;">
+        Lisa didn't ______ as planned. She was too busy taking care of her grandma in the hospital.
+        <br>A. turn up (出现) &nbsp; B. show off (炫耀) &nbsp; C. set out (出发)
+        <br><span style="color:#22c55e;">答案：A（在语境中判断动词短语含义）</span>
+        </p>
+        
+            </div>
+          </div>
+        </div>
+            </div></div>
+
+    <div class="section">
+      <div class="slide-title">分层教学策略与差异化题目</div>
+      <div class="slide-subtitle">基于 GDINA 聚类的精准教学路径</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1500px;">
+        
+        <div class="card" style="padding:22px; overflow-y:auto;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8;">高三 · A. 全面待补型</div>
+            <span style="background:#ef444422; color:#ef4444; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">1628人 · 得分率24.4%</span>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8;">
+            <p><strong>群体画像：</strong>六个属性全部缺失，得分率约24%。高三阶段的基础极度薄弱。</p>
+            <div class="highlight-box" style="margin:10px 0;">
+              <strong>教学策略：</strong>必须<strong>果断降级</strong>。用初三-高一的基础材料重建语法和阅读基本功。不要跟风刷高考题。
+            </div>
+            <p><strong>推荐材料：</strong>① 核心语法（从句、非谓语）思维导图；② 高考真题中难度最低的A/B篇阅读逐句翻译。</p>
+            <div class="passage-box" style="margin-top:12px; font-size:0.92rem;">
+              
+        <p style="margin-bottom:8px;"><strong>推荐题型：单句语法填空</strong></p>
+        <p style="line-height:1.7; color:#cbd5e1; font-size:0.92rem;">
+        The Silk Road, ______ connected China with Europe, was a network of trade routes.<br>
+        A. which &nbsp; B. that &nbsp; C. where
+        <br><span style="color:#22c55e;">答案：A（基础定语从句，先建立语法自信）</span>
+        </p>
+        
+            </div>
+          </div>
+        </div>
+            
+        <div class="card" style="padding:22px; overflow-y:auto;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8;">高三 · E. 局部掌握型</div>
+            <span style="background:#f59e0b22; color:#f59e0b; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">1241人 · 得分率38.9%</span>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8;">
+            <p><strong>群体画像：</strong>掌握2-3个属性但不成体系，得分率约39%。有局部亮点但整体不稳。</p>
+            <div class="highlight-box" style="margin:10px 0;">
+              <strong>教学策略：</strong>通过GDINA结果精准定位<strong>缺失的那1-2个属性</strong>，进行专题突破。不要平均用力。
+            </div>
+            <p><strong>推荐材料：</strong>① 七选五功能分类专题（若R6缺失）；② 情感态度词专题（若R5缺失）；③ 长难句拆解（若R2缺失）。</p>
+            <div class="passage-box" style="margin-top:12px; font-size:0.92rem;">
+              
+        <p style="margin-bottom:8px;"><strong>推荐题型：聚焦缺失属性（假设缺失R6语篇结构）</strong></p>
+        <p style="line-height:1.7; color:#cbd5e1; font-size:0.92rem;">
+        Food is a key part of staying healthy. ______ For example, a warm bowl of pear soup brings comfort.<br>
+        A. Traditional ideas suggest eating some foods that are good for our body.<br>
+        B. Finally, the secret to good health is simple.<br>
+        C. This helps us avoid getting sick.
+        <br><span style="color:#22c55e;">答案：A（例证句功能，支撑前文的'Food is key'）</span>
+        </p>
+        
+            </div>
+          </div>
+        </div>
+            </div></div>
+
+    <div class="section">
+      <div class="slide-title">分层教学策略与差异化题目</div>
+      <div class="slide-subtitle">基于 GDINA 聚类的精准教学路径</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1500px;">
+        
+        <div class="card" style="padding:22px; overflow-y:auto;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8;">高三 · G. 中上潜力型</div>
+            <span style="background:#f59e0b22; color:#f59e0b; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">1071人 · 得分率39.8%</span>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8;">
+            <p><strong>群体画像：</strong>掌握4个左右属性，得分率约40%。有稳定的基础能力但高阶能力有缺口。</p>
+            <div class="highlight-box" style="margin:10px 0;">
+              <strong>教学策略：</strong>重点突破<strong>R2推理判断</strong>和<strong>完形情感词辨析</strong>。这是从中等生跃升为优等生的关键瓶颈。
+            </div>
+            <p><strong>推荐材料：</strong>① 议论文作者态度推断训练；② 完形填空后三段精读（情感升华弧线）。</p>
+            <div class="passage-box" style="margin-top:12px; font-size:0.92rem;">
+              
+        <p style="margin-bottom:8px;"><strong>推荐题型：情感态度+推理判断综合</strong></p>
+        <p style="line-height:1.7; color:#cbd5e1; font-size:0.92rem;">
+        I wanted to ______ things. I wrote an apology letter to Lisa and soon got her forgiveness.<br>
+        A. change &nbsp; B. purchase &nbsp; C. fix<br>
+        So finally, we did bring a sad moment to a ______ conclusion.<br>
+        A. healthy &nbsp; B. bitter &nbsp; C. uncertain
+        <br><span style="color:#22c55e;">答案：C, A（情感修复+积极结局的情感态度推断）</span>
+        </p>
+        
+            </div>
+          </div>
+        </div>
+            
+        <div class="card" style="padding:22px; overflow-y:auto;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8;">高三 · H. 准学霸型</div>
+            <span style="background:#22c55e22; color:#22c55e; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">607人 · 得分率64.0%</span>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8;">
+            <p><strong>群体画像：</strong>掌握5-6个属性中的大部分，得分率约64%。接近全面掌握。</p>
+            <div class="highlight-box" style="margin:10px 0;">
+              <strong>教学策略：</strong>进行<strong>满分冲刺训练</strong>：七选五零失误、阅读理解D篇全对、读后续写情节合理+语言生动。
+            </div>
+            <p><strong>推荐材料：</strong>① 近3年高考真题七选五限时训练；② 读后续写高分范文仿写（关注段首句衔接和情感细节）。</p>
+            <div class="passage-box" style="margin-top:12px; font-size:0.92rem;">
+              
+        <p style="margin-bottom:8px;"><strong>推荐题型：读后续写微技能——情感描写</strong></p>
+        <p style="line-height:1.7; color:#cbd5e1; font-size:0.92rem;">
+        请用生动的语言续写：'Nervousness melted away and I started to enjoy the performance with the old.'<br>
+        要求：写出至少一处老人的具体反应（微笑/拍手/流泪），并用一个非谓语动词或定语从句。
+        <br><span style="color:#22c55e;">示例：An old man sitting in the front row nodded gently, his eyes shining with tears of joy.</span>
+        </p>
+        
+            </div>
+          </div>
+        </div>
+            </div></div>
+
+    <div class="section">
+      <div class="slide-title">跨学段对比：从初三到高三的能力跃迁</div>
+      <div class="slide-subtitle">哪些群体"自然成长"了？哪些群体"停滞不前"？</div>
+      <div class="grid-1" style="max-width:1300px;">
+        <div class="card" style="padding:28px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; font-size:0.95rem; color:#cbd5e1;">
+            <div class="highlight-box" style="margin:0;">
+              <div style="font-weight:700; color:#ef4444; margin-bottom:6px;">初三基础薄弱型 → 高三全面待补型</div>
+              <p>占比：27.3% → 30.5%</p>
+              <p style="font-size:0.9rem; color:#94a3b8;">这意味着：有近三分之一的学生从初三到高三，基础能力没有发生质变。</p>
+            </div>
+            <div class="highlight-box" style="margin:0;">
+              <div style="font-weight:700; color:#f59e0b; margin-bottom:6px;">初三结构感知型 → 高三局部掌握型</div>
+              <p>占比：26.6% → 23.3%</p>
+              <p style="font-size:0.9rem; color:#94a3b8;">这意味着：有结构感的学生在高三逐渐补上了一些属性，但还不足以形成系统能力。</p>
+            </div>
+            <div class="highlight-box" style="margin:0;">
+              <div style="font-weight:700; color:#22c55e; margin-bottom:6px;">初三全面发展型 → 高三准学霸型</div>
+              <p>占比：13.5% → 11.4%</p>
+              <p style="font-size:0.9rem; color:#94a3b8;">这意味着：头部学生在高三的竞争更激烈，部分"全面发展型"学生在语法（K2）上出现了缺口。</p>
+            </div>
+          </div>
+        </div>
+        <div class="danger-box" style="margin-top:20px; text-align:center;">
+          <strong>核心结论：</strong>学生的认知属性发展不是线性的。如果初三的"词汇单一型"学生没有在语篇能力上得到针对性训练，到高三只会变成"局部掌握型"甚至"全面待补型"。
+          <strong>分层教学越早开始，效果越好。</strong>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="section">
+      <div class="slide-title">教师的行动计划</div>
+      <div class="slide-subtitle">把认知诊断结果转化为课堂行动</div>
+      <div class="grid-1" style="max-width:1200px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:22px;">
+          <div class="card" style="padding:24px; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:10px;">1️⃣</div>
+            <div style="font-size:1.2rem; font-weight:700; color:#38bdf8; margin-bottom:10px;">分班/分组</div>
+            <div class="text-block" style="padding:0; font-size:0.95rem;">根据 GDINA 聚类结果，将学生分为 3-4 个学习小组。每组发放对应难度的学案。</div>
+          </div>
+          <div class="card" style="padding:24px; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:10px;">2️⃣</div>
+            <div style="font-size:1.2rem; font-weight:700; color:#f59e0b; margin-bottom:10px;">定点突破</div>
+            <div class="text-block" style="padding:0; font-size:0.95rem;">为每个小组设计 2 周为一个周期的"属性专题"（如情感态度词、语篇结构、推理判断）。</div>
+          </div>
+          <div class="card" style="padding:24px; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:10px;">3️⃣</div>
+            <div style="font-size:1.2rem; font-weight:700; color:#22c55e; margin-bottom:10px;">动态监测</div>
+            <div class="text-block" style="padding:0; font-size:0.95rem;">每 2 周用 10-15 道"纯探针题"复测目标属性，根据 mastery probability 调整学生分组。</div>
+          </div>
+        </div>
+        <div class="success-box" style="margin-top:36px; text-align:center;">
+          分层教学的本质不是"贴标签"，而是<strong>用数据为每个学生找到最合适的学习起点</strong>。
+        </div>
+        <div style="text-align:center; margin-top:20px; color:#64748b;">
+          — 循证教学：用数据说话，让改变发生 —
+        </div>
+      </div>
+    </div>
+    
+</div>
+<script>
+const charts = {};
+const container = document.getElementById('container');
+const dots = document.querySelectorAll('.nav-dot');
+const sections = document.querySelectorAll('.section');
+
+function updateDots() {
+  const scrollTop = container.scrollTop;
+  const h = window.innerHeight;
+  let idx = 0;
+  sections.forEach((sec, i) => {
+    const mid = sec.offsetTop + sec.offsetHeight/2;
+    if (scrollTop + h/2 >= mid) idx = i;
+  });
+  dots.forEach(d => d.classList.remove('active'));
+  if (dots[idx]) dots[idx].classList.add('active');
+}
+
+container.addEventListener('scroll', updateDots);
+updateDots();
+
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    sections[i].scrollIntoView({behavior:'smooth'});
+  });
+});
+
+window.addEventListener('resize', () => {
+  Object.values(charts).forEach(c => c && c.resize());
+});
+</script>
+</body>
+</html>

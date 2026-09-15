@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英语探针题目库 | GDINA分层教学</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; height: 100%;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #0b1021 0%, #111827 50%, #0b1021 100%);
+  color: #e2e8f0;
+  overflow: hidden;
+}
+#container {
+  width: 100%; height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+.section {
+  width: 100%; min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 36px 56px;
+  position: relative;
+}
+.card {
+  background: rgba(30, 41, 59, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px -15px rgba(0,0,0,0.55);
+}
+.slide-title {
+  font-size: 2.4rem; font-weight: 700;
+  background: linear-gradient(90deg, #38bdf8, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.slide-subtitle {
+  font-size: 1.1rem; color: #94a3b8;
+  text-align: center; margin-bottom: 22px;
+}
+.chart-container {
+  width: 100%; height: 100%;
+  border-radius: 14px; overflow: hidden;
+}
+.text-block {
+  font-size: 1.05rem; line-height: 1.85;
+  color: #cbd5e1; padding: 18px;
+}
+.text-block strong { color: #f59e0b; }
+.highlight-box {
+  background: rgba(56, 189, 248, 0.08);
+  border-left: 3px solid #38bdf8;
+  padding: 14px 18px; border-radius: 8px;
+  margin: 10px 0;
+}
+.danger-box {
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 3px solid #ef4444;
+  padding: 14px 18px; border-radius: 8px;
+  margin: 10px 0;
+}
+.success-box {
+  background: rgba(34, 197, 94, 0.08);
+  border-left: 3px solid #22c55e;
+  padding: 14px 18px; border-radius: 8px;
+  margin: 10px 0;
+}
+.grid-2 {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 26px; width: 100%; max-width: 1600px; align-items: stretch;
+}
+.grid-1 {
+  width: 100%; max-width: 1380px;
+}
+.kpi-row {
+  display: flex; gap: 22px; justify-content: center; margin-top: 18px;
+}
+.kpi-card {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 16px; padding: 24px 32px;
+  text-align: center; min-width: 160px;
+}
+.kpi-value {
+  font-size: 2.8rem; font-weight: 800;
+  background: linear-gradient(180deg, #38bdf8, #0284c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.kpi-label {
+  font-size: 0.9rem; color: #94a3b8; margin-top: 4px;
+}
+.nav-dots {
+  position: fixed; right: 22px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 10px;
+  z-index: 100;
+}
+.nav-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: rgba(148,163,184,0.3);
+  cursor: pointer; transition: all 0.3s;
+}
+.nav-dot.active { background: #f59e0b; transform: scale(1.3); box-shadow: 0 0 10px #f59e0b; }
+.scroll-hint {
+  position: absolute; bottom: 26px; left: 50%;
+  transform: translateX(-50%);
+  color: #64748b; font-size: 0.85rem;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce { 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,8px);} }
+.principle-card {
+  background: rgba(15,23,42,0.45);
+  border: 1px dashed rgba(148,163,184,0.25);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 10px;
+}
+.principle-title {
+  color: #38bdf8; font-weight: 600; font-size: 0.98rem; margin-bottom: 6px;
+}
+.passage-box {
+  background: rgba(15,23,42,0.6);
+  border-left: 4px solid #f59e0b;
+  padding: 18px 22px;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+</style>
+</head>
+<body>
+<div class="nav-dots">
+<div class="nav-dot" data-idx="0"></div>
+<div class="nav-dot" data-idx="1"></div>
+<div class="nav-dot" data-idx="2"></div>
+<div class="nav-dot" data-idx="3"></div>
+<div class="nav-dot" data-idx="4"></div>
+<div class="nav-dot" data-idx="5"></div>
+<div class="nav-dot" data-idx="6"></div>
+<div class="nav-dot" data-idx="7"></div>
+<div class="nav-dot" data-idx="8"></div>
+<div class="nav-dot" data-idx="9"></div>
+<div class="nav-dot" data-idx="10"></div>
+<div class="nav-dot" data-idx="11"></div>
+<div class="nav-dot" data-idx="12"></div>
+<div class="nav-dot" data-idx="13"></div>
+<div class="nav-dot" data-idx="14"></div>
+<div class="nav-dot" data-idx="15"></div>
+<div class="nav-dot" data-idx="16"></div>
+<div class="nav-dot" data-idx="17"></div>
+<div class="nav-dot" data-idx="18"></div>
+<div class="nav-dot" data-idx="19"></div>
+<div class="nav-dot" data-idx="20"></div>
+</div>
+<div id="container">
+
+    <div class="section">
+      <div style="text-align:center;">
+        <div style="font-size:1rem; color:#94a3b8; letter-spacing:4px; margin-bottom:10px;">循证教学 · 精准命题</div>
+        <div class="slide-title" style="font-size:3.2rem; margin-bottom:16px;">英语探针题目库</div>
+        <div style="font-size:1.2rem; color:#cbd5e1; margin-bottom:40px;">基于 GDINA 认知诊断的差异化训练题库</div>
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="kpi-value">31</div><div class="kpi-label">道探针题</div></div>
+          <div class="kpi-card"><div class="kpi-value">10</div><div class="kpi-label">个认知属性</div></div>
+          <div class="kpi-card"><div class="kpi-value">2</div><div class="kpi-label">个学段</div></div>
+        </div>
+      </div>
+      <div class="scroll-hint">↓ 滚动查看探针题库</div>
+    </div>
+    
+
+    <div class="section">
+      <div class="slide-title">什么是"探针题"？</div>
+      <div class="slide-subtitle">为每个认知属性量身定制的"诊断+训练"双功能题目</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1400px;">
+        <div class="card" style="padding:28px;">
+          <div style="font-size:1.3rem; font-weight:700; color:#38bdf8; margin-bottom:14px;">探针题的设计原则</div>
+          <div class="text-block" style="padding:0; font-size:1rem; line-height:1.9;">
+            <p>• <strong>属性纯粹性：</strong>每道题尽量只考查 <strong>1-2 个目标属性</strong>，减少干扰</p>
+            <p>• <strong>难度适切性：</strong>根据目标群体的能力起点调整语境复杂度和选项干扰度</p>
+            <p>• <strong>变式同构性：</strong>与模拟考中的原型题保持<strong>相同的认知结构</strong>，但改变话题语境</p>
+          </div>
+        </div>
+        <div class="card" style="padding:28px;">
+          <div style="font-size:1.3rem; font-weight:700; color:#f59e0b; margin-bottom:14px;">如何使用这本题库</div>
+          <div class="text-block" style="padding:0; font-size:1rem; line-height:1.9;">
+            <p>• <strong>Step 1 查诊断：</strong>查看学生的 GDINA 聚类标签（如"结构感知型"）</p>
+            <p>• <strong>Step 2 选属性：</strong>找到该群体缺失的属性（如 K1 词汇辨析）</p>
+            <p>• <strong>Step 3 配题目：</strong>从对应属性栏目中挑选 3-5 道探针题</p>
+            <p>• <strong>Step 4 追踪：</strong>2 周后复测，观察学生是否从"未掌握"跃迁到"已掌握"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">初三 · K1 词汇辨析</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#22c55e;">J-K1-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF24 完形填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="margin-bottom:10px;">阅读下面短文，从每题所给的A、B、C三个选项中选出最佳选项。</p>
+        <p style="line-height:1.8; color:#e2e8f0;">Every small act of kindness brings us more than we expect. When I help an old neighbor carry groceries, I don't ask for money. The true ______ of helping is the warm feeling inside.</p>
+        <p style="margin-top:10px;">24. A. price &nbsp; B. time &nbsp; C. <span style="color:#22c55e; font-weight:bold;">joy</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：C. 词汇单一型 / A. 基础薄弱型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">在语篇语境中考查近义词辨析，帮助'只认单词不懂语篇'的学生建立'词不离句'的意识。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF24同构：需要通过'helping'和'warm feeling'推断出'joy'，而非只看字面意思选'price'或'time'。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#22c55e;">J-K1-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF33 完形填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">After a big fight with my best friend, I didn't know what to do. But deep down, I still ______ to making things right between us.</p>
+        <p style="margin-top:10px;">33. A. turned up &nbsp; B. <span style="color:#22c55e; font-weight:bold;">looked forward</span> &nbsp; C. gave up</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：C. 词汇单一型 / F. 词汇情感型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查动词短语在语境中的含义，帮助学生区分'形似义异'的短语组合。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>需要结合'didn't know what to do'和'still'的转折语气，判断主人公'期待'和好，而非'放弃'。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">初三 · K1 词汇辨析</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#22c55e;">J-K1-03</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF48 阅读C篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">The 15th National Games brings together athletes from across the country. It is a grand <span style="color:#f59e0b;">gathering</span> of sports lovers, filled with excitement and teamwork.</p>
+        <p style="margin-top:10px;">48. What does the underlined word "gathering" mean in Chinese?<br>A. 比赛 (competition) &nbsp; B. <span style="color:#22c55e; font-weight:bold;">集会 (meeting/get-together)</span> &nbsp; C. 训练 (training)</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：B. 结构感知型 / E. 情感结构型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">在说明文语境中考查词义猜测，让学生利用上下文线索推断生词。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF48同构：通过'brings together athletes'和'filled with excitement'推断gathering是'集会/聚会'之意。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">初三 · R1 细节定位</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#38bdf8;">J-R1-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF37 T/F判断</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">The mother put potatoes in the first pot, stones in the second pot, and tea leaves in the third pot. She boiled them separately for twenty minutes.</p>
+        <p style="margin-top:10px;">37. The mother put all three things together in <span style="color:#f59e0b;">one pot</span>.<br>A. T &nbsp; B. <span style="color:#22c55e; font-weight:bold;">F</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：A. 基础薄弱型 / C. 词汇单一型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练'逐词核对'的基本功，破除学生'看到关键词就选对'的惯性思维。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF37陷阱题同构：原文是'three pots... first / second / third'，题干改成'one pot'，必须逐词核对限定词。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#38bdf8;">J-R1-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF43 阅读B篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">In the smart hotel, robots can welcome guests, carry bags to rooms, bring food, help with cleaning, and show guests around the building.</p>
+        <p style="margin-top:10px;">43. How many robot jobs are mentioned in this part?<br>A. 4 &nbsp; B. <span style="color:#22c55e; font-weight:bold;">5</span> &nbsp; C. 6</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：B. 结构感知型 / D. 情感直觉型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">在说明文中训练'准确计数'能力，帮助学生区分总述与细节、不同类别的工作。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF43同构：welcome, carry bags, bring food, help with cleaning, show guests around = 5 种。学生容易漏数或把'cleaning'和'showing around'误认为是同一种。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">初三 · R1 细节定位</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#38bdf8;">J-R1-03</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF46-47 阅读C篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">The 15th National Games of China opened on November 9th in Guangdong, Hong Kong and Macao. It will close on November 21st.</p>
+        <p style="margin-top:10px;">46. Where are the 15th National Games held?<br>A. In Beijing only &nbsp; B. In Guangzhou only &nbsp; C. <span style="color:#22c55e; font-weight:bold;">In Guangdong, Hong Kong and Macao</span></p>
+        <p style="margin-top:8px;">47. How long will the Games last?<br>A. 9 days &nbsp; B. <span style="color:#22c55e; font-weight:bold;">About 12 days</span> &nbsp; C. 21 days</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：A. 基础薄弱型 / B. 结构感知型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练新闻要素（5W1H）的快速提取，让学生掌握'导语中包含核心信息'的文体规律。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF46-47同构：直接考查新闻导语中的地点（Guangdong, Hong Kong and Macao）和时间跨度（Nov 9-21）。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">初三 · R5 情感态度</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#ef4444;">J-R5-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF35 完形填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">I wrote an apology letter to my friend and soon got her forgiveness. So finally, we did bring a sad moment from the past to a ______ conclusion.</p>
+        <p style="margin-top:10px;">35. A. <span style="color:#22c55e; font-weight:bold;">happy</span> &nbsp; B. bitter &nbsp; C. uncertain</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：D. 情感直觉型 / F. 词汇情感型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练学生在完形结尾段判断'积极/消极'情感色彩，突破情感词辨析瓶颈。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF35（healthy/bitter）同构：根据'apology letter'和'forgiveness'判断结局是积极的，选happy。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#ef4444;">J-R5-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF40 阅读A篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">The mother boiled potatoes, stones and tea leaves in three separate pots. The potatoes became soft, the stones stayed hard, but the tea leaves changed the water into something wonderful.</p>
+        <p style="margin-top:10px;">40. What does the story want to tell us?<br>A. We should always be as hard as stones.<br>B. We should become soft like potatoes when facing difficulties.<br>C. <span style="color:#22c55e; font-weight:bold;">We should try to change difficulties into something good, just like the tea leaves.</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：A. 基础薄弱型 / D. 情感直觉型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">从寓言/故事中推断深层寓意，帮助学生超越字面信息进行情感-态度推断。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF40同构：需要从三种材料的不同反应中抽象出'积极面对逆境'的寓意，而非只看字面描述。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">初三 · R5 情感态度</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#ef4444;">J-R5-03</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF53 阅读D篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">Zootopia 2 is not just funny — it is also thoughtful and heart-warming. The movie makes us laugh, but it also makes us think about real problems in society.</p>
+        <p style="margin-top:10px;">53. How does the writer feel about Zootopia 2?<br>A. Disappointed. &nbsp; B. Worried. &nbsp; C. <span style="color:#22c55e; font-weight:bold;">Positive.</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：B. 结构感知型 / I. 全面发展型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练学生识别影评/评论中的评价性形容词，推断作者对作品的态度。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF53同构：通过'funny, thoughtful, heart-warming'等评价词推断作者态度为positive。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">初三 · R6 语篇结构</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f472b6;">J-R6-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF54 阅读E篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">As autumn arrives, many young people feel tired and dry. ______ Here are some useful tips for staying healthy in the colder months.</p>
+        <p style="margin-top:10px;">54. A. So these traditions are becoming popular again.<br>B. <span style="color:#22c55e; font-weight:bold;">So it's important to make small adjustments and take good care of ourselves.</span><br>C. Traditional ideas suggest eating some foods that are good for our body.</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：A. 基础薄弱型 / B. 结构感知型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练'过渡句'功能识别：从现象描述转向对策建议的承上启下。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF54同构：空格前说'感觉疲惫干燥'（问题），空格后说'以下是健康建议'（对策），需要过渡句'所以我们需要调整并照顾好自己'。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f472b6;">J-R6-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF56 阅读E篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">Food is a key part of staying healthy. ______ For example, a warm bowl of pear soup or a sweet white fungus dessert can bring gentle comfort to your day.</p>
+        <p style="margin-top:10px;">56. A. <span style="color:#22c55e; font-weight:bold;">Traditional ideas suggest eating some foods that are good for our body.</span><br>B. Finally, the secret to good health in these months is simple.<br>C. This helps us avoid getting sick.</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：B. 结构感知型 / G. 词汇结构型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练'例证句'功能：用具体例子支撑段落主题句。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF56同构：主题句'Food is key'需要例证句支撑，后面的'For example, pear soup...'是对选项A的具体展开。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">初三 · R6 语篇结构</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f472b6;">J-R6-03</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF41 阅读B篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">[Paragraph 1] In China, new technology is changing daily life. Robot waiters serve food in restaurants. Self-driving taxis run on city streets. Drones deliver packages to people's doors.</p>
+        <p style="margin-top:10px;">41. What is the main idea of this paragraph?<br>A. How to use robots at home.<br>B. The history of Chinese restaurants.<br>C. <span style="color:#22c55e; font-weight:bold;">How technology is changing life in China.</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：C. 词汇单一型 / I. 全面发展型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练说明文主旨概括能力，让学生从段落关键词中提炼核心话题。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF41同构：段落列举了机器人服务员、自动驾驶出租车、无人机送货三个例子，共同支撑的主题是'科技改变生活'。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · K1 词汇辨析</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#22c55e;">S-K1-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF34 完形填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">After months of silence, I finally decided to ______ our friendship. I sent her a long message, saying how sorry I was.</p>
+        <p style="margin-top:10px;">34. A. change &nbsp; B. purchase &nbsp; C. assess &nbsp; D. <span style="color:#22c55e; font-weight:bold;">fix</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：D. 词汇语法型 / E. 局部掌握型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">在记叙文情感高潮处考查动词辨析，帮助学生建立'情节-词义'匹配意识。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF34同构：根据'months of silence'和'sorry'推断主人公想要'修复'友谊，fix 最符合语境。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#22c55e;">S-K1-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF8 阅读C篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">With so much pollution around us, the danger to our health is <span style="color:#f59e0b;">slipping under the radar</span>. Most people don't notice it until it is too late.</p>
+        <p style="margin-top:10px;">8. What does "slipping under the radar" mean?<br>A. Being carefully studied.<br>B. <span style="color:#22c55e; font-weight:bold;">Being ignored or not noticed.</span><br>C. Being reported in the news.</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：C. 只会找细节型 / E. 局部掌握型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查上下文中的短语猜测能力，训练学生利用解释性线索推断生词含义。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF8同构：下文'Most people don't notice it'直接解释了'slipping under the radar' = '被忽视'。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · K2 语法知识</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#a855f7;">S-K2-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF36 语法填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">The Silk Road, ______ connected China and Europe, was a network of trade routes.</p>
+        <p style="margin-top:10px;">36. A. which &nbsp; B. that &nbsp; C. where &nbsp; D. <span style="color:#22c55e; font-weight:bold;">A</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：A. 全面待补型 / D. 词汇语法型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">从最基本的定语从句入手重建语法自信，这是高三K2掌握率为0%的突破口。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF36同构：非限制性定语从句，先行词'The Silk Road'在从句中作主语，只能用which。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#a855f7;">S-K2-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF37 语法填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">______ in 130 B.C., the Silk Road routes remained in use for centuries.</p>
+        <p style="margin-top:10px;">37. A. Establishing &nbsp; B. <span style="color:#22c55e; font-weight:bold;">Established</span> &nbsp; C. To establish &nbsp; D. Having established</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：A. 全面待补型 / E. 局部掌握型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查分词作状语，帮助学生识别主被动关系和时间先后。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF37同构：'the Silk Road routes'与'establish'是被动关系，用过去分词Established作状语。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · K2 语法知识</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#a855f7;">S-K2-03</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF42 语法填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">Art, along with religion and technology, ______ along these routes at that time.</p>
+        <p style="margin-top:10px;">42. A. exchanged &nbsp; B. was exchanging &nbsp; C. <span style="color:#22c55e; font-weight:bold;">was exchanged</span> &nbsp; D. were exchanged</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：F. 阅读强语法弱型 / G. 中上潜力型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查一般过去时的被动语态，补足'阅读强但语法弱'型学生的输出短板。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF42同构：主语'Art'是单数，与'exchange'是被动关系，时间状语'at that time'提示用一般过去时被动语态 was exchanged。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#a855f7;">S-K2-04</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF45 语法填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">The new trade policy gave the country the cheapest and easiest approach ______ materials and goods.</p>
+        <p style="margin-top:10px;">45. A. sell &nbsp; B. sold &nbsp; C. <span style="color:#22c55e; font-weight:bold;">to sell</span> &nbsp; D. selling</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：G. 中上潜力型 / H. 准学霸型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查非谓语动词（不定式/动名词）与名词的搭配，攻克高分学生的细微语法漏洞。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF45同构：'approach to doing sth'和'approach to do sth'都有使用，但在'give sb the approach to sell'结构中用不定式to sell更自然。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · R1 细节定位</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#38bdf8;">S-R1-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF1 阅读A篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">Sichuan Opera's "Changing Faces" is amazing — a great artist can change faces up to 20 times in a single performance, sometimes within one minute.</p>
+        <p style="margin-top:10px;">1. How many times can a great artist change faces in one performance at most?<br>A. 10 times &nbsp; B. <span style="color:#22c55e; font-weight:bold;">20 times</span> &nbsp; C. Once a minute</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：C. 只会找细节型 / A. 全面待补型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练说明文中的数字/专有名词定位，帮助基础薄弱学生建立'阅读自信'。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF1同构：直接定位数字'20 times'。基础薄弱学生往往因为整段读不懂而放弃，其实只需找到关键数字即可得分。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#38bdf8;">S-R1-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF10 阅读C篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">To help cities switch to low-carbon wastewater treatment, the researchers suggest using real-time monitoring systems. They also say fossil CO₂ should be included in national climate records.</p>
+        <p style="margin-top:10px;">10. What do the researchers suggest?<br>A. Stopping the use of all chemicals.<br>B. <span style="color:#22c55e; font-weight:bold;">Adding fossil CO₂ to climate records.</span><br>C. Closing all old wastewater plants.</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：E. 局部掌握型 / B. 定位结构型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练科学研究类文章中的'建议-对策'定位，帮助学生快速找到研究者的核心观点。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF10同构：直接定位'suggest'和'say'后的内容。学生需要训练'研究者建议=文章重点'的阅读策略。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · R2 推理判断</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f59e0b;">S-R2-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF4 阅读B篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">I made the tough decision to quit my university major after graduation, switching to pursue a career in the kitchen. Although my mother wasn't favorable with my choice, she has since been an incredible supporter.</p>
+        <p style="margin-top:10px;">4. Why did the author quit his university major?<br>A. He was often discouraged by his mother.<br>B. <span style="color:#22c55e; font-weight:bold;">He wanted to follow his dream as a cook.</span><br>C. He was financially struggling.</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：E. 局部掌握型 / G. 中上潜力型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查'行为→原因/动机'的推断链，帮助中上潜力型学生突破推理判断瓶颈。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF4同构：需要推断'quit university major... switching to pursue a career in the kitchen'的深层动机是对烹饪梦想的追求，而非表面上的母亲反对或经济困难。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f59e0b;">S-R2-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF13 阅读D篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">When asked about the cost of politeness to AI, OpenAI CEO Sam Altman responded, "Tens of millions of dollars well spent — you never know."</p>
+        <p style="margin-top:10px;">13. How does Sam Altman seem to view the cost?<br>A. As a waste of money.<br>B. <span style="color:#22c55e; font-weight:bold;">As a necessary investment.</span><br>C. As a social requirement.</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：G. 中上潜力型 / H. 准学霸型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查人物态度推断，特别是反讽语句背后的真实态度。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF13同构：'well spent'暗示Altman认为这笔钱花得值，是一种'必要的投资'，而非浪费。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · R2 推理判断</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f59e0b;">S-R2-03</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF15 阅读D篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">So perhaps all of our pleases and thank yous to AI have value. Ultimately, the one who benefits from our politeness isn't the AI at all, but ourselves.</p>
+        <p style="margin-top:10px;">15. What does the author mean in the last paragraph?<br>A. Politeness to AI is meaningless but costly.<br>B. Digital interactions require new polite behavior.<br>C. <span style="color:#22c55e; font-weight:bold;">Humans benefit more than AI from being polite.</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：G. 中上潜力型 / H. 准学霸型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查议论文作者最终观点，训练学生识别结论段的核心论点句。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF15同构：最后一段'Ultimately...'是明确的论点句，直接对应选项C。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · R5 情感态度</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#ef4444;">S-R5-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF35 完形填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">I wrote an apology letter to Lisa and soon got her forgiveness. So finally, we did bring a sad moment from the past to a ______ conclusion.</p>
+        <p style="margin-top:10px;">35. A. <span style="color:#22c55e; font-weight:bold;">healthy</span> &nbsp; B. bitter &nbsp; C. dramatic &nbsp; D. uncertain</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：E. 局部掌握型 / G. 中上潜力型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">在完形结尾段考查情感态度词辨析，这是高三最高相关对（KGF34↔KGF35 r=0.248）的变式训练。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF35同构：根据'apology letter'和'forgiveness'判断结局是积极的，healthy 表示'积极的、良好的'。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#ef4444;">S-R5-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF22 完形填空</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">Lisa had promised to join me for my birthday movie marathon. But when the big day came, Lisa didn't turn up. I got ______ — how could she break her promise?</p>
+        <p style="margin-top:10px;">22. A. cross &nbsp; B. awkward &nbsp; C. guilty &nbsp; D. <span style="color:#22c55e; font-weight:bold;">impatient</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：A. 全面待补型 / E. 局部掌握型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">在完形中段考查情感推断，帮助学生跟踪叙事弧线中的情感变化。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF22同构：朋友爽约后，主人公的情感应该是负面的、带有愤怒/不耐烦色彩的，impatient 最符合'break her promise'的语境。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · R5 情感态度</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#ef4444;">S-R5-03</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF6-7 阅读B篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">Making money is no longer the main driver — instead, I seek meaningful experiences and opportunities to inspire others.</p>
+        <p style="margin-top:10px;">6. What does the author value most now?<br>A. Sharing adventures online.<br>B. Traveling around the world.<br>C. <span style="color:#22c55e; font-weight:bold;">Making a difference to others.</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：G. 中上潜力型 / H. 准学霸型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查作者价值观推断，帮助学生从行为描述中提炼人物态度。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF6同构：'meaningful experiences'和'inspire others'共同指向作者重视'对他人产生影响'，而非金钱或旅行本身。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · R6 语篇结构</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f472b6;">S-R6-01</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF16 七选五</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">With the rapid growth of online media, China's food safety issues are coming to light more often. These include toxic milk powder and recycled cooking oil. ______</p>
+        <p style="margin-top:10px;">16. A. So, how can we ensure that the food we consume is safe?<br>B. In this way, you are able to have fresher and safer options.<br>C. <span style="color:#22c55e; font-weight:bold;">Then, how should we deal with businesses selling bad food?</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：A. 全面待补型 / E. 局部掌握型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练'过渡句'功能：从问题描述转向对策建议。这是高三七选五最薄弱的环节。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF16同构：上文列举食品安全问题，下文进入具体建议段落。需要过渡句承上启下，C选项'Then, how should we deal with...'既承接了上文的问题，又引出了下文的对策。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f472b6;">S-R6-02</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF17 七选五</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">● ______ It's crucial to know where your food comes from and how it's prepared. Read labels, check for certifications, and stay updated on food recalls.</p>
+        <p style="margin-top:10px;">17. A. Be prepared.<br>B. <span style="color:#22c55e; font-weight:bold;">Be Informed.</span><br>C. Eat more at home.</p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：E. 局部掌握型 / G. 中上潜力型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练'主题句/小标题'提炼能力，让学生学会概括段落核心内容。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF17同构：下文围绕'know where your food comes from... read labels... stay updated'展开，核心主题是'了解信息'，对应小标题'Be Informed'。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title" style="font-size:2rem;">高三 · R6 语篇结构</div>
+      <div class="slide-subtitle">探针题 · 对应模拟考原型题 · 标注目标群体与教学作用</div>
+      <div class="grid-2" style="align-items:stretch; max-width:1600px;">
+            
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f472b6;">S-R6-03</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF5 阅读B篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">[Paragraph 3] Soon, I fell back into old patterns working in kitchens but feeling unfulfilled. Then, social media changed everything. As an early user, I poured my creativity into the platform. Soon, my audience grew to 200,000 followers. Recognizing the opportunity, I quit my job to pursue travel photography full-time.</p>
+        <p style="margin-top:10px;">5. What does paragraph 3 mainly focus on?<br>A. The great hardship facing social media.<br>B. The rapid development of social media.<br>C. <span style="color:#22c55e; font-weight:bold;">How social media affected the author's career path.</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：C. 只会找细节型 / G. 中上潜力型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">训练段落主旨概括能力，帮助学生从具体例子中抽象出段落核心话题。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF5同构：段落按时间顺序描述了'social media changed everything → audience grew → quit job to pursue photography'的职业转变过程，主旨是社交媒体如何影响了作者的职业生涯。
+          </div>
+        </div>
+                
+        <div class="card" style="padding:22px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(148,163,184,0.15); padding-bottom:10px;">
+            <div style="font-size:1.15rem; font-weight:700; color:#f472b6;">S-R6-04</div>
+            <div style="font-size:0.85rem; color:#94a3b8; background:rgba(15,23,42,0.5); padding:4px 10px; border-radius:6px;">原型：KGF12 阅读D篇</div>
+          </div>
+          <div class="text-block" style="padding:0; font-size:0.95rem; line-height:1.8; flex:1;">
+            
+        <p style="line-height:1.8; color:#e2e8f0;">I often catch myself saying "please" to ChatGPT. Apparently, I am not alone. A survey published in 2024 found that approximately 67% of AI users are also polite to AI search engines.</p>
+        <p style="margin-top:10px;">12. Why is the survey mentioned in paragraph 1?<br>A. To challenge a common belief.<br>B. To support the author's argument.<br>C. <span style="color:#22c55e; font-weight:bold;">To present a fact.</span></p>
+        
+          </div>
+          <div class="principle-card" style="margin-top:0;">
+            <div class="principle-title">🎯 目标群体：G. 中上潜力型 / H. 准学霸型</div>
+            <div style="font-size:0.9rem; color:#94a3b8;">考查议论文首段的写作目的，训练学生识别'现象呈现'与'论据支撑'的细微差别。</div>
+          </div>
+          <div class="highlight-box" style="margin:0; font-size:0.9rem;">
+            <strong>解析：</strong>与KGF12同构：首段引用调查数据是为了'呈现一个现象/事实'（很多人也对AI说礼貌用语），为下文的论述做铺垫，而不是直接支撑某个论点。
+          </div>
+        </div>
+                </div></div>
+
+    <div class="section">
+      <div class="slide-title">题库使用速查表</div>
+      <div class="slide-subtitle">根据学生缺失的属性快速定位题目</div>
+      <div class="grid-1" style="max-width:1200px;">
+        <div class="card" style="padding:28px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; font-size:0.95rem; color:#cbd5e1;">
+            <div>
+              <div style="font-weight:700; color:#38bdf8; margin-bottom:10px; font-size:1.1rem;">初三学生 → 选这些题</div>
+              <p>• <span style="color:#22c55e;">K1 词汇辨析</span>：J-K1-01 ~ J-K1-03（完形+阅读词义）</p>
+              <p>• <span style="color:#38bdf8;">R1 细节定位</span>：J-R1-01 ~ J-R1-03（T/F陷阱+计数+新闻要素）</p>
+              <p>• <span style="color:#ef4444;">R5 情感态度</span>：J-R5-01 ~ J-R5-03（完形结尾+寓言寓意+影评态度）</p>
+              <p>• <span style="color:#f472b6;">R6 语篇结构</span>：J-R6-01 ~ J-R6-03（过渡句+例证句+主旨概括）</p>
+            </div>
+            <div>
+              <div style="font-weight:700; color:#f59e0b; margin-bottom:10px; font-size:1.1rem;">高三学生 → 选这些题</div>
+              <p>• <span style="color:#22c55e;">K1 词汇辨析</span>：S-K1-01 ~ S-K1-02（完形动词+短语猜测）</p>
+              <p>• <span style="color:#a855f7;">K2 语法知识</span>：S-K2-01 ~ S-K2-04（定从+非谓语+被动+不定式）</p>
+              <p>• <span style="color:#38bdf8;">R1 细节定位</span>：S-R1-01 ~ S-R1-02（数字定位+研究建议）</p>
+              <p>• <span style="color:#f59e0b;">R2 推理判断</span>：S-R2-01 ~ S-R2-03（动机推断+态度推断+论点识别）</p>
+              <p>• <span style="color:#ef4444;">R5 情感态度</span>：S-R5-01 ~ S-R5-03（完形情感+叙事弧线+价值观）</p>
+              <p>• <span style="color:#f472b6;">R6 语篇结构</span>：S-R6-01 ~ S-R6-04（七选五+段落主旨+写作目的）</p>
+            </div>
+          </div>
+        </div>
+        <div class="success-box" style="margin-top:24px; text-align:center;">
+          <strong>命题即教学：</strong>每一道探针题都是一次精准的能力干预。让学生在做题中暴露思维盲区，在纠错中完成认知跃迁。
+        </div>
+      </div>
+    </div>
+    
+</div>
+<script>
+const charts = {};
+const container = document.getElementById('container');
+const dots = document.querySelectorAll('.nav-dot');
+const sections = document.querySelectorAll('.section');
+
+function updateDots() {
+  const scrollTop = container.scrollTop;
+  const h = window.innerHeight;
+  let idx = 0;
+  sections.forEach((sec, i) => {
+    const mid = sec.offsetTop + sec.offsetHeight/2;
+    if (scrollTop + h/2 >= mid) idx = i;
+  });
+  dots.forEach(d => d.classList.remove('active'));
+  if (dots[idx]) dots[idx].classList.add('active');
+}
+
+container.addEventListener('scroll', updateDots);
+updateDots();
+
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    sections[i].scrollIntoView({behavior:'smooth'});
+  });
+});
+
+window.addEventListener('resize', () => {
+  Object.values(charts).forEach(c => c && c.resize());
+});
+</script>
+</body>
+</html>

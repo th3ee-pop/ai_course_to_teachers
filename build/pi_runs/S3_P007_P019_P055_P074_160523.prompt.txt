@@ -1,0 +1,190 @@
+你是课件页面排版助手。输入是若干页“骨架 HTML”（1920×1080 投影课件的一页），你只需要重写每页 <!-- BODY:START --> 与 <!-- BODY:END --> 之间的正文区，让它按模板要求排版并有分步出现。
+
+硬性规则（违反会被校验脚本退回）：
+1. 只输出正文区。不要输出 <section>、.hdr、h2.title、.sub、.foot、<aside class="notes">，也不要改它们。
+2. 文字零改写：骨架正文里每个 .label 与 .text 的文字必须逐字保留（不增删字、不改标点、不合并、不翻译）。可以增加的只有很短的视觉标签：“示意图”“示例对话”“AI生成试样”“待放入实拍照片”“角色模拟，非历史人物真实发言”。不得加入骨架里没有的事实、数字、引语、英文。
+3. 只用给定的 CSS 类与少量内联样式（flex/grid/gap/margin/max-width/font-size/color 用变量）。不写 <style>、<script>、不引外部图片或外部链接。
+4. 图片只用 PLAN 注释 assets 里给出的相对路径；`(capture)` `(codex-svg)` `(img)` 类的路径可以直接 <img src>。路径含 * 的（如 cap_D04_word_*.png）按 _1、_2 展开。`(placeholder)` 类或文件标注“待…”的不放 img，用 <div class="slot"><div class="placeholder">待放入产品截图</div></div>。`(external)` `(link)` 类不是图片：`(link)` 用 <a class="file-card" href="路径">文件名</a>；`(external)` 用 <a class="link-card unset" data-config="observatoryUrl|magnetUrl|labUrl|ecoUrl"><b>系统名</b><span>现场启动后填入地址</span></a>（观察台→observatoryUrl，掌中磁场→magnetUrl，掌中实验室→labUrl，生态岛→ecoUrl）。
+5. 分步：PLAN 注释 reveal=[...] 列出的条目按顺序各自加 class="reveal"（同一条目的标签与正文放在同一个 .reveal 容器内）；reveal 为空的页不加 .reveal。不要自创其它动效类。骨架里已有的 .reveal 划分要保留。
+6. 结构：正文区最外层固定是 <div class="body">…</div>（可加 style），.cols / .grid-3 / .stack / .dialog 等都作为 .body 的子元素，不要把这些类直接加在 .body 上。图片写法固定为 <div class="fig" style="max-height:…px"><div class="pic"><img src="…" alt=""></div><figcaption class="caption">…</figcaption></div>（figcaption 可省），或 <div class="slot" style="height:…px"><img src="…" alt=""></div>。
+7. 尺寸：正文字号 28–40px，行高 1.6 左右；一页正文最多 4 个块；图片用 .slot 或 .fig 包裹并设 max-height，保证在 1080 高度内不溢出（标题区约占 220px，页脚约 80px，正文可用高约 700px）。
+8. 输出格式：每页依次
+=== P004 ===
+<!-- BODY:START -->
+...
+<!-- BODY:END -->
+不要 Markdown 代码围栏，不要任何解释。
+
+可用 CSS 类（deck.css）：
+- 布局：.body（正文容器，flex 列）.stack（竖排 gap 28）.cols（横排等分，子元素 flex:1；可放 <div class="vline"></div> 分隔线）.cols.tight .grid-2 .grid-3 .grid-4
+- 文本：.label（小标题，26px 强调色）.text（32px）.lead（36px）.small（26px 灰）.muted .hl（强调色加粗）.num（等宽序号，配合 .label 使用：<span class="num">01</span>）.kicker（24px 字距大）.serif .cond .big（196px 大数字）.rule（分隔线）.takeaway（结论行）.quote-block（大引文）
+- 卡片：.card（边框卡；内含 .label 与 <p>）.card.fill（灰底）.card.accent（强调边）.card.role-pipe/.card.role-tool/.card.role-subject（角色配色）
+- 流程：.flow > .node（每步一格，含 .label 与 <p>）与 .arr（<div class="arr">→</div>）；.flow.vertical 竖排；.steps > li（带 01 02 序号的列表，<b> 为要点）
+- 对话：.dialog > .turn（.who + .say）；AI 一方加 .turn.ai；.transcript > .line（.who + 文本，.mark 高亮）
+- 对照：.before-after（两栏网格，每栏 <div>，内用 .label + p；.diff 标记差异，.fix 标记修正）
+- 图片：.slot（居中容器，img 自适应；内可放 <div class="placeholder">待放入…</div>）.fig（图＋<figcaption class="caption">）.blueprint（蓝图边框）.kf（关键帧格）
+- 标签：.tag（小标签）.tag.fill .tag.warn；.corner-tag（角标）
+- 入口：.file-card（文件卡片链接）.link-card（外链卡片，配 data-config）.embed（内嵌 iframe 容器：<div class="embed" data-src="路径"><div class="hint">点击加载</div></div>）
+- 组件：<div class="map433" data-stage="设计|实施|评价|教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-reveal="1" data-size="full|compact"></div>（4＋3＋3 总图，自动渲染）；<div class="cycle" data-nodes="A|B|C|D" data-center="中心字" data-size="480"></div>（环形循环图）
+颜色变量：var(--accent) #5980a6、var(--accent-dark) #416180、var(--light-blue) #94bce3、var(--muted) 灰、var(--surface) 浅灰底、var(--divider) 分隔线。
+
+模板要求：
+模板 T04「大图＋任务卡」：.cols 布局，左栏（flex:0 0 520px）是 .stack 的任务卡：每条 .reveal 含 <span class="num">01</span>、.label、p.text；右栏是 .blueprint 或 .slot 大图（img max-height 640px）。若有多张截图（如三张系统截图），右栏改为 .grid-3 缩略图卡片，每张 .fig + figcaption。(external) 系统用 .link-card unset 放在左栏底部。缺图时用 .slot .placeholder 写“待放入实拍照片”或“待截图”。
+
+已实现的同模板样页（只看排版气质与密度，不要照抄其文字；样页用了内联样式，你优先用上面的类）：
+
+--- 样页 T04 ---
+<section class="slide" data-id="P008" data-title="先比较冬夏，再切换观察视角。" data-module="02 四季循环：从念头到交互" data-stage="课堂实施">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P008</span>
+  </div>
+  <div style="display:flex;gap:64px;margin-top:40px;flex:1 1 auto;min-height:0">
+    <div style="flex:0 0 500px;display:flex;flex-direction:column">
+      <h2 style="font-size:56px;line-height:1.34">先比较冬夏，<br>再切换观察视角。</h2>
+      <div style="margin-top:44px;display:flex;gap:20px">
+        <span class="cond" style="font-size:34px;color:#5980a6;line-height:1.2">01</span>
+        <div>
+          <div class="kicker" style="margin-bottom:10px">观察任务</div>
+          <p style="font-size:32px;line-height:1.7">固定同一地点，比较冬季与夏季的太阳高度和昼长。</p>
+        </div>
+      </div>
+      <div style="margin-top:36px;display:flex;gap:20px">
+        <span class="cond" style="font-size:34px;color:#5980a6;line-height:1.2">02</span>
+        <div>
+          <div class="kicker" style="margin-bottom:10px">继续追问</div>
+          <p style="font-size:32px;line-height:1.7">切换太空与地面视角，说明两种画面之间有什么联系。</p>
+        </div>
+      </div>
+      <div class="foot" style="padding-top:32px"><a href="../../../【专著】人工智能学科教学丛书/自建模拟种子仓库/091_四季循环/v2/index.html" target="_blank" rel="noopener" title="在新标签页打开四季循环v2；讲完后切回本窗口继续">资源：四季循环v2 ↗</a></div>
+    </div>
+    <div class="blueprint" style="flex:1 1 0;min-width:0;background:#e7e7ea;align-self:center;aspect-ratio:5784/1800;max-height:100%">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="slot" style="padding:18px;height:100%">
+        <img src="assets/siji_v2_xiazhi_dongzhi.png" alt="四季循环v2 实际界面截图：夏至与冬至对比">
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+请为以下 4 页重写正文区，按输出格式逐页给出。
+
+
+##### 页 P007（模板 T04）
+<!-- PLAN template=T04 executor=pi pace=快过 layout_ref=L05
+     reveal=['从地面观察', '从太空观察', '改变条件']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       IMG_S01_SHOT → assets/img/siji_v2_xiazhi_dongzhi.png (img) 已在 assets/，现有 -->
+<section class="slide" data-id="P007" data-title="我希望学生能换个视角理解四季。" data-module="02 四季循环：从念头到交互" data-stage="" data-kind="主线" data-template="T04" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P007</span>
+  </div>
+  <h2 class="title">我希望学生能换个视角理解四季。</h2>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">从地面观察</div><p class="text">学生比较同一地点在冬季和夏季的太阳高度与昼长。</p></div>
+    <div class="reveal"><div class="label">从太空观察</div><p class="text">学生把地球运动和地轴倾斜与地面的变化联系起来。</p></div>
+    <div class="reveal"><div class="label">改变条件</div><p class="text">学生调整日期、纬度和倾角，检验自己的解释。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">资源：四季循环v2。</div>
+  <aside class="notes">【快过】讲述时依次说明：学生比较同一地点在冬季和夏季的太阳高度与昼长。 学生把地球运动和地轴倾斜与地面的变化联系起来。 学生调整日期、纬度和倾角，检验自己的解释。
+    作用：交代教师做这个成品的原始意图，让听众先理解教学动机。</aside>
+</section>
+
+
+##### 页 P019（模板 T04）
+<!-- PLAN template=T04 executor=pi pace=停讲 layout_ref=L03
+     reveal=['一句教学意图', '展开过程', '具体产物', '教师确认']
+     embeds=[]
+     anim=null
+     note=三种产物用真实缩略图：Word 封面（D04）、视频首图（V01）、交互页截图（S01）。
+     assets:
+       SVG_CODEX_P019_TOOL → assets/svg/p019_tool.svg (codex-svg) 
+       CAP_D04_WORD → assets/img/cap_D04_word_*.png (capture) 
+       IMG_V01_POV → assets/pov_01_wanglushan.png (img) 已在 assets/
+       IMG_S01_SHOT → assets/img/siji_v2_xiazhi_dongzhi.png (img) 已在 assets/，现有 -->
+<section class="slide" data-id="P019" data-title="工具：把有限的想法展开成可用成果" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T04" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P019</span>
+  </div>
+  <h2 class="title">工具：把有限的想法展开成可用成果</h2>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">一句教学意图</div><p class="text">教师用一句话说明想要的活动、材料或评价方式。</p></div>
+    <div class="reveal"><div class="label">展开过程</div><p class="text">把意图补全成任务步骤、内容材料和呈现形式。</p></div>
+    <div class="reveal"><div class="label">具体产物</div><p class="text">可以形成文档、视频、交互页等不同形态的成果。</p></div>
+    <div class="reveal"><div class="label">教师确认</div><p class="text">产物是否可用，仍由教师根据课堂需要判断。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">可形成的产物包括文档、视频、交互页；具体功能以实际工具为准。</div>
+  <aside class="notes">【停讲】第二种角色是工具。教师用一句话说明想要的活动、材料或评价方式，工具把这句话展开成任务步骤、内容材料和呈现形式，最后形成文档、视频、交互页等具体产物。比如刚才看到的四季循环，就是一个交互页产物。要注意，工具能展开，不等于展开的结果一定可用。产物是否符合课堂需要，仍由教师判断。不同工具的能力不一样，具体功能以实际使用的工具为准。
+    作用：定义第二种角色：工具，把有限的想法展开成可用成果。</aside>
+</section>
+
+
+##### 页 P055（模板 T04）
+<!-- PLAN template=T04 executor=pi pace=快过 layout_ref=L05
+     reveal=['掌中几何与光路', '掌中磁场', '生态岛']
+     embeds=[{"asset": "SYS_S05", "mode": "link"}, {"asset": "SYS_S04", "mode": "link"}, {"asset": "SYS_S06", "mode": "link"}]
+     anim=null
+     note=三张截图卡片＋启动方式写入讲者备注（不上屏路径）。
+     assets:
+       CAP_S05_GEO → assets/img/cap_zhangzhong_jihe.png (capture) 
+       CAP_S04 → assets/img/cap_zhangzhong_cichang.png (capture) 本机启动后截图
+       CAP_S06 → assets/img/cap_shengtaidao.png (capture) 
+       SYS_S05 → （本机启动 dist） (external) 同上
+       SYS_S04 → （本机启动 dist） (external) vite 项目，需摄像头；外链＋截图
+       SYS_S06 → （本机启动） (external) 服务端系统；外链＋截图 -->
+<section class="slide" data-id="P055" data-title="身体操作与小组探究，还有哪些入口？" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T04" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P055</span>
+  </div>
+  <h2 class="title">身体操作与小组探究，还有哪些入口？</h2>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">掌中几何与光路</div><p class="text">先预测，再动手操作，观察截面或反射路径的变化。</p></div>
+    <div class="reveal"><div class="label">掌中磁场</div><p class="text">反转电流，观察端面，把手势方向和螺线管方向联系起来。</p></div>
+    <div class="reveal"><div class="label">生态岛</div><p class="text">小组共机布置条件，做一次公平对照，再解释结果。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <aside class="notes">【快过】讲述时依次说明：先预测，再动手操作，观察截面或反射路径的变化。 反转电流，观察端面，把手势方向和螺线管方向联系起来。 小组共机布置条件，做一次公平对照，再解释结果。
+    作用：扩展实施入口，让听众看到身体操作和小组探究也能承载共同结构。</aside>
+</section>
+
+
+##### 页 P074（模板 T04）
+<!-- PLAN template=T04 executor=pi pace=停讲 layout_ref=L05
+     reveal=['学生的问题', '上课时可以怎样回应', '教师的知识补给', '查证入口']
+     embeds=[]
+     anim=null
+     note=示意图角标：‘生成示意图，方位、光照关系与比例需核对’。
+     assets:
+       IMG_D14_MOON → assets/img/baitian_yueliang_ai_shiyitu.png (img) 现有生成示意图，上屏须标“生成示意图，方位比例待核对” -->
+<section class="slide" data-id="P074" data-title="学生问“白天为什么也看得到月亮”？" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="主线" data-template="T04" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span class="on">教师专业发展</span></div>
+    <span class="pid">P074</span>
+  </div>
+  <h2 class="title">学生问“白天为什么也看得到月亮”？</h2>
+  <p class="sub reveal-none">先接住问题，再考虑怎样查证。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">学生的问题</div><p class="text">这个问题指向月亮可见的条件和太阳的位置关系，超出当堂课的准备范围。</p></div>
+    <div class="reveal"><div class="label">上课时可以怎样回应</div><p class="text">先请学生说出自己观察到的现象：什么时候、在天空哪个位置看到月亮；把问题记到班级问题墙上，约定查证后再回来。</p></div>
+    <div class="reveal"><div class="label">教师的知识补给</div><p class="text">用知识补给提示整理月亮可见的条件、月相与太阳角度的关系，并核对示意图中的方位与比例。</p></div>
+    <div class="reveal"><div class="label">查证入口</div><p class="text">天文科普资料、教材配套材料，以及学生连续几天的观察记录。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">已有知识补给提示与生成示意图；图像中的方位、光照关系和比例需要核对。</div>
+  <aside class="notes">【停讲】讲述时依次说明：这个问题指向月亮可见的条件和太阳的位置关系，超出当堂课的准备范围。 先请学生说出自己观察到的现象：什么时候、在天空哪个位置看到月亮；把问题记到班级问题墙上，约定查证后再回来。 用知识补给提示整理月亮可见的条件、月相与太阳角度的关系，并核对示意图中的方位与比例。 天文科普资料、教材配套材料，以及学生连续几天的观察记录。
+    作用：从课例教研迁移到教师知识补给，用一个学生常问的问题展示追问与查证路径。</aside>
+</section>

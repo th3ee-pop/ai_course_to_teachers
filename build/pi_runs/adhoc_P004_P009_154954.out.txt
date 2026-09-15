@@ -1,0 +1,61 @@
+=== P004 ===
+<!-- BODY:START -->
+  <div class="body cols" style="align-items:center">
+    <div style="flex:0 0 620px">
+      <span class="tag">示意图</span>
+      <div class="fig" style="margin-top:20px;max-height:360px">
+        <img src="assets/svg/p004_sop.svg" alt="" style="max-height:340px;width:100%;object-fit:contain">
+      </div>
+    </div>
+    <div class="vline"></div>
+    <div class="stack" style="flex:1;gap:26px">
+      <div class="reveal">
+        <div class="label">产生想法</div>
+        <p class="text">教师想让学生通过某个活动理解一个概念。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">查找与求助</div>
+        <p class="text">先对照学习软件的菜单、公式和配置，或者请开发人员帮忙。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">制作</div>
+        <p class="text">按照软件的操作步骤完成制作，过程需要反复调试。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">试用</div>
+        <p class="text">做好之后，再拿到课堂上试用，根据效果修改。</p>
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->
+
+=== P009 ===
+<!-- BODY:START -->
+  <div class="body cols" style="align-items:center">
+    <div class="stack" style="flex:1;gap:26px">
+      <div class="reveal">
+        <div class="label">提出意图</div>
+        <p class="text">教师说明希望学生观察什么、操作什么、解释什么。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">形成原型</div>
+        <p class="text">AI辅助形成交互原型，明确场景和控制方式。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">移植与修改</div>
+        <p class="text">开发过程将原型移植为可独立运行的版本，处理资源加载和交互适配。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">运行验证</div>
+        <p class="text">根据实际运行结果核对功能与计算，修正发现的问题。</p>
+      </div>
+    </div>
+    <div class="vline"></div>
+    <div style="flex:0 0 620px">
+      <span class="tag">示意图</span>
+      <div class="fig" style="margin-top:20px;max-height:360px">
+        <img src="assets/svg/p009_pipeline.svg" alt="" style="max-height:340px;width:100%;object-fit:contain">
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->

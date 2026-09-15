@@ -1,0 +1,108 @@
+=== P018 ===
+<!-- BODY:START -->
+<div class="body">
+  <div class="cols" style="align-items:center;flex:1;gap:44px">
+    <div class="stack" style="flex:1.25;gap:22px">
+      <div class="reveal">
+        <div class="label">多来源材料</div>
+        <p class="text">课程标准、教材、政策文件、教学资料和已有案例分散在不同地方。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">比较整合</div>
+        <p class="text">把材料按任务需要放在一起比较，找出相同点和不同点。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">任务相关依据</div>
+        <p class="text">整理成与当前教学任务相关的依据，供教师判断和使用。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">保留来源与分歧</div>
+        <p class="text">注明每条依据来自哪里；材料之间的分歧不隐藏、不合并。</p>
+      </div>
+    </div>
+    <div class="vline" style="flex:0 0 1px;align-self:stretch"></div>
+    <div class="fig" style="flex:0 0 660px;max-height:360px">
+      <span class="tag">示意图</span>
+      <div class="pic"><img src="assets/svg/p018_pipeline.svg" alt=""></div>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P024 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="flow" style="align-items:stretch;gap:18px">
+    <div class="node reveal">
+      <div class="label">先明确任务</div>
+      <p>教师说清问题、预期结果和使用情境。</p>
+    </div>
+    <div class="arr">→</div>
+    <div class="node reveal">
+      <div class="label">再安排协作</div>
+      <p>教师通过三问安排AI的参与方式，并提供必要材料。</p>
+    </div>
+    <div class="arr">→</div>
+    <div class="node reveal">
+      <div class="label">形成成果并使用</div>
+      <p>师生按任务使用文档、视频、交互工具或对话支持。</p>
+    </div>
+    <div class="arr">→</div>
+    <div class="node reveal">
+      <div class="label">检查并改进</div>
+      <p>教师结合学生表现判断结果，决定下一步怎样调整。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P031 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="grid-2" style="gap:34px">
+    <div class="card role-subject reveal">
+      <div class="label">主体先澄清</div>
+      <p class="text" style="font-size:30px">教师与AI通过追问和补充，把‘做植物单元’缩成具体目标、器材与成果形式。</p>
+    </div>
+    <div class="card role-pipe reveal">
+      <div class="label">管道再整理</div>
+      <p class="text" style="font-size:30px">AI把课标、教材、前测和已有材料归到一起，去掉重复，留下与目标有关的依据。</p>
+    </div>
+    <div class="card role-tool reveal">
+      <div class="label">工具形成全案</div>
+      <p class="text" style="font-size:30px">AI把目标展开为单元表、前测、详案、第一课时教案和观察记录册。</p>
+    </div>
+    <div class="card accent reveal">
+      <div class="label">教师最后审议</div>
+      <p class="text" style="font-size:30px">教师检查目标是否适龄、器材是否够用、记录是否可操作，并决定哪些部分留给学生自己完成。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->
+
+=== P056 ===
+<!-- BODY:START -->
+<div class="body" style="justify-content:center">
+  <div class="flow" style="align-items:stretch;gap:18px">
+    <div class="node reveal">
+      <div class="label">任务</div>
+      <p>先给出一个需要预测或判断的任务。</p>
+    </div>
+    <div class="arr">→</div>
+    <div class="node reveal">
+      <div class="label">行动</div>
+      <p>学生动手操作、观察或与情境对象交流。</p>
+    </div>
+    <div class="arr">→</div>
+    <div class="node reveal">
+      <div class="label">观察与表达</div>
+      <p>把看到的现象、依据和疑问说出来或写下来。</p>
+    </div>
+    <div class="arr">→</div>
+    <div class="node reveal">
+      <div class="label">解释与修订</div>
+      <p>用证据解释结果，并根据反馈修改原来的想法。</p>
+    </div>
+  </div>
+</div>
+<!-- BODY:END -->

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="odKtHB5ZYebEZlVXWGgVZD">
+<head data-page-node-id="rNIMpFbV2O6qfCtb1kMK16">
+<meta charset="UTF-8" data-page-node-id="JDZVbkfGAcibEiiYR4fPE6">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="ilRjdxgwmHGxGoFXoUfRwQ">
+<title>AI 分类器工坊 · 教电脑认东西</title>
+<style>
+  :root{
+    --paper:#f6f5f0; --ink:#1b1a15; --ink-2:#6d6b60; --line:#dcdad0; --accent:#a33327;
+    --mono:"SF Mono","Menlo","Consolas",monospace;
+    --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+    --sans:"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+
+  header{padding:40px 0 0}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:2px solid var(--ink);padding-bottom:14px}
+  .masthead h1{font-family:var(--serif);font-size:34px;font-weight:700;letter-spacing:.08em}
+  .masthead .tag{font-family:var(--mono);font-size:13px;color:var(--ink-2);letter-spacing:.05em}
+
+  /* 四步引导 */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid var(--line)}
+  .step{padding:26px 24px 30px;border-right:1px solid var(--line)}
+  .step:last-child{border-right:none}
+  .step .no{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.2em}
+  .step h3{font-family:var(--serif);font-size:19px;margin:8px 0 8px;letter-spacing:.05em}
+  .step p{font-size:14px;color:var(--ink-2);line-height:1.7}
+  .step a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
+  @media (max-width:900px){.steps{grid-template-columns:1fr 1fr}.step{border-bottom:1px solid var(--line)}}
+
+  .stage{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;padding:38px 0}
+  @media (max-width:900px){.stage{grid-template-columns:1fr}}
+
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+  .sec-no{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.15em}
+  .sec-title{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.1em}
+
+  .url-row{display:flex;gap:12px;align-items:end}
+  .url-row div{flex:1}
+  .url-row label{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.15em;display:block;margin-bottom:6px}
+  input[type=url]{width:100%;border:none;border-bottom:1px solid var(--ink);background:transparent;
+    font-family:var(--mono);font-size:14px;padding:7px 2px;outline:none;color:var(--ink)}
+  input[type=url]:focus{border-bottom-color:var(--accent)}
+
+  .btn{appearance:none;cursor:pointer;background:var(--ink);color:var(--paper);
+    border:1px solid var(--ink);font-size:15px;letter-spacing:.2em;padding:11px 26px;
+    transition:background .15s,color .15s;white-space:nowrap}
+  .btn:hover{background:var(--paper);color:var(--ink)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn[disabled]{opacity:.4;cursor:default;pointer-events:none}
+
+  #camBox{border:1px solid var(--line);background:#000;margin-top:22px;display:none}
+  #webcam{display:block;width:100%}
+  #statusLine{margin-top:14px;font-family:var(--mono);font-size:13px;color:var(--ink-2);letter-spacing:.05em;min-height:20px}
+
+  /* 识别结果条 */
+  #predictions{padding-top:8px}
+  .pred{padding:18px 0;border-bottom:1px solid var(--line)}
+  .pred .name{font-family:var(--serif);font-size:30px;font-weight:700;letter-spacing:.05em;
+    display:flex;justify-content:space-between;align-items:baseline}
+  .pred .name .pc{font-family:var(--mono);font-size:16px;font-weight:400;color:var(--ink-2)}
+  .pred .bar{height:6px;background:#e9e7de;margin-top:10px}
+  .pred .bar i{display:block;height:100%;background:var(--ink);width:0;transition:width .2s}
+  .pred.top .name{color:var(--accent)}
+  .pred.top .bar i{background:var(--accent)}
+  .idle{color:var(--ink-2);font-size:15px;padding:24px 0}
+
+  .how{border-top:1px solid var(--line);padding:34px 0}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:6px}
+  .how-grid h4{font-family:var(--serif);font-size:18px;margin-bottom:8px;letter-spacing:.05em}
+  .how-grid p{font-size:14.5px;color:var(--ink-2);line-height:1.75}
+  @media (max-width:900px){.how-grid{grid-template-columns:1fr}}
+
+  footer{padding:8px 0 40px;font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.1em;
+    border-top:1px solid var(--line);padding-top:24px}
+</style>
+</head>
+<body data-page-node-id="ZuFHSfkXxTjZbxvMEd7So8">
+<div class="wrap" data-page-node-id="LygQREOdVbPgvSsY2V4zSO">
+  <header data-page-node-id="OKpNnakiLQKFBo8fDqjUhW">
+    <div class="masthead" data-page-node-id="0PWLWoa1PzJ3gBr6porgIJ">
+      <h1 data-page-node-id="4G1pm99jDUY929zgTgLYcn">AI 分类器工坊</h1>
+      <div class="tag" data-page-node-id="NUGZJIOTmWAFr2VWO9LNah">TEACHABLE MACHINE · 你教电脑认东西，它来认给你看</div>
+    </div>
+  </header>
+
+  <div class="steps" data-page-node-id="vFgQNoiB6WdpIie0iDT37H">
+    <div class="step" data-page-node-id="7yEDbeskOwTW0Q6mdFLIzs"><div class="no" data-page-node-id="Bc3gYwNhrCLIZN07FPJEhp">第一步</div><h3 data-page-node-id="PX0AkB9zH5JO4ruRwWnVQh">去「教」电脑</h3>
+      <p data-page-node-id="KLYireC3yuVi8MnLRjNTVb">打开 <a href="https://teachablemachine.withgoogle.com/train/image" target="_blank" rel="noopener" data-page-node-id="BUjMTGVzO5XMtsQIXCobX7">Teachable Machine</a>，选「图像项目」。给每一类起一个名字，举起摄像头拍几十张样子。</p></div>
+    <div class="step" data-page-node-id="0E0RdolJTX6DbkQ9ycuuc6"><div class="no" data-page-node-id="QIGLKNihp5ifvP8ewjf5Lo">第二步</div><h3 data-page-node-id="XHvaea6OEnIuYD8gzraX7W">让它「学」</h3>
+      <p data-page-node-id="HL9d4G35AFwJWLtv5WwKX2">点「训练模型」，等一小会儿。电脑正在悄悄找规律：你拍的东西长什么样。</p></div>
+    <div class="step" data-page-node-id="w0cbMbw3t451zU27oztj9p"><div class="no" data-page-node-id="Wd1dme8b1LhlOTTFsp2KHj">第三步</div><h3 data-page-node-id="gW6M9bnCw8HBRpUPPcHGWq">拿到「钥匙」</h3>
+      <p data-page-node-id="yW3mPyIbwHTycc663297EF">点「导出模型」→「上传」→ 复制那串网址。这串网址就是你教出来的「小 AI」。</p></div>
+    <div class="step" data-page-node-id="hjZ6glS468vqIivgUezfqL"><div class="no" data-page-node-id="CuFCuaAa08og2Qg0QrRavF">第四步</div><h3 data-page-node-id="ibqjL4dArv0rsd8YmCRBnY">回来试玩</h3>
+      <p data-page-node-id="xD8GcMx5v5J3f7QJouCBbF">把网址粘到下面的框里，打开摄像头——看看你教的 AI 认不认得你！</p></div>
+  </div>
+
+  <div class="stage" data-page-node-id="xUUxaqGJgXgFJ6IKq51oeV">
+    <div data-page-node-id="xnAAfobGazsPyHXpDw2JfX">
+      <div class="sec-head" data-page-node-id="ElKmwz1XBh51FelynHNn2I"><span class="sec-no" data-page-node-id="jBA8RNtSkg08Y1ypy7DGYD">05</span><span class="sec-title" data-page-node-id="N8ogHT0vgkDlEj8hSpEcyA">装上你的 AI</span></div>
+      <div class="url-row" data-page-node-id="Ct6Y1YPnlso4Hyb8hTUl7D">
+        <div data-page-node-id="HOgwU2UJmTnZVmkz7kjp6N">
+          <label data-page-node-id="ZHdZ11mghQ6tvuBmRlkc0c">模型网址 MODEL URL</label>
+          <input type="url" id="modelUrl" placeholder="https://teachablemachine.withgoogle.com/models/……" data-page-node-id="luxH7VjVDOfvMlvMF8qMRH">
+        </div>
+        <button class="btn" id="loadBtn" data-page-node-id="7fyRA1EPOVv44YESCVfkHB">装上它</button>
+      </div>
+      <div id="camBox" data-page-node-id="ORZrlqovK6aO4clVRYBQ2F"><canvas id="webcam" width="640" height="480" data-page-node-id="logoMFWggaO8F68OEWQSjl"></canvas></div>
+      <div id="statusLine" data-page-node-id="tAtrquZGNrbUXAsxxYaSdH">等待装入模型。本页需要联网才能工作。</div>
+    </div>
+
+    <div data-page-node-id="j1An5UCbq52GKTHQHovSrj">
+      <div class="sec-head" data-page-node-id="4LFuBk5jAJUxKmYzB7jbib"><span class="sec-no" data-page-node-id="6Ked5BANEHMRH3MFaNdZn7">06</span><span class="sec-title" data-page-node-id="NQPvVLkG357Y9INOdBE1j6">它现在觉得你是……</span></div>
+      <div id="predictions" data-page-node-id="ycGiuHaN2I0C0y6cO3TCdx"><div class="idle" data-page-node-id="2gxlA8Vn9Dkn0vQKoKZpiS">识别结果会显示在这里，红线越长表示它越肯定。</div></div>
+    </div>
+  </div>
+
+  <div class="how" data-page-node-id="0DeJ5PkgON3pAH9qlFjEzp">
+    <div class="sec-head" data-page-node-id="VQRNkQD1gjYB5zMBabyLvr"><span class="sec-no" data-page-node-id="489GDGna7pj5mzGIJra8Gw">07</span><span class="sec-title" data-page-node-id="934JhszWXlt1GuIQ3wH3I1">AI 是怎么学会的？</span></div>
+    <div class="how-grid" data-page-node-id="Y9itKGLRbcGIVscQJV3HFS">
+      <div data-page-node-id="ArPiKkOcBlFdpJ2GrYCaOC"><h4 data-page-node-id="QKTcISel8n6gIna9FNBb3N">看很多例子</h4><p data-page-node-id="5RCJiHZcurRkrnOx4CQCTT">你拍的每一张照片都是一个「例子」。例子越多、样子越全，AI 学到的规律就越靠谱——这和你做练习题是一个道理。</p></div>
+      <div data-page-node-id="Nn1EP4oi3m2wrNRhAMF1Yk"><h4 data-page-node-id="5jbmJvg0rjvY0vWyO0ji9V">找规律，不是背答案</h4><p data-page-node-id="7XPaGSxB4XEwnoXS94nb8n">AI 并没有「记住」你的照片，而是找到了「这类东西大概长什么样」的规律。所以换一个新的角度，它也可能认出来。</p></div>
+      <div data-page-node-id="2lnJpyJFm7nqhOB7UchWEF"><h4 data-page-node-id="LwLhHkIg0r21lI0Vkz83ei">它也会犯错</h4><p data-page-node-id="JEwYamxsaHVYzkXCMp8hwS">如果你只拍过白天的猫，晚上拍的猫它可能就认不出了。AI 的本事，取决于我们喂给它的例子好不好。</p></div>
+    </div>
+  </div>
+
+  <footer data-page-node-id="HhPErjEy8I8cGreoqalGkY">模型训练与运行 · Google Teachable Machine + TensorFlow.js · 图像只在本机处理，不会上传</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script>
+let model=null, webcam=null, maxPredictions=0, running=false;
+const statusLine = document.getElementById("statusLine");
+const predBox = document.getElementById("predictions");
+
+document.getElementById("loadBtn").onclick = async ()=>{
+  let url = document.getElementById("modelUrl").value.trim();
+  if(!url){ alert("请先把模型网址粘进来。"); return; }
+  if(!url.endsWith("/")) url += "/";
+  if(typeof tmImage === "undefined"){
+    statusLine.textContent = "识别引擎还没加载好，请确认网络后刷新页面再试。"; return;
+  }
+  const btn = document.getElementById("loadBtn");
+  btn.disabled = true;
+  statusLine.textContent = "正在把你的 AI 接进网页……";
+  try{
+    model = await tmImage.load(url + "model.json", url + "metadata.json");
+    maxPredictions = model.getTotalClasses();
+    await startCam();
+    buildPredRows();
+    statusLine.textContent = "装好啦！把东西举到摄像头前面试试。";
+    running = true;
+    loop();
+  }catch(e){
+    statusLine.textContent = "没装上。请检查：网址复制完整了吗？网络通吗？";
+  }
+  btn.disabled = false;
+};
+
+async function startCam(){
+  if(webcam) return;
+  const canvas = document.getElementById("webcam");
+  webcam = new tmImage.Webcam(640, 480, true);
+  await webcam.setup();
+  await webcam.play();
+  document.getElementById("camBox").style.display = "block";
+  // tmImage 默认把视频画进自己的 canvas，我们直接用它提供的 canvas
+  canvas.replaceWith(webcam.canvas);
+  webcam.canvas.id = "webcam";
+}
+
+function buildPredRows(){
+  const labels = model.getClassLabels();
+  predBox.innerHTML = labels.map((l,i)=>`
+    <div class="pred" id="pred${i}">
+      <div class="name"><span>${l}</span><span class="pc">0%</span></div>
+      <div class="bar"><i></i></div>
+    </div>`).join("");
+}
+
+async function loop(){
+  while(running){
+    webcam.update();
+    const preds = await model.predict(webcam.canvas);
+    let topI = 0;
+    preds.forEach((p,i)=>{ if(p.probability > preds[topI].probability) topI = i; });
+    preds.forEach((p,i)=>{
+      const row = document.getElementById("pred"+i);
+      if(!row) return;
+      row.classList.toggle("top", i===topI);
+      row.querySelector(".pc").textContent = Math.round(p.probability*100) + "%";
+      row.querySelector(".bar i").style.width = (p.probability*100) + "%";
+    });
+    await new Promise(r=>setTimeout(r, 120));
+  }
+}
+</script>
+</body>
+</html>

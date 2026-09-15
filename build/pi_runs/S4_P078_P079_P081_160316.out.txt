@@ -1,0 +1,82 @@
+=== P078 ===
+<!-- BODY:START -->
+  <div class="body stack" style="gap:26px">
+    <div class="map433" data-stage="教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-size="compact"></div>
+    <div class="cols">
+      <div class="card reveal">
+        <div class="label">管道</div>
+        <p class="text" style="font-size:28px;line-height:1.5">把实录、作品、记录整理成可用依据，让下一轮讨论从具体材料开始。</p>
+      </div>
+      <div class="card reveal">
+        <div class="label">工具</div>
+        <p class="text" style="font-size:28px;line-height:1.5">把一次任务里的步骤和格式留下来，下次只需替换内容，减少重复交代。</p>
+      </div>
+      <div class="card reveal">
+        <div class="label">主体</div>
+        <p class="text" style="font-size:28px;line-height:1.5">让AI在追问和协商中参与教研；采信什么、改动什么，仍然由教师决定。</p>
+      </div>
+      <div class="card reveal">
+        <div class="label">三个问题</div>
+        <p class="text" style="font-size:28px;line-height:1.5">每次使用前先问：我想得到什么，AI需要扮演什么角色，我能提供什么上下文。</p>
+      </div>
+    </div>
+  </div>
+<!-- BODY:END -->
+
+=== P079 ===
+<!-- BODY:START -->
+  <div class="body stack" style="gap:22px">
+    <div class="map433" data-stage="" data-roles="" data-show="stages,roles,questions" data-size="compact"></div>
+    <div class="cols" style="align-items:flex-start">
+      <div class="grid-2" style="flex:1.7 1 0;min-width:0;gap:20px">
+        <div class="reveal">
+          <div class="label">设计</div>
+          <p class="text" style="font-size:28px;line-height:1.5">任务链、材料清单与量规先定下目标和交付物。</p>
+          <a class="file-card" href="links/D05/">DOC_D05</a>
+        </div>
+        <div class="reveal">
+          <div class="label">实施</div>
+          <p class="text" style="font-size:28px;line-height:1.5">眼球成像光路模拟器支持比较光路，实物观察和小组讨论仍然进行。</p>
+          <a class="file-card" href="assets/tools/yanqiu_guanglu.html">TOOL_S09</a>
+        </div>
+        <div class="reveal">
+          <div class="label">评价</div>
+          <p class="text" style="font-size:28px;line-height:1.5">作品量规与前后测方案衔接，判断学生是否达到目标。</p>
+          <a class="file-card" href="links/D12/">DOC_D12</a>
+        </div>
+        <div class="reveal">
+          <div class="label">教师专业发展</div>
+          <p class="text" style="font-size:28px;line-height:1.5">项目指令与周报把持续背景和阶段进展留下来，供下一轮使用。</p>
+        </div>
+      </div>
+      <div class="slot" style="flex:0 0 480px;height:280px">
+        <img src="assets/img/guanglu_jinshi_vs_daijing.png" alt="">
+      </div>
+    </div>
+  </div>
+<!-- BODY:END -->
+
+=== P081 ===
+<!-- BODY:START -->
+  <div class="body stack" style="gap:26px">
+    <div class="map433" data-stage="" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-size="compact"></div>
+    <div class="cols">
+      <div class="card reveal">
+        <div class="label">管道</div>
+        <p class="text" style="font-size:28px;line-height:1.5">把分散材料整理成有用依据，让后续判断有可读的输入。</p>
+      </div>
+      <div class="card reveal">
+        <div class="label">工具</div>
+        <p class="text" style="font-size:28px;line-height:1.5">把有限想法展开成方案、文件或可比较的选项。</p>
+      </div>
+      <div class="card reveal">
+        <div class="label">主体</div>
+        <p class="text" style="font-size:28px;line-height:1.5">进入任务，回应学生追问，参与协商和修订。</p>
+      </div>
+      <div class="card reveal">
+        <div class="label">三问</div>
+        <p class="text" style="font-size:28px;line-height:1.5">用前先问：我想得到什么、AI需要扮演什么角色、能提供什么上下文。三问不固定对应某一个角色。</p>
+      </div>
+    </div>
+  </div>
+<!-- BODY:END -->

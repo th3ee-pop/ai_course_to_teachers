@@ -1,0 +1,174 @@
+你是课件页面排版助手。输入是若干页“骨架 HTML”（1920×1080 投影课件的一页），你只需要重写每页 <!-- BODY:START --> 与 <!-- BODY:END --> 之间的正文区，让它按模板要求排版并有分步出现。
+
+硬性规则（违反会被校验脚本退回）：
+1. 只输出正文区。不要输出 <section>、.hdr、h2.title、.sub、.foot、<aside class="notes">，也不要改它们。
+2. 文字零改写：骨架正文里每个 .label 与 .text 的文字必须逐字保留（不增删字、不改标点、不合并、不翻译）。可以增加的只有很短的视觉标签：“示意图”“示例对话”“AI生成试样”“待放入实拍照片”“角色模拟，非历史人物真实发言”。不得加入骨架里没有的事实、数字、引语、英文。
+3. 只用给定的 CSS 类与少量内联样式（flex/grid/gap/margin/max-width/font-size/color 用变量）。不写 <style>、<script>、不引外部图片或外部链接。
+4. 图片只用 PLAN 注释 assets 里给出的相对路径；`(capture)` `(codex-svg)` `(img)` 类的路径可以直接 <img src>。路径含 * 的（如 cap_D04_word_*.png）按 _1、_2 展开。`(placeholder)` 类或文件标注“待…”的不放 img，用 <div class="slot"><div class="placeholder">待放入产品截图</div></div>。`(external)` `(link)` 类不是图片：`(link)` 用 <a class="file-card" href="路径">文件名</a>；`(external)` 用 <a class="link-card unset" data-config="observatoryUrl|magnetUrl|labUrl|ecoUrl"><b>系统名</b><span>现场启动后填入地址</span></a>（观察台→observatoryUrl，掌中磁场→magnetUrl，掌中实验室→labUrl，生态岛→ecoUrl）。
+5. 分步：PLAN 注释 reveal=[...] 列出的条目按顺序各自加 class="reveal"（同一条目的标签与正文放在同一个 .reveal 容器内）；reveal 为空的页不加 .reveal。不要自创其它动效类。骨架里已有的 .reveal 划分要保留。
+6. 结构：正文区最外层固定是 <div class="body">…</div>（可加 style），.cols / .grid-3 / .stack / .dialog 等都作为 .body 的子元素，不要把这些类直接加在 .body 上。图片写法固定为 <div class="fig" style="max-height:…px"><div class="pic"><img src="…" alt=""></div><figcaption class="caption">…</figcaption></div>（figcaption 可省），或 <div class="slot" style="height:…px"><img src="…" alt=""></div>。
+7. 尺寸：正文字号 28–40px，行高 1.6 左右；一页正文最多 4 个块；图片用 .slot 或 .fig 包裹并设 max-height，保证在 1080 高度内不溢出（标题区约占 220px，页脚约 80px，正文可用高约 700px）。
+8. 输出格式：每页依次
+=== P004 ===
+<!-- BODY:START -->
+...
+<!-- BODY:END -->
+不要 Markdown 代码围栏，不要任何解释。
+
+可用 CSS 类（deck.css）：
+- 布局：.body（正文容器，flex 列）.stack（竖排 gap 28）.cols（横排等分，子元素 flex:1；可放 <div class="vline"></div> 分隔线）.cols.tight .grid-2 .grid-3 .grid-4
+- 文本：.label（小标题，26px 强调色）.text（32px）.lead（36px）.small（26px 灰）.muted .hl（强调色加粗）.num（等宽序号，配合 .label 使用：<span class="num">01</span>）.kicker（24px 字距大）.serif .cond .big（196px 大数字）.rule（分隔线）.takeaway（结论行）.quote-block（大引文）
+- 卡片：.card（边框卡；内含 .label 与 <p>）.card.fill（灰底）.card.accent（强调边）.card.role-pipe/.card.role-tool/.card.role-subject（角色配色）
+- 流程：.flow > .node（每步一格，含 .label 与 <p>）与 .arr（<div class="arr">→</div>）；.flow.vertical 竖排；.steps > li（带 01 02 序号的列表，<b> 为要点）
+- 对话：.dialog > .turn（.who + .say）；AI 一方加 .turn.ai；.transcript > .line（.who + 文本，.mark 高亮）
+- 对照：.before-after（两栏网格，每栏 <div>，内用 .label + p；.diff 标记差异，.fix 标记修正）
+- 图片：.slot（居中容器，img 自适应；内可放 <div class="placeholder">待放入…</div>）.fig（图＋<figcaption class="caption">）.blueprint（蓝图边框）.kf（关键帧格）
+- 标签：.tag（小标签）.tag.fill .tag.warn；.corner-tag（角标）
+- 入口：.file-card（文件卡片链接）.link-card（外链卡片，配 data-config）.embed（内嵌 iframe 容器：<div class="embed" data-src="路径"><div class="hint">点击加载</div></div>）
+- 组件：<div class="map433" data-stage="设计|实施|评价|教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-reveal="1" data-size="full|compact"></div>（4＋3＋3 总图，自动渲染）；<div class="cycle" data-nodes="A|B|C|D" data-center="中心字" data-size="480"></div>（环形循环图）
+颜色变量：var(--accent) #5980a6、var(--accent-dark) #416180、var(--light-blue) #94bce3、var(--muted) 灰、var(--surface) 浅灰底、var(--divider) 分隔线。
+
+模板要求：
+模板 T06「三问任务卡」：三张 .card.reveal 横排（.grid-3），每张含 <span class="num">01</span> 序号、.label 与 <p>；卡片垂直居中（margin:auto 0）。若 assets 里有 (link) 文件，在卡片下方加一行 .file-card；有 (capture) 缩略图可放在卡片右侧或下方（max-height 260px）。
+
+已实现的同模板样页（只看排版气质与密度，不要照抄其文字；样页用了内联样式，你优先用上面的类）：
+
+--- 样页 T06 ---
+<section class="slide" data-id="P022" data-title="每次用AI前，问自己三个问题" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P022</span>
+  </div>
+  <h2 style="margin-top:36px;font-size:60px;line-height:1.3">每次用AI前，问自己三个问题</h2>
+  <div style="margin-top:56px;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;align-items:baseline;gap:36px;padding-bottom:36px;border-bottom:1px solid #c9cacb">
+      <span class="cond" style="flex:0 0 90px;font-size:64px;color:#94bce3;line-height:1">01</span>
+      <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">想得到什么？</h3>
+      <p style="flex:1 1 0;min-width:0;font-size:36px;line-height:1.65">先想清楚这次要解决的教学问题，以及希望拿到什么结果。</p>
+    </div>
+    <div style="display:flex;align-items:baseline;gap:36px;padding-bottom:36px;border-bottom:1px solid #c9cacb">
+      <span class="cond" style="flex:0 0 90px;font-size:64px;color:#94bce3;line-height:1">02</span>
+      <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">AI扮演什么角色？</h3>
+      <p style="flex:1 1 0;min-width:0;font-size:36px;line-height:1.65">是整理材料的管道、展开产物的工具，还是进入任务回应协商的主体。</p>
+    </div>
+    <div style="display:flex;align-items:baseline;gap:36px">
+      <span class="cond" style="flex:0 0 90px;font-size:64px;color:#94bce3;line-height:1">03</span>
+      <h3 class="serif" style="flex:0 0 420px;font-size:52px;line-height:1.3">能提供什么背景？</h3>
+      <p style="flex:1 1 0;min-width:0;font-size:36px;line-height:1.65">把年级、课时、器材、学生已有经验和教师已经安排好的部分说清楚。</p>
+    </div>
+  </div>
+  <div class="foot">三问是行动入口，不等同于三种角色的一一对应。</div>
+  
+</section>
+
+
+请为以下 4 页重写正文区，按输出格式逐页给出。
+
+
+##### 页 P045（模板 T06）
+<!-- PLAN template=T06 executor=pi pace=快过 layout_ref=L04
+     reveal=['我想得到什么', 'AI需要扮演什么角色', '我能提供什么上下文']
+     embeds=[]
+     anim=null
+     note=
+     assets:
+       IMG_V01_POV → assets/pov_01_wanglushan.png (img) 已在 assets/ -->
+<section class="slide" data-id="P045" data-title="没有合适视频，能否从教学意图出发做？" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T06" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P045</span>
+  </div>
+  <h2 class="title">没有合适视频，能否从教学意图出发做？</h2>
+  <p class="sub reveal-none">用三问说清：讨论什么、怎样生成、提供什么。</p>
+  <!-- BODY:START -->
+  <div class="body"><div class="grid-3 reveal-group" style="margin-top:auto;margin-bottom:auto">
+    <div class="card reveal"><div class="label">我想得到什么</div><p>让学生讨论诗句中的景象如何被画面再现，并区分文本依据与生成补充。</p></div>
+    <div class="card reveal"><div class="label">AI需要扮演什么角色</div><p>AI作为生成与落地的工具，根据分镜意图制作可供讨论的视频。</p></div>
+    <div class="card reveal"><div class="label">我能提供什么上下文</div><p>提供诗句原文、镜头意图、时长、画面风格和必须保留的意象。</p></div>
+  </div></div>
+  <!-- BODY:END -->
+  <div class="foot">《望庐山瀑布》视频为AI生成的诗意再现。</div>
+  <aside class="notes">【快过】讲述时依次说明：让学生讨论诗句中的景象如何被画面再现，并区分文本依据与生成补充。 AI作为生成与落地的工具，根据分镜意图制作可供讨论的视频。 提供诗句原文、镜头意图、时长、画面风格和必须保留的意象。
+    作用：引入视频生成案例，把制作要求接到教学意图。</aside>
+</section>
+
+
+##### 页 P051（模板 T06）
+<!-- PLAN template=T06 executor=pi pace=停讲 layout_ref=L04
+     reveal=['我想得到什么', 'AI需要扮演什么角色', '我能提供什么上下文']
+     embeds=[]
+     anim=null
+     note=
+ -->
+<section class="slide" data-id="P051" data-title="怎样让第一次来访的人听懂共读角的介绍？" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T06" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P051</span>
+  </div>
+  <h2 class="title">怎样让第一次来访的人听懂共读角的介绍？</h2>
+  <p class="sub reveal-none">教学任务示例：让学生补充听众真正需要的信息。</p>
+  <!-- BODY:START -->
+  <div class="body"><div class="grid-3 reveal-group" style="margin-top:auto;margin-bottom:auto">
+    <div class="card reveal"><div class="label">我想得到什么</div><p>学生能说明共读角在哪里、怎样借书，并根据追问补充遗漏的信息。</p></div>
+    <div class="card reveal"><div class="label">AI需要扮演什么角色</div><p>AI扮演第一次来访的同学，一次追问一个不清楚的地方，把重新组织表达的机会留给学生。</p></div>
+    <div class="card reveal"><div class="label">我能提供什么上下文</div><p>提供共读角位置、借阅规则、交流对象和学生语言水平；只依据这些事实展开交流。</p></div>
+  </div></div>
+  <!-- BODY:END -->
+  <div class="foot">教学任务示例；具体地点与规则以本班资料为准。</div>
+  <aside class="notes">【停讲】讲述时依次说明：学生能说明共读角在哪里、怎样借书，并根据追问补充遗漏的信息。 AI扮演第一次来访的同学，一次追问一个不清楚的地方，把重新组织表达的机会留给学生。 提供共读角位置、借阅规则、交流对象和学生语言水平；只依据这些事实展开交流。
+    作用：用三问任务卡，把交流任务的目标、角色和背景说具体，形成可执行委托。</aside>
+</section>
+
+
+##### 页 P058（模板 T06）
+<!-- PLAN template=T06 executor=pi pace=停讲 layout_ref=L04
+     reveal=['我想得到什么', 'AI需要扮演什么角色', '我能提供什么上下文']
+     embeds=[]
+     anim=null
+     note=
+ -->
+<section class="slide" data-id="P058" data-title="喀什备考案例：成绩表之外，还要给AI什么？" data-module="07 教学评价：让证据开启后续教学" data-stage="教学评价" data-kind="主线" data-template="T06" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span class="on">教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P058</span>
+  </div>
+  <h2 class="title">喀什备考案例：成绩表之外，还要给AI什么？</h2>
+  <p class="sub reveal-none">以决定下一轮复习重点为目标。</p>
+  <!-- BODY:START -->
+  <div class="body"><div class="grid-3 reveal-group" style="margin-top:auto;margin-bottom:auto">
+    <div class="card reveal"><div class="label">我想得到什么</div><p>得到可以支持复习决策的题目分析、候选问题和后续核查清单。</p></div>
+    <div class="card reveal"><div class="label">AI需要扮演什么角色</div><p>先整合作答、得分与试卷文本，再用程序计算，最后协助形成复习材料。</p></div>
+    <div class="card reveal"><div class="label">我能提供什么上下文</div><p>提供脱敏作答记录、原题、参考答案、字段说明、评分规则，以及复习课时和已知学情。</p></div>
+  </div></div>
+  <!-- BODY:END -->
+  <aside class="notes">【停讲】讲述时依次说明：得到可以支持复习决策的题目分析、候选问题和后续核查清单。 先整合作答、得分与试卷文本，再用程序计算，最后协助形成复习材料。 提供脱敏作答记录、原题、参考答案、字段说明、评分规则，以及复习课时和已知学情。
+    作用：把三问从通用框架落到评价这一具体任务，明确目标、角色分工与必须提供的上下文。</aside>
+</section>
+
+
+##### 页 P070（模板 T06）
+<!-- PLAN template=T06 executor=pi pace=停讲 layout_ref=L04
+     reveal=['我想得到什么', 'AI需要扮演什么角色', '我能提供什么上下文']
+     embeds=[{"asset": "DOC_D11", "mode": "link"}]
+     anim=null
+     note=
+     assets:
+       DOC_D11 → links/D11/ (link)  -->
+<section class="slide" data-id="P070" data-title="沉与浮课例：这次先研究一个问题" data-module="08 教师专业发展：保留材料、判断与方法" data-stage="教师专业发展" data-kind="主线" data-template="T06" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span class="on">教师专业发展</span></div>
+    <span class="pid">P070</span>
+  </div>
+  <h2 class="title">沉与浮课例：这次先研究一个问题</h2>
+  <p class="sub reveal-none">围绕一段实录，形成基于证据的改课建议。</p>
+  <!-- BODY:START -->
+  <div class="body"><div class="grid-3 reveal-group" style="margin-top:auto;margin-bottom:auto">
+    <div class="card reveal"><div class="label">我想得到什么</div><p>针对一段提问与回应，提出一项能够在下次课堂检验的改课建议。</p></div>
+    <div class="card reveal"><div class="label">AI需要扮演什么角色</div><p>先整理实录证据，再作为虚拟教研员提出不同解释，与教师协商改动。</p></div>
+    <div class="card reveal"><div class="label">我能提供什么上下文</div><p>提供模拟匿名实录、学习目标和教师的疑问；分析真实课堂时，还应补充相关方案与学生记录。</p></div>
+  </div></div>
+  <!-- BODY:END -->
+  <div class="foot">课例实录为生成的教研训练材料，不是真实课堂记录。</div>
+  <aside class="notes">【停讲】讲述时依次说明：针对一段提问与回应，提出一项能够在下次课堂检验的改课建议。 先整理实录证据，再作为虚拟教研员提出不同解释，与教师协商改动。 提供模拟匿名实录、学习目标和教师的疑问；分析真实课堂时，还应补充相关方案与学生记录。
+    作用：把教师发展环节的第一个委托写成标准三问任务卡，明确目标、角色和要提供的背景。</aside>
+</section>

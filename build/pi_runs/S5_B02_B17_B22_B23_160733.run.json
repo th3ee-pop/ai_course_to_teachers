@@ -1,0 +1,18 @@
+{
+ "ids": [
+  "B02",
+  "B17",
+  "B22",
+  "B23"
+ ],
+ "model": "deepseek/deepseek-flash",
+ "seconds": 43.9,
+ "returned": [
+  "B02",
+  "B17",
+  "B22",
+  "B23"
+ ],
+ "rc": 0,
+ "errors": {}
+}

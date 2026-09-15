@@ -1,0 +1,178 @@
+<section class="slide" data-id="P005" data-title="现在，可以先用自己的话提出想法" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
+    <span class="pid">P005</span>
+  </div>
+  <h2 class="title" style="font-size:68px">现在，可以先用自己的话提出想法</h2>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P005"] .entry {
+      width: 100%; height: 100%; box-sizing: border-box;
+      padding: 14px 24px; display: flex; align-items: center; gap: 18px;
+    }
+    .slide[data-id="P005"] .entry .side { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .slide[data-id="P005"] .entry .side.old { flex: 0 0 388px; }
+    .slide[data-id="P005"] .entry .side.now { flex: 1 1 0; min-width: 0; }
+    .slide[data-id="P005"] .entry .top {
+      font-size: 24px; letter-spacing: .12em; line-height: 1; color: var(--muted);
+    }
+    .slide[data-id="P005"] .entry .side.now .top { color: var(--accent); }
+    .slide[data-id="P005"] .entry .cap { font-size: 24px; line-height: 1.2; color: var(--muted-2); text-align: center; }
+    .slide[data-id="P005"] .entry .side.now .cap { color: var(--accent-dark); }
+
+    /* 过去：抽象软件面板 */
+    .slide[data-id="P005"] .oldwin {
+      width: 100%; height: 236px; box-sizing: border-box;
+      border: 2px solid #5980a6; border-radius: 10px; overflow: hidden;
+      background: #ffffff; box-shadow: 0 5px 14px rgba(45,74,102,.16);
+      display: flex; flex-direction: column;
+    }
+    .slide[data-id="P005"] .oldwin .bar {
+      height: 34px; flex: 0 0 34px; background: linear-gradient(#cfdded, #b9d0e6);
+      display: flex; align-items: center; gap: 8px; padding: 0 12px; box-sizing: border-box;
+      border-bottom: 1px solid #5980a6;
+    }
+    .slide[data-id="P005"] .oldwin .bar i { width: 11px; height: 11px; border-radius: 50%; background: #416180; display: block; }
+    .slide[data-id="P005"] .oldwin .bar u { flex: 1 1 auto; }
+    .slide[data-id="P005"] .oldwin .bar s { width: 16px; height: 3px; background: #416180; display: block; }
+    .slide[data-id="P005"] .oldwin .menu {
+      height: 30px; flex: 0 0 30px; background: #eef4fa; border-bottom: 1px solid #c3d8ea;
+      display: flex; align-items: center; gap: 18px; padding: 0 14px; box-sizing: border-box;
+    }
+    .slide[data-id="P005"] .oldwin .menu b { display: block; height: 8px; border-radius: 4px; background: #8fa9c1; }
+    .slide[data-id="P005"] .oldwin .tools {
+      height: 38px; flex: 0 0 38px; background: #f7fafd; border-bottom: 1px solid #c3d8ea;
+      display: flex; align-items: center; gap: 9px; padding: 0 14px; box-sizing: border-box;
+    }
+    .slide[data-id="P005"] .oldwin .tools b { width: 22px; height: 22px; border-radius: 5px; background: #c3d8ea; border: 1px solid #8fa9c1; display: block; }
+    .slide[data-id="P005"] .oldwin .tools b.on { background: #94bce3; }
+    .slide[data-id="P005"] .oldwin .tools i { width: 1px; height: 22px; background: #c3d8ea; display: block; margin: 0 3px; }
+    .slide[data-id="P005"] .oldwin .fx {
+      height: 32px; flex: 0 0 32px; background: #ffffff; border-bottom: 1px solid #c3d8ea;
+      display: flex; align-items: center; gap: 10px; padding: 0 14px; box-sizing: border-box;
+    }
+    .slide[data-id="P005"] .oldwin .fx b { width: 30px; height: 20px; border-radius: 4px; background: #416180; display: block; }
+    .slide[data-id="P005"] .oldwin .fx u { flex: 1 1 auto; height: 8px; border-radius: 4px; background: #dfe9f3; display: block; }
+    .slide[data-id="P005"] .oldwin .sheet { flex: 1 1 auto; position: relative; background: #ffffff; padding: 9px 12px; box-sizing: border-box; }
+    .slide[data-id="P005"] .oldwin .sheet .grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows: 20px; gap: 5px;
+    }
+    .slide[data-id="P005"] .oldwin .sheet .grid span { background: #eef4fa; border: 1px solid #dbe6f1; border-radius: 3px; }
+    .slide[data-id="P005"] .oldwin .sheet .grid span.f { background: #cfdded; }
+    .slide[data-id="P005"] .oldwin .dlg {
+      position: absolute; right: 12px; bottom: 8px; width: 186px;
+      background: #ffffff; border: 2px solid #416180; border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(45,74,102,.28); padding: 8px 10px; box-sizing: border-box;
+    }
+    .slide[data-id="P005"] .oldwin .dlg .row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .slide[data-id="P005"] .oldwin .dlg .row u { flex: 1 1 auto; height: 7px; border-radius: 4px; background: #dfe9f3; display: block; }
+    .slide[data-id="P005"] .oldwin .dlg .sw { width: 30px; height: 15px; border-radius: 8px; background: #94bce3; position: relative; flex: 0 0 auto; }
+    .slide[data-id="P005"] .oldwin .dlg .sw::after { content: ""; position: absolute; top: 2px; right: 2px; width: 11px; height: 11px; border-radius: 50%; background: #fff; }
+    .slide[data-id="P005"] .oldwin .dlg .sw.off { background: #cfd6dd; }
+    .slide[data-id="P005"] .oldwin .dlg .sw.off::after { right: auto; left: 2px; }
+    .slide[data-id="P005"] .oldwin .dlg .btns { display: flex; justify-content: flex-end; gap: 7px; }
+    .slide[data-id="P005"] .oldwin .dlg .btns b { width: 42px; height: 16px; border-radius: 4px; background: #dfe9f3; border: 1px solid #8fa9c1; display: block; }
+    .slide[data-id="P005"] .oldwin .dlg .btns b.p { background: #416180; border-color: #416180; }
+
+    /* 中间：入口的变化 */
+    .slide[data-id="P005"] .entry .mid { flex: 0 0 236px; margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .slide[data-id="P005"] .entry .mid .midlab { font-size: 28px; font-weight: 500; color: var(--accent-dark); white-space: nowrap; }
+    .slide[data-id="P005"] .entry .mid svg { display: block; width: 216px; height: auto; }
+
+    /* 现在：对话输入框 */
+    .slide[data-id="P005"] .chatwrap { width: 100%; height: 236px; display: flex; align-items: center; }
+    .slide[data-id="P005"] .chatbox {
+      width: 100%; box-sizing: border-box; background: #ffffff;
+      border: 2px solid #5980a6; border-radius: 34px;
+      box-shadow: 0 6px 18px rgba(45,74,102,.16);
+      padding: 22px 22px 22px 30px; display: flex; align-items: center; gap: 18px;
+    }
+    .slide[data-id="P005"] .chatbox .caret { flex: 0 0 3px; height: 38px; background: #416180; border-radius: 2px; }
+    .slide[data-id="P005"] .chatbox .ph { flex: 1 1 auto; display: flex; flex-direction: column; gap: 12px; }
+    .slide[data-id="P005"] .chatbox .ph u { display: block; height: 13px; border-radius: 7px; background: #dfe9f3; }
+    .slide[data-id="P005"] .chatbox .ph u.s { width: 52%; }
+    .slide[data-id="P005"] .chatbox .send {
+      flex: 0 0 64px; height: 64px; border-radius: 50%; background: #416180;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide[data-id="P005"] .chatbox .send svg { display: block; width: 32px; height: 32px; }
+  </style>
+  <div class="body">
+    <div class="cols" style="gap:64px;flex:0 0 auto;align-items:flex-start">
+      <div class="reveal" data-step="1" style="flex:0 0 560px">
+        <div class="kicker" style="color:var(--muted);margin-bottom:22px">过去</div>
+        <p style="font-size:40px;line-height:1.6;color:var(--muted)">教师先掌握菜单、公式和配置，再把想法翻译成软件操作。</p>
+      </div>
+      <div class="vline" style="align-self:stretch"></div>
+      <div class="reveal" data-step="2">
+        <div class="kicker" style="margin-bottom:22px">现在</div>
+        <p style="font-size:52px;line-height:1.5;font-weight:500">教师直接表达目标，由AI协助组织操作步骤和材料。</p>
+      </div>
+    </div>
+    <div class="cols" style="gap:56px;margin-top:26px;flex:1 1 auto;min-height:0;align-items:stretch">
+      <div class="fig schematic reveal" data-step="1" style="flex:1 1 0">
+        <span class="tag">示意图</span>
+        <div class="pic">
+          <div class="entry">
+            <div class="side old">
+              <div class="top">过去</div>
+              <div class="oldwin">
+                <div class="bar"><i></i><i></i><i></i><u></u><s></s><s></s></div>
+                <div class="menu"><b style="width:52px"></b><b style="width:40px"></b><b style="width:64px"></b><b style="width:46px"></b><b style="width:58px"></b></div>
+                <div class="tools"><b class="on"></b><b></b><b></b><i></i><b></b><b class="on"></b><b></b><i></i><b></b></div>
+                <div class="fx"><b></b><u></u></div>
+                <div class="sheet">
+                  <div class="grid">
+                    <span class="f"></span><span></span><span></span><span class="f"></span><span></span>
+                    <span></span><span class="f"></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span class="f"></span><span></span>
+                  </div>
+                  <div class="dlg">
+                    <div class="row"><u></u><div class="sw"></div></div>
+                    <div class="row"><u></u><div class="sw off"></div></div>
+                    <div class="btns"><b></b><b class="p"></b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cap">菜单、公式和配置</div>
+            </div>
+            <div class="mid">
+              <div class="midlab">入口的变化</div>
+              <svg viewBox="0 0 220 64" role="img" aria-label="从过去指向现在的箭头">
+                <defs>
+                  <linearGradient id="p5Arrow" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#94bce3"/><stop offset="1" stop-color="#416180"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0 22 H146 V2 L220 32 L146 62 V42 H0 Z" fill="url(#p5Arrow)"/>
+              </svg>
+            </div>
+            <div class="side now">
+              <div class="top">现在</div>
+              <div class="chatwrap">
+                <div class="chatbox">
+                  <div class="caret"></div>
+                  <div class="ph"><u></u><u class="s"></u></div>
+                  <div class="send">
+                    <svg viewBox="0 0 32 32" role="img" aria-label="发送">
+                      <path d="M16 27 V7 M7 16 L16 6 L25 16" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="cap">用自己的话说清楚想做什么</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slot reveal" data-kind="product" data-step="2" style="flex:0 0 560px"><div class="placeholder">教师用一句话提出想法的对话界面</div></div>
+    </div>
+    <div class="takeaway reveal" data-step="3" style="margin-top:24px">
+      <div class="arrow-line" style="width:420px"></div>
+      <p style="font-size:30px;line-height:1.6"><span style="font-weight:500">变化的位置</span>｜变化发生在入口：从“先学工具”转向“先说清楚想做什么”。</p>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">入口变化，不表示制作过程消失，也不保证一次成功。</div>
+  <aside class="notes">让变化清晰可见：过去在左、现在在右，中间标出变化发生的位置。强调入口变化不等于制作过程消失。示意图为通用造型，不模仿具体产品界面；右侧产品界面位待放入真实截图。</aside>
+</section>

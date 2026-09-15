@@ -1,0 +1,65 @@
+<!-- PLAN template=T04 executor=opus pace=演示 layout_ref=L09
+     reveal=['先介绍', '再回应', '重新表达']
+     embeds=[{"asset": "SYS_S03", "mode": "external-link-card", "config": "config.js: observatoryTalkUrl"}]
+     anim=null
+     note=演示页同 P041 结构；无本地断网备份，回退位为界面截图占位（CAP_S03_TALK 尚未拍摄）。
+     assets:
+       SYS_S03 → （现场启动，链接卡片填参与者地址） (external) 只给听众参与者链接
+       CAP_S03_TALK → assets/img/cap_guanchatai_talk.png (capture) 尚无截图，本页用 .slot 占位 -->
+<section class="slide" data-id="P052" data-title="让来访者听懂：完成一轮介绍与追问" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T04" data-status="draft">
+  <div class="hdr">
+    <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
+    <span class="pid">P052</span>
+  </div>
+  <h2 class="title">让来访者听懂：完成一轮介绍与追问</h2>
+  <p class="sub reveal-none">观察追问之后，学生补充了哪些必要信息。</p>
+  <!-- BODY:START -->
+  <style>
+    .slide[data-id="P052"] .body { gap: 28px; }
+    .slide[data-id="P052"] .row { flex: 1 1 auto; min-height: 0; align-items: center; gap: 56px; }
+    .slide[data-id="P052"] .entry { flex: 0 0 820px; align-self: stretch; display: flex; align-items: center; }
+    .slide[data-id="P052"] .link-card { width: 100%; gap: 40px; }
+    .slide[data-id="P052"] .link-card .qr { flex: 0 0 290px; width: 290px; height: 290px; }
+    .slide[data-id="P052"] .link-card .name { font-size: 36px; }
+    .slide[data-id="P052"] .back { flex: 1 1 0; min-width: 0; align-self: stretch; display: flex; flex-direction: column; }
+    .slide[data-id="P052"] .back .slot { flex: 1 1 auto; min-height: 0; }
+    .slide[data-id="P052"] .steps3 { flex: 0 0 auto; }
+  </style>
+  <div class="body">
+    <div class="cols row">
+      <div class="entry">
+        <a class="link-card unset" data-config="observatoryTalkUrl" data-placeholder="地址现场填写（config.js）" href="#">
+          <div class="qr" data-config="observatoryTalkUrl" data-placeholder="现场填写 config.js 后显示二维码"></div>
+          <div class="info">
+            <div class="name">教学观察台 · 语言文化交流</div>
+            <div class="desc">参与者入口</div>
+            <div class="url"></div>
+          </div>
+        </a>
+      </div>
+      <div class="back">
+        <span class="tag">断网回退</span>
+        <div class="slot" data-kind="capture"><div class="placeholder"></div></div>
+      </div>
+    </div>
+    <div class="grid-3 steps3">
+      <div class="reveal">
+        <div class="label">先介绍</div>
+        <p class="text">请向第一次来访的同学说明共读角的位置和借阅方法。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">再回应</div>
+        <p class="text">听清来访者的问题，从已有事实中补充说明。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">重新表达</div>
+        <p class="text">把补充的信息整合进去，让第一次来的人能够照着说明完成借阅。</p>
+      </div>
+    </div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">交流任务示例。</div>
+  <aside class="notes">【演示】如果使用固定脚本，要明说是脚本预演；真实文字或语音调用则使用实际输出。观察学生补充了什么事实，不能把不同输出模式混成同一份课堂证据。二维码与地址来自 config.js 的 observatoryTalkUrl，培训当天填写参与者地址。右侧为断网回退位：界面截图尚未拍摄，先用占位；拍好后放入 assets/img/cap_guanchatai_talk.png 即可。
+    作用：展示表达—追问—修订的学习过程。
+    资源：<a href="../19_逐页内容脚本/资源预览/S03.html">S03 教学观察台：语言文化交流</a> <a href="assets/docs/S03/README.md">素材入口</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动局域网演示.command" title="原路径，仅本机有效">启动局域网演示.command</a> <a href="file:///Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command" title="原路径，仅本机有效">启动本机演示.command</a></aside>
+</section>

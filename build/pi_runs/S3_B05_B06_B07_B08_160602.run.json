@@ -1,0 +1,18 @@
+{
+ "ids": [
+  "B05",
+  "B06",
+  "B07",
+  "B08"
+ ],
+ "model": "deepseek/deepseek-flash",
+ "seconds": 25.2,
+ "returned": [
+  "B05",
+  "B06",
+  "B07",
+  "B08"
+ ],
+ "rc": 0,
+ "errors": {}
+}

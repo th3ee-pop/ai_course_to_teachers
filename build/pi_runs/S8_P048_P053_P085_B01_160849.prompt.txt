@@ -1,0 +1,208 @@
+你是课件页面排版助手。输入是若干页“骨架 HTML”（1920×1080 投影课件的一页），你只需要重写每页 <!-- BODY:START --> 与 <!-- BODY:END --> 之间的正文区，让它按模板要求排版并有分步出现。
+
+硬性规则（违反会被校验脚本退回）：
+1. 只输出正文区。不要输出 <section>、.hdr、h2.title、.sub、.foot、<aside class="notes">，也不要改它们。
+2. 文字零改写：骨架正文里每个 .label 与 .text 的文字必须逐字保留（不增删字、不改标点、不合并、不翻译）。可以增加的只有很短的视觉标签：“示意图”“示例对话”“AI生成试样”“待放入实拍照片”“角色模拟，非历史人物真实发言”。不得加入骨架里没有的事实、数字、引语、英文。
+3. 只用给定的 CSS 类与少量内联样式（flex/grid/gap/margin/max-width/font-size/color 用变量）。不写 <style>、<script>、不引外部图片或外部链接。
+4. 图片只用 PLAN 注释 assets 里给出的相对路径；`(capture)` `(codex-svg)` `(img)` 类的路径可以直接 <img src>。路径含 * 的（如 cap_D04_word_*.png）按 _1、_2 展开。`(placeholder)` 类或文件标注“待…”的不放 img，用 <div class="slot"><div class="placeholder">待放入产品截图</div></div>。`(external)` `(link)` 类不是图片：`(link)` 用 <a class="file-card" href="路径">文件名</a>；`(external)` 用 <a class="link-card unset" data-config="observatoryUrl|magnetUrl|labUrl|ecoUrl"><b>系统名</b><span>现场启动后填入地址</span></a>（观察台→observatoryUrl，掌中磁场→magnetUrl，掌中实验室→labUrl，生态岛→ecoUrl）。
+5. 分步：PLAN 注释 reveal=[...] 列出的条目按顺序各自加 class="reveal"（同一条目的标签与正文放在同一个 .reveal 容器内）；reveal 为空的页不加 .reveal。不要自创其它动效类。骨架里已有的 .reveal 划分要保留。
+6. 结构：正文区最外层固定是 <div class="body">…</div>（可加 style），.cols / .grid-3 / .stack / .dialog 等都作为 .body 的子元素，不要把这些类直接加在 .body 上。图片写法固定为 <div class="fig" style="max-height:…px"><div class="pic"><img src="…" alt=""></div><figcaption class="caption">…</figcaption></div>（figcaption 可省），或 <div class="slot" style="height:…px"><img src="…" alt=""></div>。
+7. 尺寸：正文字号 28–40px，行高 1.6 左右；一页正文最多 4 个块；图片用 .slot 或 .fig 包裹并设 max-height，保证在 1080 高度内不溢出（标题区约占 220px，页脚约 80px，正文可用高约 700px）。
+8. 输出格式：每页依次
+=== P004 ===
+<!-- BODY:START -->
+...
+<!-- BODY:END -->
+不要 Markdown 代码围栏，不要任何解释。
+
+可用 CSS 类（deck.css）：
+- 布局：.body（正文容器，flex 列）.stack（竖排 gap 28）.cols（横排等分，子元素 flex:1；可放 <div class="vline"></div> 分隔线）.cols.tight .grid-2 .grid-3 .grid-4
+- 文本：.label（小标题，26px 强调色）.text（32px）.lead（36px）.small（26px 灰）.muted .hl（强调色加粗）.num（等宽序号，配合 .label 使用：<span class="num">01</span>）.kicker（24px 字距大）.serif .cond .big（196px 大数字）.rule（分隔线）.takeaway（结论行）.quote-block（大引文）
+- 卡片：.card（边框卡；内含 .label 与 <p>）.card.fill（灰底）.card.accent（强调边）.card.role-pipe/.card.role-tool/.card.role-subject（角色配色）
+- 流程：.flow > .node（每步一格，含 .label 与 <p>）与 .arr（<div class="arr">→</div>）；.flow.vertical 竖排；.steps > li（带 01 02 序号的列表，<b> 为要点）
+- 对话：.dialog > .turn（.who + .say）；AI 一方加 .turn.ai；.transcript > .line（.who + 文本，.mark 高亮）
+- 对照：.before-after（两栏网格，每栏 <div>，内用 .label + p；.diff 标记差异，.fix 标记修正）
+- 图片：.slot（居中容器，img 自适应；内可放 <div class="placeholder">待放入…</div>）.fig（图＋<figcaption class="caption">）.blueprint（蓝图边框）.kf（关键帧格）
+- 标签：.tag（小标签）.tag.fill .tag.warn；.corner-tag（角标）
+- 入口：.file-card（文件卡片链接）.link-card（外链卡片，配 data-config）.embed（内嵌 iframe 容器：<div class="embed" data-src="路径"><div class="hint">点击加载</div></div>）
+- 组件：<div class="map433" data-stage="设计|实施|评价|教师专业发展" data-roles="管道,工具,主体" data-show="stages,roles,questions" data-reveal="1" data-size="full|compact"></div>（4＋3＋3 总图，自动渲染）；<div class="cycle" data-nodes="A|B|C|D" data-center="中心字" data-size="480"></div>（环形循环图）
+颜色变量：var(--accent) #5980a6、var(--accent-dark) #416180、var(--light-blue) #94bce3、var(--muted) 灰、var(--surface) 浅灰底、var(--divider) 分隔线。
+
+模板要求：
+模板 T03「左右对照」：.cols 两栏，左栏“过去/之前”用 .muted 弱化，右栏“现在/之后”字号更大（36–44px）；两栏之间 <div class="vline"></div>；每栏一个 .reveal。第三条 reveal（结论）放底部 .takeaway。有图片放在右栏 .slot（max-height 520px），note 说“最后一步出现”则图片所在容器单独 .reveal 排最后。
+模板 T14「识别/表达前后对照」：用 .before-after 两栏或三行（原记录→识别文本→核对后），每行一个 .reveal，含 .label 与 p（38px）；差异处用 <span class="diff">，修正处用 <span class="fix">。右侧可放深色 .card.fill 做“判断”栏（如果骨架有对应条目）。
+
+已实现的同模板样页（只看排版气质与密度，不要照抄其文字；样页用了内联样式，你优先用上面的类）：
+
+--- 样页 T03 ---
+<section class="slide" data-id="P005" data-title="现在，可以先用自己的话提出想法" data-module="01 为什么要学习AI？" data-stage="">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P005</span>
+  </div>
+  <h2 style="margin-top:36px;font-size:68px;line-height:1.3">现在，可以先用自己的话提出想法</h2>
+  <div style="display:flex;gap:64px;margin-top:auto;align-items:stretch">
+    <div style="flex:0 0 560px">
+      <div class="kicker" style="color:#7a7a7d;margin-bottom:22px">过去</div>
+      <p style="font-size:40px;line-height:1.6;color:#7a7a7d">教师先掌握菜单、公式和配置，再把想法翻译成软件操作。</p>
+    </div>
+    <div style="flex:0 0 1px;background:#c9cacb"></div>
+    <div style="flex:1 1 0;min-width:0">
+      <div class="kicker" style="margin-bottom:22px">现在</div>
+      <p style="font-size:56px;line-height:1.5;font-weight:500">教师直接表达目标，由AI协助组织操作步骤和材料。</p>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:28px;margin-top:64px;margin-bottom:auto">
+    <div style="width:420px;height:1px;background:#5980a6;position:relative"><i style="position:absolute;right:-1px;top:-6px;width:9px;height:9px;border-top:1px solid #5980a6;border-right:1px solid #5980a6;transform:rotate(45deg)"></i></div>
+    <p style="font-size:30px;line-height:1.6;color:#416180"><span style="font-weight:500">变化的位置</span>｜变化发生在入口：从“先学工具”转向“先说清楚想做什么”。</p>
+  </div>
+  <div class="foot">入口变化，不表示制作过程消失，也不保证一次成功。</div>
+  
+</section>
+
+--- 样页 T14 ---
+<section class="slide" data-id="P088" data-title="保留原图，再核对小数点、单位和空白格" data-module="10 回到真实学习：实物、终端与伦理" data-stage="教学评价">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span class="on">教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P088</span>
+  </div>
+  <div style="display:flex;align-items:baseline;gap:40px;margin-top:32px">
+    <h2 style="font-size:54px;line-height:1.3;white-space:nowrap">保留原图，再核对小数点、单位和空白格</h2>
+    <p class="sub" style="white-space:nowrap">模拟识别误差：同一条记录，保留可以追溯的修改。</p>
+  </div>
+  <div style="display:flex;gap:64px;margin-top:52px;flex:1 1 auto;min-height:0;align-items:stretch">
+    <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:0">
+      <div style="display:flex;align-items:baseline;gap:32px;padding:30px 0;border-top:1px solid #c9cacb">
+        <span class="kicker" style="flex:0 0 170px;color:#7a7a7d">原记录</span>
+        <p style="flex:1 1 0;font-size:38px;line-height:1.6">第1次：<b style="font-weight:700">12.8秒</b>；第2次：空白。旁注：计时按晚了。</p>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:32px;padding:30px 0;border-top:1px solid #c9cacb">
+        <span class="kicker" style="flex:0 0 170px;color:#7a7a7d">识别文本示例</span>
+        <p style="flex:1 1 0;font-size:38px;line-height:1.6">第1次：<b style="font-weight:700;text-decoration:underline;text-decoration-color:#5980a6;text-decoration-thickness:3px;text-underline-offset:8px">128</b>；第2次：空白。<span style="color:#7a7a7d">旁注未被识别。</span></p>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:32px;padding:30px 0;border-top:1px solid #c9cacb;border-bottom:2px solid #5980a6">
+        <span class="kicker" style="flex:0 0 170px">核对后的记录</span>
+        <p style="flex:1 1 0;font-size:38px;line-height:1.6">第1次：12.8秒；第2次：保留空白。补回旁注，并链接原图。</p>
+      </div>
+    </div>
+    <div style="flex:0 0 360px;background:#1d2d3d;color:#f2f2f3;padding:40px 40px;display:flex;flex-direction:column;justify-content:center;align-self:center">
+      <div class="kicker" style="color:#94bce3;margin-bottom:18px">判断</div>
+      <p style="font-size:30px;line-height:1.7">不能自动把缺测补成平均值，也不能丢掉会影响解释的旁注。</p>
+    </div>
+  </div>
+  <div class="foot">新编模拟填写与识别误差，不是真实学生记录或OCR实测输出。</div>
+  
+</section>
+
+
+请为以下 4 页重写正文区，按输出格式逐页给出。
+
+
+##### 页 P048（模板 T14）
+<!-- PLAN template=T14 executor=pi pace=停讲 layout_ref=L07
+     reveal=['诗句提供的依据', '视频作出的选择', '学生需要作出的判断']
+     embeds=[]
+     anim=null
+     note=裁第一镜 0–4 秒关键帧作左图。
+     assets:
+       IMG_V01_KEYFRAMES → assets/wanglushan_keyframes.jpg (img) 已在 assets/ -->
+<section class="slide" data-id="P048" data-title="哪些细节有文本依据，哪些来自画面的补充？" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T14" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P048</span>
+  </div>
+  <h2 class="title">哪些细节有文本依据，哪些来自画面的补充？</h2>
+  <p class="sub reveal-none">以“日照香炉生紫烟”为例。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">诗句提供的依据</div><p class="text">日光、香炉峰与紫烟构成这一句的主要景象。</p></div>
+    <div class="reveal"><div class="label">视频作出的选择</div><p class="text">第一人称仰视、逆光和淡紫水汽，是分镜对诗句的具体呈现。</p></div>
+    <div class="reveal"><div class="label">学生需要作出的判断</div><p class="text">请指出一个帮助理解的细节和一个可以另作处理的细节，并回到诗句说明理由。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">画面是一种诗意解释，不是诗句的唯一解释。</div>
+  <aside class="notes">【停讲】讲述时依次说明：日光、香炉峰与紫烟构成这一句的主要景象。 第一人称仰视、逆光和淡紫水汽，是分镜对诗句的具体呈现。 请指出一个帮助理解的细节和一个可以另作处理的细节，并回到诗句说明理由。
+    作用：复盘视频，区分文本依据与视觉补充。</aside>
+</section>
+
+
+##### 页 P053（模板 T14）
+<!-- PLAN template=T14 executor=pi pace=停讲 layout_ref=L08
+     reveal=['学生第一次表达', '来访者追问', '学生补充事实', '修订后表达']
+     embeds=[]
+     anim=null
+     note=
+ -->
+<section class="slide" data-id="P053" data-title="第一次表达与修订后，哪里不同？" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T14" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span class="on">课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P053</span>
+  </div>
+  <h2 class="title">第一次表达与修订后，哪里不同？</h2>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">学生第一次表达</div><p class="text">“我们的共读角可以借书。”</p></div>
+    <div class="reveal"><div class="label">来访者追问</div><p class="text">“第一次来的人要到哪里登记？”</p></div>
+    <div class="reveal"><div class="label">学生补充事实</div><p class="text">“请先在班级借阅表上登记，再到书架取书。”</p></div>
+    <div class="reveal"><div class="label">修订后表达</div><p class="text">“共读角在教室后排，书架侧面有班级借阅表。第一次借书请先登记姓名和书名，再到书架取书。”</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">示例对话；共读角位置和借阅规则均为本例设定，不是学生原话。</div>
+  <aside class="notes">【停讲】讲述时依次说明：“我们的共读角可以借书。” “第一次来的人要到哪里登记？” “请先在班级借阅表上登记，再到书架取书。” “共读角在教室后排，书架侧面有班级借阅表。第一次借书请先登记姓名和书名，再到书架取书。”
+    作用：对照第一次表达与修订后表达，读出追问、补充事实和修订的作用。</aside>
+</section>
+
+
+##### 页 P085（模板 T03）
+<!-- PLAN template=T03 executor=pi pace=停讲 layout_ref=L07
+     reveal=['模拟', '实做', '相同条件', '互相支持']
+     embeds=[]
+     anim=null
+     note=右栏实做：照片位‘待放入实拍照片’。
+     assets:
+       IMG_S01_SHOT → assets/img/siji_v2_xiazhi_dongzhi.png (img) 已在 assets/，现有 -->
+<section class="slide" data-id="P085" data-title="模拟与实做，各自让学生经历什么？" data-module="10 回到真实学习：实物、终端与伦理" data-stage="" data-kind="主线" data-template="T03" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span>教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">P085</span>
+  </div>
+  <h2 class="title">模拟与实做，各自让学生经历什么？</h2>
+  <p class="sub reveal-none">两边互相支持，不是互相替代</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">模拟</div><p class="text">可以反复改变日期、纬度、倾角，观察理想模型里的光路与季节变化。</p></div>
+    <div class="reveal"><div class="label">实做</div><p class="text">材料有差异，测量有波动，装置要调试，结果需要重复确认。</p></div>
+    <div class="reveal"><div class="label">相同条件</div><p class="text">都围绕同一问题，都要求学生说明依据。</p></div>
+    <div class="reveal"><div class="label">互相支持</div><p class="text">模拟帮助比较，实做提供真实经验，两者在课堂里交替使用。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <aside class="notes">【停讲】讲述时依次说明：可以反复改变日期、纬度、倾角，观察理想模型里的光路与季节变化。 材料有差异，测量有波动，装置要调试，结果需要重复确认。 都围绕同一问题，都要求学生说明依据。 模拟帮助比较，实做提供真实经验，两者在课堂里交替使用。
+    作用：用左右对照说明模拟与实做各自的价值。</aside>
+</section>
+
+
+##### 页 B01（模板 T03）
+<!-- PLAN template=T03 executor=pi pace=按替换片段安排 layout_ref=L07
+     reveal=['保持学习目标', '调整课堂活动', '同步修改材料']
+     embeds=[]
+     anim=null
+     note=
+ -->
+<section class="slide" data-id="B01" data-title="课时缩短之后，任务和材料要一起调整" data-module="05 教学设计：让方案适合本班" data-stage="教学设计" data-kind="备选" data-replaces="模块05 教学设计：让方案适合本班" data-template="T03" data-status="skeleton">
+  <div class="hdr">
+    <div class="locator"><b>4＋3＋3</b><span class="on">教学设计</span><span>课堂实施</span><span>教学评价</span><span>教师专业发展</span></div>
+    <span class="pid">B01</span>
+  </div>
+  <h2 class="title">课时缩短之后，任务和材料要一起调整</h2>
+  <p class="sub reveal-none">条件变化示例：植物观察课的课堂交流时间缩短。</p>
+  <!-- BODY:START -->
+  <div class="body stack" style="justify-content:center">
+    <div class="reveal"><div class="label">保持学习目标</div><p class="text">学生仍需依据连续记录描述植物变化；不把植物的真实生长过程压缩成演示结果。</p></div>
+    <div class="reveal"><div class="label">调整课堂活动</div><p class="text">集中讨论一组有代表性的连续记录，其他记录保留在小组交流中。</p></div>
+    <div class="reveal"><div class="label">同步修改材料</div><p class="text">教师流程、学生任务单与评价要求都改为：每组用两条以上记录说明一个变化。</p></div>
+  </div>
+  <!-- BODY:END -->
+  <div class="foot">新编调整示例，依据已有单元材料设计。</div>
+  <aside class="notes">【按替换片段安排】讲述时依次说明：学生仍需依据连续记录描述植物变化；不把植物的真实生长过程压缩成演示结果。 集中讨论一组有代表性的连续记录，其他记录保留在小组交流中。 教师流程、学生任务单与评价要求都改为：每组用两条以上记录说明一个变化。
+    作用：说明课时变化会牵动整套材料，给出改动的判断顺序，而不是只调整课时表。</aside>
+</section>
