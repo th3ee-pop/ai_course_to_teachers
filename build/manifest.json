@@ -1,5 +1,17 @@
 [
  {
+  "id": "P000A",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
+  "id": "P000B",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
   "id": "P001",
   "status": "draft",
   "kind": "主线",
@@ -9,271 +21,277 @@
   "id": "P002",
   "status": "draft",
   "kind": "主线",
-  "executor": "existing"
+  "executor": "cloud"
  },
  {
   "id": "P003",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
+ },
+ {
+  "id": "P003A",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
+  "id": "P003B",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
+  "id": "P003D",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
+  "id": "P003F",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
  },
  {
   "id": "P004",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P005",
   "status": "draft",
   "kind": "主线",
-  "executor": "existing"
+  "executor": "cloud"
+ },
+ {
+  "id": "P005A",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
  },
  {
   "id": "P006",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P007",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P008",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
+  "executor": "existing"
  },
  {
   "id": "P009",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P010",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P011",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
-  "id": "P012",
-  "status": "draft",
+  "id": "P011A",
+  "status": "skeleton",
   "kind": "主线",
-  "executor": "opus"
+  "executor": "cloud"
+ },
+ {
+  "id": "P011B",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
+  "id": "P011C",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
  },
  {
   "id": "P013",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
+  "executor": "existing"
  },
  {
   "id": "P014",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
+  "executor": "existing"
+ },
+ {
+  "id": "P014A",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
+  "id": "P014B",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
  },
  {
   "id": "P015",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
- },
- {
-  "id": "P016",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P017",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P018",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P019",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P020",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P021",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P022",
   "status": "draft",
   "kind": "主线",
-  "executor": "existing"
+  "executor": "cloud"
  },
  {
   "id": "P023",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
+ },
+ {
+  "id": "P021",
+  "status": "draft",
+  "kind": "主线",
+  "executor": "cloud"
  },
  {
   "id": "P024",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P025",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P026",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
-  "id": "P027",
+  "id": "P026A",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P028",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P029",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P030",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
-  "id": "P031",
+  "id": "P027",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P032",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P033",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P034",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "opus"
- },
- {
-  "id": "P035",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P036",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P037",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
-  "id": "P038",
-  "status": "draft",
+  "id": "P037A",
+  "status": "skeleton",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P039",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P040",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P041",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
+  "executor": "existing"
  },
  {
   "id": "P042",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
+  "executor": "existing"
  },
  {
-  "id": "P043",
+  "id": "P042B",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
+ },
+ {
+  "id": "P042D",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
+  "id": "P042F",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
+ },
+ {
+  "id": "P042H",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
  },
  {
   "id": "P044",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P045",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P046",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "existing"
+  "executor": "cloud"
  },
  {
   "id": "P047",
@@ -282,94 +300,46 @@
   "executor": "existing"
  },
  {
-  "id": "P048",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P049",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "opus"
- },
- {
-  "id": "P050",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
   "id": "P051",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P052",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "opus"
+  "executor": "cloud"
  },
  {
   "id": "P053",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P054",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P055",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P056",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P057",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P058",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P059",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
+  "executor": "existing"
  },
  {
   "id": "P060",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P061",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P062",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P063",
@@ -381,43 +351,37 @@
   "id": "P064",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
-  "id": "P065",
-  "status": "draft",
+  "id": "P066A",
+  "status": "skeleton",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P066",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "opus"
+  "executor": "cloud"
  },
  {
   "id": "P067",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P068",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P069",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P070",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P071",
@@ -432,70 +396,34 @@
   "executor": "existing"
  },
  {
-  "id": "P073",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P074",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P075",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
   "id": "P076",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P077",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P078",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P079",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P080",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P081",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P082",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P083",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P084",
@@ -507,43 +435,37 @@
   "id": "P085",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P086",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P087",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
- },
- {
-  "id": "P088",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "existing"
+  "executor": "cloud"
  },
  {
   "id": "P089",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "P090",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P091",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P092",
@@ -555,168 +477,144 @@
   "id": "P093",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
- },
- {
-  "id": "P094",
-  "status": "draft",
-  "kind": "主线",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "P095",
   "status": "draft",
   "kind": "主线",
-  "executor": "opus"
+  "executor": "cloud"
+ },
+ {
+  "id": "P095A",
+  "status": "skeleton",
+  "kind": "主线",
+  "executor": "cloud"
  },
  {
   "id": "P096",
   "status": "draft",
   "kind": "主线",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "B01",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B02",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B03",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B04",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
- },
- {
-  "id": "B05",
-  "status": "draft",
-  "kind": "备选",
-  "executor": "pi"
- },
- {
-  "id": "B06",
-  "status": "draft",
-  "kind": "备选",
-  "executor": "pi"
- },
- {
-  "id": "B07",
-  "status": "draft",
-  "kind": "备选",
-  "executor": "pi"
- },
- {
-  "id": "B08",
-  "status": "draft",
-  "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B09",
   "status": "draft",
   "kind": "备选",
-  "executor": "opus"
+  "executor": "existing"
  },
  {
   "id": "B10",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "B11",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B12",
   "status": "draft",
   "kind": "备选",
-  "executor": "opus"
+  "executor": "existing"
  },
  {
   "id": "B13",
   "status": "draft",
   "kind": "备选",
-  "executor": "opus"
+  "executor": "existing"
  },
  {
   "id": "B14",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B15",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B16",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B17",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B18",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B19",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B20",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "cloud"
  },
  {
   "id": "B21",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B22",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B23",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  },
  {
   "id": "B24",
   "status": "draft",
   "kind": "备选",
-  "executor": "pi"
+  "executor": "existing"
  }
 ]

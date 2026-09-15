@@ -6,20 +6,59 @@
      assets:
        CAP_S04 → assets/img/cap_zhangzhong_cichang.png (capture) 本机启动后截图
        SYS_S04 → （本机启动 dist） (external) vite 项目，需摄像头；外链＋截图 -->
-<section class="slide" data-id="P042B" data-title="掌中磁场：反转电流看方向" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T18" data-status="skeleton">
+<section class="slide" data-id="P042B" data-title="掌中磁场：反转电流看方向" data-module="06 课堂实施：观察、操纵、交流和解释" data-stage="课堂实施" data-kind="主线" data-template="T18" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>06</b><span class="on">课堂实施：观察、操纵、交流和解释</span></div>
     <span class="pid">P042B</span>
   </div>
-  <h2 class="title">掌中磁场：反转电流看方向</h2>
+  <h2 class="title sm">掌中磁场：反转电流看方向</h2>
   <p class="sub reveal-none">前置摄像头识别手势，反转电流，看端面方向。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">典型需求</div><p class="text">右手螺旋定则讲了很多遍，学生还是把手的握向和电流方向对应不起来。</p></div>
-    <div class="reveal"><div class="label">① 要解决什么问题（目标设定）</div><p class="text">学生能把右手的握向与螺线管的电流方向、端面极性对应起来。</p></div>
-    <div class="reveal"><div class="label">② 最终成功标准是什么（验收标准）</div><p class="text">反转电流前学生先说出预测；反转后能指出预测对错，并用右手法则说明。</p></div>
-    <div class="reveal"><div class="label">③ 如何让AI理解以上两点（上下文构建）</div><p class="text">学段、已学的电流与磁场概念、有前置摄像头的设备数量、教室光线条件。</p></div>
-    <div class="reveal"><div class="label">所以用到</div><p class="text">内容生成：生成带手势识别的磁场页面；角色扮演：反转电流前追问预测。</p></div>
+  <div class="body">
+    <div class="flash">
+
+      <!-- 左 60%：参与者界面大图位（截图待用户提供，不伪造）＋ 下方链接卡 -->
+      <div class="flash-fig">
+        <div class="blueprint">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="slot" data-kind="capture"><div class="placeholder"></div></div>
+        </div>
+        <a class="link-card unset" data-config="magnetUrl" data-placeholder="地址现场填写（config.js）" href="#">
+          <div class="qr" data-config="magnetUrl" data-placeholder="现场填写 config.js"></div>
+          <div class="info">
+            <div class="name">掌中磁场</div>
+            <div class="desc">参与者入口</div>
+            <div class="url"></div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 右 40%：紧凑卡，五块竖排，整页一次出（不分步） -->
+      <div class="flash-card">
+        <div class="row">
+          <div class="label">典型需求</div>
+          <p class="text">右手螺旋定则讲了很多遍，学生还是把手的握向和电流方向对应不起来。</p>
+        </div>
+        <div class="row">
+          <div class="label">① 要解决什么问题（目标设定）</div>
+          <p class="text">学生能把右手的握向与螺线管的电流方向、端面极性对应起来。</p>
+        </div>
+        <div class="row">
+          <div class="label">② 最终成功标准是什么（验收标准）</div>
+          <p class="text">反转电流前学生先说出预测；反转后能指出预测对错，并用右手法则说明。</p>
+        </div>
+        <div class="row">
+          <div class="label">③ 如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">学段、已学的电流与磁场概念、有前置摄像头的设备数量、教室光线条件。</p>
+        </div>
+        <div class="row cap">
+          <div class="label">所以用到</div>
+          <p class="text">内容生成：生成带手势识别的磁场页面；角色扮演：反转电流前追问预测。</p>
+        </div>
+      </div>
+
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">方向线只表示方向，不表示强弱；手势只是输入方式，不参与判断对错。</div>
