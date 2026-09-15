@@ -1,40 +1,48 @@
-<!-- PLAN template=T05 executor=pi pace=快过 layout_ref=L03
+<!-- PLAN template=T16 executor=cloud pace=快过 layout_ref=L02
      reveal=['先明确任务', '再安排协作', '形成成果并使用', '检查并改进']
      embeds=[]
-     anim=null
-     note=
+     anim="map334"
+     note=components/map334.js 总图，顺序 能力→三问→环节。
  -->
-<section class="slide" data-id="P024" data-title="一次AI委托，需要从教学问题走向可检验的行动。" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
+<section class="slide dark" data-id="P024" data-title="3＋3＋4：从教学问题到可检验的行动" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T16" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P024</span>
   </div>
-  <h2 class="title">一次AI委托，需要从教学问题走向可检验的行动。</h2>
+  <h2 class="title">3＋3＋4：从教学问题到可检验的行动</h2>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="flow" style="align-items:stretch;gap:18px">
-    <div class="node reveal">
-      <div class="label">先明确任务</div>
-      <p>教师说清问题、预期结果和使用情境。</p>
+  <div class="body cols p24body">
+    <div class="p24map">
+      <div class="anim-map334 map334" data-show="caps,questions,stages" data-size="full"></div>
     </div>
-    <div class="arr">→</div>
-    <div class="node reveal">
-      <div class="label">再安排协作</div>
-      <p>教师通过三问安排AI的参与方式，并提供必要材料。</p>
-    </div>
-    <div class="arr">→</div>
-    <div class="node reveal">
-      <div class="label">形成成果并使用</div>
-      <p>师生按任务使用文档、视频、交互工具或对话支持。</p>
-    </div>
-    <div class="arr">→</div>
-    <div class="node reveal">
-      <div class="label">检查并改进</div>
-      <p>教师结合学生表现判断结果，决定下一步怎样调整。</p>
+    <div class="stack p24side">
+      <div class="reveal" data-step="1"><div class="label">三类能力</div><p class="text">内容生成、连通管道、角色扮演：AI能做什么。</p></div>
+      <div class="reveal" data-step="2"><div class="label">三个问题</div><p class="text">目标设定、验收标准、上下文构建：怎样把任务说清楚。</p></div>
+      <div class="reveal" data-step="3"><div class="label">四个环节</div><p class="text">设计、实施、评价、教师专业发展：从哪里想起。</p></div>
+      <div class="reveal p24use" data-step="4"><div class="label">老师这样用</div><p class="text">先看自己处在哪个环节、有什么需求，再用三问把任务说清楚，最后由任务决定用到哪类能力。</p></div>
     </div>
   </div>
-</div>
-<!-- BODY:END -->
-  <aside class="notes">【快过】讲述时依次说明：教师说清问题、预期结果和使用情境。 教师通过三问安排AI的参与方式，并提供必要材料。 师生按任务使用文档、视频、交互工具或对话支持。 教师结合学生表现判断结果，决定下一步怎样调整。
-    作用：给出全场案例的共同观察结构，作为进入设计环节的导航。</aside>
+  <style>
+    .slide[data-id="P024"] .locator .on { color: var(--light-blue); }
+    .slide[data-id="P024"] .p24body { align-items: stretch; gap: 60px; }
+    .slide[data-id="P024"] .p24map { flex: 1.62 1 0; min-width: 0; display: flex; }
+    .slide[data-id="P024"] .p24map .map334 { flex: 1 1 auto; }
+    .slide[data-id="P024"] .p24side { flex: 1 1 0; min-width: 0; justify-content: space-between; gap: 26px; padding: 30px 0 34px; }
+    .slide[data-id="P024"] .p24side .label { margin-bottom: 10px; color: var(--light-blue); }
+    .slide[data-id="P024"] .p24side .text { font-size: 28px; line-height: 1.62; }
+    .slide[data-id="P024"] .p24use { border-left: 4px solid var(--light-blue-2); padding-left: 24px; margin-left: -28px; }
+  </style>
+  <script>
+    (function () {
+      if (window.Map334) { window.Map334.all(); return; }
+      if (document.getElementById('map334-js')) return;
+      var s = document.createElement('script');
+      s.id = 'map334-js';
+      s.src = 'components/map334.js';
+      (document.head || document.documentElement).appendChild(s);
+    })();
+  </script>
+  <!-- BODY:END -->
+  <aside class="notes">【快过】从四个环节出发，我们把整幅地图收拢成3＋3＋4。三类能力回答AI能做什么：内容生成、连通管道、角色扮演；三个问题回答怎样把任务说清楚：目标设定、验收标准、上下文构建；四个环节回答从哪里想起：设计、实施、评价、教师专业发展。要提醒大家的是，图的顺序和老师们实际使用的顺序正好相反：真正动手时，先看自己处在哪个环节、有什么需求，再用三问把任务说清楚，最后由任务决定调用哪类能力。这个框架不是给大家多加一套流程，而是帮我们把模糊的愿望变成可检验的行动。可是，如果AI给出的东西看起来很完整，为什么到了课堂上还是用不上？下一页从一个常见的落差说起。
+    作用：收束3＋3＋4，并点明老师使用时的相反顺序。</aside>
 </section>

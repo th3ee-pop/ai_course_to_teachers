@@ -1,43 +1,56 @@
-<!-- PLAN template=T06 executor=pi pace=停讲 layout_ref=L04
-     reveal=['我想得到什么？', 'AI需要扮演什么角色？', '我能提供什么背景？']
+<!-- PLAN template=T17 executor=cloud pace=停讲 layout_ref=L04
+     reveal=['① 要解决什么问题（目标设定）', '② 最终成功标准是什么（验收标准）', '③ 如何让AI理解以上两点（上下文构建）']
      embeds=[{"asset": "DOC_D04", "mode": "link"}]
      anim=null
-     note=
+     note=右侧 cap_D04_word_1.png / cap_D04_word_2.png 两页并排大图；卡按规则二逐问揭示。
      assets:
        CAP_D04_WORD → assets/img/cap_D04_word_*.png (capture) 
-       DOC_D04 → links/D04/ (link) 同上；封面页用 qlmanage 出缩略图 -->
-<section class="slide" data-id="P023" data-title="怎样委托AI准备两周的天气观测活动？" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T06" data-status="draft">
+       DOC_D04 → assets/docs/D04/ (link) 同上；封面页用 qlmanage 出缩略图 -->
+<section class="slide" data-id="P023" data-title="怎样委托AI准备两周的天气观测活动？" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="教学设计" data-kind="主线" data-template="T17" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P023</span>
   </div>
-  <h2 class="title">怎样委托AI准备两周的天气观测活动？</h2>
+  <h2 class="title sm">怎样委托AI准备两周的天气观测活动？</h2>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center">
-  <div class="grid-3 reveal-group" style="margin:auto 0;gap:32px">
-    <div class="card reveal" style="padding:36px">
-      <span class="num">01</span>
-      <div class="label">我想得到什么？</div>
-      <p style="font-size:28px;line-height:1.6">我需要一份活动安排和一张可打印的学生记录表。</p>
-    </div>
-    <div class="card reveal" style="padding:36px">
-      <span class="num">02</span>
-      <div class="label">AI需要扮演什么角色？</div>
-      <p style="font-size:28px;line-height:1.6">AI先整理活动要求，再制作配套文件；缺少条件时先向我确认。</p>
-    </div>
-    <div class="card reveal" style="padding:36px">
-      <span class="num">03</span>
-      <div class="label">我能提供什么背景？</div>
-      <p style="font-size:28px;line-height:1.6">我会提供学生年级、课时安排、可用器材、观察地点和已有教学进度。</p>
+  <div class="body">
+    <div class="casecard">
+      <div class="cc-need">
+        <div class="label">典型需求</div>
+        <p class="text">三年级要开展两周的天气观测，需要一份活动安排和一张学生能自己填的记录表。</p>
+      </div>
+      <div class="cc-qs">
+        <div class="cc-q reveal" data-step="1">
+          <div class="cc-num">①</div>
+          <div class="label">要解决什么问题（目标设定）</div>
+          <p class="text">我需要一份活动安排和一张可打印的学生记录表。</p>
+        </div>
+        <div class="cc-q reveal" data-step="2">
+          <div class="cc-num">②</div>
+          <div class="label">最终成功标准是什么（验收标准）</div>
+          <p class="text">记录表能让三年级学生独立填两周、每天不超过3分钟；活动安排能直接排进课表。</p>
+        </div>
+        <div class="cc-q reveal" data-step="3">
+          <div class="cc-num">③</div>
+          <div class="label">如何让AI理解以上两点（上下文构建）</div>
+          <p class="text">我会提供学生年级、课时安排、可用器材、观察地点和已有教学进度。</p>
+        </div>
+      </div>
+      <div class="cc-caps reveal" data-step="4">
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">内容生成</span></div>
+          <p class="text">生成活动安排与记录表两份可编辑的Word文件。</p>
+        </div>
+        <div class="cc-cap">
+          <div class="label"><span class="pre">所以用到：</span><span class="tag fill">角色扮演</span></div>
+          <p class="text">作为备课助手，缺少条件时先向我确认，再动手制作。</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div style="margin-top:28px">
-    <a class="file-card" href="assets/docs/D04/"><span class="ext">DOCX</span><span class="fname">天气观测活动安排 ＋ 学生两周记录表</span></a>
-  </div>
-</div>
-<!-- BODY:END -->
+  <!-- BODY:END -->
   <div class="foot">委托表达为教学示例；现有成品包括活动安排与学生记录表。</div>
-  <aside class="notes">【停讲】讲述时依次说明：我需要一份活动安排和一张可打印的学生记录表。 AI先整理活动要求，再制作配套文件；缺少条件时先向我确认。 我会提供学生年级、课时安排、可用器材、观察地点和已有教学进度。
-    作用：用天气观测活动示范三问怎样变成一次具体委托。
+  <aside class="notes">【停讲】刚才的三个问题，这一页完整走一遍。需求很典型：三年级要开展两周的天气观测，需要一份活动安排和一张学生能自己填的记录表。先看第一问，目标是拿到一份活动安排和一张可打印的记录表；第二问把标准说具体：三年级学生能独立填两周、每天不超过3分钟，活动安排能直接排进课表；第三问交代上下文：年级、课时、器材、观察地点和教学进度。右边是这次委托实际得到的两份Word成品，大家可以对照标准看一看。由任务决定，这里用到内容生成来产出两份可编辑文件，也用到角色扮演，让AI作为备课助手，缺少条件时先向我确认，再动手制作。同样的方法放到工作的哪些地方用？下一页看四个环节。
+    作用：全场第一次完整推导：需求→三问→能力。
     资源：<a href="../19_逐页内容脚本/资源预览/D04.html">D04 天气观测派活：两份Word</a> <a href="file:///Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/2.3_天气观测派活" title="原路径，仅本机有效">素材入口</a> <a href="assets/docs/D04/天气观测活动安排（三年级）.docx">天气观测活动安排（三年级）.docx</a> <a href="assets/docs/D04/学生两周天气记录表.docx">学生两周天气记录表.docx</a> <a href="../19_逐页内容脚本/资源预览/R01.html">R01 提示词库：46条模板与实例</a> <a href="assets/docs/R01/00_总目录.md">素材入口</a></aside>
 </section>

@@ -1,34 +1,97 @@
-<!-- PLAN template=T16 executor=pi pace=停讲 layout_ref=L02
+<!-- PLAN template=T15 executor=cloud pace=停讲 layout_ref=L10
      reveal=['备课时', '审议时', '角色随任务变化']
      embeds=[]
      anim=null
-     note=map433 组件：角色标签在‘设计’节点上重叠出现。
+     note=四卡横排；每卡可加一行小标"案例：植物单元 / 情景创设 / 喀什备考 / 沉与浮课例"（UI 文字）。
  -->
-<section class="slide dark" data-id="P021" data-title="同一项任务可以组合使用三种角色。" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T16" data-status="draft">
+<section class="slide" data-id="P021" data-title="四个环节：结合你的工作场景来想" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T15" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P021</span>
   </div>
-  <h2 class="title">同一项任务可以组合使用三种角色。</h2>
+  <h2 class="title">四个环节：结合你的工作场景来想</h2>
+  <p class="sub reveal-none">四个环节是思考的起点，问题从这里找。</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center;align-items:stretch">
-  <div class="map433" data-stage="设计" data-roles="" data-show="stages,roles,questions" data-size="compact"></div>
-  <div class="cols" style="margin-top:36px">
-    <div class="reveal">
-      <div class="label">备课时</div>
-      <p class="text" style="font-size:28px;line-height:1.6">AI可以先追问教学目标，再整理教材和学情，随后生成配套材料。</p>
+  <div class="body p21body">
+    <div class="p21row">
+      <div class="p21card reveal" data-step="1">
+        <div class="p21ic"><img src="assets/img/icons/stage_design.png" alt=""></div>
+        <div class="label">教学设计</div>
+        <p class="text">确定目标、活动、材料和评价方式。</p>
+        <div class="p21case">案例：植物单元</div>
+      </div>
+      <div class="p21arr reveal" data-step="2">
+        <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true">
+          <path d="M2,13 H32" stroke="#94bce3" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M30,4 L44,13 L30,22 Z" fill="#94bce3"></path>
+        </svg>
+      </div>
+      <div class="p21card reveal" data-step="2">
+        <div class="p21ic"><img src="assets/img/icons/stage_classroom.png" alt=""></div>
+        <div class="label">课堂实施</div>
+        <p class="text">在课堂上组织学生活动，观察学生反应。</p>
+        <div class="p21case">案例：情景创设</div>
+      </div>
+      <div class="p21arr reveal" data-step="3">
+        <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true">
+          <path d="M2,13 H32" stroke="#94bce3" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M30,4 L44,13 L30,22 Z" fill="#94bce3"></path>
+        </svg>
+      </div>
+      <div class="p21card reveal" data-step="3">
+        <div class="p21ic"><img src="assets/img/icons/stage_evaluation.png" alt=""></div>
+        <div class="label">教学评价</div>
+        <p class="text">收集学习证据，判断学生学到了什么。</p>
+        <div class="p21case">案例：喀什备考</div>
+      </div>
+      <div class="p21arr reveal" data-step="4">
+        <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true">
+          <path d="M2,13 H32" stroke="#94bce3" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M30,4 L44,13 L30,22 Z" fill="#94bce3"></path>
+        </svg>
+      </div>
+      <div class="p21card reveal" data-step="4">
+        <div class="p21ic"><img src="assets/img/icons/stage_growth.png" alt=""></div>
+        <div class="label">教师专业发展</div>
+        <p class="text">整理经验，进入下一轮教学改进。</p>
+        <div class="p21case">案例：沉与浮课例</div>
+      </div>
     </div>
-    <div class="reveal">
-      <div class="label">审议时</div>
-      <p class="text" style="font-size:28px;line-height:1.6">教师可以继续与AI比较方案、提出修改要求，并检查成果。</p>
-    </div>
-    <div class="reveal">
-      <div class="label">角色随任务变化</div>
-      <p class="text" style="font-size:28px;line-height:1.6">管道、工具和主体可以重叠、往返，具体组合由任务需要决定。</p>
+    <div class="p21loop reveal" data-step="4">
+      <svg viewBox="0 0 1700 74" width="100%" height="74" aria-hidden="true">
+        <defs>
+          <marker id="p21arr" markerWidth="11" markerHeight="11" refX="9.2" refY="5.2" orient="auto">
+            <path d="M0.5,0.8 L10.2,5.2 L0.5,9.6 Z" fill="#94bce3"></path>
+          </marker>
+        </defs>
+        <path d="M1507,2 V40 Q1507,58 1489,58 H211 Q193,58 193,40 V16"
+              fill="none" stroke="#94bce3" stroke-width="3" stroke-linecap="round"
+              marker-end="url(#p21arr)"></path>
+      </svg>
     </div>
   </div>
-</div>
-<!-- BODY:END -->
-  <aside class="notes">【停讲】讲述时依次说明：AI可以先追问教学目标，再整理教材和学情，随后生成配套材料。 教师可以继续与AI比较方案、提出修改要求，并检查成果。 管道、工具和主体可以重叠、往返，具体组合由任务需要决定。
-    作用：说明三种角色可以组合与切换，不是固定三步。</aside>
+  <style>
+    .slide[data-id="P021"] .p21body { justify-content: center; gap: 4px; }
+    .slide[data-id="P021"] .p21row { display: flex; align-items: stretch; gap: 0; }
+    .slide[data-id="P021"] .p21arr { flex: 0 0 56px; display: flex; align-items: center; justify-content: center; }
+    .slide[data-id="P021"] .p21card {
+      flex: 1 1 0; min-width: 0; background: #fff; border: 1px solid var(--divider); border-radius: 14px;
+      padding: 36px 30px 30px; display: flex; flex-direction: column; align-items: center; gap: 18px;
+    }
+    .slide[data-id="P021"] .p21ic {
+      width: 152px; height: 152px; border-radius: 26px; background: #eef4fa; border: 1px solid #cfe0f0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide[data-id="P021"] .p21ic img { width: 108px; height: 108px; object-fit: contain; }
+    .slide[data-id="P021"] .p21card .label { margin-bottom: 0; font-size: 30px; letter-spacing: .06em; color: var(--accent-dark); }
+    .slide[data-id="P021"] .p21card .text { font-size: 30px; line-height: 1.6; text-align: center; }
+    .slide[data-id="P021"] .p21case {
+      margin-top: auto; font-size: 24px; line-height: 1.2; color: #416180;
+      background: #eef4fa; border: 1px solid #cfe0f0; border-radius: 18px; padding: 7px 18px;
+    }
+    .slide[data-id="P021"] .p21loop { padding: 0 0 0 0; }
+  </style>
+  <!-- BODY:END -->
+  <aside class="notes">【停讲】身份和思维的变化讲完之后，我们把前面的原理收个口：AI 可以承担三类能力。三栏配的都是前面见过的实例，带大家快速对一遍。内容生成，把一句意图展开成文档、视频、交互页等可以直接使用的成果，那份四季循环页面就是这样来的；连通管道，把分散在各处的材料和数据接在一起，整理成任务需要的依据，并保留来源与分歧，还记得 docx 解压后的 XML 片段吗，模型正是通过读写这样的内容连通文件的；角色扮演，以备课助手、虚拟教研员、虚拟学伴等身份进入任务，追问与回应。要说明一点：三类能力不分高下，也不与某个具体问题一一对应，实际使用中是组合在一起的。接下来我们先深入其中最微妙的一类——角色扮演。
+    作用：四个环节是老师找问题的起点。</aside>
 </section>

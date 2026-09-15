@@ -1,38 +1,99 @@
-<!-- PLAN template=T16 executor=pi pace=快过 layout_ref=L02
+<!-- PLAN template=T15 executor=cloud pace=停讲 layout_ref=L10
      reveal=['设计', '实施', '评价', '发展']
      embeds=[]
      anim=null
-     note=使用共享组件 map433（data-on 无高亮，四环节依次亮起）。
+     note=三栏，每栏一张前面见过的实例缩略：四季页面截图 / docx 的 XML 片段 / P014B 的对话框；不用 WorkBuddy 截图。
  -->
-<section class="slide dark" data-id="P017" data-title="从教师熟悉的四个环节出发" data-module="04 4＋3＋3：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T16" data-status="draft">
+<section class="slide" data-id="P017" data-title="AI可以承担的三类能力" data-module="04 3＋3＋4：给教师一张行动地图" data-stage="" data-kind="主线" data-template="T15" data-status="draft">
   <div class="hdr">
-    <div class="locator"><b>04</b><span class="on">4＋3＋3：给教师一张行动地图</span></div>
+    <div class="locator"><b>04</b><span class="on">3＋3＋4：给教师一张行动地图</span></div>
     <span class="pid">P017</span>
   </div>
-  <h2 class="title">从教师熟悉的四个环节出发</h2>
+  <h2 class="title">AI可以承担的三类能力</h2>
+  <p class="sub reveal-none">内容生成 · 连通管道 · 角色扮演</p>
   <!-- BODY:START -->
-<div class="body" style="justify-content:center;align-items:stretch">
-  <div class="map433" data-stage="" data-roles="" data-show="stages" data-size="compact"></div>
-  <div class="cols tight" style="margin-top:36px">
-    <div class="reveal">
-      <div class="label">设计</div>
-      <p class="text" style="font-size:28px;line-height:1.6">确定目标、活动、材料和评价方式。</p>
+  <div class="body cols p17">
+    <div class="stack reveal" data-step="1">
+      <div class="fig p17fig">
+        <div class="pic"><img src="assets/img/cap_siji_curve_23.png" alt="四季循环交互页面截图"></div>
+      </div>
+      <div>
+        <div class="label">内容生成</div>
+        <p class="text">把一句意图展开成文档、视频、交互页等可以直接使用的成果。</p>
+      </div>
     </div>
-    <div class="reveal">
-      <div class="label">实施</div>
-      <p class="text" style="font-size:28px;line-height:1.6">在课堂上组织学生活动，观察学生反应。</p>
+    <div class="stack reveal" data-step="2">
+      <div class="fig p17fig">
+        <div class="pic p17code"><pre>&lt;w:p&gt;
+  &lt;w:pPr&gt;
+    &lt;w:pStyle w:val="Heading1"/&gt;
+  &lt;/w:pPr&gt;
+  &lt;w:r&gt;
+    &lt;w:t&gt;「小小天气观察员」
+      两周天气观测活动安排
+      （三年级）&lt;/w:t&gt;
+  &lt;/w:r&gt;
+&lt;/w:p&gt;</pre></div>
+      </div>
+      <div>
+        <div class="label">连通管道</div>
+        <p class="text">把分散在各处的材料和数据接在一起，整理成任务需要的依据，并保留来源与分歧。</p>
+      </div>
     </div>
-    <div class="reveal">
-      <div class="label">评价</div>
-      <p class="text" style="font-size:28px;line-height:1.6">收集学习证据，判断学生学到了什么。</p>
-    </div>
-    <div class="reveal">
-      <div class="label">发展</div>
-      <p class="text" style="font-size:28px;line-height:1.6">整理经验，进入下一轮教学改进。</p>
+    <div class="stack reveal" data-step="3">
+      <div class="fig p17fig">
+        <span class="tag corner-tag">示意图</span>
+        <div class="pic">
+          <svg viewBox="0 0 520 384" width="100%" height="100%" role="img" aria-label="一问一答的对话框示意">
+            <defs>
+              <marker id="p17arr" markerWidth="10" markerHeight="10" refX="8.4" refY="4.6" orient="auto">
+                <path d="M0.4,0.6 L9.2,4.6 L0.4,8.6 Z" fill="#5980a6"></path>
+              </marker>
+            </defs>
+            <g>
+              <rect x="146" y="6" width="368" height="98" rx="12" fill="#ffffff" stroke="#c9cacb" stroke-width="1.5"></rect>
+              <text x="170" y="42" font-family="'Noto Sans SC',sans-serif" font-size="25" fill="#5980a6">教师</text>
+              <rect x="170" y="58" width="318" height="10" rx="5" fill="#c9cacb"></rect>
+              <rect x="170" y="78" width="228" height="10" rx="5" fill="#c9cacb"></rect>
+            </g>
+            <path d="M300,110 C270,122 250,124 232,134" fill="none" stroke="#5980a6" stroke-width="2.4" marker-end="url(#p17arr)"></path>
+            <g>
+              <rect x="6" y="140" width="392" height="118" rx="12" fill="#5980a6"></rect>
+              <text x="30" y="176" font-family="'Noto Sans SC',sans-serif" font-size="25" fill="#ffffff" opacity="0.85">AI</text>
+              <rect x="30" y="192" width="344" height="10" rx="5" fill="#ffffff" opacity="0.72"></rect>
+              <rect x="30" y="212" width="344" height="10" rx="5" fill="#ffffff" opacity="0.72"></rect>
+              <rect x="30" y="232" width="206" height="10" rx="5" fill="#ffffff" opacity="0.72"></rect>
+            </g>
+            <path d="M232,264 C262,276 282,278 300,288" fill="none" stroke="#5980a6" stroke-width="2.4" marker-end="url(#p17arr)"></path>
+            <g>
+              <rect x="146" y="294" width="368" height="84" rx="12" fill="#ffffff" stroke="#c9cacb" stroke-width="1.5"></rect>
+              <text x="170" y="330" font-family="'Noto Sans SC',sans-serif" font-size="25" fill="#5980a6">教师</text>
+              <rect x="170" y="346" width="270" height="10" rx="5" fill="#c9cacb"></rect>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="label">角色扮演</div>
+        <p class="text">以备课助手、虚拟教研员、虚拟学伴等身份进入任务，追问与回应。</p>
+      </div>
     </div>
   </div>
-</div>
-<!-- BODY:END -->
-  <aside class="notes">【快过】讲述时依次说明：确定目标、活动、材料和评价方式。 在课堂上组织学生活动，观察学生反应。 收集学习证据，判断学生学到了什么。 整理经验，进入下一轮教学改进。
-    作用：用教师熟悉的四个环节定位本场框架，说明后面的角色和用法发生在哪里。</aside>
+  <style>
+    .slide[data-id="P017"] .body.cols { align-items: flex-start; gap: 52px; }
+    .slide[data-id="P017"] .body.cols > .stack { gap: 22px; justify-content: flex-start; }
+    .slide[data-id="P017"] .p17fig { flex: 0 0 auto; width: 100%; height: 384px; }
+    .slide[data-id="P017"] .p17fig .pic { height: 100%; }
+    .slide[data-id="P017"] .p17code { align-items: flex-start; justify-content: flex-start; padding: 22px 24px; box-sizing: border-box; }
+    .slide[data-id="P017"] .p17code pre {
+      margin: 0; font-family: 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 24px; line-height: 1.5; color: var(--muted-2); white-space: pre;
+    }
+    .slide[data-id="P017"] .p17fig .corner-tag { right: auto; top: auto; left: 16px; bottom: 14px; background: rgba(242,242,243,.92); }
+    .slide[data-id="P017"] .text { font-size: 30px; }
+  </style>
+  <!-- BODY:END -->
+  <div class="foot">三栏配图分别为四季循环页面、docx解压后的XML片段与示例对话。</div>
+  <aside class="notes">【停讲】身份和思维的变化讲完之后，我们把前面的原理收个口：AI 可以承担三类能力。三栏配的都是前面见过的实例，带大家快速对一遍。内容生成，把一句意图展开成文档、视频、交互页等可以直接使用的成果，那份四季循环页面就是这样来的；连通管道，把分散在各处的材料和数据接在一起，整理成任务需要的依据，并保留来源与分歧，还记得 docx 解压后的 XML 片段吗，模型正是通过读写这样的内容连通文件的；角色扮演，以备课助手、虚拟教研员、虚拟学伴等身份进入任务，追问与回应。要说明一点：三类能力不分高下，也不与某个具体问题一一对应，实际使用中是组合在一起的。接下来我们先深入其中最微妙的一类——角色扮演。
+    作用：三类能力总览，是前面科普段的总结。</aside>
 </section>
