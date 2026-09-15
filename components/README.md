@@ -4,7 +4,19 @@
 在页面末尾加 `<script src="components/map433.js"></script>`、`<script src="components/cycle.js"></script>` 即可；
 脚本加载与 DOMContentLoaded 时各扫描一次，自动渲染未渲染的元素。浅色页与 `.slide.dark` 深色页均适配。
 
-## map433.js —— 4＋3＋3 总图
+## map334.js —— 3＋3＋4 总图（v0.3 起用；map433.js 保留给尚未重做的旧页）
+
+```html
+<div class="map334" data-stage="课堂实施" data-caps="内容生成,角色扮演"
+     data-show="caps,questions,stages" data-reveal="1" data-size="full"></div>
+```
+
+- 行序固定 三类能力 → 三问 → 四环节；能力文字 内容生成／连通管道／角色扮演；三问为 v0.3 表述（目标设定／验收标准／上下文构建）。
+- `data-caps` 逗号分隔，高亮若干能力（兼容 `data-roles`）；其余参数与 map433 相同。
+- 接口：`Map334.render(el)`、`Map334.set(el, {stage, caps})`、`Map334.all()`。
+- 三问与三类能力不作一一对应，组件不画连线、不用同色暗示。
+
+## map433.js —— 4＋3＋3 总图（旧）
 
 ```html
 <div class="map433" data-stage="课堂实施" data-roles="工具,主体"

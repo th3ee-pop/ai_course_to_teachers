@@ -1,0 +1,3430 @@
+{
+ "meta": {
+  "version": "v1 2026-09-14",
+  "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/00_调研计划与总览/19_逐页内容脚本/逐页内容脚本.json",
+  "page_count": 120,
+  "executors": {
+   "pi": "pi -p --no-session --model deepseek/deepseek-flash（静态＋标准分步）",
+   "opus": "Agent(model=opus)（内嵌、动画、可交互）",
+   "codex": "codex exec -m gpt-5.5（只生成 assets/svg/*.svg 示意图，不生成页面）",
+   "existing": "23_HTML培训课件_Claude/index.html 已有 16 页"
+  },
+  "decisions_2026-09-14": {
+   "Q1_product_ui": "用户提供真实产品界面截图；页面留 .slot 占位（待放入产品截图），资产 ID PROD_UI_*，不用生成图",
+   "Q2_web_images": "允许使用网络图片（非商业培训用途），页脚标来源；优先官方页面截图",
+   "Q3_local_services": "允许主控启动本机服务采集截图；观察台只截参与者界面与演示账号",
+   "Q4_network": "按无外网准备：字体本地子集＋CDN 工具断网回退；现场大概率有网",
+   "Q5_P084": "保持待放入实拍照片占位",
+   "Q6_backups": "24 页备选放在 P096 之后独立分组",
+   "Q7_copy_assets": "工具与视频复制进 assets/",
+   "Q8_existing16": "保留已实现页，只加分步/内嵌",
+   "Q9_docs": "文档复制进 assets/docs/，讲者备注保留原路径",
+   "Q10_P096_qr": "用户后续部署到自有 TencentOS 服务器；P096 放二维码位，地址来自 config.js resourceUrl",
+   "Q11_codex": "额度充足，示意图用 codex",
+   "Q12_pi_model": "deepseek/deepseek-flash"
+  }
+ },
+ "templates": {
+  "T01": {
+   "name": "暗底封面/结束页",
+   "sample": "P001"
+  },
+  "T02": {
+   "name": "大字引文·反问/收束",
+   "sample": "P002"
+  },
+  "T03": {
+   "name": "左右对照",
+   "sample": "P005"
+  },
+  "T04": {
+   "name": "大图＋任务卡（截图/演示入口）",
+   "sample": "P008"
+  },
+  "T05": {
+   "name": "机制流程·分步条目",
+   "sample": "P013"
+  },
+  "T06": {
+   "name": "三问任务卡",
+   "sample": "P022"
+  },
+  "T07": {
+   "name": "关键帧四格",
+   "sample": "P046"
+  },
+  "T08": {
+   "name": "视频页",
+   "sample": "P047"
+  },
+  "T09": {
+   "name": "大数字＋条形图",
+   "sample": "P059"
+  },
+  "T10": {
+   "name": "原题—变式配对/原文—概括配对",
+   "sample": "P063"
+  },
+  "T11": {
+   "name": "实录批注",
+   "sample": "P071"
+  },
+  "T12": {
+   "name": "对话页",
+   "sample": "P072"
+  },
+  "T13": {
+   "name": "实物照片位",
+   "sample": "P084"
+  },
+  "T14": {
+   "name": "识别/表达前后对照",
+   "sample": "P088"
+  },
+  "T15": {
+   "name": "责任/决定多栏",
+   "sample": "P092"
+  },
+  "T16": {
+   "name": "4＋3＋3 地图（暗底/亮底）",
+   "sample": "P095"
+  }
+ },
+ "assets": {
+  "IMG_S01_SHOT": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/截图/第4章/4.3拓展素材_四季循环精致版_夏至vs冬至.png",
+   "target": "assets/img/siji_v2_xiazhi_dongzhi.png",
+   "note": "已在 assets/，现有"
+  },
+  "IMG_S07_SHOT": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/截图/第3章/3.3素材_浮沉模拟_漂浮vs配重过多.png",
+   "target": "assets/img/qianshuiqi_piaofu_vs_peizhong.png",
+   "note": "现有截图"
+  },
+  "IMG_S08_SHOT": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/截图/第4章/图4-1候选A_月相两状态并列_上弦vs满月.png",
+   "target": "assets/img/yuexiang_shangxian_vs_manyue.png",
+   "note": "现有截图"
+  },
+  "IMG_S09_SHOT": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/截图/附录/附图3重制候选_光路模拟_近视vs戴镜并列.png",
+   "target": "assets/img/guanglu_jinshi_vs_daijing.png",
+   "note": "现有截图"
+  },
+  "IMG_D13_SHOT": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/截图/第4章/4.4素材_达尔文试对话_两屏并列.png",
+   "target": "assets/img/darwin_duihua_liangping.png",
+   "note": "现有截图（角色模拟，非真实发言）"
+  },
+  "IMG_D14_MOON": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/截图/第6章/6.1素材_白天看月亮_AI示意图.png",
+   "target": "assets/img/baitian_yueliang_ai_shiyitu.png",
+   "note": "现有生成示意图，上屏须标“生成示意图，方位比例待核对”"
+  },
+  "IMG_V05_FRAMES": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/截图/第4章/4.1素材_讲解视频三假说帧连排.png",
+   "target": "assets/img/konglong_sanjiashuo_zhen.png",
+   "note": "现有截图"
+  },
+  "IMG_V01_POV": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/00_调研计划与总览/23_HTML培训课件_Claude/assets/pov_01_wanglushan.png",
+   "target": "assets/pov_01_wanglushan.png",
+   "note": "已在 assets/（首图 png）"
+  },
+  "IMG_V01_KEYFRAMES": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/01_望庐山瀑布_15秒多分镜/每秒关键帧.jpg",
+   "target": "assets/wanglushan_keyframes.jpg",
+   "note": "已在 assets/"
+  },
+  "IMG_V03_FRAMES": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/review/04_frames.jpg",
+   "target": "assets/img/chizi_frames.jpg",
+   "note": "现有帧图"
+  },
+  "IMG_V04_STILL": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/images/20_校园数字气象站.png",
+   "target": "assets/img/qixiangzhan_still.png",
+   "note": "现有首图"
+  },
+  "IMG_B04_PREVIEW": {
+   "type": "img",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/00_调研计划与总览/19_逐页内容脚本/资源预览/B04_政策资料整理_预览.png",
+   "target": "assets/img/B04_zhengce_word_preview.png",
+   "note": "现有渲染预览"
+  },
+  "VID_V01": {
+   "type": "video",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/01_望庐山瀑布_15秒多分镜/望庐山瀑布_四镜意境_15秒.mp4",
+   "target": "assets/wanglushan_15s.mp4",
+   "note": "已在 assets/"
+  },
+  "VID_V03": {
+   "type": "video",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/videos/04_身体上的尺子_H3_768P_5s_播放版.mp4",
+   "target": "assets/video/chizi_5s.mp4",
+   "note": "待复制"
+  },
+  "VID_V04": {
+   "type": "video",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/POV教学素材_26组_20260910/videos/20_校园数字气象站_H3_768P_5s_播放版.mp4",
+   "target": "assets/video/qixiangzhan_5s.mp4",
+   "note": "待复制"
+  },
+  "VID_V05": {
+   "type": "video",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/4.1_讲解视频/恐龙为什么消失了-课堂导入.mp4",
+   "target": "assets/video/konglong_daoru.mp4",
+   "note": "待复制，12MB"
+  },
+  "TOOL_S01": {
+   "type": "iframe",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/自建模拟种子仓库/091_四季循环/v2/",
+   "target": "assets/tools/siji_v2/index.html",
+   "note": "整目录复制（4.1MB，含 libs/ assets/ seasons-stage.js），本地可离线运行"
+  },
+  "TOOL_S07": {
+   "type": "iframe",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.3_潜水器浮沉模拟/潜水器模型的浮与沉.html",
+   "target": "assets/tools/qianshuiqi.html",
+   "note": "单文件，无外部依赖"
+  },
+  "TOOL_S08": {
+   "type": "iframe",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/4.3_月相模拟/月相变化模拟.html",
+   "target": "assets/tools/yuexiang.html",
+   "note": "单文件"
+  },
+  "TOOL_S09": {
+   "type": "iframe",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/附录_科学护眼案例/眼球成像光路模拟器.html",
+   "target": "assets/tools/yanqiu_guanglu.html",
+   "note": "单文件"
+  },
+  "TOOL_S10": {
+   "type": "iframe",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/06_学习工具/01_校园气象站看板.html",
+   "target": "assets/tools/qixiangzhan_kanban.html",
+   "note": "单文件；取网络天气，断网回退示例数据"
+  },
+  "TOOL_S12": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/06_学习工具/03_错题扫描仪.html",
+   "target": "assets/tools/cuoti_saomiao.html",
+   "note": "依赖 tesseract.js CDN，需联网；作链接不内嵌"
+  },
+  "TOOL_S13": {
+   "type": "iframe",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/06_学习工具/04_AI分类器工坊.html",
+   "target": "assets/tools/fenleiqi_gongfang.html",
+   "note": "依赖 tfjs/teachablemachine CDN，需联网"
+  },
+  "TOOL_D07": {
+   "type": "iframe",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.3_天气数据与看板/班级天气看板.html",
+   "target": "assets/tools/tianqi_kanban_D07.html",
+   "note": "待核对是否单文件/读本地CSV"
+  },
+  "SYS_S02": {
+   "type": "external",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command",
+   "target": "（现场启动，链接卡片填参与者地址）",
+   "note": "服务端系统；只给听众参与者链接，教师管理链接不上屏"
+  },
+  "SYS_S03": {
+   "type": "external",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/教学观察台/启动本机演示.command",
+   "target": "（同上，语言文化交流入口）",
+   "note": "同 S02"
+  },
+  "SYS_S04": {
+   "type": "external",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/掌中磁场/启动.command",
+   "target": "（本机启动 dist）",
+   "note": "vite 项目，需摄像头；外链＋截图"
+  },
+  "SYS_S05": {
+   "type": "external",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/03_工具与技术/掌中实验室/启动.command",
+   "target": "（本机启动 dist）",
+   "note": "同上"
+  },
+  "SYS_S06": {
+   "type": "external",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/04_演示系统/生态岛行动/启动.command",
+   "target": "（本机启动）",
+   "note": "服务端系统；外链＋截图"
+  },
+  "DOC_D01": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.1_植物的一生单元全案/（01–05 五个 md）",
+   "target": "assets/docs/D01/",
+   "note": "文档链接，进讲者备注与页脚"
+  },
+  "DOC_D02": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.2_摆的秘密实验全案/（三个 docx）",
+   "target": "assets/docs/D02/",
+   "note": "同上"
+  },
+  "DOC_D03": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/3.3_解密潜水器项目包/（01–05 五个 md）",
+   "target": "assets/docs/D03/",
+   "note": "同上"
+  },
+  "DOC_D04": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/2.3_天气观测派活/（天气观测活动安排（三年级）.docx、学生两周天气记录表.docx）",
+   "target": "assets/docs/D04/",
+   "note": "同上；封面页用 qlmanage 出缩略图"
+  },
+  "DOC_D05": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/附录_方案包五件套/（1–5 五个 docx）",
+   "target": "assets/docs/D05/",
+   "note": "同上"
+  },
+  "DOC_D06": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/5.1_测评与登记表/（试卷 docx、登记表 xlsx）",
+   "target": "assets/docs/D06/",
+   "note": "同上"
+  },
+  "DOC_D08": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/05_案例/喀什初三高三备考讲座/analysis_output/初三/初三英语模拟考数据分析报告.html ＋ 00_调研计划与总览/19_逐页内容脚本/委托与记录/初三第24题复算.json ＋ 试卷题目与数据列映射关系表.md",
+   "target": "assets/docs/D08/",
+   "note": "只链接聚合结果，不链接原始CSV"
+  },
+  "DOC_D09": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/05_案例/喀什初三高三备考讲座/analysis_output/probe_items_bank.html",
+   "target": "assets/docs/D09/",
+   "note": ""
+  },
+  "DOC_D11": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/6.2_研讨课逐字稿/沉与浮研讨课课堂实录.md",
+   "target": "assets/docs/D11/",
+   "note": ""
+  },
+  "DOC_D12": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/02_成品示例/附录_科学护眼案例/项目指令_实测原文.md ＋ 周报草稿_实测输出样例.md",
+   "target": "assets/docs/D12/",
+   "note": ""
+  },
+  "DOC_D13": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【专著】人工智能学科教学丛书/书稿/电子资源包/01_提示词库/第4章/4.4_02_提示词框1_角色卡模板代入——“采访达尔文”_示例.md",
+   "target": "assets/docs/D13/",
+   "note": ""
+  },
+  "DOC_D15": {
+   "type": "link",
+   "source": "/Users/chensirui/Desktop/【培训】中小学人工智能培训/00_调研计划与总览/19_逐页内容脚本/资源预览/B04_政策资料整理_新编示例.docx ＋ .pdf",
+   "target": "assets/docs/D15/",
+   "note": ""
+  },
+  "WEB_R02_FJ": {
+   "type": "external",
+   "source": "https://jyt.fj.gov.cn/ztzl/jydd/zcwj/202507/t20250709_6965441.htm",
+   "target": "assets/img/cap_fjjyt_zhengce.png",
+   "note": "官方转载页；由本会话浏览器截图（非搜索图）"
+  },
+  "WEB_R02_UNESCO": {
+   "type": "external",
+   "source": "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research",
+   "target": "assets/img/cap_unesco_guidance.png",
+   "note": "官方页截图"
+  },
+  "CAP_S01_CURVE_23": {
+   "type": "capture",
+   "source": "四季循环v2：北纬40°，原倾角，全年昼长曲线视图",
+   "target": "assets/img/cap_siji_curve_23.png",
+   "note": "本会话用浏览器操作截图"
+  },
+  "CAP_S01_CURVE_0": {
+   "type": "capture",
+   "source": "四季循环v2：北纬40°，倾角0°，全年昼长曲线视图",
+   "target": "assets/img/cap_siji_curve_0.png",
+   "note": "同上"
+  },
+  "CAP_S02_SEASONS": {
+   "type": "capture",
+   "source": "教学观察台·四季探究 参与者界面",
+   "target": "assets/img/cap_guanchatai_siji.png",
+   "note": "需启动本机演示；只截参与者界面"
+  },
+  "CAP_S02_OPTIN": {
+   "type": "capture",
+   "source": "教学观察台·仅体验不记录/删除记录 的选择界面",
+   "target": "assets/img/cap_guanchatai_optin.png",
+   "note": "同上"
+  },
+  "CAP_S02_TRACE": {
+   "type": "capture",
+   "source": "教学观察台·轨迹回看界面",
+   "target": "assets/img/cap_guanchatai_trace.png",
+   "note": "同上；无学生真实记录，用演示账号"
+  },
+  "CAP_S03_TALK": {
+   "type": "capture",
+   "source": "教学观察台·语言文化交流 界面",
+   "target": "assets/img/cap_guanchatai_talk.png",
+   "note": "同上"
+  },
+  "CAP_S04": {
+   "type": "capture",
+   "source": "掌中磁场 dist 首屏",
+   "target": "assets/img/cap_zhangzhong_cichang.png",
+   "note": "本机启动后截图"
+  },
+  "CAP_S05_GEO": {
+   "type": "capture",
+   "source": "掌中实验室·几何截面",
+   "target": "assets/img/cap_zhangzhong_jihe.png",
+   "note": ""
+  },
+  "CAP_S05_LIGHT": {
+   "type": "capture",
+   "source": "掌中实验室·光路反射",
+   "target": "assets/img/cap_zhangzhong_guanglu.png",
+   "note": ""
+  },
+  "CAP_S06": {
+   "type": "capture",
+   "source": "生态岛行动 首屏",
+   "target": "assets/img/cap_shengtaidao.png",
+   "note": ""
+  },
+  "CAP_S10": {
+   "type": "capture",
+   "source": "校园气象站看板",
+   "target": "assets/img/cap_qixiang_kanban.png",
+   "note": ""
+  },
+  "CAP_S13": {
+   "type": "capture",
+   "source": "AI分类器工坊 界面",
+   "target": "assets/img/cap_fenleiqi.png",
+   "note": ""
+  },
+  "CAP_D04_WORD": {
+   "type": "capture",
+   "source": "D04 两份 Word 封面缩略图（qlmanage）",
+   "target": "assets/img/cap_D04_word_*.png",
+   "note": ""
+  },
+  "CAP_D01_FILES": {
+   "type": "capture",
+   "source": "D01 五件材料 首屏缩略（md 渲染或文件卡片）",
+   "target": "assets/img/cap_D01_*.png",
+   "note": "若不便渲染则用文件卡片（文件名＋大小）代替，不做假图"
+  },
+  "CAP_R02_INDEX": {
+   "type": "capture",
+   "source": "R02 交叉索引 首屏",
+   "target": "assets/img/cap_R02_index.png",
+   "note": ""
+  },
+  "CAP_D08_REPORT": {
+   "type": "capture",
+   "source": "D08 喀什报告 HTML 首屏（聚合结果页）",
+   "target": "assets/img/cap_D08_report.png",
+   "note": "不含任何可识别学生信息"
+  },
+  "SVG_CODEX_P004_SOP": {
+   "type": "codex-svg",
+   "source": "旧流程示意：菜单/公式/配置/开发人员/反复调试 的四段路径",
+   "target": "assets/svg/p004_sop.svg",
+   "note": "抽象图标化，不模仿具体软件"
+  },
+  "SVG_CODEX_P005_ENTRY": {
+   "type": "codex-svg",
+   "source": "入口对照示意：左‘先学工具’（菜单树）vs 右‘先说清想做什么’（一句话输入框）",
+   "target": "assets/svg/p005_entry.svg",
+   "note": "通用对话框造型，不模仿具体产品UI"
+  },
+  "SVG_CODEX_P009_PIPE": {
+   "type": "codex-svg",
+   "source": "意图→原型→移植→运行验证 四段带回环",
+   "target": "assets/svg/p009_pipeline.svg",
+   "note": ""
+  },
+  "SVG_CODEX_P018_PIPE": {
+   "type": "codex-svg",
+   "source": "管道示意：多来源材料→比较整合→带来源的依据，分歧保留",
+   "target": "assets/svg/p018_pipeline.svg",
+   "note": ""
+  },
+  "SVG_CODEX_P019_TOOL": {
+   "type": "codex-svg",
+   "source": "工具示意：一句意图展开为 文档/视频/交互页 三种产物",
+   "target": "assets/svg/p019_tool.svg",
+   "note": ""
+  },
+  "SVG_CODEX_P020_SUBJECT": {
+   "type": "codex-svg",
+   "source": "主体示意：备课助手/虚拟教研员/虚拟学伴 三个对话小图",
+   "target": "assets/svg/p020_subject.svg",
+   "note": ""
+  },
+  "SVG_CODEX_P044_SHADOW": {
+   "type": "codex-svg",
+   "source": "校园固定地点日影观察示意（不直视太阳）",
+   "target": "assets/svg/p044_riying.svg",
+   "note": "标示意图；不冒充实拍"
+  },
+  "SVG_CODEX_P062_CHAIN": {
+   "type": "codex-svg",
+   "source": "说明问题→选择方法→执行计算→核查结果，人/程序分色",
+   "target": "assets/svg/p062_chain.svg",
+   "note": ""
+  },
+  "SVG_CODEX_P076_ICONS": {
+   "type": "codex-svg",
+   "source": "资料库/笔记/模板 三个图标",
+   "target": "assets/svg/p076_icons.svg",
+   "note": ""
+  },
+  "SVG_CODEX_P086_DEVICES": {
+   "type": "codex-svg",
+   "source": "实物纸笔→拍照扫描→电脑投屏→回到活动 设备链",
+   "target": "assets/svg/p086_devices.svg",
+   "note": ""
+  },
+  "SVG_CODEX_P038_ICONS": {
+   "type": "codex-svg",
+   "source": "四类课堂困难 图标：模拟/生成/交流/结构",
+   "target": "assets/svg/p038_icons.svg",
+   "note": ""
+  },
+  "SVG_CODEX_ROLES": {
+   "type": "codex-svg",
+   "source": "管道/工具/主体 三角色统一图标（全场复用）",
+   "target": "assets/svg/roles_3.svg",
+   "note": "供 map433 组件与多页复用"
+  },
+  "PROD_UI_CHAT": {
+   "type": "placeholder",
+   "source": "",
+   "target": "assets/img/prod_ui_chat.png",
+   "note": "用户后续提供真实产品对话界面截图；未到位时显示“待放入产品截图”"
+  },
+  "QR_RESOURCES": {
+   "type": "config",
+   "source": "config.js resourceUrl",
+   "target": "",
+   "note": "P096 资源入口二维码，运行时由 config.js 生成；地址为用户 TencentOS 部署地址，未填时显示占位"
+  }
+ },
+ "batches": {
+  "X0": "已实现的 16 页：只加分步/内嵌/示意图，不重做（主控＋opus 升级）",
+  "O1": "opus · 内嵌成品与演示入口页（iframe/video/外链卡片）",
+  "O2": "opus · 原理可交互动画（模块 03＋P042）",
+  "O3": "opus · 数据/轨迹/总图动画（P059/P066/P093/P095）",
+  "S1": "pi · 大字引文页（T02/T01）",
+  "S2": "pi · 分步流程页（T05）",
+  "S3": "pi · 大图＋卡片页（T04，图片已备好）",
+  "S4": "pi · 地图页（T16，用 map433 组件）",
+  "S5": "pi · 多栏页（T15）",
+  "S6": "pi · 三问任务卡（T06）",
+  "S7": "pi · 配对/证据页（T10）",
+  "S8": "pi · 左右对照/前后对照（T03/T14）",
+  "S9": "pi · 对话页（T12）"
+ },
+ "pages": [
+  {
+   "id": "P001",
+   "module": "01",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "为什么要学习AI？",
+   "layout_ref": "L01",
+   "template": "T01",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "已实现。保持。",
+   "batch": "X0"
+  },
+  {
+   "id": "P002",
+   "module": "01",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "政策正在推动人工智能进入教育教学。",
+   "layout_ref": "L05",
+   "template": "T02",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [
+    "WEB_R02_FJ"
+   ],
+   "cat2_reveal": [
+    "政策原文",
+    "对教师的意义"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "已实现；升级：加官方页截图小图＋分步。引语只用已核对原句。",
+   "batch": "X0"
+  },
+  {
+   "id": "P003",
+   "module": "01",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "以前也有政策，这一轮有什么不同？",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P004",
+   "module": "01",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "一个教学想法，过去怎样落地？",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P004_SOP"
+   ],
+   "cat2_reveal": [
+    "产生想法",
+    "查找与求助",
+    "制作",
+    "试用"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "P005",
+   "module": "01",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "现在，可以先用自己的话提出想法",
+   "layout_ref": "L07",
+   "template": "T03",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [
+    "SVG_CODEX_P005_ENTRY",
+    "PROD_UI_CHAT"
+   ],
+   "cat2_reveal": [
+    "过去",
+    "现在",
+    "变化的位置"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "已实现；升级：加入口对照示意图＋分步。",
+   "batch": "X0"
+  },
+  {
+   "id": "P006",
+   "module": "01",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "AI降低了教学想法转化为行动的门槛",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P007",
+   "module": "02",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "我希望学生能换个视角理解四季。",
+   "layout_ref": "L05",
+   "template": "T04",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_S01_SHOT"
+   ],
+   "cat2_reveal": [
+    "从地面观察",
+    "从太空观察",
+    "改变条件"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S3"
+  },
+  {
+   "id": "P008",
+   "module": "02",
+   "kind": "主线",
+   "pace": "演示",
+   "title": "先比较冬夏，再切换观察视角。",
+   "layout_ref": "L09",
+   "template": "T04",
+   "executor": "opus",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [
+    {
+     "asset": "TOOL_S01",
+     "mode": "iframe",
+     "fallback": "IMG_S01_SHOT",
+     "link": true
+    }
+   ],
+   "cat4_animation": null,
+   "note": "已实现的截图页升级为内嵌四季循环v2（iframe，1920×1080内约 1500×800），失败回退截图；备注给原路径。",
+   "batch": "O1"
+  },
+  {
+   "id": "P009",
+   "module": "02",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "一个教学想法，需要经过制作、试用和修改。",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P009_PIPE"
+   ],
+   "cat2_reveal": [
+    "提出意图",
+    "形成原型",
+    "移植与修改",
+    "运行验证"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "P010",
+   "module": "02",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "老师的教学判断，开始有了可操作的载体",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P011",
+   "module": "03",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "一种用语言交流的模型，为什么能帮助我们制作网页？",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P012",
+   "module": "03",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "模型根据上下文逐步生成文字、代码和其他符号。",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "上下文提供依据",
+    "训练与概率生成",
+    "生成结果仍需检验"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_A_逐符号生成",
+    "spec": "左侧‘上下文’框（任务要求／材料／前面的对话 三层可勾选），右侧逐符号生成条：点击‘下一个’出现 3–4 个候选符号及其概率条，高亮被选中者并追加到输出；勾掉一层上下文后重生成，候选与概率发生变化；底部常驻一句：‘流畅≠正确，输出仍需检验’。纯前端、无模型调用、内容固定脚本化（示例句用课件自身语境，如‘请给五年级设计一个植物观察记录表’）。"
+   },
+   "note": "",
+   "batch": "O2"
+  },
+  {
+   "id": "P013",
+   "module": "03",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "自然语言，接到代码与工具",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "opus",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师目标",
+    "中间步骤与代码",
+    "不同产物",
+    "注意"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_B_语言到工具",
+    "spec": "已实现的四段流程升级为动画：‘教师目标’一句话→模型整理成步骤／代码片段（打字机）→程序运行（齿轮转 1s）→三种产物卡片依次弹出（文档/图表/网页）。第四条‘注意’在末尾以红线分隔模型侧与程序侧。"
+   },
+   "note": "",
+   "batch": "O2"
+  },
+  {
+   "id": "P014",
+   "module": "03",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "模型提出操作，工具实际执行",
+   "layout_ref": "L07",
+   "template": "T03",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "模型一侧",
+    "工具一侧",
+    "相同条件",
+    "判断依据"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_C_模型提出_工具执行",
+    "spec": "左右两栏同一任务：左‘模型一侧’输出一条操作建议（如‘读取记录表.csv 并计算平均株高’），点击‘执行’后右‘工具一侧’真实执行一段内置 JS（读取内置小表、算均值），返回结果或人为设置的错误（文件名不对→报错），左侧再据错误改建议。两栏顶部标签：提出 vs 执行。"
+   },
+   "note": "",
+   "batch": "O2"
+  },
+  {
+   "id": "P015",
+   "module": "03",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "能检查、能修改，任务才能继续",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "执行",
+    "核对",
+    "修订",
+    "教学适切性"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_D_反馈环",
+    "spec": "执行→核对→修订 三节点环形，中心计数‘第 n 轮’。第一轮：结果含明显错误（示例：昼长曲线不随日期变化），核对标红；第二轮修订参数后通过；第三节点‘教学适切性’由教师勾选（内容准确/难度合适/学生能懂）才允许‘进入课堂’。与四季循环验证记录呼应。"
+   },
+   "note": "",
+   "batch": "O2"
+  },
+  {
+   "id": "P016",
+   "module": "03",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "学习重点转向：提出任务、提供背景、判断结果",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "提出任务",
+    "提供背景",
+    "判断结果"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "副标题三件事分三步出现（自行拆成三个短语块）。",
+   "batch": "S1"
+  },
+  {
+   "id": "P017",
+   "module": "04",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "从教师熟悉的四个环节出发",
+   "layout_ref": "L02",
+   "template": "T16",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "设计",
+    "实施",
+    "评价",
+    "发展"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "使用共享组件 map433（data-on 无高亮，四环节依次亮起）。",
+   "batch": "S4"
+  },
+  {
+   "id": "P018",
+   "module": "04",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "管道：让分散材料成为有用依据",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P018_PIPE"
+   ],
+   "cat2_reveal": [
+    "多来源材料",
+    "比较整合",
+    "任务相关依据",
+    "保留来源与分歧"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "P019",
+   "module": "04",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "工具：把有限的想法展开成可用成果",
+   "layout_ref": "L03",
+   "template": "T04",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P019_TOOL",
+    "CAP_D04_WORD",
+    "IMG_V01_POV",
+    "IMG_S01_SHOT"
+   ],
+   "cat2_reveal": [
+    "一句教学意图",
+    "展开过程",
+    "具体产物",
+    "教师确认"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "三种产物用真实缩略图：Word 封面（D04）、视频首图（V01）、交互页截图（S01）。",
+   "batch": "S3"
+  },
+  {
+   "id": "P020",
+   "module": "04",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "AI可以作为参与任务与协商的教育实践主体",
+   "layout_ref": "L08",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P020_SUBJECT",
+    "IMG_D13_SHOT"
+   ],
+   "cat2_reveal": [
+    "备课助手",
+    "虚拟教研员",
+    "虚拟学伴"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "达尔文截图角标‘角色模拟，非历史人物真实发言’。",
+   "batch": "S5"
+  },
+  {
+   "id": "P021",
+   "module": "04",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "同一项任务可以组合使用三种角色。",
+   "layout_ref": "L02",
+   "template": "T16",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "备课时",
+    "审议时",
+    "角色随任务变化"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "map433 组件：角色标签在‘设计’节点上重叠出现。",
+   "batch": "S4"
+  },
+  {
+   "id": "P022",
+   "module": "04",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "每次用AI前，问自己三个问题",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "想得到什么？",
+    "AI扮演什么角色？",
+    "能提供什么背景？"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "X0"
+  },
+  {
+   "id": "P023",
+   "module": "04",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "怎样委托AI准备两周的天气观测活动？",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_D04_WORD"
+   ],
+   "cat2_reveal": [
+    "我想得到什么？",
+    "AI需要扮演什么角色？",
+    "我能提供什么背景？"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D04",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P024",
+   "module": "04",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "一次AI委托，需要从教学问题走向可检验的行动。",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "先明确任务",
+    "再安排协作",
+    "形成成果并使用",
+    "检查并改进"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "P025",
+   "module": "05",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "教案很完整，为什么还是用不上？",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P026",
+   "module": "05",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "植物单元：先问清三件事",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师提出的任务",
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "能提供什么上下文"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D01",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P027",
+   "module": "05",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "五件材料需要共同支撑一个单元目标。",
+   "layout_ref": "L02",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_D01_FILES"
+   ],
+   "cat2_reveal": [
+    "明确目标与起点",
+    "落实课堂活动",
+    "保留学习证据"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "五件材料以文件卡片呈现（名称＋用途），不足则不配图。",
+   "batch": "S5"
+  },
+  {
+   "id": "P028",
+   "module": "05",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "目标、活动和记录应当能够互相对应。",
+   "layout_ref": "L06",
+   "template": "T10",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "学习目标",
+    "课堂与课间活动",
+    "学习证据"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "目标→活动→证据 三栏带连线，逐栏出现。",
+   "batch": "S7"
+  },
+  {
+   "id": "P029",
+   "module": "05",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "具体的学生表现，比笼统的学情标签更有用。",
+   "layout_ref": "L07",
+   "template": "T03",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "笼统描述",
+    "具体描述",
+    "设计因此改变"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S8"
+  },
+  {
+   "id": "P030",
+   "module": "05",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "备课助手可以通过追问帮助教师明确任务。",
+   "layout_ref": "L08",
+   "template": "T12",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "PROD_UI_CHAT"
+   ],
+   "cat2_reveal": [
+    "教师",
+    "AI",
+    "教师",
+    "AI"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "逐轮出现；‘示例对话’角标常显。",
+   "batch": "S9"
+  },
+  {
+   "id": "P031",
+   "module": "05",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "同一次备课，三种角色怎样接续？",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "主体先澄清",
+    "管道再整理",
+    "工具形成全案",
+    "教师最后审议"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "每步带角色色标（主体/管道/工具/教师）。",
+   "batch": "S2"
+  },
+  {
+   "id": "P032",
+   "module": "05",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "资料太散，想要一份直接可用的Word",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师提出的任务",
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "能提供什么上下文"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P033",
+   "module": "05",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "资料整理与文档制作，可以承担不同的工作。",
+   "layout_ref": "L07",
+   "template": "T03",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_R02_INDEX",
+    "CAP_D04_WORD"
+   ],
+   "cat2_reveal": [
+    "资料整理",
+    "文档制作",
+    "教师需要核对"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S8"
+  },
+  {
+   "id": "P034",
+   "module": "05",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "潜水器项目：想法展开为五件交付物",
+   "layout_ref": "L05",
+   "template": "T04",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_S07_SHOT"
+   ],
+   "cat2_reveal": [
+    "从问题展开为任务链",
+    "五件材料各有用处",
+    "模拟器只作对照"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "TOOL_S07",
+     "mode": "iframe",
+     "fallback": "IMG_S07_SHOT"
+    },
+    {
+     "asset": "DOC_D03",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "右侧内嵌潜水器模拟（可现场拖配重），左侧五件交付物逐条出现。",
+   "batch": "O1"
+  },
+  {
+   "id": "P035",
+   "module": "05",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "材料齐全，也要保留学生的设计与实做",
+   "layout_ref": "L10",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "这次要做的决定",
+    "检查一：学生方案是否被预写",
+    "检查二：实物材料是否足够",
+    "检查三：纸笔记录是否可用"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P036",
+   "module": "05",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "教师需要把设计依据、成套材料和师生分工一起想清楚。",
+   "layout_ref": "L02",
+   "template": "T16",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "依据",
+    "材料",
+    "分工"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "map433 高亮‘设计’。",
+   "batch": "S4"
+  },
+  {
+   "id": "P037",
+   "module": "06",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "怎样让学生真正进入学习情境？",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P038",
+   "module": "06",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "不同的课堂困难，需要不同的参与方式。",
+   "layout_ref": "L02",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P038_ICONS"
+   ],
+   "cat2_reveal": [
+    "现象难以观察",
+    "材料难以找到",
+    "表达缺少对象",
+    "探究缺少结构"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P039",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "四季探究：让学生用条件与现象说明理由",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "我能提供什么上下文"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P040",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "如果地轴不倾斜，昼长还会随季节变化吗？",
+   "layout_ref": "L05",
+   "template": "T03",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S01_CURVE_23"
+   ],
+   "cat2_reveal": [
+    "固定地点",
+    "改变倾角",
+    "记录依据"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "预测卡：先只给任务，曲线截图最后一步出现。",
+   "batch": "S8"
+  },
+  {
+   "id": "P041",
+   "module": "06",
+   "kind": "主线",
+   "pace": "演示",
+   "title": "三分钟四季体验",
+   "layout_ref": "L09",
+   "template": "T04",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S02_SEASONS"
+   ],
+   "cat2_reveal": [
+    "进入体验",
+    "完成一次对照",
+    "留下解释"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "SYS_S02",
+     "mode": "external-link-card",
+     "config": "config.js: observatory.participantUrl / qr"
+    },
+    {
+     "asset": "TOOL_S01",
+     "mode": "iframe-fallback"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "演示页：大二维码＋短链接卡片（地址来自 config.js，现场填写），旁边内嵌四季循环作为断网备份。绝不写入教师管理地址。",
+   "batch": "O1"
+  },
+  {
+   "id": "P042",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "同一地点的全年昼长曲线发生了什么变化？",
+   "layout_ref": "L07",
+   "template": "T14",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S01_CURVE_23",
+    "CAP_S01_CURVE_0"
+   ],
+   "cat2_reveal": [
+    "原倾角",
+    "倾角0°",
+    "解释"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_E_昼长曲线",
+    "spec": "自绘 SVG：横轴 1–12 月，纵轴昼长 0–24h，固定北纬 40°；滑块‘地轴倾角’从 23.4° 到 0°，曲线实时由天文近似公式（cos H = −tanφ·tanδ，δ = ε·sin(黄经)）重绘；0° 时变成 12h 水平线；旁标‘理想模型’。作为模型结果的可控复现，而非替代 S01。"
+   },
+   "note": "",
+   "batch": "O2"
+  },
+  {
+   "id": "P043",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "做了操作，还需要表达依据",
+   "layout_ref": "L08",
+   "template": "T12",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师问",
+    "学生答（示例）",
+    "教师追问",
+    "教师收束"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S9"
+  },
+  {
+   "id": "P044",
+   "module": "06",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "模拟帮助比较，真实观察仍要发生",
+   "layout_ref": "L07",
+   "template": "T03",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_S01_SHOT",
+    "SVG_CODEX_P044_SHADOW"
+   ],
+   "cat2_reveal": [
+    "模拟可以做的",
+    "真实观察要做的",
+    "保留现实实践"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "右栏无实拍时用示意图并标‘示意图’，或留‘待放入实拍照片’。",
+   "batch": "S8"
+  },
+  {
+   "id": "P045",
+   "module": "06",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "没有合适视频，能否从教学意图出发做？",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_V01_POV"
+   ],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "我能提供什么上下文"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P046",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "四句诗，怎样转化为四个镜头？",
+   "layout_ref": "L05",
+   "template": "T07",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "日照香炉生紫烟",
+    "遥看瀑布挂前川",
+    "飞流直下三千尺",
+    "疑是银河落九天"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "X0"
+  },
+  {
+   "id": "P047",
+   "module": "06",
+   "kind": "主线",
+   "pace": "演示",
+   "title": "望庐山瀑布：15秒四镜意境",
+   "layout_ref": "L09",
+   "template": "T08",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "X0"
+  },
+  {
+   "id": "P048",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "哪些细节有文本依据，哪些来自画面的补充？",
+   "layout_ref": "L07",
+   "template": "T14",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_V01_KEYFRAMES"
+   ],
+   "cat2_reveal": [
+    "诗句提供的依据",
+    "视频作出的选择",
+    "学生需要作出的判断"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "裁第一镜 0–4 秒关键帧作左图。",
+   "batch": "S8"
+  },
+  {
+   "id": "P049",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "恐龙短片与尺子试样：生成后还要审看",
+   "layout_ref": "L10",
+   "template": "T04",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_V05_FRAMES",
+    "IMG_V03_FRAMES"
+   ],
+   "cat2_reveal": [
+    "恐龙短片",
+    "尺子试样",
+    "谁来决定"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "VID_V05",
+     "mode": "video"
+    },
+    {
+     "asset": "VID_V03",
+     "mode": "video"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "双视频并排（各自点击播放，翻页自动暂停），下方三条审看要点逐条出现；‘AI生成试样’角标常显。",
+   "batch": "O1"
+  },
+  {
+   "id": "P050",
+   "module": "06",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "如果情境中的对象，能够追问学生呢？",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P051",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "怎样让第一次来访的人听懂共读角的介绍？",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "我能提供什么上下文"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P052",
+   "module": "06",
+   "kind": "主线",
+   "pace": "演示",
+   "title": "让来访者听懂：完成一轮介绍与追问",
+   "layout_ref": "L09",
+   "template": "T04",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S03_TALK"
+   ],
+   "cat2_reveal": [
+    "先介绍",
+    "再回应",
+    "重新表达"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "SYS_S03",
+     "mode": "external-link-card",
+     "config": "config.js: observatory.talkUrl"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "演示页同 P041 结构；无断网备份，回退为界面截图＋P053 示例对话。",
+   "batch": "O1"
+  },
+  {
+   "id": "P053",
+   "module": "06",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "第一次表达与修订后，哪里不同？",
+   "layout_ref": "L08",
+   "template": "T14",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "学生第一次表达",
+    "来访者追问",
+    "学生补充事实",
+    "修订后表达"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S8"
+  },
+  {
+   "id": "P054",
+   "module": "06",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "主体的价值：推动学生继续表达与思考",
+   "layout_ref": "L02",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_D13_SHOT"
+   ],
+   "cat2_reveal": [
+    "主体角色",
+    "辅助角色",
+    "判断标准"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P055",
+   "module": "06",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "身体操作与小组探究，还有哪些入口？",
+   "layout_ref": "L05",
+   "template": "T04",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S05_GEO",
+    "CAP_S04",
+    "CAP_S06"
+   ],
+   "cat2_reveal": [
+    "掌中几何与光路",
+    "掌中磁场",
+    "生态岛"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "SYS_S05",
+     "mode": "link"
+    },
+    {
+     "asset": "SYS_S04",
+     "mode": "link"
+    },
+    {
+     "asset": "SYS_S06",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "三张截图卡片＋启动方式写入讲者备注（不上屏路径）。",
+   "batch": "S3"
+  },
+  {
+   "id": "P056",
+   "module": "06",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "从预测到解释：课堂实施的共同结构",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "任务",
+    "行动",
+    "观察与表达",
+    "解释与修订"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "四步环形（任务→行动→观察表达→解释修订），复用 cycle 组件的静态版。",
+   "batch": "S2"
+  },
+  {
+   "id": "P057",
+   "module": "07",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "考完之后，下一轮到底复习什么？",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P058",
+   "module": "07",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "喀什备考案例：成绩表之外，还要给AI什么？",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "我能提供什么上下文"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P059",
+   "module": "07",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "16,434条成绩记录，可以缩到一个具体问题",
+   "layout_ref": "L06",
+   "template": "T09",
+   "executor": "opus",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "选项分布",
+    "得分表现",
+    "下一步要问"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_F_大数字计数",
+    "spec": "16,434 计数动画（0.8s）；四条选项条形按 A/B/C/# 依次生长；24.94% 最后出现。数字只用已核对值。"
+   },
+   "note": "",
+   "batch": "O3"
+  },
+  {
+   "id": "P060",
+   "module": "07",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "数据中的KGF24，必须接回卷面第24题",
+   "layout_ref": "L07",
+   "template": "T10",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "数据字段",
+    "原题节选",
+    "核对之后再解释"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "原题节选保留空格与选项行；‘依据试卷文本恢复词间空格’写页脚。",
+   "batch": "S7"
+  },
+  {
+   "id": "P061",
+   "module": "07",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "知道哪里失分，还需要查明为什么失分",
+   "layout_ref": "L10",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "可以核对的事实",
+    "尚待检验的解释",
+    "需要补充的证据"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P062",
+   "module": "07",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "教师说明分析问题，AI协助选择方法并编写程序",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P062_CHAIN"
+   ],
+   "cat2_reveal": [
+    "说明问题",
+    "选择方法",
+    "执行计算",
+    "核查结果"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "P063",
+   "module": "07",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "从原题到变式，保留语境选词的要求",
+   "layout_ref": "L07",
+   "template": "T10",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "原题节选",
+    "已有变式节选",
+    "请学生说明依据"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "X0"
+  },
+  {
+   "id": "P064",
+   "module": "07",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "生成题目之后，还要审核、复测和调整",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师审题",
+    "复习与支架",
+    "复测",
+    "新证据"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "P065",
+   "module": "07",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "评价还能更早：回到刚才的四季体验",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P066",
+   "module": "07",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "一次操作轨迹，能说明什么？",
+   "layout_ref": "L06",
+   "template": "T14",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S02_TRACE"
+   ],
+   "cat2_reveal": [
+    "轨迹片段",
+    "已知事实",
+    "仍然不知道"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_G_轨迹回看",
+    "spec": "左侧模拟‘操作日志’面板（三条：设纬度40°／倾角改0°／查看全年昼长曲线，带时间戳，逐条打印）；右侧两栏‘已知事实’‘仍然不知道’逐条出现；日志角标‘教学示例，不是现场记录’。与 P067 共用样式。"
+   },
+   "note": "",
+   "batch": "O3"
+  },
+  {
+   "id": "P067",
+   "module": "07",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "从操作记录到教学判断，中间还缺什么？",
+   "layout_ref": "L10",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "事实",
+    "可能解释",
+    "缺少的证据",
+    "下一句追问"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "四栏：事实/可能解释/缺少的证据/下一句追问。",
+   "batch": "S5"
+  },
+  {
+   "id": "P068",
+   "module": "07",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "评价留下的证据，要改变下一轮教学",
+   "layout_ref": "L02",
+   "template": "T16",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "信息加工与整合",
+    "生成与落地",
+    "参与教育实践"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "map433 高亮‘评价’，三角色标签。",
+   "batch": "S4"
+  },
+  {
+   "id": "P069",
+   "module": "08",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "听课记了很多，为什么教研还是空泛？",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P070",
+   "module": "08",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "沉与浮课例：这次先研究一个问题",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "我能提供什么上下文"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D11",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P071",
+   "module": "08",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "学生说出了现象，还缺少什么解释？",
+   "layout_ref": "L06",
+   "template": "T11",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "师",
+    "生11",
+    "师",
+    "教研问题"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "X0"
+  },
+  {
+   "id": "P072",
+   "module": "08",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "虚拟教研员可以帮助教师比较追问的方向",
+   "layout_ref": "L08",
+   "template": "T12",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师",
+    "虚拟教研员",
+    "教师与教研员继续协商"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "X0"
+  },
+  {
+   "id": "P073",
+   "module": "08",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "教研之后，确定一项可以检验的改课动作",
+   "layout_ref": "L10",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "下次怎样问",
+    "学生需要做什么",
+    "教师观察什么"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P074",
+   "module": "08",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "学生问“白天为什么也看得到月亮”？",
+   "layout_ref": "L05",
+   "template": "T04",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_D14_MOON"
+   ],
+   "cat2_reveal": [
+    "学生的问题",
+    "上课时可以怎样回应",
+    "教师的知识补给",
+    "查证入口"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "示意图角标：‘生成示意图，方位、光照关系与比例需核对’。",
+   "batch": "S3"
+  },
+  {
+   "id": "P075",
+   "module": "08",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "这次用得好，下次怎样少从头交代？",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "目标",
+    "AI的角色",
+    "要提供的背景"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P076",
+   "module": "08",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "资料、判断、方法，分别怎样保存？",
+   "layout_ref": "L02",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P076_ICONS"
+   ],
+   "cat2_reveal": [
+    "资料库：留材料",
+    "笔记：留判断",
+    "模板或Skill：留方法"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P077",
+   "module": "08",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "项目指令保存背景，周报保留证据与疑点",
+   "layout_ref": "L07",
+   "template": "T10",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "项目指令原文节选",
+    "持续约定",
+    "周报中的具体发现",
+    "教师需要作出的判断"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D12",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "‘项目指令有实测记录；周报输入为示例数据’页脚常显。",
+   "batch": "S7"
+  },
+  {
+   "id": "P078",
+   "module": "08",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "专业积累，要能进入下一轮教学",
+   "layout_ref": "L02",
+   "template": "T16",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "管道",
+    "工具",
+    "主体",
+    "三个问题"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "map433 高亮‘教师发展’，三角色＋三问。",
+   "batch": "S4"
+  },
+  {
+   "id": "P079",
+   "module": "09",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "同一个项目，怎样经过四个环节？",
+   "layout_ref": "L02",
+   "template": "T16",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_S09_SHOT"
+   ],
+   "cat2_reveal": [
+    "设计",
+    "实施",
+    "评价",
+    "教师专业发展"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D05",
+     "mode": "link"
+    },
+    {
+     "asset": "TOOL_S09",
+     "mode": "link"
+    },
+    {
+     "asset": "DOC_D12",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "map433 四节点各挂一张材料卡片。",
+   "batch": "S4"
+  },
+  {
+   "id": "P080",
+   "module": "09",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "方案包、模拟器、量规与周报，各解决什么？",
+   "layout_ref": "L02",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_S09_SHOT"
+   ],
+   "cat2_reveal": [
+    "方案包",
+    "模拟器",
+    "量规",
+    "周报"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P081",
+   "module": "09",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "角色随任务切换，三问始终可用",
+   "layout_ref": "L03",
+   "template": "T16",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "管道",
+    "工具",
+    "主体",
+    "三问"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S4"
+  },
+  {
+   "id": "P082",
+   "module": "09",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "AI做得越多，我们越需要决定保留什么",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P083",
+   "module": "10",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "哪些学习，必须由学生亲自经历？",
+   "layout_ref": "L01",
+   "template": "T02",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S1"
+  },
+  {
+   "id": "P084",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "学生需要在真实材料和操作中形成经验",
+   "layout_ref": "L05",
+   "template": "T13",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "感受材料",
+    "经历变化",
+    "面对不确定"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "三张照片位保持‘待放入实拍照片’，禁止用生成图或素材图填充。",
+   "batch": "X0"
+  },
+  {
+   "id": "P085",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "模拟与实做，各自让学生经历什么？",
+   "layout_ref": "L07",
+   "template": "T03",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_S01_SHOT"
+   ],
+   "cat2_reveal": [
+    "模拟",
+    "实做",
+    "相同条件",
+    "互相支持"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "右栏实做：照片位‘待放入实拍照片’。",
+   "batch": "S8"
+  },
+  {
+   "id": "P086",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "实物、采集终端、交互终端，各有职责",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "SVG_CODEX_P086_DEVICES"
+   ],
+   "cat2_reveal": [
+    "实物与纸笔",
+    "拍照或扫描",
+    "电脑与投屏",
+    "回到活动"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "P087",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "一张纸质实验记录，怎样进入AI流程？",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师问题",
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "能提供什么上下文"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P088",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "保留原图，再核对小数点、单位和空白格",
+   "layout_ref": "L07",
+   "template": "T14",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "原记录",
+    "识别文本示例",
+    "核对后的记录",
+    "判断"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "TOOL_S12",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "页脚常显‘新编模拟识别误差’。",
+   "batch": "X0"
+  },
+  {
+   "id": "P089",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "哪些必须亲历，哪些值得数字化？",
+   "layout_ref": "L10",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "我能提供什么上下文",
+    "怎样取舍"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P090",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "采集之前，说清目的、范围与去向",
+   "layout_ref": "L10",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S02_OPTIN"
+   ],
+   "cat2_reveal": [
+    "说明目的与范围",
+    "确认处理去向",
+    "落实校内要求",
+    "本次体验的选择"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P091",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "识别失败，不能直接等于学生不会",
+   "layout_ref": "L10",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "差异来源",
+    "保留纸笔路径",
+    "保留投屏与共用终端",
+    "允许学生澄清"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "P092",
+   "module": "10",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "学生完成学习，教师对教学判断负责",
+   "layout_ref": "L10",
+   "template": "T15",
+   "executor": "existing",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "学生的学习",
+    "教师的判断",
+    "材料的性质",
+    "材料的权限"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "X0"
+  },
+  {
+   "id": "P093",
+   "module": "10",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "AI辅助之后，还要回到真实学习中检验",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "真实行动",
+    "必要采集",
+    "AI辅助",
+    "判断与再实践"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_H_回到现实循环",
+    "spec": "五节点环（真实行动→必要采集→AI辅助→师生判断→再实践），自动循环高亮（每节点 1.2s，可点击暂停/手动步进），‘AI辅助’节点明显小于‘真实行动’节点以体现主次；组件 cycle.js 同时供 P056 静态版使用。"
+   },
+   "note": "",
+   "batch": "O3"
+  },
+  {
+   "id": "P094",
+   "module": "11",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "下周，从一组已有记录开始",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "我能提供什么上下文",
+    "怎样确认完成"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D04",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "P095",
+   "module": "11",
+   "kind": "主线",
+   "pace": "停讲",
+   "title": "4＋3＋3：让一次教学进入下一次教学",
+   "layout_ref": "L02",
+   "template": "T16",
+   "executor": "opus",
+   "existing_page": true,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "4环节",
+    "3角色",
+    "3问",
+    "进入下一轮"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": {
+    "id": "ANIM_I_总图收束",
+    "spec": "暗底总图：四环节先亮，三角色图标落入各环节之间，三问以一行浮现，最后‘进入下一轮’箭头从教师发展回到设计并循环一次。"
+   },
+   "note": "",
+   "batch": "O3"
+  },
+  {
+   "id": "P096",
+   "module": "11",
+   "kind": "主线",
+   "pace": "快过",
+   "title": "让AI服务真实的学习",
+   "layout_ref": "L01",
+   "template": "T01",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [],
+   "cat3_embeds": [
+    {
+     "asset": "QR_RESOURCES",
+     "mode": "config",
+     "config": "resourceUrl"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "沿用 P001 暗底封面模板作结束页。",
+   "batch": "S1"
+  },
+  {
+   "id": "B01",
+   "module": "05",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "课时缩短之后，任务和材料要一起调整",
+   "layout_ref": "L07",
+   "template": "T03",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "保持学习目标",
+    "调整课堂活动",
+    "同步修改材料"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S8"
+  },
+  {
+   "id": "B02",
+   "module": "05",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "摆的秘密：两份材料给两种人",
+   "layout_ref": "L06",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师方案",
+    "学生记录表",
+    "教师评析材料"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D02",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "B03",
+   "module": "05",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "科学护眼项目需要相互配套的材料",
+   "layout_ref": "L02",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "四步任务链",
+    "材料清单管什么",
+    "量规管什么",
+    "告知书与前测后测"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D05",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "B04",
+   "module": "05",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "网页资料怎样变成一段可交付的文档？",
+   "layout_ref": "L07",
+   "template": "T10",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_B04_PREVIEW"
+   ],
+   "cat2_reveal": [
+    "来源原文",
+    "文档中的概括",
+    "文档中的教学建议"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D15",
+     "mode": "link"
+    },
+    {
+     "asset": "WEB_R02_FJ",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S7"
+  },
+  {
+   "id": "B05",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "掌中几何：先写预测，再切一刀",
+   "layout_ref": "L09",
+   "template": "T04",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S05_GEO"
+   ],
+   "cat2_reveal": [
+    "观察任务",
+    "操作与对照",
+    "复盘问题"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "SYS_S05",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S3"
+  },
+  {
+   "id": "B06",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "掌中光路：反射方向先预测再验证",
+   "layout_ref": "L09",
+   "template": "T04",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S05_LIGHT"
+   ],
+   "cat2_reveal": [
+    "先预测",
+    "再验证",
+    "说明依据"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "SYS_S05",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S3"
+  },
+  {
+   "id": "B07",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "掌中磁场：反转电流看方向",
+   "layout_ref": "L09",
+   "template": "T04",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S04"
+   ],
+   "cat2_reveal": [
+    "观察任务",
+    "操作与观察",
+    "一条边界",
+    "手势的作用"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "SYS_S04",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S3"
+  },
+  {
+   "id": "B08",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "生态岛：只改一个条件的公平对照",
+   "layout_ref": "L09",
+   "template": "T04",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S06"
+   ],
+   "cat2_reveal": [
+    "先预测",
+    "建立对照",
+    "比较结果",
+    "形成报告"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "SYS_S06",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S3"
+  },
+  {
+   "id": "B09",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "月相与潜水器：两种可以操作的关系",
+   "layout_ref": "L07",
+   "template": "T03",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_S08_SHOT",
+    "IMG_S07_SHOT"
+   ],
+   "cat2_reveal": [
+    "月相：双视图联动",
+    "潜水器：配重与注水",
+    "比较维度"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "TOOL_S08",
+     "mode": "iframe",
+     "fallback": "IMG_S08_SHOT"
+    },
+    {
+     "asset": "TOOL_S07",
+     "mode": "iframe",
+     "fallback": "IMG_S07_SHOT"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "左右各内嵌一个单文件模拟器（缩放到半屏）。",
+   "batch": "O1"
+  },
+  {
+   "id": "B10",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "英语端午交流：三问落到英语表达",
+   "layout_ref": "L09",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI扮演什么角色",
+    "需要什么上下文",
+    "示例对话（虚构）"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S9"
+  },
+  {
+   "id": "B11",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "采访达尔文：角色卡写清能说什么",
+   "layout_ref": "L08",
+   "template": "T12",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_D13_SHOT"
+   ],
+   "cat2_reveal": [
+    "角色卡限定身份",
+    "知识范围要写清",
+    "示例对话（虚构）",
+    "回应要留在边界内"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D13",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S9"
+  },
+  {
+   "id": "B12",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "校园气象站：三个来源要分清",
+   "layout_ref": "L05",
+   "template": "T04",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_V04_STILL",
+    "CAP_S10"
+   ],
+   "cat2_reveal": [
+    "生成的情境画面",
+    "联网天气数据",
+    "本地观察记录",
+    "项目问题接在这里"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "VID_V04",
+     "mode": "video"
+    },
+    {
+     "asset": "TOOL_S10",
+     "mode": "iframe",
+     "fallback": "CAP_S10"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "三栏：生成短片（video）／联网看板（iframe，断网回退示例数据并标注）／本地记录（文字）。",
+   "batch": "O1"
+  },
+  {
+   "id": "B13",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "AI分类器工坊",
+   "layout_ref": "L09",
+   "template": "T04",
+   "executor": "opus",
+   "existing_page": false,
+   "cat1_images": [
+    "CAP_S13"
+   ],
+   "cat2_reveal": [
+    "模型从哪里来",
+    "怎样检验",
+    "怎样解释"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "TOOL_S13",
+     "mode": "iframe",
+     "fallback": "CAP_S13",
+     "requires": "network"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "需联网加载 CDN；无网时显示截图＋说明。",
+   "batch": "O1"
+  },
+  {
+   "id": "B14",
+   "module": "06",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "从教学意图到视频，分步骤检查才容易修改",
+   "layout_ref": "L03",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "IMG_V01_KEYFRAMES"
+   ],
+   "cat2_reveal": [
+    "说明意图",
+    "选择路线",
+    "生成与编排",
+    "审看后使用"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "B15",
+   "module": "07",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "喀什高三备考：把写作失分接回具体任务",
+   "layout_ref": "L06",
+   "template": "T10",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "应用文任务",
+    "读后续写任务",
+    "分别寻找证据",
+    "决定下一步"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S7"
+  },
+  {
+   "id": "B16",
+   "module": "07",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "一条反馈，能否回到原始记录？",
+   "layout_ref": "L07",
+   "template": "T14",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "资料中出现的情况",
+    "可以确认的范围",
+    "给学生的反馈示例"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "TOOL_D07",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "口径提示：48 与 45 人不混用；S17 只说明‘现有材料未找到记录’。",
+   "batch": "S8"
+  },
+  {
+   "id": "B17",
+   "module": "07",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "测评卷、登记表与量规，分别留下什么证据？",
+   "layout_ref": "L07",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "测评卷",
+    "登记表",
+    "作品量规"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D06",
+     "mode": "link"
+    },
+    {
+     "asset": "DOC_D05",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S5"
+  },
+  {
+   "id": "B18",
+   "module": "08",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "从课堂困惑到一个小课题",
+   "layout_ref": "L04",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "教师的问题",
+    "目标",
+    "角色",
+    "背景"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "B19",
+   "module": "08",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "把反复使用的方法写成可以检查的步骤",
+   "layout_ref": "L07",
+   "template": "T05",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "输入约定",
+    "固定步骤",
+    "输出约定",
+    "换一份材料检验"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S2"
+  },
+  {
+   "id": "B20",
+   "module": "08",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "资料整理、Word交付和周报，也可以用三问组织",
+   "layout_ref": "L07",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "我想得到什么",
+    "AI需要扮演什么角色",
+    "我能提供什么上下文"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "DOC_D04",
+     "mode": "link"
+    },
+    {
+     "asset": "DOC_D12",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  },
+  {
+   "id": "B21",
+   "module": "10",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "数字化记录要保留原始证据",
+   "layout_ref": "L06",
+   "template": "T14",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "保留原件",
+    "提取信息",
+    "模拟误差",
+    "再作分析"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "TOOL_S12",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S8"
+  },
+  {
+   "id": "B22",
+   "module": "10",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "处理学生材料前，先核对哪些要求？",
+   "layout_ref": "L10",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [
+    "WEB_R02_UNESCO"
+   ],
+   "cat2_reveal": [
+    "依据",
+    "校内核对",
+    "一个真实决定"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "UNESCO 只中文概括，不加引号。",
+   "batch": "S5"
+  },
+  {
+   "id": "B23",
+   "module": "11",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "按你的教学任务寻找资源",
+   "layout_ref": "L02",
+   "template": "T15",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "需要学生观察与操作",
+    "需要成套教学材料",
+    "需要情境与交流",
+    "需要调整自己的委托"
+   ],
+   "cat3_embeds": [
+    {
+     "asset": "TOOL_S01",
+     "mode": "link"
+    },
+    {
+     "asset": "TOOL_S08",
+     "mode": "link"
+    },
+    {
+     "asset": "TOOL_S07",
+     "mode": "link"
+    },
+    {
+     "asset": "SYS_S05",
+     "mode": "link"
+    },
+    {
+     "asset": "DOC_D01",
+     "mode": "link"
+    },
+    {
+     "asset": "DOC_D02",
+     "mode": "link"
+    },
+    {
+     "asset": "DOC_D05",
+     "mode": "link"
+    },
+    {
+     "asset": "VID_V01",
+     "mode": "link"
+    },
+    {
+     "asset": "SYS_S03",
+     "mode": "link"
+    },
+    {
+     "asset": "DOC_D13",
+     "mode": "link"
+    }
+   ],
+   "cat4_animation": null,
+   "note": "资源入口页：四行各配链接卡片。",
+   "batch": "S5"
+  },
+  {
+   "id": "B24",
+   "module": "11",
+   "kind": "备选",
+   "pace": "按替换片段安排",
+   "title": "把你的问题放回一次具体教学任务",
+   "layout_ref": "L10",
+   "template": "T06",
+   "executor": "pi",
+   "existing_page": false,
+   "cat1_images": [],
+   "cat2_reveal": [
+    "你希望学生或自己完成什么",
+    "AI可以承担哪部分工作",
+    "还缺少什么背景或证据"
+   ],
+   "cat3_embeds": [],
+   "cat4_animation": null,
+   "note": "",
+   "batch": "S6"
+  }
+ ]
+}
