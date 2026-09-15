@@ -4,7 +4,7 @@
      anim=null
      note=大对话框占正文60%＋右侧产物缩略；产品真实截图【待用户提供：用AI做课件的产品截图（M3）】，未到位时用 .slot .placeholder[data-kind=product]。
  -->
-<section class="slide" data-id="P005A" data-title="现在：说清楚要求，AI来实现" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T04" data-status="skeleton">
+<section class="slide" data-id="P005A" data-title="现在：说清楚要求，AI来实现" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T04" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P005A</span>
@@ -12,10 +12,85 @@
   <h2 class="title">现在：说清楚要求，AI来实现</h2>
   <p class="sub reveal-none">变化发生在入口：从“先学工具”转向“先说清楚想做什么”。</p>
   <!-- BODY:START -->
-  <div class="body stack" style="justify-content:center">
-    <div class="reveal"><div class="label">一条要求（示例）</div><p class="text">做一页课件：地球绕太阳转，地轴倾斜，能切换冬夏两个位置。</p></div>
-    <div class="reveal"><div class="label">AI的回应</div><p class="text">生成页面结构、图形与动画，并给出可以继续修改的版本。</p></div>
-    <div class="reveal"><div class="label">教师接着做</div><p class="text">看效果，用自己的话提出修改要求。</p></div>
+  <style>
+    .slide[data-id="P005A"] .body { gap: 26px; }
+    .slide[data-id="P005A"] .p5a { flex: 1 1 auto; min-height: 0; display: flex; gap: 48px; align-items: stretch; }
+
+    /* 左 60%：大对话框 */
+    .slide[data-id="P005A"] .p5a .ask { flex: 6 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .slide[data-id="P005A"] .p5a .ask .label { margin-bottom: 0; }
+    .slide[data-id="P005A"] .chatbox {
+      flex: 1 1 auto; min-height: 0; box-sizing: border-box;
+      background: #ffffff; border: 2px solid var(--accent); border-radius: 40px;
+      box-shadow: 0 8px 22px rgba(45, 74, 102, .16);
+      padding: 34px 34px 24px 44px; display: flex; flex-direction: column; gap: 18px;
+    }
+    .slide[data-id="P005A"] .chatbox .say {
+      flex: 1 1 auto; display: flex; align-items: center; gap: 16px; min-height: 0;
+    }
+    .slide[data-id="P005A"] .chatbox .say .caret {
+      flex: 0 0 4px; align-self: stretch; margin: 6px 0; background: var(--accent-dark); border-radius: 2px;
+    }
+    .slide[data-id="P005A"] .chatbox .say p {
+      font-size: 40px; line-height: 1.6; color: var(--text); margin: 0;
+    }
+    .slide[data-id="P005A"] .chatbox .tray { flex: 0 0 auto; display: flex; align-items: center; gap: 14px; }
+    .slide[data-id="P005A"] .chatbox .tray u { flex: 1 1 auto; height: 1px; background: var(--divider); display: block; }
+    .slide[data-id="P005A"] .chatbox .tray b {
+      width: 42px; height: 42px; border-radius: 9px; background: #eef4fa; border: 1px solid #a9c3da; display: block;
+    }
+    .slide[data-id="P005A"] .chatbox .send {
+      flex: 0 0 72px; width: 72px; height: 72px; border-radius: 50%; background: var(--accent-dark);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide[data-id="P005A"] .chatbox .send svg { width: 36px; height: 36px; display: block; }
+
+    /* 右 40%：AI 的回应 + 产品截图位 */
+    .slide[data-id="P005A"] .p5a .out { flex: 4 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .slide[data-id="P005A"] .p5a .out .label { margin-bottom: 0; }
+    .slide[data-id="P005A"] .p5a .out .text { font-size: 28px; line-height: 1.55; }
+    .slide[data-id="P005A"] .p5a .out .blueprint { flex: 1 1 auto; min-height: 0; display: flex; }
+    .slide[data-id="P005A"] .p5a .out .slot { flex: 1 1 auto; min-height: 0; }
+
+    /* 底：教师接着做 */
+    .slide[data-id="P005A"] .p5a-next { flex: 0 0 auto; margin-top: 0; }
+    .slide[data-id="P005A"] .p5a-next .label { margin-bottom: 0; flex: 0 0 auto; }
+    .slide[data-id="P005A"] .p5a-next .text { font-size: 30px; line-height: 1.5; color: var(--accent-dark); }
+  </style>
+  <div class="body">
+    <div class="p5a">
+      <div class="ask reveal" data-step="1">
+        <div class="label">一条要求（示例）</div>
+        <div class="chatbox">
+          <div class="say">
+            <span class="caret"></span>
+            <p>做一页课件：地球绕太阳转，地轴倾斜，能切换冬夏两个位置。</p>
+          </div>
+          <div class="tray">
+            <b></b><b></b><u></u>
+            <div class="send">
+              <svg viewBox="0 0 36 36" role="img" aria-label="发送">
+                <path d="M18 30 V7 M8 17 L18 6 L28 17" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="out reveal" data-step="2">
+        <div class="label">AI的回应</div>
+        <p class="text">生成页面结构、图形与动画，并给出可以继续修改的版本。</p>
+        <div class="blueprint">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="slot" data-kind="product"><div class="placeholder"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway p5a-next reveal" data-step="3">
+      <div class="arrow-line" style="width:260px"></div>
+      <div class="label">教师接着做</div>
+      <p class="text">看效果，用自己的话提出修改要求。</p>
+    </div>
   </div>
   <!-- BODY:END -->
   <div class="foot">入口变化，不表示制作过程消失，也不保证一次成功；示例要求为教学示例。</div>

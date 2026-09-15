@@ -1,26 +1,55 @@
 <!-- PLAN template=T05 executor=pi pace=快过 layout_ref=L03
-     reveal=['提出意图', '形成原型', '移植与修改', '运行验证']
+     reveal=['提出意图', '形成原型', '移植与修改', '运行验证', '提质增效']
      embeds=[]
      anim=null
-     note=
+     note=四步流水线下方加两条定性对照条（过去／现在），标"示意"；打印机／放大器图标取自图标库
      assets:
-       SVG_CODEX_P009_PIPE → 已改为页内内联 SVG（四步流水线图），原 assets/svg/p009_pipeline.svg 已删除 -->
+       SVG_CODEX_P009_PIPE → 已改为页内内联 SVG（四步流水线图），原 assets/svg/p009_pipeline.svg 已删除
+       assets/img/icons/printer3d.png ← assets/iconlib/未命名文件夹/3d-model.png
+       assets/img/icons/magnifier.png ← assets/iconlib/未命名文件夹/search.png -->
 <section class="slide" data-id="P009" data-title="一个教学想法，需要经过制作、试用和修改。" data-module="02 四季循环：从念头到交互" data-stage="" data-kind="主线" data-template="T05" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>02</b><span class="on">四季循环：从念头到交互</span></div>
     <span class="pid">P009</span>
   </div>
   <h2 class="title">一个教学想法，需要经过制作、试用和修改。</h2>
+  <p class="sub reveal-none">AI是老师想法和经验的3D打印机与放大器。</p>
   <!-- BODY:START -->
   <style>
-    .slide[data-id="P009"] .pipetxt .text { font-size: 30px; line-height: 1.65; }
-    .slide[data-id="P009"] .pipetxt .label { margin-bottom: 10px; }
-    .slide[data-id="P009"] .pipefig { flex: 0 0 1080px; }
+    .slide[data-id="P009"] .body { gap: 22px; }
+    .slide[data-id="P009"] .p9top { display: flex; align-items: center; gap: 32px; flex: 0 0 auto; }
+    .slide[data-id="P009"] .pipetxt { flex: 1 1 auto; min-width: 680px; }
+    .slide[data-id="P009"] .pipetxt .text { font-size: 27px; line-height: 1.55; }
+    .slide[data-id="P009"] .pipetxt .label { margin-bottom: 6px; }
+    .slide[data-id="P009"] .pipefig { flex: 0 0 940px; }
     .slide[data-id="P009"] .pipefig svg { display: block; width: 100%; height: auto; }
     .slide[data-id="P009"] .pipefig svg text { font-family: var(--font-sans); }
+
+    .slide[data-id="P009"] .p9gain { display: flex; align-items: center; gap: 30px;
+      border-top: 2px solid var(--divider); padding-top: 18px; flex: 0 0 auto; }
+    .slide[data-id="P009"] .p9ico { display: flex; gap: 14px; flex: 0 0 auto; }
+    .slide[data-id="P009"] .p9ico figure { margin: 0; text-align: center; width: 104px; }
+    .slide[data-id="P009"] .p9ico img { width: 78px; height: 78px; object-fit: contain; display: block; margin: 0 auto 4px; }
+    .slide[data-id="P009"] .p9ico figcaption { font-size: 24px; color: var(--muted); font-family: var(--font-cond); }
+    .slide[data-id="P009"] .p9gtxt { flex: 1 1 auto; min-width: 0; }
+    .slide[data-id="P009"] .p9gtxt .text { font-size: 28px; line-height: 1.5; }
+    .slide[data-id="P009"] .p9bars { flex: 0 0 760px;
+      background: var(--surface); border-radius: 10px; padding: 12px 18px 14px;
+      display: flex; flex-direction: column; }
+    .slide[data-id="P009"] .p9bars .tag { align-self: flex-end; margin-bottom: 8px; }
+    .slide[data-id="P009"] .p9row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .slide[data-id="P009"] .p9row:last-child { margin-bottom: 0; }
+    .slide[data-id="P009"] .p9who { flex: 0 0 66px; font-size: 26px; font-family: var(--font-cond); color: var(--muted-2); }
+    .slide[data-id="P009"] .p9bar { flex: 1 1 auto; display: flex; height: 44px; border-radius: 6px; overflow: hidden; }
+    .slide[data-id="P009"] .p9seg { display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-family: var(--font-cond); white-space: nowrap; overflow: hidden; }
+    .slide[data-id="P009"] .p9seg.a { background: #c3d8ea; color: #2d4a66; }
+    .slide[data-id="P009"] .p9seg.b { background: var(--accent-dark); color: #fff; }
+    .slide[data-id="P009"] .p9seg.narrow { font-size: 0; }
   </style>
-  <div class="body cols" style="align-items:center">
-    <div class="stack pipetxt" style="gap:24px">
+  <div class="body stack">
+   <div class="p9top">
+    <div class="stack pipetxt" style="gap:18px">
       <div class="reveal" data-step="1">
         <div class="label">提出意图</div>
         <p class="text">教师说明希望学生观察什么、操作什么、解释什么。</p>
@@ -129,9 +158,37 @@
         </g>
       </svg>
     </div>
+   </div>
+   <div class="p9gain reveal" data-step="5">
+     <div class="p9ico">
+       <figure><img src="assets/img/icons/printer3d.png" alt=""><figcaption>3D打印机</figcaption></figure>
+       <figure><img src="assets/img/icons/magnifier.png" alt=""><figcaption>放大器</figcaption></figure>
+     </div>
+     <div class="p9gtxt">
+       <div class="label">提质增效</div>
+       <p class="text">学软件、动手操作的时间少了；腾出来的时间，留给想法与经验。</p>
+     </div>
+     <div class="p9bars">
+       <span class="tag">示意</span>
+       <div class="p9row">
+         <div class="p9who">过去</div>
+         <div class="p9bar">
+           <div class="p9seg a" style="flex:0 0 72%">学软件与动手操作</div>
+           <div class="p9seg b" style="flex:0 0 28%">想法与经验</div>
+         </div>
+       </div>
+       <div class="p9row">
+         <div class="p9who">现在</div>
+         <div class="p9bar">
+           <div class="p9seg a" style="flex:0 0 26%">操作</div>
+           <div class="p9seg b" style="flex:0 0 74%">想法与经验</div>
+         </div>
+       </div>
+     </div>
+   </div>
   </div>
   <!-- BODY:END -->
-  <div class="foot">依据《091_四季循环》开发规格与验证记录整理。</div>
+  <div class="foot">依据《091_四季循环》开发规格与验证记录整理；对照条为示意，不含计时数据。</div>
   <aside class="notes">【快过】讲述时依次说明：教师说明希望学生观察什么、操作什么、解释什么。 AI辅助形成交互原型，明确场景和控制方式。 开发过程将原型移植为可独立运行的版本，处理资源加载和交互适配。 根据实际运行结果核对功能与计算，修正发现的问题。
     作用：从制作事实过渡到模型为什么能接到行动，说明成品不是凭空出现。
     资源：<a href="../19_逐页内容脚本/资源预览/S01.html">S01 四季循环v2</a> <a href="assets/docs/S01/index.html">素材入口</a> <a href="assets/docs/S01/验证记录.md">开发与验证记录</a> <a href="../19_逐页内容脚本/资源预览/R05.html">R05 专著资源使用说明与实测台账</a> <a href="assets/docs/R05/00_使用说明.md">素材入口</a> <a href="assets/docs/R05/16_WorkBuddy能力实测与样章校订记录.md">实测校订记录</a></aside>
