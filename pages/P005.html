@@ -1,178 +1,258 @@
-<section class="slide" data-id="P005" data-title="现在，可以先用自己的话提出想法" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T03" data-status="draft">
+<!-- PLAN template=T04 executor=cloud pace=停讲 layout_ref=L05
+     reveal=['功能区', '动画窗格', '资源植入', '结果']
+     embeds=[]
+     anim=null
+     note=PPT 界面模拟（功能区／左缩略图／右动画窗格／格式对话框）放大到正文75%，内联 HTML＋CSS。
+ -->
+<section class="slide" data-id="P005" data-title="过去：先学会软件，再表达想法" data-module="01 为什么要学习AI？" data-stage="" data-kind="主线" data-template="T04" data-status="draft">
   <div class="hdr">
     <div class="locator"><b>01</b><span class="on">为什么要学习AI？</span></div>
     <span class="pid">P005</span>
   </div>
-  <h2 class="title" style="font-size:68px">现在，可以先用自己的话提出想法</h2>
+  <h2 class="title">过去：先学会软件，再表达想法</h2>
+  <p class="sub reveal-none">动画、图形、资源植入，都要自己一项一项考虑。</p>
   <!-- BODY:START -->
   <style>
-    .slide[data-id="P005"] .entry {
-      width: 100%; height: 100%; box-sizing: border-box;
-      padding: 14px 24px; display: flex; align-items: center; gap: 18px;
-    }
-    .slide[data-id="P005"] .entry .side { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .slide[data-id="P005"] .entry .side.old { flex: 0 0 388px; }
-    .slide[data-id="P005"] .entry .side.now { flex: 1 1 0; min-width: 0; }
-    .slide[data-id="P005"] .entry .top {
-      font-size: 24px; letter-spacing: .12em; line-height: 1; color: var(--muted);
-    }
-    .slide[data-id="P005"] .entry .side.now .top { color: var(--accent); }
-    .slide[data-id="P005"] .entry .cap { font-size: 24px; line-height: 1.2; color: var(--muted-2); text-align: center; }
-    .slide[data-id="P005"] .entry .side.now .cap { color: var(--accent-dark); }
+    .slide[data-id="P005"] .body { gap: 22px; }
 
-    /* 过去：抽象软件面板 */
-    .slide[data-id="P005"] .oldwin {
-      width: 100%; height: 236px; box-sizing: border-box;
-      border: 2px solid #5980a6; border-radius: 10px; overflow: hidden;
-      background: #ffffff; box-shadow: 0 5px 14px rgba(45,74,102,.16);
+    /* ── 上：PPT 界面模拟（占正文约 75%） ───────────────── */
+    .slide[data-id="P005"] .ppt {
+      position: relative;
+      flex: 1 1 auto; min-height: 0; width: 100%; box-sizing: border-box;
       display: flex; flex-direction: column;
+      background: #ffffff; border: 2px solid var(--accent);
+      box-shadow: 0 6px 18px rgba(45, 74, 102, .16); overflow: hidden;
     }
-    .slide[data-id="P005"] .oldwin .bar {
-      height: 34px; flex: 0 0 34px; background: linear-gradient(#cfdded, #b9d0e6);
-      display: flex; align-items: center; gap: 8px; padding: 0 12px; box-sizing: border-box;
-      border-bottom: 1px solid #5980a6;
+    /* 标题栏 */
+    .slide[data-id="P005"] .ppt .bar {
+      flex: 0 0 40px; display: flex; align-items: center; gap: 10px;
+      padding: 0 16px; box-sizing: border-box;
+      background: linear-gradient(#cfdded, #b9d0e6); border-bottom: 1px solid var(--accent);
     }
-    .slide[data-id="P005"] .oldwin .bar i { width: 11px; height: 11px; border-radius: 50%; background: #416180; display: block; }
-    .slide[data-id="P005"] .oldwin .bar u { flex: 1 1 auto; }
-    .slide[data-id="P005"] .oldwin .bar s { width: 16px; height: 3px; background: #416180; display: block; }
-    .slide[data-id="P005"] .oldwin .menu {
-      height: 30px; flex: 0 0 30px; background: #eef4fa; border-bottom: 1px solid #c3d8ea;
-      display: flex; align-items: center; gap: 18px; padding: 0 14px; box-sizing: border-box;
-    }
-    .slide[data-id="P005"] .oldwin .menu b { display: block; height: 8px; border-radius: 4px; background: #8fa9c1; }
-    .slide[data-id="P005"] .oldwin .tools {
-      height: 38px; flex: 0 0 38px; background: #f7fafd; border-bottom: 1px solid #c3d8ea;
-      display: flex; align-items: center; gap: 9px; padding: 0 14px; box-sizing: border-box;
-    }
-    .slide[data-id="P005"] .oldwin .tools b { width: 22px; height: 22px; border-radius: 5px; background: #c3d8ea; border: 1px solid #8fa9c1; display: block; }
-    .slide[data-id="P005"] .oldwin .tools b.on { background: #94bce3; }
-    .slide[data-id="P005"] .oldwin .tools i { width: 1px; height: 22px; background: #c3d8ea; display: block; margin: 0 3px; }
-    .slide[data-id="P005"] .oldwin .fx {
-      height: 32px; flex: 0 0 32px; background: #ffffff; border-bottom: 1px solid #c3d8ea;
-      display: flex; align-items: center; gap: 10px; padding: 0 14px; box-sizing: border-box;
-    }
-    .slide[data-id="P005"] .oldwin .fx b { width: 30px; height: 20px; border-radius: 4px; background: #416180; display: block; }
-    .slide[data-id="P005"] .oldwin .fx u { flex: 1 1 auto; height: 8px; border-radius: 4px; background: #dfe9f3; display: block; }
-    .slide[data-id="P005"] .oldwin .sheet { flex: 1 1 auto; position: relative; background: #ffffff; padding: 9px 12px; box-sizing: border-box; }
-    .slide[data-id="P005"] .oldwin .sheet .grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows: 20px; gap: 5px;
-    }
-    .slide[data-id="P005"] .oldwin .sheet .grid span { background: #eef4fa; border: 1px solid #dbe6f1; border-radius: 3px; }
-    .slide[data-id="P005"] .oldwin .sheet .grid span.f { background: #cfdded; }
-    .slide[data-id="P005"] .oldwin .dlg {
-      position: absolute; right: 12px; bottom: 8px; width: 186px;
-      background: #ffffff; border: 2px solid #416180; border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(45,74,102,.28); padding: 8px 10px; box-sizing: border-box;
-    }
-    .slide[data-id="P005"] .oldwin .dlg .row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-    .slide[data-id="P005"] .oldwin .dlg .row u { flex: 1 1 auto; height: 7px; border-radius: 4px; background: #dfe9f3; display: block; }
-    .slide[data-id="P005"] .oldwin .dlg .sw { width: 30px; height: 15px; border-radius: 8px; background: #94bce3; position: relative; flex: 0 0 auto; }
-    .slide[data-id="P005"] .oldwin .dlg .sw::after { content: ""; position: absolute; top: 2px; right: 2px; width: 11px; height: 11px; border-radius: 50%; background: #fff; }
-    .slide[data-id="P005"] .oldwin .dlg .sw.off { background: #cfd6dd; }
-    .slide[data-id="P005"] .oldwin .dlg .sw.off::after { right: auto; left: 2px; }
-    .slide[data-id="P005"] .oldwin .dlg .btns { display: flex; justify-content: flex-end; gap: 7px; }
-    .slide[data-id="P005"] .oldwin .dlg .btns b { width: 42px; height: 16px; border-radius: 4px; background: #dfe9f3; border: 1px solid #8fa9c1; display: block; }
-    .slide[data-id="P005"] .oldwin .dlg .btns b.p { background: #416180; border-color: #416180; }
+    .slide[data-id="P005"] .ppt .bar i { width: 13px; height: 13px; border-radius: 50%; background: var(--accent-dark); display: block; }
+    .slide[data-id="P005"] .ppt .bar u { flex: 1 1 auto; }
+    .slide[data-id="P005"] .ppt .bar s { width: 20px; height: 3px; background: var(--accent-dark); display: block; }
 
-    /* 中间：入口的变化 */
-    .slide[data-id="P005"] .entry .mid { flex: 0 0 236px; margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-    .slide[data-id="P005"] .entry .mid .midlab { font-size: 28px; font-weight: 500; color: var(--accent-dark); white-space: nowrap; }
-    .slide[data-id="P005"] .entry .mid svg { display: block; width: 216px; height: auto; }
+    /* 功能区：标签行 + 图标行 */
+    .slide[data-id="P005"] .ppt .ribbon {
+      flex: 0 0 auto; background: #eef4fa; border-bottom: 1px solid #c3d8ea;
+      transition: box-shadow .35s ease;
+    }
+    .slide[data-id="P005"] .ppt .tabs {
+      display: flex; align-items: flex-end; gap: 6px; height: 40px; padding: 0 14px;
+      box-sizing: border-box; border-bottom: 1px solid #c3d8ea; background: #e3ecf6;
+    }
+    .slide[data-id="P005"] .ppt .tabs span {
+      font-size: 24px; line-height: 1; color: var(--muted-2);
+      padding: 7px 14px 8px; border: 1px solid transparent; border-bottom: none; white-space: nowrap;
+    }
+    .slide[data-id="P005"] .ppt .tabs span.on {
+      background: #ffffff; color: var(--accent-dark); border-color: #c3d8ea;
+    }
+    .slide[data-id="P005"] .ppt .tools {
+      display: flex; align-items: center; gap: 10px; height: 58px; padding: 0 16px; box-sizing: border-box;
+      background: #f7fafd;
+    }
+    .slide[data-id="P005"] .ppt .tools b { width: 34px; height: 34px; border-radius: 5px; background: #d7e5f2; border: 1px solid #a9c3da; display: block; }
+    .slide[data-id="P005"] .ppt .tools b.on { background: var(--light-blue); border-color: var(--accent); }
+    .slide[data-id="P005"] .ppt .tools i { width: 1px; height: 30px; background: #c3d8ea; display: block; margin: 0 6px; }
+    .slide[data-id="P005"] .ppt .tools u { flex: 1 1 auto; }
 
-    /* 现在：对话输入框 */
-    .slide[data-id="P005"] .chatwrap { width: 100%; height: 236px; display: flex; align-items: center; }
-    .slide[data-id="P005"] .chatbox {
-      width: 100%; box-sizing: border-box; background: #ffffff;
-      border: 2px solid #5980a6; border-radius: 34px;
-      box-shadow: 0 6px 18px rgba(45,74,102,.16);
-      padding: 22px 22px 22px 30px; display: flex; align-items: center; gap: 18px;
+    /* 主区：左缩略图 / 中画布 / 右动画窗格 */
+    .slide[data-id="P005"] .ppt .main { flex: 1 1 auto; min-height: 0; display: flex; }
+
+    .slide[data-id="P005"] .ppt .thumbs {
+      flex: 0 0 168px; background: #eef2f6; border-right: 1px solid #c3d8ea;
+      padding: 12px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; overflow: hidden;
     }
-    .slide[data-id="P005"] .chatbox .caret { flex: 0 0 3px; height: 38px; background: #416180; border-radius: 2px; }
-    .slide[data-id="P005"] .chatbox .ph { flex: 1 1 auto; display: flex; flex-direction: column; gap: 12px; }
-    .slide[data-id="P005"] .chatbox .ph u { display: block; height: 13px; border-radius: 7px; background: #dfe9f3; }
-    .slide[data-id="P005"] .chatbox .ph u.s { width: 52%; }
-    .slide[data-id="P005"] .chatbox .send {
-      flex: 0 0 64px; height: 64px; border-radius: 50%; background: #416180;
-      display: flex; align-items: center; justify-content: center;
+    .slide[data-id="P005"] .ppt .thumbs .th {
+      flex: 0 0 74px; background: #ffffff; border: 1px solid #c3d8ea; position: relative;
     }
-    .slide[data-id="P005"] .chatbox .send svg { display: block; width: 32px; height: 32px; }
+    .slide[data-id="P005"] .ppt .thumbs .th.on { border: 2px solid var(--accent); }
+    .slide[data-id="P005"] .ppt .thumbs .th::before {
+      content: ""; position: absolute; left: 12px; top: 14px; right: 24px; height: 7px; border-radius: 4px; background: #cfdded;
+    }
+    .slide[data-id="P005"] .ppt .thumbs .th::after {
+      content: ""; position: absolute; left: 12px; top: 32px; right: 40px; height: 5px; border-radius: 3px; background: #e2e8ee;
+    }
+
+    .slide[data-id="P005"] .ppt .canvas {
+      flex: 1 1 auto; min-width: 0; background: #dfe3e8; display: flex; align-items: center; justify-content: center;
+      padding: 18px; box-sizing: border-box; position: relative;
+    }
+    .slide[data-id="P005"] .ppt .page {
+      width: 100%; height: 100%; background: #ffffff; border: 1px solid #b7bec6;
+      box-shadow: 0 3px 10px rgba(45, 74, 102, .14); position: relative; overflow: hidden;
+    }
+    .slide[data-id="P005"] .ppt .page .ttl { position: absolute; left: 36px; top: 30px; width: 52%; height: 20px; border-radius: 10px; background: #c3d8ea; }
+    .slide[data-id="P005"] .ppt .page .ln { position: absolute; left: 36px; height: 11px; border-radius: 6px; background: #e4e8ec; }
+    .slide[data-id="P005"] .ppt .page .ln.a { top: 74px; width: 38%; }
+    .slide[data-id="P005"] .ppt .page .ln.b { top: 98px; width: 30%; }
+    .slide[data-id="P005"] .ppt .page .img {
+      position: absolute; right: 34px; top: 62px; width: 216px; height: 136px;
+      background: #eef2f6; border: 2px dashed #a9c3da; display: flex; align-items: center; justify-content: center;
+    }
+    .slide[data-id="P005"] .ppt .page .img svg { width: 62px; height: 62px; display: block; }
+    /* 选中手柄：说明图形要一项一项摆 */
+    .slide[data-id="P005"] .ppt .page .hd { position: absolute; width: 11px; height: 11px; background: #ffffff; border: 2px solid var(--accent); }
+    .slide[data-id="P005"] .ppt .page .hd.h1 { right: 28px; top: 56px; }
+    .slide[data-id="P005"] .ppt .page .hd.h2 { right: 28px; top: 192px; }
+    .slide[data-id="P005"] .ppt .page .hd.h3 { right: 244px; top: 56px; }
+    .slide[data-id="P005"] .ppt .page .hd.h4 { right: 244px; top: 192px; }
+    /* 动画编号角标 */
+    .slide[data-id="P005"] .ppt .page .no {
+      position: absolute; width: 30px; height: 30px; background: var(--accent-dark); color: #fff;
+      font-family: var(--font-cond); font-size: 22px; line-height: 30px; text-align: center;
+    }
+    .slide[data-id="P005"] .ppt .page .no.n1 { left: 6px; top: 26px; }
+    .slide[data-id="P005"] .ppt .page .no.n2 { left: 6px; top: 70px; }
+    .slide[data-id="P005"] .ppt .page .no.n3 { right: 258px; top: 58px; }
+
+    /* 右：动画窗格 */
+    .slide[data-id="P005"] .ppt .pane {
+      flex: 0 0 300px; background: #f5f8fb; border-left: 1px solid #c3d8ea;
+      padding: 12px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px; overflow: hidden;
+      transition: box-shadow .35s ease;
+    }
+    .slide[data-id="P005"] .ppt .pane .ph { font-size: 22px; line-height: 1; color: var(--accent-dark); letter-spacing: .08em; }
+    .slide[data-id="P005"] .ppt .pane .row {
+      display: flex; align-items: center; gap: 9px; background: #ffffff; border: 1px solid #c3d8ea; padding: 8px 9px; box-sizing: border-box;
+    }
+    .slide[data-id="P005"] .ppt .pane .row .k { flex: 0 0 24px; height: 24px; background: var(--accent-dark); color: #fff; font-family: var(--font-cond); font-size: 18px; line-height: 24px; text-align: center; }
+    .slide[data-id="P005"] .ppt .pane .row .t { flex: 1 1 auto; display: flex; flex-direction: column; gap: 5px; }
+    .slide[data-id="P005"] .ppt .pane .row .t u { display: block; height: 7px; border-radius: 4px; background: #dfe9f3; }
+    .slide[data-id="P005"] .ppt .pane .row .t u.s { width: 58%; }
+    .slide[data-id="P005"] .ppt .pane .row .g { flex: 0 0 56px; height: 12px; background: var(--light-blue); border: 1px solid var(--accent); }
+    .slide[data-id="P005"] .ppt .pane .row .g.b { flex-basis: 34px; }
+    .slide[data-id="P005"] .ppt .pane .bars { display: flex; flex-direction: column; gap: 6px; margin-top: 2px; }
+    .slide[data-id="P005"] .ppt .pane .bars u { display: block; height: 10px; background: #d7e5f2; border: 1px solid #a9c3da; }
+    .slide[data-id="P005"] .ppt .pane .bars u.w1 { width: 86%; }
+    .slide[data-id="P005"] .ppt .pane .bars u.w2 { width: 60%; margin-left: 14%; }
+    .slide[data-id="P005"] .ppt .pane .bars u.w3 { width: 44%; margin-left: 30%; }
+
+    /* 格式对话框：压在画布右下，说明"逐条设置" */
+    .slide[data-id="P005"] .ppt .dlg {
+      position: absolute; right: 26px; bottom: 18px; width: 272px;
+      background: #ffffff; border: 2px solid var(--accent-dark);
+      box-shadow: 0 6px 16px rgba(45, 74, 102, .3); padding: 10px 12px 12px; box-sizing: border-box;
+      transition: box-shadow .35s ease;
+    }
+    .slide[data-id="P005"] .ppt .dlg .dh { font-size: 21px; line-height: 1; color: var(--accent-dark); letter-spacing: .08em; margin-bottom: 9px; }
+    .slide[data-id="P005"] .ppt .dlg .r { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+    .slide[data-id="P005"] .ppt .dlg .r u { flex: 1 1 auto; height: 8px; border-radius: 4px; background: #dfe9f3; display: block; }
+    .slide[data-id="P005"] .ppt .dlg .r .sel { flex: 0 0 96px; height: 22px; border: 1px solid #a9c3da; background: #f7fafd; }
+    .slide[data-id="P005"] .ppt .dlg .r .sw { flex: 0 0 38px; height: 19px; border-radius: 10px; background: var(--light-blue); position: relative; }
+    .slide[data-id="P005"] .ppt .dlg .r .sw::after { content: ""; position: absolute; top: 2px; right: 2px; width: 15px; height: 15px; border-radius: 50%; background: #fff; }
+    .slide[data-id="P005"] .ppt .dlg .r .sw.off { background: #cfd6dd; }
+    .slide[data-id="P005"] .ppt .dlg .r .sw.off::after { right: auto; left: 2px; }
+    .slide[data-id="P005"] .ppt .dlg .btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 2px; }
+    .slide[data-id="P005"] .ppt .dlg .btns b { width: 54px; height: 20px; background: #dfe9f3; border: 1px solid #a9c3da; display: block; }
+    .slide[data-id="P005"] .ppt .dlg .btns b.p { background: var(--accent-dark); border-color: var(--accent-dark); }
+
+    /* 分步高亮：被点名的那一块亮起来 */
+    .slide[data-id="P005"] .ppt .ribbon.lit { box-shadow: inset 0 0 0 3px var(--accent); }
+    .slide[data-id="P005"] .ppt .pane.lit { box-shadow: inset 0 0 0 3px var(--accent); }
+    .slide[data-id="P005"] .ppt .canvas .img.lit { border-color: var(--accent); border-style: solid; background: #e6f0f9; }
+
+    /* ── 下：四条说明 ─────────────────────────────────── */
+    .slide[data-id="P005"] .p5txt { flex: 0 0 auto; gap: 34px; align-items: flex-start; }
+    .slide[data-id="P005"] .p5txt .label { margin-bottom: 8px; }
+    .slide[data-id="P005"] .p5txt .text { font-size: 27px; line-height: 1.55; }
+    .slide[data-id="P005"] .p5txt .res .text { color: var(--accent-dark); font-weight: 500; }
+    .slide[data-id="P005"] .ppt > .corner-tag { right: 14px; top: auto; bottom: 14px; background: #fff; }
   </style>
   <div class="body">
-    <div class="cols" style="gap:64px;flex:0 0 auto;align-items:flex-start">
-      <div class="reveal" data-step="1" style="flex:0 0 560px">
-        <div class="kicker" style="color:var(--muted);margin-bottom:22px">过去</div>
-        <p style="font-size:40px;line-height:1.6;color:var(--muted)">教师先掌握菜单、公式和配置，再把想法翻译成软件操作。</p>
-      </div>
-      <div class="vline" style="align-self:stretch"></div>
-      <div class="reveal" data-step="2">
-        <div class="kicker" style="margin-bottom:22px">现在</div>
-        <p style="font-size:52px;line-height:1.5;font-weight:500">教师直接表达目标，由AI协助组织操作步骤和材料。</p>
-      </div>
-    </div>
-    <div class="cols" style="gap:56px;margin-top:26px;flex:1 1 auto;min-height:0;align-items:stretch">
-      <div class="fig schematic reveal" data-step="1" style="flex:1 1 0">
-        <span class="tag">示意图</span>
-        <div class="pic">
-          <div class="entry">
-            <div class="side old">
-              <div class="top">过去</div>
-              <div class="oldwin">
-                <div class="bar"><i></i><i></i><i></i><u></u><s></s><s></s></div>
-                <div class="menu"><b style="width:52px"></b><b style="width:40px"></b><b style="width:64px"></b><b style="width:46px"></b><b style="width:58px"></b></div>
-                <div class="tools"><b class="on"></b><b></b><b></b><i></i><b></b><b class="on"></b><b></b><i></i><b></b></div>
-                <div class="fx"><b></b><u></u></div>
-                <div class="sheet">
-                  <div class="grid">
-                    <span class="f"></span><span></span><span></span><span class="f"></span><span></span>
-                    <span></span><span class="f"></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span class="f"></span><span></span>
-                  </div>
-                  <div class="dlg">
-                    <div class="row"><u></u><div class="sw"></div></div>
-                    <div class="row"><u></u><div class="sw off"></div></div>
-                    <div class="btns"><b></b><b class="p"></b></div>
-                  </div>
-                </div>
-              </div>
-              <div class="cap">菜单、公式和配置</div>
-            </div>
-            <div class="mid">
-              <div class="midlab">入口的变化</div>
-              <svg viewBox="0 0 220 64" role="img" aria-label="从过去指向现在的箭头">
-                <defs>
-                  <linearGradient id="p5Arrow" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0" stop-color="#94bce3"/><stop offset="1" stop-color="#416180"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0 22 H146 V2 L220 32 L146 62 V42 H0 Z" fill="url(#p5Arrow)"/>
-              </svg>
-            </div>
-            <div class="side now">
-              <div class="top">现在</div>
-              <div class="chatwrap">
-                <div class="chatbox">
-                  <div class="caret"></div>
-                  <div class="ph"><u></u><u class="s"></u></div>
-                  <div class="send">
-                    <svg viewBox="0 0 32 32" role="img" aria-label="发送">
-                      <path d="M16 27 V7 M7 16 L16 6 L25 16" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="cap">用自己的话说清楚想做什么</div>
-            </div>
-          </div>
+    <div class="ppt">
+      <span class="tag corner-tag">界面示意</span>
+      <div class="bar"><i></i><i></i><i></i><u></u><s></s><s></s><s></s></div>
+      <div class="ribbon">
+        <div class="tabs">
+          <span>开始</span><span class="on">插入</span><span>设计</span><span>切换</span><span>动画</span><span>幻灯片放映</span><span>审阅</span><span>视图</span>
+        </div>
+        <div class="tools">
+          <b class="on"></b><b></b><b></b><i></i><b></b><b class="on"></b><b></b><b></b><i></i><b></b><b></b><i></i><b></b><b></b><b></b><u></u><b></b><b></b>
         </div>
       </div>
-      <div class="slot reveal" data-kind="product" data-step="2" style="flex:0 0 560px"><div class="placeholder">教师用一句话提出想法的对话界面</div></div>
+      <div class="main">
+        <div class="thumbs">
+          <div class="th on"></div><div class="th"></div><div class="th"></div>
+        </div>
+        <div class="canvas">
+          <div class="page">
+            <div class="ttl"></div>
+            <div class="ln a"></div>
+            <div class="ln b"></div>
+            <div class="no n1">1</div><div class="no n2">2</div><div class="no n3">3</div>
+            <div class="img">
+              <svg viewBox="0 0 64 64" role="img" aria-label="待植入的图片或视频">
+                <rect x="4" y="10" width="56" height="44" rx="5" fill="#ffffff" stroke="#5980a6" stroke-width="3"/>
+                <circle cx="20" cy="24" r="6" fill="#94bce3"/>
+                <path d="M9 48 L25 31 L36 42 L45 34 L55 48 Z" fill="#c3d8ea" stroke="#5980a6" stroke-width="2.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="hd h1"></div><div class="hd h2"></div><div class="hd h3"></div><div class="hd h4"></div>
+          </div>
+          <div class="dlg">
+            <div class="dh">设置形状格式</div>
+            <div class="r"><u></u><div class="sel"></div></div>
+            <div class="r"><u></u><div class="sw"></div></div>
+            <div class="r"><u></u><div class="sw off"></div></div>
+            <div class="btns"><b></b><b class="p"></b></div>
+          </div>
+        </div>
+        <div class="pane">
+          <div class="ph">动画窗格</div>
+          <div class="row"><span class="k">1</span><span class="t"><u></u><u class="s"></u></span><span class="g"></span></div>
+          <div class="row"><span class="k">2</span><span class="t"><u></u><u class="s"></u></span><span class="g b"></span></div>
+          <div class="row"><span class="k">3</span><span class="t"><u></u><u class="s"></u></span><span class="g"></span></div>
+          <div class="bars"><u class="w1"></u><u class="w2"></u><u class="w3"></u></div>
+        </div>
+      </div>
     </div>
-    <div class="takeaway reveal" data-step="3" style="margin-top:24px">
-      <div class="arrow-line" style="width:420px"></div>
-      <p style="font-size:30px;line-height:1.6"><span style="font-weight:500">变化的位置</span>｜变化发生在入口：从“先学工具”转向“先说清楚想做什么”。</p>
+    <div class="cols p5txt">
+      <div class="reveal" data-step="1">
+        <div class="label">功能区</div>
+        <p class="text">插入、动画、切换……每个菜单都要认得。</p>
+      </div>
+      <div class="reveal" data-step="2">
+        <div class="label">动画窗格</div>
+        <p class="text">出现顺序、持续时间、触发方式，要逐条设置。</p>
+      </div>
+      <div class="reveal" data-step="3">
+        <div class="label">资源植入</div>
+        <p class="text">图片要找、视频要转、格式要调。</p>
+      </div>
+      <div class="reveal res" data-step="4">
+        <div class="label">结果</div>
+        <p class="text">想法必须先翻译成软件操作，才能变成课件。</p>
+      </div>
     </div>
   </div>
+  <script>
+  (function () {
+    'use strict';
+    var sec = (document.currentScript && document.currentScript.closest('section.slide')) ||
+              document.querySelector('section.slide[data-id="P005"]');
+    if (!sec) return;
+    /* 分步时把被点名的界面区域点亮，不新增任何文字 */
+    var pairs = [
+      ['.ppt .ribbon', '1'],
+      ['.ppt .pane', '2'],
+      ['.ppt .canvas .img', '3']
+    ];
+    function sync() {
+      pairs.forEach(function (p) {
+        var el = sec.querySelector(p[0]);
+        var src = sec.querySelector('.p5txt .reveal[data-step="' + p[1] + '"]');
+        if (el) el.classList.toggle('lit', !!(src && src.classList.contains('last')));
+      });
+    }
+    new MutationObserver(sync).observe(sec, { attributes: true, attributeFilter: ['class', 'data-rv'], subtree: true });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync);
+    else sync();
+  })();
+  </script>
   <!-- BODY:END -->
-  <div class="foot">入口变化，不表示制作过程消失，也不保证一次成功。</div>
+  <div class="foot">界面为示意模拟，不是任何软件的真实截图。</div>
   <aside class="notes">让变化清晰可见：过去在左、现在在右，中间标出变化发生的位置。强调入口变化不等于制作过程消失。示意图为通用造型，不模仿具体产品界面；右侧产品界面位待放入真实截图。</aside>
 </section>
